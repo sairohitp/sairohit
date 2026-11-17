@@ -1,17 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import { colleagueGroups, allColleagues } from '../data/colleagues';
+import { categories, people, teamCount } from '../data/colleagues';
 import { site } from '../config/site';
 import { url } from '../lib/url';
 import { abs, personId, breadcrumbs } from '../lib/seo';
 
-const files = new Set(allColleagues.flatMap((c) => c.sources)).size;
+const files = new Set(categories.flatMap((c) => c.teams.flatMap((t) => t.sources))).size;
+const href = (h: string) => (h.startsWith('http') ? h : url(h));
+const ext = (h: string) => (h.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {});
 ---
 
 <Base
   title={`Colleagues | ${site.name}`}
-  description={`The ${allColleagues.length} people named across Sai Rohit's Figma files: GDSC SRM leadership, the Creatives team, project teammates and TrainingMug.`}
+  description={`The ${people.length} people named across Sai Rohit's Figma files and project sites, grouped by team: GDSC SRM, the Creatives team, project teams and startups.`}
   wide
   schema={[
     {
@@ -21,7 +23,7 @@ const files = new Set(allColleagues.flatMap((c) => c.sources)).size;
       about: { '@id': personId },
       mainEntity: {
         '@type': 'ItemList',
-        itemListElement: allColleagues.map((c, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Person', name: c.name, jobTitle: c.role, colleague: { '@id': personId } } })),
+        itemListElement: people.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Person', name: p.name, jobTitle: p.roles.join('; '), colleague: { '@id': personId } } })),
       },
     },
     breadcrumbs([{ name: 'Colleagues', path: '/colleagues/' }]),
@@ -31,20 +33,19 @@ const files = new Set(allColleagues.flatMap((c) => c.sources)).size;
     <p class="eyebrow" data-reveal>Colleagues</p>
     <h1 class="page-hero__title" data-reveal="blur">The people behind the work</h1>
     <p class="page-hero__lead" data-reveal>
-      Everyone named in my Figma files and project sites, with their roles as those sources state them, and the work we shared. Design is a team sport;
-      these are my teammates.
+      Everyone named in my Figma files and project sites, grouped by the team we worked in, with their roles as those sources state them.
     </p>
     <ul class="page-hero__stats" data-stagger="80">
-      <li data-reveal="pop"><strong>{allColleagues.length}</strong> people</li>
-      <li data-reveal="pop"><strong>{colleagueGroups.length}</strong> teams</li>
-      <li data-reveal="pop"><strong>{files}</strong> Figma files</li>
+      <li data-reveal="pop"><strong>{people.length}</strong> people</li>
+      <li data-reveal="pop"><strong>{teamCount}</strong> teams</li>
+      <li data-reveal="pop"><strong>{files}</strong> sources</li>
     </ul>
-    <div class="filters colleagues__filters" role="group" aria-label="Filter by team" data-reveal>
-      <button class="filter" type="button" aria-pressed="true" data-col-filter="all">All <span class="filter__count">{allColleagues.length}</span></button>
+    <div class="filters colleagues__filters" role="group" aria-label="Filter by group" data-reveal>
+      <button class="filter" type="button" aria-pressed="true" data-col-filter="all">All</button>
       {
-        colleagueGroups.map((g) => (
-          <button class="filter" type="button" aria-pressed="false" data-col-filter={g.id}>
-            {g.title} <span class="filter__count">{g.people.length}</span>
+        categories.map((c) => (
+          <button class="filter" type="button" aria-pressed="false" data-col-filter={c.id}>
+            {c.title} <span class="filter__count">{c.teams.length}</span>
           </button>
         ))
       }
@@ -52,47 +53,98 @@ const files = new Set(allColleagues.flatMap((c) => c.sources)).size;
   </div>
 
   {
-    colleagueGroups.map((g) => (
-      <section id={g.id} class="container colleagues" aria-labelledby={`${g.id}-title`} data-col-group={g.id}>
+    categories.map((c) => (
+      <section id={c.id} class="container colleagues" aria-labelledby={`${c.id}-title`} data-col-group={c.id}>
         <hr class="cs-divider" data-reveal="line" />
         <div class="section-intro">
           <div>
-            <p class="eyebrow" data-reveal>{g.people.length} people</p>
-            <h2 id={`${g.id}-title`} class="section-intro__title" data-reveal="blur">{g.title}</h2>
+            <p class="eyebrow" data-reveal>{c.teams.length} {c.teams.length === 1 ? 'team' : 'teams'}</p>
+            <h2 id={`${c.id}-title`} class="section-intro__title" data-reveal="blur">{c.title}</h2>
           </div>
-          <p class="section-intro__text" data-reveal>{g.description}</p>
+          <p class="section-intro__text" data-reveal>{c.description}</p>
         </div>
-        <ul class="colleagues__grid" data-stagger="50">
-          {g.people.map((p) => (
-            <li class="colleague" data-reveal="rise">
-              <div class="colleague__head">
-                <h3 class="colleague__name">{p.name}</h3>
-                <p class="colleague__role">{p.role}</p>
-                <p class="colleague__org">{p.org}</p>
-              </div>
-              <p class="colleague__label">Worked together on</p>
-              <ul class="colleague__work">
-                {p.work.map((w) => (
-                  <li>
-                    <a href={url(w.href)}>{w.label} <Icon name="arrow-right" size={12} /></a>
-                  </li>
+        <div class="teams" data-stagger="70">
+          {c.teams.map((t) => {
+            const rows = t.members.some((m) => m.role || m.work?.length);
+            const wide = (rows && t.members.length >= 4) || Boolean(t.rosters?.length) || c.teams.length === 1;
+            return (
+              <article id={t.id} class:list={['team', wide && 'team--wide']} data-reveal="rise">
+                <header class="team__head">
+                  <p class="team__org">{t.org}</p>
+                  <h3 class="team__name">{t.name}</h3>
+                  {t.summary && <p class="team__summary">{t.summary}</p>}
+                </header>
+
+                {t.work.length > 0 && (
+                  <ul class="team__work">
+                    {t.work.map((w) => (
+                      <li>
+                        <a href={href(w.href)} {...ext(w.href)}>
+                          {w.label} <Icon name={w.href.startsWith('http') ? 'arrow-up-right' : 'arrow-right'} size={12} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {t.members.length > 0 &&
+                  (rows ? (
+                    <ul class="team__rows">
+                      {t.members.map((m) => (
+                        <li class="member">
+                          <span class="member__name">{m.name}</span>
+                          {m.role && <span class="member__role">{m.role}</span>}
+                          {m.work?.length ? (
+                            <span class="member__links">
+                              {m.work.map((w) => (
+                                <a href={href(w.href)}>{w.label}</a>
+                              ))}
+                            </span>
+                          ) : null}
+                          {m.note && <span class="member__note">{m.note}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <ul class="team__names" aria-label="Members">
+                      {t.members.map((m) => (
+                        <li>{m.name}</li>
+                      ))}
+                    </ul>
+                  ))}
+
+                {t.rosters?.length ? (
+                  <div class="team__rosters">
+                {t.rosters.map((r) => (
+                  <div class="roster">
+                    <a class="roster__label" href={url(r.href)}>
+                      {r.label} <Icon name="arrow-right" size={12} />
+                    </a>
+                    <ul class="team__names">
+                      {r.names.map((n) => (
+                        <li>{n}</li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
-              <p class="colleague__src">
-                <Icon name="figma" size={12} /> {p.sources.join(', ')}
-              </p>
-              {p.note && <p class="colleague__note">{p.note}</p>}
-            </li>
-          ))}
-        </ul>
+                  </div>
+                ) : null}
+
+                <p class="team__src">
+                  <Icon name="figma" size={12} /> {t.sources.join(', ')}
+                </p>
+              </article>
+            );
+          })}
+        </div>
       </section>
     ))
   }
 
   <section class="container visual-note" data-reveal="fade">
     <p>
-      Names and roles are taken exactly as they appear in the Figma files and project sites. Creatives team members appear by the first names on their
-      pages in those files. If you are listed and would like a change, please get in touch.
+      Names and roles are taken exactly as they appear in the Figma files and project sites. If you are listed and would like a change,
+      please get in touch.
     </p>
   </section>
 </Base>

@@ -12,7 +12,7 @@ How the 74 Figma files map onto the site, the framework that keeps it organised,
 | About | `/about/` | `src/data/profile.ts` (resume is the source of truth) | Timeline, experience, leadership, skills, education, recognition, FAQ |
 | Blog | `/blog/`, `/blog/<slug>/`, `/rss.xml` | `src/content/blog/*.md` | 17 posts, each optionally tied to a case study with `related: <slug>`; 10 animated cover styles |
 | Designed and built | Home, `#built-title` | `src/data/profile.ts` (`built`) | OrgGrid, FundLookup, Handl, All is All, Dhobermans and Progull |
-| Colleagues | `/colleagues/` | `src/data/colleagues.ts` | 38 people named in the files, roles exactly as written there, linked to shared work |
+| Colleagues | `/colleagues/` | `src/data/colleagues.ts` | People named in the files and project sites, grouped into team cards; shared work and sources listed once per team |
 | Sitemap | `/sitemap/` | `src/data/routes.ts` | Every page, case study section, blog heading and external link, with a filter |
 | Status | `/status/`, `/status/<code>/`, `404.html` | `src/data/statuses.ts` | 200 status page plus designed 301, 403, 404, 410, 500 and 503 pages |
 | Machine-readable | `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/llms-full.txt`, `/rss.xml` | `src/pages/*.ts` | Feeds for search engines and AI assistants |

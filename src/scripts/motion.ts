@@ -100,7 +100,7 @@ function initParallax() {
 const TILES = [
   '.pcard', '.post-card', '.glance__item', '.built-card', '.xp-list__row', '.stats__item', '.award', '.cert',
   '.lead-card', '.xp-item', '.edu', '.info-card', '.flow__step', '.faq__item', '.related-visual', '.exploration',
-  '.contact__card', '.post__nav-link', '.goal', '.facts li', '.metric', '.tabs', '.vis-teaser', '.colleague',
+  '.contact__card', '.post__nav-link', '.goal', '.facts li', '.metric', '.tabs', '.vis-teaser', '.team',
   '.sitemap__group', '.status__card', '.settings__group',
 ].join(', ');
 
