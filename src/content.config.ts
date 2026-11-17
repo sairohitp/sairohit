@@ -14,7 +14,7 @@ const blog = defineCollection({
     date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
     /** Cover illustration style, drawn in CSS. */
-    art: z.enum(['table', 'code', 'stage', 'a11y']).default('table'),
+    art: z.enum(['table', 'code', 'stage', 'a11y', 'waves', 'chat', 'palette', 'flow', 'terminal', 'grid']).default('table'),
     /** Slug of a related case study. */
     related: z.string().optional(),
     featured: z.boolean().default(false),

@@ -238,7 +238,13 @@ export interface BuiltProject {
   tagline: string;
   stack: string[];
   points: string[];
-  visual: 'pipeline' | 'search' | 'handles';
+  visual: 'pipeline' | 'search' | 'handles' | 'art';
+  /** Cover illustration when visual is 'art' (shared with the blog). */
+  art?: 'waves' | 'flow' | 'terminal';
+  /** Live site, if public. */
+  href?: string;
+  /** My part, when it is not the whole product. */
+  role?: string;
 }
 
 export const built: BuiltProject[] = [
@@ -273,6 +279,45 @@ export const built: BuiltProject[] = [
       'A liquid-glass interface that helps startups secure one consistent username across social and developer platforms.',
       'Pick the platforms to check and see availability for each one in a single results view.',
       'A handle suggestion engine proposes brandable alternatives whenever a name is taken.',
+    ],
+  },
+  {
+    name: 'All is All',
+    tagline: 'A liquid-glass sanctuary for calm and focus',
+    stack: ['React', 'TypeScript', 'Web Audio API', 'Gemini API'],
+    visual: 'art',
+    art: 'waves',
+    points: [
+      'An AI companion you shape with archetypes such as the Sage, the Stoic, the Old Friend and the Void, or with a persona you write yourself.',
+      'Binaural beats generated live in the browser: a 200 Hz tone in one ear and a slightly higher one in the other, from delta to beta, layered over rain, forest, ocean, wind or city soundscapes.',
+      'A Theme Studio that edits every colour and animated background blob in real time, plus a flow timer, breathing patterns, reflections and generated scenes.',
+    ],
+  },
+  {
+    name: 'Dhobermans',
+    tagline: 'Laundry pickup and delivery in Bengaluru, booked on WhatsApp',
+    stack: ['Astro', 'Installable web app', 'WhatsApp'],
+    visual: 'art',
+    art: 'flow',
+    href: 'https://dhobermans.com/',
+    points: [
+      'A booking sheet that collects the service, load size, pickup slot, repeat frequency and location, then hands the order to WhatsApp, with details saved on the device for next time.',
+      'Pricing anyone can check in their head: ₹100 per kg with a 24-hour turnaround, monthly packs at ₹90 per kg, and a plan finder that estimates a week of laundry from everyday items.',
+      'Helpful extras on the same page: a Stain SOS guide, a care-label decoder and a small shop of care products.',
+    ],
+  },
+  {
+    name: 'Progull',
+    tagline: 'Agentic AI for zero-touch mainframe batch operations',
+    stack: ['ServiceNow', 'z/OS', 'CICS', 'Db2', 'JCL'],
+    visual: 'art',
+    art: 'terminal',
+    href: 'https://progull.com/',
+    role: 'Co-founder; designed the brand identity and logo',
+    points: [
+      'Detects, diagnoses, remediates and closes mainframe batch abends inside ServiceNow, governed by policy and fully audited.',
+      'Every new abend family starts in an advisory mode, so operators approve fixes before any automation is trusted.',
+      'Its website explains a hard domain with a live abend simulator, an architecture map, a status-quo comparison and an ROI calculator, with targets clearly labelled as targets.',
     ],
   },
 ];

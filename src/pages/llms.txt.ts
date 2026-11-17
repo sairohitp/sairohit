@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { projects, projectHref, cardSubtitle } from '../data/projects';
 import { campaigns } from '../data/visual';
-import { profile, experience } from '../data/profile';
+import { profile, experience, built } from '../data/profile';
 import { site } from '../config/site';
 import { abs } from '../lib/seo';
 import { totals } from '../data/figma';
@@ -21,6 +21,9 @@ export const GET: APIRoute = async () => {
     '',
     '## Case studies',
     ...projects.map((p) => `- [${p.title}](${abs(projectHref(p))}): ${cardSubtitle(p)}, ${p.platform === 'mobile' ? 'mobile' : 'web'}${p.tags?.length ? `, ${p.tags.join(', ')}` : ''}`),
+    '',
+    '## Designed and built',
+    ...built.map((b) => `- ${b.href ? `[${b.name}](${b.href})` : b.name}: ${b.tagline}${b.role ? ` (${b.role})` : ''}. Stack: ${b.stack.join(', ')}`),
     '',
     '## Experience',
     ...experience.map((x) => `- ${x.org}: ${x.roles.map((r) => r.title).join(', ')}`),

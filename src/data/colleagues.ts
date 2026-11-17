@@ -161,6 +161,20 @@ export const colleagueGroups: ColleagueGroup[] = [
     ],
   },
   {
+    id: 'progull',
+    title: 'Progull',
+    description: 'The startup I co-founded, building agentic AI for mainframe batch operations.',
+    people: [
+      {
+        name: 'Zeeshan Afzal',
+        role: 'Founder, Progull',
+        org: 'Progull, Bengaluru',
+        work: [{ label: 'Progull, agentic AI for mainframe operations', href: 'https://progull.com/' }],
+        sources: ['progull.com, About page'],
+      },
+    ],
+  },
+  {
     id: 'trainingmug',
     title: 'TrainingMug',
     description: 'Named in the learning platform files from my time as UI/UX designer at TrainingMug.',

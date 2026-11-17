@@ -10,7 +10,8 @@ How the 74 Figma files map onto the site, the framework that keeps it organised,
 | Case studies | `/projects/<slug>/` | `src/data/projects.ts` + `src/data/case-studies/<slug>.ts` | One page per product, following the UX journey below |
 | Visual design | `/visual/` | `src/data/visual.ts` | 52 files grouped into 7 campaigns, with lightbox galleries |
 | About | `/about/` | `src/data/profile.ts` (resume is the source of truth) | Timeline, experience, leadership, skills, education, recognition, FAQ |
-| Blog | `/blog/`, `/blog/<slug>/`, `/rss.xml` | `src/content/blog/*.md` | Posts, each optionally tied to a case study with `related: <slug>` |
+| Blog | `/blog/`, `/blog/<slug>/`, `/rss.xml` | `src/content/blog/*.md` | 17 posts, each optionally tied to a case study with `related: <slug>`; 10 animated cover styles |
+| Designed and built | Home, `#built-title` | `src/data/profile.ts` (`built`) | OrgGrid, FundLookup, Handl, All is All, Dhobermans and Progull |
 | Explorations | `/explorations/` | `src/data/projects.ts` (`explorations`) | E-commerce Platform and Franchise News Co., with full file anatomy |
 | Colleagues | `/colleagues/` | `src/data/colleagues.ts` | 38 people named in the files, roles exactly as written there, linked to shared work |
 | Sitemap | `/sitemap/` | `src/data/routes.ts` | Every page, case study section, blog heading and external link, with a filter |
@@ -178,9 +179,10 @@ Important: crawlers read `robots.txt` and `llms.txt` only at the host root, `htt
 
 1. Library (Myshelf): the files show an iOS app built in SwiftUI, while the resume calls it "Enterprise Web". Which is right for the card?
 2. Visual design: which pieces are yours alone and which are the Creatives team's? Five files carry other names and are labelled "With the team".
+9. Dhobermans: what was your role (founder, designer and builder, or client work)? Progull: did you also design and build the website, beyond the identity and logo?
 8. Colleagues: "Aksh Kalyan" appears three times and "Aksh Kalyani" once; which is right? Creatives team members appear by first name only; full names welcome.
 3. Figma links: please share view-only links (Share, Anyone with the link, can view) for each product file.
 4. Placerr: startup, internship or passion project?
-5. Design and Develop workshop: which year?
+5. Design and Develop workshop: answered by the certificate file, 11 March 2024.
 6. Pluto 3D renders: yours or sourced?
 7. Is the Google Developer Solution Challenge 2025 runner-up result the Recycle (Greenwealth) project?

@@ -690,3 +690,399 @@
   max-width: 210px;
   white-space: normal;
 }
+
+/* ---------------------------------------------------------------
+   More cover art: waves, chat, palette, flow, terminal, grid
+   --------------------------------------------------------------- */
+.art--waves { --glow: rgba(124, 92, 255, 0.28); }
+.art--chat { --glow: rgba(255, 111, 181, 0.22); }
+.art--palette { --glow: rgba(51, 209, 201, 0.22); }
+.art--flow { --glow: rgba(0, 123, 255, 0.26); }
+.art--terminal { --glow: rgba(163, 198, 56, 0.2); }
+.art--grid { --glow: rgba(245, 197, 66, 0.2); }
+
+/* Waves: two tones a little apart; the brain hears the difference */
+.art-waves {
+  position: relative;
+  width: min(100%, 320px);
+  height: 120px;
+}
+
+.art-waves svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.art-waves path {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.art-waves__l { stroke: rgba(124, 92, 255, 0.9); }
+.art-waves__r { stroke: rgba(255, 111, 181, 0.8); }
+
+.is-in .art-waves__l,
+.post__art.is-in .art-waves__l {
+  animation: wave-run 3s linear infinite;
+}
+
+.is-in .art-waves__r,
+.post__art.is-in .art-waves__r {
+  animation: wave-run 2.7s linear infinite;
+}
+
+@keyframes wave-run {
+  to { transform: translateX(-60px); }
+}
+
+.art-waves__chip,
+.art-waves__beat {
+  position: absolute;
+  padding: 3px 8px;
+  border: 1px solid rgb(var(--ink) / 0.16);
+  border-radius: 999px;
+  background: rgb(var(--ink) / 0.06);
+  color: var(--text-soft);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.art-waves__chip--l { left: 0; top: -4px; }
+.art-waves__chip--r { left: 0; bottom: -4px; }
+
+.art-waves__beat {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text);
+}
+
+/* Chat */
+.art-chat {
+  display: grid;
+  gap: 8px;
+  width: min(100%, 300px);
+}
+
+.art-chat__persona {
+  justify-self: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 111, 181, 0.16);
+  color: #ffb3d6;
+  font-size: 10.5px;
+}
+
+.art-chat__msg {
+  max-width: 82%;
+  padding: 8px 12px;
+  border-radius: 14px 14px 14px 4px;
+  background: rgb(var(--ink) / 0.08);
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.art-chat__msg--user {
+  justify-self: end;
+  border-radius: 14px 14px 4px 14px;
+  background: rgba(124, 92, 255, 0.35);
+  color: #fff;
+}
+
+.art-chat__typing {
+  display: inline-flex;
+  gap: 4px;
+  width: fit-content;
+  padding: 10px 12px;
+  border-radius: 14px 14px 14px 4px;
+  background: rgb(var(--ink) / 0.08);
+}
+
+.art-chat__typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--ink) / 0.5);
+  animation: typing 1.2s ease-in-out infinite;
+}
+
+.art-chat__typing span:nth-child(2) { animation-delay: 0.15s; }
+.art-chat__typing span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+.js .art-chat > :not(.art-chat__persona) {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.is-in .art-chat > *,
+.post__art.is-in .art-chat > * {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s var(--ease-out), transform 0.6s var(--ease-bounce);
+  transition-delay: calc(var(--i, 0) * 0.45s + 0.2s);
+}
+
+/* Palette: liquid blobs behind a glass card */
+.art-palette {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 320px);
+  height: 140px;
+}
+
+.art-palette__blob {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--c);
+  filter: blur(26px);
+  opacity: 0.55;
+  left: calc(10% + var(--i) * 26%);
+  animation: blob 7s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -2.3s);
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(14px, -12px) scale(1.1); }
+  66% { transform: translate(-12px, 10px) scale(0.92); }
+}
+
+.art-palette__card {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.art-palette__swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--c);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.15);
+}
+
+.is-in .art-palette__swatch,
+.post__art.is-in .art-palette__swatch {
+  animation: step-in 0.6s var(--ease-bounce) both;
+  animation-delay: calc(var(--i) * 0.08s + 0.2s);
+}
+
+/* Flow: book, collect, deliver */
+.art-flow {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 320px);
+}
+
+.art-flow__steps {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.art-flow__step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-soft);
+  font-size: 11.5px;
+}
+
+.art-flow__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 123, 255, 0.9);
+}
+
+.is-in .art-flow__dot,
+.post__art.is-in .art-flow__dot {
+  animation: fill-dot 6s var(--ease-out) infinite;
+  animation-delay: calc(var(--i) * 1.4s);
+}
+
+@keyframes fill-dot {
+  0%, 8% { background: transparent; }
+  14%, 85% { background: rgba(0, 123, 255, 0.9); }
+  100% { background: transparent; }
+}
+
+.art-flow__bar {
+  height: 4px;
+  border-radius: 4px;
+  background: rgb(var(--ink) / 0.1);
+  overflow: hidden;
+}
+
+.art-flow__bar span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #007bff, #33d1c9);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.is-in .art-flow__bar span,
+.post__art.is-in .art-flow__bar span {
+  animation: fill-bar 6s var(--ease-out) infinite;
+}
+
+@keyframes fill-bar {
+  0% { transform: scaleX(0); }
+  70%, 88% { transform: scaleX(1); }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+.art-flow__eta {
+  justify-self: start;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(0, 123, 255, 0.16);
+  color: #9ecbff;
+  font-size: 11.5px;
+}
+
+/* Terminal */
+.art-term {
+  display: grid;
+  gap: 6px;
+  width: min(100%, 330px);
+  padding: 10px 12px 12px;
+  border: 1px solid rgb(var(--ink) / 0.14);
+  border-radius: 10px;
+  background: rgb(0 0 0 / 0.45);
+  font-family: ui-monospace, 'JetBrains Mono', SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0;
+}
+
+.art-term__bar {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 4px;
+}
+
+.art-term__bar span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.25);
+}
+
+.art-term__line {
+  color: #cfd8c4;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.art-term__line b {
+  color: #a3c638;
+  font-weight: 500;
+}
+
+.art-term__line:last-child b {
+  color: #34c759;
+}
+
+.js .art-term__line {
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+}
+
+.is-in .art-term__line,
+.post__art.is-in .art-term__line {
+  animation: type-in 7s steps(28) infinite;
+  animation-delay: calc(var(--i) * 0.9s);
+}
+
+@keyframes type-in {
+  0% { opacity: 1; clip-path: inset(0 100% 0 0); }
+  12%, 82% { opacity: 1; clip-path: inset(0 0 0 0); }
+  100% { opacity: 0; clip-path: inset(0 0 0 0); }
+}
+
+/* Grid: a Figma canvas of frames */
+.art-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: min(100%, 320px);
+}
+
+.art-grid__frame {
+  display: grid;
+  align-items: end;
+  height: 40px;
+  padding: 4px 6px;
+  border-radius: 5px;
+  background: rgb(var(--ink) / 0.07);
+  box-shadow: inset 0 0 0 1px rgb(var(--ink) / 0.1);
+}
+
+.art-grid__frame span {
+  color: var(--text-3);
+  font-size: 9px;
+}
+
+.is-in .art-grid__frame,
+.post__art.is-in .art-grid__frame {
+  animation: step-in 0.5s var(--ease-bounce) both;
+  animation-delay: calc(var(--i) * 0.05s);
+}
+
+.art-grid__select {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(25% - 6px);
+  height: 40px;
+  border: 1.5px solid #18a0fb;
+  border-radius: 5px;
+  box-shadow: 0 0 0 3px rgba(24, 160, 251, 0.15);
+}
+
+.is-in .art-grid__select,
+.post__art.is-in .art-grid__select {
+  animation: select-walk 8s var(--ease) infinite;
+}
+
+@keyframes select-walk {
+  0%, 10% { transform: translate(0, 0); }
+  25%, 35% { transform: translate(calc(100% + 8px), 48px); }
+  50%, 60% { transform: translate(calc(300% + 24px), 0); }
+  75%, 85% { transform: translate(calc(200% + 16px), 96px); }
+  100% { transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .art-chat > *,
+  .js .art-term__line {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .art-term {
+    font-size: 9.5px;
+  }
+}

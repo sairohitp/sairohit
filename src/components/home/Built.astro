@@ -1,5 +1,7 @@
 ---
 import { built } from '../../data/profile';
+import BlogArt from '../blog/BlogArt.astro';
+import Icon from '../Icon.astro';
 ---
 
 <section class="built container" aria-labelledby="built-title">
@@ -8,7 +10,7 @@ import { built } from '../../data/profile';
       <p class="eyebrow" data-reveal>Designed and built</p>
       <h2 id="built-title" class="section-intro__title" data-reveal="blur">From Figma to React</h2>
     </div>
-    <p class="section-intro__text" data-reveal>Products I designed and shipped in code, so the design and the build never drift apart.</p>
+    <p class="section-intro__text" data-reveal>Products I designed and shipped in code, so the design and the build never drift apart: six so far, from deal flow CRMs to laundry and mainframe operations.</p>
   </div>
   <ul class="built__grid" data-stagger="120">
     {
@@ -41,6 +43,7 @@ import { built } from '../../data/profile';
                 ))}
               </div>
             )}
+            {b.visual === 'art' && b.art && <BlogArt art={b.art} />}
             {b.visual === 'handles' && (
               <div class="vis-handles">
                 <span class="vis-handles__input">@yourstartup</span>
@@ -56,6 +59,7 @@ import { built } from '../../data/profile';
           <div class="built-card__body">
             <h3 class="built-card__name">{b.name}</h3>
             <p class="built-card__tagline">{b.tagline}</p>
+            {b.role && <p class="built-card__role">{b.role}</p>}
             <ul class="built-card__points">
               {b.points.map((pt) => (
                 <li>{pt}</li>
@@ -66,6 +70,11 @@ import { built } from '../../data/profile';
                 <li class="chip">{s}</li>
               ))}
             </ul>
+            {b.href && (
+              <a class="link-arrow built-card__link" href={b.href} target="_blank" rel="noopener">
+                Visit {b.href.replace(/^https?:\/\//, '').replace(/\/$/, '')} <Icon name="arrow-up-right" size={14} />
+              </a>
+            )}
           </div>
         </li>
       ))

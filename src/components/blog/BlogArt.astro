@@ -1,7 +1,7 @@
 ---
 /** Small animated cover illustration for a blog post, drawn in CSS. */
 interface Props {
-  art: 'table' | 'code' | 'stage' | 'a11y';
+  art: 'table' | 'code' | 'stage' | 'a11y' | 'waves' | 'chat' | 'palette' | 'flow' | 'terminal' | 'grid';
   size?: 'sm' | 'lg';
 }
 const { art, size = 'sm' } = Astro.props;
@@ -61,6 +61,81 @@ const { art, size = 'sm' } = Astro.props;
             <span style={`--i: ${i}`} />
           ))}
         </span>
+      </div>
+    )
+  }
+  {
+    art === 'waves' && (
+      <div class="art-waves">
+        <svg viewBox="0 0 240 90" preserveAspectRatio="none">
+          <path class="art-waves__l" d="M0 30 Q 15 10 30 30 T 60 30 T 90 30 T 120 30 T 150 30 T 180 30 T 210 30 T 240 30 T 270 30" />
+          <path class="art-waves__r" d="M0 60 Q 14 40 28 60 T 56 60 T 84 60 T 112 60 T 140 60 T 168 60 T 196 60 T 224 60 T 252 60 T 280 60" />
+        </svg>
+        <span class="art-waves__chip art-waves__chip--l">L 200 Hz</span>
+        <span class="art-waves__chip art-waves__chip--r">R 210 Hz</span>
+        <span class="art-waves__beat">Alpha · 10 Hz</span>
+      </div>
+    )
+  }
+  {
+    art === 'chat' && (
+      <div class="art-chat">
+        <span class="art-chat__persona">The Stoic</span>
+        <span class="art-chat__msg art-chat__msg--user" style="--i: 0">I can’t switch off tonight.</span>
+        <span class="art-chat__msg" style="--i: 1">What part of it is in your control?</span>
+        <span class="art-chat__typing" style="--i: 2"><span /><span /><span /></span>
+      </div>
+    )
+  }
+  {
+    art === 'palette' && (
+      <div class="art-palette">
+        <span class="art-palette__blob" style="--i: 0; --c: #7c5cff" />
+        <span class="art-palette__blob" style="--i: 1; --c: #ff6fb5" />
+        <span class="art-palette__blob" style="--i: 2; --c: #33d1c9" />
+        <div class="art-palette__card">
+          {['#7c5cff', '#ff6fb5', '#33d1c9', '#f5c542', '#f5f5f5'].map((c, i) => (
+            <span class="art-palette__swatch" style={`--c: ${c}; --i: ${i}`} />
+          ))}
+        </div>
+      </div>
+    )
+  }
+  {
+    art === 'flow' && (
+      <div class="art-flow">
+        <div class="art-flow__steps">
+          {['Pick a slot', 'We collect', 'Delivered'].map((t, i) => (
+            <span class="art-flow__step" style={`--i: ${i}`}><span class="art-flow__dot" />{t}</span>
+          ))}
+        </div>
+        <span class="art-flow__bar"><span /></span>
+        <span class="art-flow__eta">Pickup en route · ETA 12 min</span>
+      </div>
+    )
+  }
+  {
+    art === 'terminal' && (
+      <div class="art-term">
+        <span class="art-term__bar"><span /><span /><span /></span>
+        {[
+          ['IEF450I', 'PAYROLL1 ABEND=S0C7'],
+          ['diagnose', 'data exception in PARM'],
+          ['advisory', 'playbook proposed'],
+          ['servicenow', 'incident resolved'],
+        ].map(([k, v], i) => (
+          <span class="art-term__line" style={`--i: ${i}`}><b>{k}</b> {v}</span>
+        ))}
+      </div>
+    )
+  }
+  {
+    art === 'grid' && (
+      <div class="art-grid">
+        {Array.from({ length: 12 }, (_, i) => (
+          <span class="art-grid__frame" style={`--i: ${i}`}><span>{['Cover', 'Home', 'Login', 'Profile', 'Admin', 'Quiz', 'Courses', 'Events', 'Ticket', 'Map', 'Donors', 'Final'][i]}</span></span>
+        ))}
+        <span class="art-grid__select" />
       </div>
     )
   }
