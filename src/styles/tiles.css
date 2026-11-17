@@ -68,41 +68,22 @@
 }
 
 /* ---------------------------------------------------------------
-   Experience preview: continuous rules, hovered row becomes a tile
+   Experience preview: each role is its own tile
    --------------------------------------------------------------- */
 .xp-list__row {
-  margin: 6px -10px;
-  padding: 12px 10px;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  transition: border-color 0.35s var(--ease-out), background-color 0.35s var(--ease-out);
-}
-
-.xp-list__row:hover,
-.xp-list__row:focus-visible {
-  border-color: rgb(var(--ink) / 0.2);
-  background: rgb(var(--ink) / 0.02);
+  flex: 1;
+  align-content: center;
+  margin: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--tile);
+  transition: border-color 0.35s var(--ease-out);
 }
 
 .xp-list__go {
-  right: 12px;
-  top: 14px;
-}
-
-@media (min-width: 1024px) {
-  /* Two columns that share each horizontal rule, split by a vertical rule. */
-  .page--wide .xp-list {
-    column-gap: 0;
-  }
-
-  .page--wide .xp-list > li:nth-child(odd) {
-    padding-right: 24px;
-  }
-
-  .page--wide .xp-list > li:nth-child(even) {
-    padding-left: 24px;
-    border-left: 1px solid var(--border);
-  }
+  right: 16px;
+  top: 16px;
 }
 
 /* ---------------------------------------------------------------

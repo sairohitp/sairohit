@@ -257,8 +257,3 @@
   color: var(--text);
 }
 
-@media (max-width: 560px) {
-  .site-footer__made {
-    display: none;
-  }
-}

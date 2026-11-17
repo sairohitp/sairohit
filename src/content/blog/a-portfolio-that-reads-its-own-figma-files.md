@@ -16,7 +16,7 @@ That data now powers the "Inside the files" section on every case study. Where a
 
 ## Frameworks for a site that keeps growing
 
-The site is built with Astro, so every page is static and fast, and the content is typed data:
+Every page is static and fast, and the content is typed data:
 
 - **Case studies** are made of blocks (text, exhibits, flows, palettes, FAQs), so new studies follow the same structure.
 - **Images are discovered by name.** Drop a file named after a project and a screen into the right folder and it appears in that project's gallery.
