@@ -165,6 +165,31 @@
   transform: translate(0, -50%);
 }
 
+/* Sub-index: plain links under a section, no number or arrow */
+.toc__sub {
+  display: grid;
+  gap: 1px;
+  margin: 0 0 6px 25px;
+  padding-left: 10px;
+  border-left: 1px solid var(--border);
+}
+
+.toc .toc__sub a {
+  display: block;
+  max-width: 150px;
+  padding: 4px 0;
+  color: var(--text-3);
+  font-size: 11.5px;
+  line-height: 1.35;
+  white-space: normal;
+  transition: color 0.2s var(--ease-out);
+}
+
+.toc .toc__sub a:hover,
+.toc .toc__sub a:focus-visible {
+  color: var(--text);
+}
+
 /* ---------------------------------------------------------------
    Hero
    --------------------------------------------------------------- */
@@ -209,7 +234,7 @@
    Sections
    --------------------------------------------------------------- */
 .cs-section {
-  scroll-margin-top: 24px;
+  scroll-margin-top: 88px;
 }
 
 .cs-divider {

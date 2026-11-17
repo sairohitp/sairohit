@@ -6,7 +6,7 @@ tags: [Process, Figma]
 art: grid
 ---
 
-For this portfolio I did something slightly obsessive: I decoded all 74 of my Figma files, layer by layer, and put what was inside them on the site. Every case study now has an "Inside the files" section with its pages, frames, typefaces, colours, components, notes and every text label.
+For this portfolio I did something slightly obsessive: I decoded all 74 of my Figma files, layer by layer, and put what was inside them on the site. Every case study now has an "Inside the files" section with its pages, frames, typefaces, colours and components.
 
 The totals were humbling: 2,852 frames, 712,572 layers, 30,737 text layers, 1,700 prototype links and 205 notes left on the canvas.
 

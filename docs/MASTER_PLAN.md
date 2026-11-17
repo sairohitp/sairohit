@@ -54,7 +54,7 @@ Project keys: `learning`, `library`, `recycle`, `pluto`, `placement`, `crm`, `st
 
 All 74 files were decoded layer by layer (712,572 layers, 30,737 text layers, 2,852 frames, 1,700 prototype links, 205 canvas notes). The result lives in `src/data/figma-files.json` and appears on the site as:
 
-- **Inside the files** on every case study (numbered section, also in the contents pane): pages and frames with sizes and prototype links, typefaces and size scale, colours by use, components and instances, notes left on the canvas, and a searchable index of every label.
+- **Inside the files** on every case study (numbered section, also in the contents pane): pages and frames with sizes and prototype links, typefaces and size scale, colours by use, and components and instances. Each file is also listed under Inside the files in the contents pane.
 - **Inside the files** under each campaign on the Visual page, and on the Explorations page.
 - **Rendered screens**: frames whose full render is embedded in the file were extracted into each project's gallery (including the Placerr and PULSE profile screens). References, moodboards, drafts and other members' versions were left out on purpose.
 
@@ -154,7 +154,7 @@ All 74 files were decoded layer by layer (712,572 layers, 30,737 text layers, 2,
 | Structured data | One JSON-LD graph per page: WebSite and Person always; ProfilePage (Home, About), CreativeWork (case studies), BlogPosting and Blog, CollectionPage (Visual, Colleagues), ItemList, BreadcrumbList and FAQPage wherever there are FAQs |
 | Discovery | `sitemap.xml` (all indexable pages), RSS feed, HTML sitemap, internal links from every page |
 | AI assistants | `llms.txt` (summary with links) and `llms-full.txt` (full text of every case study and post); robots rules that allow GPTBot, ClaudeBot, PerplexityBot, Google-Extended and others |
-| Content | Every Figma label is rendered as HTML text, so it is readable by crawlers |
+| Content | Each file's pages, frames, typefaces, colours and components are rendered as HTML text, readable by crawlers |
 | Audit | All 22 indexable pages pass: one h1, alt text on every image, valid JSON-LD, title and description lengths |
 
 Important: crawlers read `robots.txt` and `llms.txt` only at the host root, `https://sairohitp.github.io/`. A project site at `/sairohit/` cannot serve them there. See `docs/SEO.md` for the two-minute fix.

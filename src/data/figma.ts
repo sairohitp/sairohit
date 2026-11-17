@@ -64,6 +64,10 @@ export const totals = figFiles.reduce(
   { files: 0, pages: 0, frames: 0, layers: 0, textLayers: 0, prototypeLinks: 0 },
 );
 
+/** In-page anchor for a file's section, e.g. "file-learning-platform". */
+export const fileAnchor = (key: string) =>
+  `file-${key.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+
 /** "Mobile", "Tablet", "Desktop" and so on, from a frame's size. */
 export function frameKind(w: number, h: number): string {
   if (w === 1080 && h === 1080) return 'Square post';

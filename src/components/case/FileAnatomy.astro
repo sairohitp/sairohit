@@ -1,6 +1,6 @@
 ---
 import Icon from '../Icon.astro';
-import { frameKind, type FigFile } from '../../data/figma';
+import { frameKind, fileAnchor, type FigFile } from '../../data/figma';
 
 interface Props {
   files: FigFile[];
@@ -11,17 +11,17 @@ interface Props {
 const { files, compact = false } = Astro.props;
 const fmt = (n: number) => n.toLocaleString('en-IN');
 const FRAME_LIMIT = 36;
+const plural = (n: number, one: string, many = `${one}s`) => `${n.toLocaleString('en-IN')} ${n === 1 ? one : many}`;
 ---
 
 <div class:list={['anatomy', compact && 'anatomy--compact']}>
   {
-    files.map((f, fi) => {
+    files.map((f) => {
       const kinds = new Map<string, number>();
       f.pages.forEach((p) => p.frames.forEach((fr) => kinds.set(frameKind(fr.w, fr.h), (kinds.get(frameKind(fr.w, fr.h)) ?? 0) + 1)));
       const maxSize = Math.max(...f.sizes.map(([s]) => s), 1);
-      const textTotal = f.pages.reduce((n, p) => n + p.textTotal, 0);
       return (
-        <article class="fig-file" data-reveal="rise">
+        <article id={fileAnchor(f.key)} class="fig-file" data-reveal="fade">
           <header class="fig-file__head">
             <span class="fig-file__icon"><Icon name="figma" size={18} /></span>
             <div>
@@ -49,7 +49,7 @@ const FRAME_LIMIT = 36;
           </ul>
 
           <details class="fig-panel" open={!compact || undefined}>
-            <summary><Icon name="tree-structure" size={15} /> Pages and frames <span>{f.stats.pages} pages, {f.stats.frames} frames</span></summary>
+            <summary><Icon name="tree-structure" size={15} /> Pages and frames <span>{plural(f.stats.pages, 'page')}, {plural(f.stats.frames, 'frame')}</span></summary>
             <ol class="fig-pages">
               {f.pages.map((p, pi) => (
                 <li class="fig-page">
@@ -88,7 +88,7 @@ const FRAME_LIMIT = 36;
 
           {(f.fonts.length > 0 || f.colors.length > 0) && (
             <details class="fig-panel" open={!compact || undefined}>
-              <summary><Icon name="text-aa" size={15} /> Type and colour <span>{f.fonts.length} families, {f.colors.length} key colours</span></summary>
+              <summary><Icon name="text-aa" size={15} /> Type and colour <span>{plural(f.fonts.length, 'family', 'families')}, {plural(f.colors.length, 'key colour')}</span></summary>
               <div class="fig-style">
                 <div>
                   <p class="fig-label">Typefaces</p>
@@ -149,56 +149,8 @@ const FRAME_LIMIT = 36;
             </details>
           )}
 
-          {f.notes.length > 0 && (
-            <details class="fig-panel" open={!compact || undefined}>
-              <summary><Icon name="lightbulb" size={15} /> Notes on the canvas <span>{f.notes.length}</span></summary>
-              <ul class="fig-notes">
-                {f.notes.map((n) => (
-                  <li>
-                    <p>{n.text}</p>
-                    <span>{n.page}</span>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          )}
-
-          {textTotal > 0 && (
-            <details class="fig-panel" data-labels>
-              <summary><Icon name="magnifying-glass" size={15} /> Every label in the file <span>{fmt(textTotal)} unique strings</span></summary>
-              <label class="search fig-search">
-                <Icon name="magnifying-glass" size={14} />
-                <span class="visually-hidden">Filter labels in {f.title}</span>
-                <input type="search" placeholder="Filter labels" data-label-filter={`${fi}`} />
-              </label>
-              {f.pages.filter((p) => p.text.length).map((p) => (
-                <section class="fig-labels">
-                  <p class="fig-label">{p.name} <span>{p.textTotal > p.text.length ? `first ${p.text.length} of ${p.textTotal}` : p.text.length}</span></p>
-                  <ul>{p.text.map((t) => <li>{t}</li>)}</ul>
-                </section>
-              ))}
-            </details>
-          )}
         </article>
       );
     })
   }
 </div>
-
-<script>
-  document.querySelectorAll<HTMLInputElement>('[data-label-filter]').forEach((input) => {
-    const panel = input.closest('[data-labels]');
-    input.addEventListener('input', () => {
-      const q = input.value.trim().toLowerCase();
-      panel?.querySelectorAll<HTMLElement>('.fig-labels').forEach((sec) => {
-        let any = false;
-        sec.querySelectorAll<HTMLElement>('li').forEach((li) => {
-          const hit = !q || (li.textContent ?? '').toLowerCase().includes(q);
-          li.hidden = !hit;
-          if (hit) any = true;
-        });
-        sec.hidden = !any;
-      });
-    });
-  });
-</script>

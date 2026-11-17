@@ -444,7 +444,44 @@ function initGalleryFilters() {
   });
 }
 
+/*
+ * Jumping to an in-page link: show the target straight away, without its entrance offset,
+ * so the page lands exactly where it should instead of shifting as the target animates in.
+ */
+function settle(hash: string) {
+  if (!hash || hash.length < 2) return;
+  const el = document.getElementById(decodeURIComponent(hash.slice(1)));
+  if (!el) return;
+  const targets = [el, ...el.querySelectorAll<HTMLElement>('[data-reveal]')];
+  let parent = el.parentElement?.closest<HTMLElement>('[data-reveal]');
+  while (parent) {
+    targets.push(parent);
+    parent = parent.parentElement?.closest<HTMLElement>('[data-reveal]');
+  }
+  targets.forEach((t) => {
+    if (!t.hasAttribute('data-reveal') || t.classList.contains('is-in')) return;
+    t.style.transition = 'none';
+    t.classList.add('is-in');
+    void t.offsetWidth;
+    t.style.transition = '';
+  });
+}
+
+function initAnchors() {
+  document.addEventListener(
+    'click',
+    (e) => {
+      const a = (e.target as Element | null)?.closest?.('a[href*="#"]') as HTMLAnchorElement | null;
+      if (a && a.hash && a.pathname === location.pathname) settle(a.hash);
+    },
+    true,
+  );
+  window.addEventListener('hashchange', () => settle(location.hash));
+  if (location.hash) settle(location.hash);
+}
+
 export function initMotion() {
+  initAnchors();
   initReveal();
   initParallax();
   initSpotlight();

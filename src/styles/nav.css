@@ -41,12 +41,14 @@
   border: 1px solid transparent;
   border-radius: 999px;
   transition: padding 0.5s var(--ease), background-color 0.4s var(--ease-out), border-color 0.4s var(--ease-out),
-    box-shadow 0.5s var(--ease-out), min-height 0.5s var(--ease);
+    box-shadow 0.5s var(--ease-out), min-height 0.5s var(--ease), margin-bottom 0.5s var(--ease);
 }
 
 .nav.is-stuck .nav__bar,
 .nav.is-open .nav__bar {
   min-height: 56px;
+  /* Keeps the nav's height in the page constant, so nothing jumps when it condenses */
+  margin-bottom: 8px;
   padding: 0 8px 0 22px;
   border-color: var(--border-strong);
   background: var(--surface-2);

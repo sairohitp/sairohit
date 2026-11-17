@@ -32,7 +32,7 @@ The Preferences panel offers dark, light or system theme, reduced or full motion
 
 ## Written for people and for machines
 
-Every page has structured data describing who I am and what the page is, plus a sitemap, an RSS feed, and llms.txt files that give AI assistants a plain-text version of the whole portfolio. Every label from the Figma files is real HTML text, so search engines can read it too.
+Every page has structured data describing who I am and what the page is, plus a sitemap, an RSS feed, and llms.txt files that give AI assistants a plain-text version of the whole portfolio. The file details are real HTML text, so search engines can read them too.
 
 ## What I learned
 

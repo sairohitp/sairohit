@@ -2,7 +2,7 @@
 import Icon from '../Icon.astro';
 
 interface Props {
-  sections: { id: string; label: string }[];
+  sections: { id: string; label: string; children?: { id: string; label: string }[] }[];
   title?: string;
 }
 
@@ -20,6 +20,15 @@ const { sections, title = 'Contents' } = Astro.props;
             <span class="toc__num">{String(i + 1).padStart(2, '0')}</span>
             <span class="toc__label">{s.label}</span>
           </a>
+          {s.children && s.children.length > 0 && (
+            <ul class="toc__sub">
+              {s.children.map((c) => (
+                <li>
+                  <a href={`#${c.id}`}>{c.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
         </li>
       ))
     }

@@ -6,7 +6,7 @@ import Words from '../../components/Words.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import BlockRenderer from '../../components/case/BlockRenderer.astro';
 import FileAnatomy from '../../components/case/FileAnatomy.astro';
-import { filesFor } from '../../data/figma';
+import { filesFor, fileAnchor } from '../../data/figma';
 import { abs, personId, breadcrumbs, faqPage, clampText } from '../../lib/seo';
 import Toc from '../../components/case/Toc.astro';
 import { projects, pageSubtitle, nextProject } from '../../data/projects';
@@ -35,7 +35,9 @@ const og = existsSync(join(process.cwd(), 'public/og', `${project.slug}.jpg`)) ?
 const visualLink = ['events-booking-portal', 'event-registration', 'gdsc-srm-web-and-brand'].includes(project.slug);
 const figFiles = filesFor('project', project.slug);
 const figNum = String(sections.length + 1).padStart(2, '0');
-const tocSections = [...sections.map((s) => ({ id: s.id, label: s.label })), ...(figFiles.length ? [{ id: 'figma-files', label: 'Inside the files' }] : [])];
+const tocSections = [...sections.map((s) => ({ id: s.id, label: s.label })), ...(figFiles.length
+    ? [{ id: 'figma-files', label: 'Inside the files', children: figFiles.map((f) => ({ id: fileAnchor(f.key), label: f.title.replace(/\.fig$/, '') })) }]
+    : [])];
 const figTotals = figFiles.reduce((t, f) => ({ pages: t.pages + f.stats.pages, frames: t.frames + f.stats.frames, layers: t.layers + f.stats.layers, links: t.links + f.stats.prototypeLinks }), { pages: 0, frames: 0, layers: 0, links: 0 });
 const faqItems = sections.flatMap((s) => s.blocks.flatMap((b) => (b.type === 'faq' ? b.items : [])));
 const csSchema = [
@@ -136,7 +138,7 @@ const description = clampText(
               This project lives in {figFiles.length === 1 ? 'one Figma file' : `${figFiles.length} Figma files`}: {figTotals.pages} pages,{' '}
               {figTotals.frames.toLocaleString('en-IN')} frames and {figTotals.layers.toLocaleString('en-IN')} layers
               {figTotals.links > 0 && <>, wired together by {figTotals.links.toLocaleString('en-IN')} prototype links</>}. Every page, frame, typeface,
-              colour, component, note and label is listed below, straight from the source.
+              colour and component is listed below, straight from the source.
             </p>
             <FileAnatomy files={figFiles} />
           </section>
