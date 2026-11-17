@@ -1,0 +1,1 @@
+Icons in this folder are from Phosphor Icons (https://phosphoricons.com), MIT License, Copyright (c) 2020 Phosphor Icons.

@@ -1,0 +1,15 @@
+---
+import type { Caption } from '../../data/types';
+
+interface Props {
+  caption: Caption;
+}
+
+const { caption } = Astro.props;
+---
+
+<figcaption class="caption">
+  <span class="caption__type">{caption.type}</span>
+  <span class="caption__num">{caption.number}</span>
+  <span class="caption__text">{caption.text}</span>
+</figcaption>

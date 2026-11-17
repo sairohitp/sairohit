@@ -1,0 +1,20 @@
+---
+import type { Card } from '../../data/types';
+import Icon from '../Icon.astro';
+
+interface Props {
+  card: Card;
+  /** "stack": icon above title and text. "inline": icon beside text. */
+  variant?: 'stack' | 'inline';
+}
+
+const { card, variant = 'stack' } = Astro.props;
+---
+
+<li class:list={['info-card', `info-card--${variant}`]}>
+  {card.icon && <Icon name={card.icon} size={20} class="info-card__icon" />}
+  <div class="info-card__body">
+    {card.title && <p class="info-card__title">{card.title}</p>}
+    <p class="info-card__text">{card.text}</p>
+  </div>
+</li>

@@ -1,0 +1,50 @@
+---
+import { site } from '../config/site';
+import { url, isExternal } from '../lib/url';
+import Icon from './Icon.astro';
+---
+
+<footer class="site-footer container">
+  <div class="site-footer__card">
+    <div class="site-footer__brand">
+      <a class="site-footer__name" href={url('/')}>{site.name}</a>
+      <ul class="site-footer__social">
+        {
+          site.social.map((s) => (
+            <li>
+              <a
+                href={url(s.href)}
+                aria-label={s.label}
+                {...(isExternal(s.href) ? { target: '_blank', rel: 'noopener' } : {})}
+              >
+                <Icon name={s.icon} size={22} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="site-footer__cols">
+      {
+        site.footer.map((col) => (
+          <div class="site-footer__col">
+            <p class="site-footer__title">{col.title}</p>
+            <ul>
+              {col.links.map((l) => (
+                <li>
+                  <a
+                    href={url(l.href)}
+                    {...('external' in l && l.external ? { target: '_blank', rel: 'noopener' } : {})}
+                  >
+                    {l.label}
+                    {'external' in l && l.external && <Icon name="arrow-up-right" size={14} />}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</footer>

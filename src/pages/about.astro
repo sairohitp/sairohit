@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import Media from '../components/Media.astro';
+import { site } from '../config/site';
+---
+
+<Base title={`About | ${site.name}`}>
+  <section class="about container" aria-labelledby="about-title">
+    <h1 id="about-title" class="about__title">About</h1>
+    <div class="about__grid">
+      <Media media={{ label: 'Portrait, 1200 x 1500' }} ratio="4 / 5" class="about__photo" />
+      <div class="about__body">
+        <p class="about__lead">
+          I’m a passionate visual interface designer and product experience researcher who loves exploring how
+          different people react to various designs, colors, and layouts.
+        </p>
+        <p>Placeholder copy. Add a short bio: background, focus areas, and what you are looking for next.</p>
+        <p>Placeholder copy. Add education, tools, and any community work.</p>
+      </div>
+    </div>
+  </section>
+</Base>

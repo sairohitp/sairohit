@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+---
+
+<Base>
+  <section class="hero container" aria-labelledby="hero-title">
+    <h1 id="hero-title">Hello, I’m Sai Rohit <span class="wave" role="img" aria-label="waving hand">👋</span></h1>
+    <p>
+      I’m a passionate visual interface designer and product experience researcher who loves exploring how
+      different people react to various designs, colors, and layouts.
+    </p>
+    <p>Here’s a visual overview of some of my notable design work:</p>
+  </section>
+
+  <section class="work container" aria-label="Selected work">
+    <ul class="work__list">
+      {
+        projects.map((p) => (
+          <li>
+            <ProjectCard project={p} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

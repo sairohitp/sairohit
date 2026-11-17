@@ -1,0 +1,32 @@
+---
+import type { Media } from '../data/types';
+import { url } from '../lib/url';
+
+interface Props {
+  media?: Media;
+  /** Fallback aspect ratio when media.ratio is not set. */
+  ratio?: string;
+  class?: string;
+  eager?: boolean;
+}
+
+const { media = {}, ratio = '16 / 10', class: className, eager = false } = Astro.props;
+const aspect = media.ratio ?? ratio;
+const src = media.src ? url(media.src) : undefined;
+const kind = media.kind ?? (src && /\.(mp4|webm|mov)$/i.test(src) ? 'video' : 'image');
+const poster = media.poster ? url(media.poster) : undefined;
+---
+
+<div class:list={['media', className, !src && 'media--placeholder']} style={`aspect-ratio: ${aspect}`}>
+  {
+    !src ? (
+      <span class="media__hint" role="img" aria-label="Image placeholder">
+        {media.label}
+      </span>
+    ) : kind === 'video' ? (
+      <video src={src} poster={poster} autoplay muted loop playsinline preload="metadata" aria-label={media.alt} />
+    ) : (
+      <img src={src} alt={media.alt ?? ''} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    )
+  }
+</div>

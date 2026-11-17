@@ -1,0 +1,105 @@
+---
+import type { Block } from '../../data/types';
+import Callout from './Callout.astro';
+import ExhibitFigure from './ExhibitFigure.astro';
+import InfoCard from './InfoCard.astro';
+
+interface Props {
+  block: Block;
+}
+
+const { block } = Astro.props;
+---
+
+{
+  block.type === 'meta' && (
+    <div class="two-col meta">
+      <dl class="meta__list">
+        <div>
+          <dt>My Role</dt>
+          <dd>{block.role}</dd>
+        </div>
+        <div>
+          <dt>Team</dt>
+          <dd>
+            <ul>
+              {block.team.map((m) => (
+                <li>{m}</li>
+              ))}
+            </ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Timeline &amp; Status</dt>
+          <dd>{block.timeline}</dd>
+        </div>
+      </dl>
+      <div class="meta__overview">
+        <h2 class="meta__heading">Overview</h2>
+        {block.overview.map((p) => (
+          <p>{p}</p>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+{
+  block.type === 'text' && (
+    <div class="two-col text-block">
+      <h3 class="text-block__heading">{block.heading}</h3>
+      <div class="text-block__body">
+        {block.body?.map((p) => (
+          <p>{p}</p>
+        ))}
+        {block.list?.length ? (
+          <ul class="card-stack">
+            {block.list.map((c) => (
+              <InfoCard card={c} variant="inline" />
+            ))}
+          </ul>
+        ) : null}
+        {block.cards?.length ? (
+          <ul class="card-stack">
+            {block.cards.map((c) => (
+              <InfoCard card={c} />
+            ))}
+          </ul>
+        ) : null}
+      </div>
+    </div>
+  )
+}
+
+{block.type === 'exhibit' && <ExhibitFigure exhibit={block} />}
+
+{
+  block.type === 'exhibitPair' && (
+    <div class="pair">
+      {block.items.map((item) => (
+        <div class="pair__item">
+          <ExhibitFigure exhibit={item} ratio="3 / 4" />
+          {item.cards?.length ? (
+            <ul class="card-stack">
+              {item.cards.map((c) => (
+                <InfoCard card={c} />
+              ))}
+            </ul>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+{
+  block.type === 'cardGrid' && (
+    <ul class="card-grid">
+      {block.cards.map((c) => (
+        <InfoCard card={c} />
+      ))}
+    </ul>
+  )
+}
+
+{block.type === 'callout' && <Callout block={block} />}

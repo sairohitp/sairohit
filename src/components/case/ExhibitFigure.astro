@@ -1,0 +1,17 @@
+---
+import type { Exhibit } from '../../data/types';
+import Media from '../Media.astro';
+import Caption from './Caption.astro';
+
+interface Props {
+  exhibit: Exhibit;
+  ratio?: string;
+}
+
+const { exhibit, ratio = '750 / 468' } = Astro.props;
+---
+
+<figure class="exhibit">
+  <Media media={exhibit.media} ratio={ratio} class="exhibit__media" />
+  {exhibit.caption && <Caption caption={exhibit.caption} />}
+</figure>

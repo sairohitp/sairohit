@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Media from '../../components/Media.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import BlockRenderer from '../../components/case/BlockRenderer.astro';
+import Toc from '../../components/case/Toc.astro';
+import { projects, pageSubtitle, nextProject } from '../../data/projects';
+import type { Project } from '../../data/types';
+import { site } from '../../config/site';
+import { url } from '../../lib/url';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const { cover, sections } = project.caseStudy;
+const next = nextProject(project);
+const subtitle = pageSubtitle(project);
+---
+
+<Base title={`${project.title} | ${site.name}`} description={`${project.title}: ${subtitle}. Case study by ${site.name}.`}>
+  <div class="cs">
+    <aside class="cs__left">
+      <a class="back-pill" href={url('/')}>
+        <Icon name="arrow-left" size={14} />
+        Back
+      </a>
+    </aside>
+
+    <article class="cs__main">
+      <header class="cs-hero">
+        <a class="back-pill back-pill--inline" href={url('/')}>
+          <Icon name="arrow-left" size={14} />
+          Back
+        </a>
+        <h1 class="cs-hero__title">{project.title}</h1>
+        <p class="cs-hero__sub">{subtitle}</p>
+      </header>
+
+      <Media media={cover} ratio="750 / 430" class="cs-cover" eager />
+
+      {
+        sections.map((s) => (
+          <section id={s.id} class="cs-section" aria-label={s.title ? undefined : s.label}>
+            {s.divider !== false && <hr class="cs-divider" />}
+            {s.title && (
+              <header class="section-head">
+                <p class="section-head__eyebrow">
+                  <span class="section-head__dot" aria-hidden="true" />
+                  {s.label}
+                </p>
+                <h2 class="section-head__title">{s.title}</h2>
+              </header>
+            )}
+            <div class="cs-blocks">
+              {s.blocks.map((b) => (
+                <BlockRenderer block={b} />
+              ))}
+            </div>
+          </section>
+        ))
+      }
+
+      <section class="cs-next" aria-labelledby="next-title">
+        <hr class="cs-divider" />
+        <h2 id="next-title" class="cs-next__title">Next Project:</h2>
+        <ProjectCard project={next} level="h3" />
+      </section>
+    </article>
+
+    <aside class="cs__right">
+      <Toc sections={sections} />
+    </aside>
+  </div>
+</Base>
