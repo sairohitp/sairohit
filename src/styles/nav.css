@@ -8,7 +8,28 @@
   position: sticky;
   top: 0;
   z-index: 60;
-  padding-top: 10px;
+  padding-top: calc(10px + env(safe-area-inset-top, 0px));
+}
+
+/* Seal the strip between the top of the screen and the pill, edge to edge,
+   including any overscroll or notch area above it. */
+.nav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% - 10px - env(safe-area-inset-top, 0px));
+  height: 300px;
+  z-index: -1;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out);
+}
+
+.nav.is-stuck::after,
+.nav.is-open::after {
+  opacity: 1;
 }
 
 .nav__bar {
@@ -28,6 +49,7 @@
   min-height: 56px;
   padding: 0 8px 0 22px;
   border-color: var(--border-strong);
+  background: var(--surface-2);
   background: color-mix(in srgb, var(--surface-2) 97%, transparent);
   -webkit-backdrop-filter: saturate(180%) blur(28px);
   backdrop-filter: saturate(180%) blur(28px);
@@ -45,7 +67,7 @@
   max-width: 100%;
   transform: translateX(-50%);
   z-index: -1;
-  background: linear-gradient(180deg, var(--bg) 55%, color-mix(in srgb, var(--bg) 0%, transparent));
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 60%, rgb(var(--bg-rgb) / 0) 100%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s var(--ease-out);
@@ -147,13 +169,6 @@
   border-color: var(--border);
 }
 
-.nav__icon svg {
-  transition: transform 0.5s var(--ease-bounce);
-}
-
-.nav__icon:hover svg {
-  transform: rotate(-12deg);
-}
 
 /* Theme toggle shows the theme you would switch to */
 .nav__theme-moon,
@@ -198,6 +213,7 @@
   padding: 10px 10px 16px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
+  background: var(--surface-2);
   background: color-mix(in srgb, var(--surface-2) 94%, transparent);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);

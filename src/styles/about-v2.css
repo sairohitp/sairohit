@@ -144,6 +144,7 @@
 }
 
 .gantt__bar.is-ongoing {
+  background: var(--k);
   background: linear-gradient(90deg, var(--k) 70%, color-mix(in srgb, var(--k) 30%, transparent));
 }
 
@@ -332,6 +333,7 @@
 .kind {
   padding: 2px 8px;
   border-radius: 999px;
+  background: rgb(var(--ink) / 0.06);
   background: color-mix(in srgb, var(--k) 16%, transparent);
   color: var(--k);
   font-size: 10.5px;
