@@ -1,22 +1,201 @@
 ---
 import Base from '../layouts/Base.astro';
-import Media from '../components/Media.astro';
+import Icon from '../components/Icon.astro';
+import Stats from '../components/case/Stats.astro';
 import { site } from '../config/site';
+import { url } from '../lib/url';
+
+const photo = (id: string) => url(`/images/about/${id}.webp`);
+
+const slides = [
+  { src: photo('79B7qdfLfrper1I1AfeViPPk'), alt: 'The GDSC SRM team on stage at the UI/UX workshop' },
+  { src: photo('YX4uyZeLMjwymviQBh84iBE1wZA'), alt: 'Participants holding their certificates' },
+  { src: photo('L70FHMjnOg87X42WCjVMz57wN8'), alt: 'The auditorium audience during the workshop' },
+];
+
+const experience = [
+  {
+    company: 'Infosys',
+    role: 'iOS App Developer Intern',
+    dates: '04/24 – 05/24',
+    points: [
+      'Utilized Scrum methodologies to enhance project efficiency and ensure timely milestone delivery.',
+      'Collaborated with cross-functional teams to foster communication and achieve project goals.',
+      'Assisted in project planning to align with business intelligence objectives from the SRS document.',
+      'Gained on-site experience at Infosys headquarters, contributing to real-world iOS projects.',
+    ],
+  },
+  {
+    company: 'TrainingMug',
+    role: 'Principal UI/UX Designer',
+    dates: '04/23 – Present',
+    points: [
+      'Pioneered AI-driven features for personalized learning & content recommendations to enhance UX.',
+      'Reduced user drop-off rates by 25% through extensive research and iterative design improvements.',
+      'Collaborated with product managers & developers to ensure cohesive product vision.',
+      'Enhanced the UX with improvements in flow control, state management, and interface design.',
+      'Redesigned the admin console, main website, and user app, implementing core design principles.',
+      'Integrated modern design features like iconography, accessibility toggles, depth, and translucency.',
+      'Used prototyping for interactive flows, aiding iterative design and validating decisions with user feedback.',
+    ],
+  },
+  {
+    company: 'GDSC SRM',
+    role: 'Creatives and Photography Lead',
+    dates: '06/23 – 06/24',
+    points: [
+      'Responsible for all creative activities carried out club–wide.',
+      'Work in collaboration with fellow members within the domain on projects and tasks.',
+      'Regulate the creative outflow of 20 people, impacting the face of the club on campus.',
+      'Took active participation in the Solution Challenge ’24',
+      'Designed a full fledged, responsive “events portal” web application, open for all organisations.',
+      'Designed merchandise for team members at the club.',
+      'Designed social media content, posts and stories rolled out onto various platforms.',
+      'Took active participation in the Google Cloud Career Practitioner Program.',
+    ],
+  },
+];
 ---
 
-<Base title={`About | ${site.name}`}>
-  <section class="about container" aria-labelledby="about-title">
-    <h1 id="about-title" class="about__title">About</h1>
-    <div class="about__grid">
-      <Media media={{ label: 'Portrait, 1200 x 1500' }} ratio="4 / 5" class="about__photo" />
-      <div class="about__body">
-        <p class="about__lead">
-          I’m a passionate visual interface designer and product experience researcher who loves exploring how
-          different people react to various designs, colors, and layouts.
-        </p>
-        <p>Placeholder copy. Add a short bio: background, focus areas, and what you are looking for next.</p>
-        <p>Placeholder copy. Add education, tools, and any community work.</p>
+<Base title={`About | ${site.name}`} description="About Sai Rohit: responsive app design from wireframes to high-fidelity prototypes, workshops and experience.">
+  <div class="about container">
+    <section class="about__intro" aria-labelledby="about-title">
+      <p class="eyebrow" data-reveal>About me</p>
+      <h1 id="about-title" class="about__lead" data-reveal="blur">
+        My focus is on designing <em class="accent">responsive apps</em>, taking them from wireframes to final
+        high-fidelity prototypes.
+      </h1>
+      <p class="about__lead" data-reveal="blur">
+        Each stage of the process tells a unique and fascinating story, often surprising me with new perspectives. I
+        consider feedback the cornerstone of my work, as it helps shape the perfect application for{' '}
+        <em class="accent">everyone</em>.
+      </p>
+    </section>
+
+    <hr class="about__divider" data-reveal="line" />
+
+    <section class="about__block" aria-labelledby="workshop-title">
+      <h2 id="workshop-title" class="about__heading" data-reveal="left">
+        Hosting the flagship UI/UX workshop, to over an audience of 600+
+      </h2>
+
+      <div class="carousel" data-carousel data-reveal="clip" aria-roledescription="carousel" aria-label="Workshop photos">
+        <div class="carousel__viewport">
+          <ul class="carousel__track" data-track>
+            {
+              slides.map((s, i) => (
+                <li class="carousel__slide" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
+                  <img src={s.src} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <button class="carousel__btn carousel__btn--prev" type="button" data-prev aria-label="Previous photo">
+          <Icon name="caret-left" size={16} />
+        </button>
+        <button class="carousel__btn carousel__btn--next" type="button" data-next aria-label="Next photo">
+          <Icon name="caret-right" size={16} />
+        </button>
+        <div class="carousel__dots" role="group" aria-label="Choose photo">
+          {
+            slides.map((_, i) => (
+              <button type="button" class="carousel__dot" data-dot={i} aria-label={`Show photo ${i + 1}`} aria-current={i === 0 ? 'true' : undefined} />
+            ))
+          }
+        </div>
       </div>
-    </div>
-  </section>
+
+      <div class="about__split">
+        <figure class="about__photo" data-reveal="rise">
+          <img src={photo('ME3amptaMRt1aOc3YmPXqJxzvk')} alt="At the podium during the UI/UX workshop" loading="lazy" decoding="async" />
+        </figure>
+        <div class="about__copy" data-stagger="110">
+          <p data-reveal>
+            I started with the basics, explaining the interface and moving around objects, progressing to an interactive
+            level where I engaged participants in creating fun illustrations such as the Figma logo, a chemical flask, and a
+            teddy bear, progressing to the wireframe and high-fidelity design of their personal blog.
+          </p>
+          <p data-reveal>
+            I was particularly astonished when the ground force team reported that more than 90% of the audience actively
+            followed my instructions. This created a positive and engaging momentum throughout the auditorium, even reaching
+            the last row. The immense joy I felt stemmed from successfully captivating attendees during my session and
+            getting them ‘hooked’ on the content.
+          </p>
+          <a
+            class="button"
+            href="https://www.figma.com/design/jI3Rz8XUET6a23fWklJboC/DND-Playground?m=auto"
+            target="_blank"
+            rel="noopener"
+            data-reveal="pop"
+          >
+            View Figma Link
+            <Icon name="arrow-up-right" size={14} />
+          </a>
+        </div>
+      </div>
+
+      <Stats
+        items={[
+          { value: 600, suffix: '+', label: 'Workshop attendees' },
+          { value: 90, suffix: '%+', label: 'Followed along actively' },
+          { value: 20, label: 'Creatives led at GDSC SRM' },
+        ]}
+      />
+    </section>
+
+    <hr class="about__divider" data-reveal="line" />
+
+    <section class="about__block about__split" aria-labelledby="creatives-title">
+      <figure class="about__photo" data-reveal="rise">
+        <img src={photo('OTPxTudX76HLA4aECqRAszesUc')} alt="Members of the GDSC SRM Creatives Team" loading="lazy" decoding="async" />
+      </figure>
+      <div class="about__copy" data-stagger="110">
+        <h2 id="creatives-title" class="about__heading" data-reveal>We announce the new associates for the Creatives Team at GDSC</h2>
+        <p data-reveal>
+          We’re a small design team, and over the past few months, considerable effort was invested in designing various
+          themes, logos, mascots, posts and reels etc. into promoting events, resolving queries’ stories or be it
+          certificates for attendees, we’ve covered everything that has the club’s name printed on it, and I couldn’t be
+          more proud of my dear members for their contribution!
+        </p>
+      </div>
+    </section>
+
+    <hr class="about__divider" data-reveal="line" />
+
+    <section class="about__block" aria-labelledby="experience-title">
+      <p id="experience-title" class="eyebrow" data-reveal>Experience</p>
+      <ol class="xp">
+        {
+          experience.map((x) => (
+            <li class="xp__row">
+              <h3 class="xp__company" data-reveal="left">
+                {x.company}
+              </h3>
+              <div class="xp__detail">
+                <p class="xp__role" data-reveal>
+                  {x.role}
+                </p>
+                <p class="xp__dates" data-reveal>
+                  {x.dates}
+                </p>
+                <ul class="xp__points" data-stagger="60">
+                  {x.points.map((p) => (
+                    <li data-reveal>{p}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <hr class="about__divider" data-reveal="line" />
+
+    <p class="about__lead about__closing" data-reveal="blur">
+      Crafting intuitive interfaces that blend form and function, I strive to shape memorable interactions that{' '}
+      <em class="accent">resonate</em>.
+    </p>
+  </div>
 </Base>

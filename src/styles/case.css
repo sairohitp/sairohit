@@ -30,6 +30,34 @@
   background: var(--surface-3);
 }
 
+.back-pill svg {
+  transition: transform 0.35s var(--ease-bounce);
+}
+
+.back-pill:hover svg {
+  transform: translateX(-3px);
+}
+
+.figma-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  margin-top: 22px;
+  padding: 0 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--text-2);
+  font-size: 13px;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), transform 0.35s var(--ease-bounce);
+}
+
+.figma-pill:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
 @media (min-width: 1200px) {
   .cs {
     display: grid;
@@ -94,9 +122,35 @@
   transition: color 0.2s var(--ease);
 }
 
+.toc a {
+  position: relative;
+  transition: color 0.2s var(--ease-out), transform 0.35s var(--ease-out);
+}
+
+.toc a::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background: var(--text);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s var(--ease-out);
+}
+
 .toc a:hover,
 .toc a[aria-current='true'] {
   color: var(--text);
+}
+
+.toc a[aria-current='true'] {
+  transform: translateX(4px);
+}
+
+.toc a[aria-current='true']::before {
+  transform: scaleX(1);
 }
 
 /* ---------------------------------------------------------------
@@ -129,8 +183,12 @@
   font-size: clamp(15px, 0.6vw + 12px, 18px);
 }
 
+.cs-cover-wrap {
+  margin-top: clamp(40px, 7vw, 64px);
+  border-radius: var(--radius-md);
+}
+
 .cs-cover {
-  margin-top: clamp(40px, 7vw, 76px);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
 }
@@ -264,6 +322,49 @@
   border-radius: var(--radius-md);
 }
 
+.exhibit--half {
+  width: min(100%, 420px);
+  margin-inline: auto;
+}
+
+/* Animated view: slow pan across a large board */
+.media--pan img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--pan-w);
+  max-width: none;
+  height: auto;
+  animation: pan 38s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.is-in .media--pan img {
+  animation-play-state: running;
+}
+
+.media--pan:hover img {
+  animation-play-state: paused;
+}
+
+@keyframes pan {
+  0%, 4% { transform: translate3d(0, 0, 0); }
+  27%, 31% { transform: translate3d(var(--pan-x), 0, 0); }
+  52%, 56% { transform: translate3d(var(--pan-x), var(--pan-y), 0); }
+  77%, 81% { transform: translate3d(0, var(--pan-y), 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media--pan img {
+    position: static;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: none;
+  }
+}
+
 .caption {
   display: flex;
   flex-wrap: wrap;
@@ -334,8 +435,22 @@
   background: var(--surface-1);
 }
 
+.info-card {
+  transition: background-color 0.3s var(--ease-out), translate 0.4s var(--ease-bounce);
+}
+
+.info-card:hover {
+  background: #202020;
+  translate: 0 -2px;
+}
+
 .info-card__icon {
   color: var(--accent);
+  transition: transform 0.5s var(--ease-bounce);
+}
+
+.info-card:hover .info-card__icon {
+  transform: rotate(-14deg) scale(1.15);
 }
 
 .info-card--stack .info-card__title {
@@ -381,8 +496,17 @@
   text-align: center;
 }
 
-.callout--with-exhibits {
+.callout--rich {
   border: 1px solid var(--border-strong);
+}
+
+.callout .stats {
+  margin-top: clamp(28px, 5vw, 40px);
+}
+
+.callout .stats__item {
+  text-align: center;
+  align-items: center;
 }
 
 .callout__icon {

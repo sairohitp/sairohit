@@ -3,23 +3,25 @@ import type { IconName } from '../icons';
 /**
  * Media shown in a card, exhibit or cover.
  * Leave `src` out to render the striped placeholder (with `label` as a size hint).
- * Paths are relative to /public, e.g. "/images/projects/<slug>/cover.webp".
+ * Paths are relative to /public, e.g. "/images/projects/<slug>-cover.webp".
  */
 export interface Media {
   kind?: 'image' | 'video';
   src?: string;
-  /** Required for images once `src` is set; describes the content for screen readers. */
+  /** Describes the content for screen readers. */
   alt?: string;
   /** Optional poster frame for videos. */
   poster?: string;
   /** Placeholder hint, e.g. "1600 x 1000". */
   label?: string;
-  /** CSS aspect-ratio, e.g. "16 / 10". Defaults depend on the component. */
+  /** CSS aspect-ratio, e.g. "16 / 10". */
   ratio?: string;
+  /** Slowly pan across a large image inside a 16:9 frame ("animated view"). */
+  pan?: boolean;
 }
 
 export interface Caption {
-  /** Short tag shown in the pill, e.g. "Image", "Video loop", "Prototype". */
+  /** Short tag shown in the pill, e.g. "Screens", "Diagram". */
   type: string;
   /** Exhibit number, e.g. "1.0". */
   number: string;
@@ -35,6 +37,30 @@ export interface Card {
 export interface Exhibit {
   media?: Media;
   caption?: Caption;
+  /** "half" renders the exhibit at half width, centred (for tall images). */
+  size?: 'full' | 'half';
+}
+
+export interface FlowStep {
+  label: string;
+  note?: string;
+}
+
+export interface TreeGroup {
+  label: string;
+  items: string[];
+}
+
+export interface Stat {
+  value: number;
+  prefix?: string;
+  suffix?: string;
+  label: string;
+}
+
+export interface Swatch {
+  name: string;
+  hex: string;
 }
 
 export type Block =
@@ -42,7 +68,7 @@ export type Block =
   | {
       type: 'meta';
       role: string;
-      team: string[];
+      team?: string[];
       timeline: string;
       overview: string[];
     }
@@ -63,14 +89,23 @@ export type Block =
     }
   /** Two-column grid of cards. */
   | { type: 'cardGrid'; cards: Card[] }
-  /** Centred statement card (e.g. Highlights, The Challenge), optionally holding exhibits. */
+  /** Centred statement card (e.g. Highlights, The Challenge), optionally holding exhibits or stats. */
   | {
       type: 'callout';
       label: string;
       statement: string;
       icon?: IconName;
       exhibits?: Exhibit[];
-    };
+      stats?: Stat[];
+    }
+  /** Animated step-by-step flow diagram. */
+  | { type: 'flow'; steps: FlowStep[]; caption?: Caption }
+  /** Animated information architecture diagram. */
+  | { type: 'tree'; root: string; groups: TreeGroup[]; caption?: Caption }
+  /** Animated colour palette. */
+  | { type: 'palette'; swatches: Swatch[]; caption?: Caption }
+  /** Animated counters. */
+  | { type: 'stats'; items: Stat[] };
 
 export interface Section {
   /** Anchor id used by the contents list. */
@@ -102,6 +137,8 @@ export interface Project {
   platform: 'web' | 'mobile';
   /** Image on the home page card. */
   thumbnail?: Media;
+  /** Link to the Figma file, shown as a button on the case study. */
+  figma?: string;
   caseStudy: CaseStudy;
   /** Slug of the "Next Project". Defaults to the following project in the list. */
   next?: string;

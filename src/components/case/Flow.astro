@@ -1,0 +1,31 @@
+---
+import type { Caption as CaptionT, FlowStep } from '../../data/types';
+import Caption from './Caption.astro';
+
+interface Props {
+  steps: FlowStep[];
+  caption?: CaptionT;
+}
+
+const { steps, caption } = Astro.props;
+---
+
+<figure class="diagram flow" data-reveal="fade">
+  <ol class="flow__steps" style={`--n: ${steps.length}`}>
+    {
+      steps.map((s, i) => (
+        <li class="flow__step" style={`--i: ${i}`}>
+          <span class="flow__num">{String(i + 1).padStart(2, '0')}</span>
+          <span class="flow__label">{s.label}</span>
+          {s.note && <span class="flow__note">{s.note}</span>}
+          {i < steps.length - 1 && (
+            <span class="flow__link" aria-hidden="true">
+              <span class="flow__pulse" />
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+  {caption && <Caption caption={caption} />}
+</figure>

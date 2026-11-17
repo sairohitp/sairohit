@@ -1,8 +1,12 @@
 ---
 import '@fontsource-variable/inter';
+import '@fontsource-variable/inter/wght-italic.css';
 import '../styles/global.css';
 import '../styles/site.css';
 import '../styles/case.css';
+import '../styles/diagrams.css';
+import '../styles/about.css';
+import '../styles/motion.css';
 import { site } from '../config/site';
 import { url } from '../lib/url';
 import Header from '../components/Header.astro';
@@ -22,6 +26,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#111111" />
@@ -31,7 +38,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={new URL(url('/images/projects/library-cover.webp'), Astro.site)} />
+    <meta name="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -40,5 +48,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer />
+    <script>
+      import { initMotion } from '../scripts/motion';
+      initMotion();
+    </script>
   </body>
 </html>

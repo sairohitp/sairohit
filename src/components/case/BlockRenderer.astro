@@ -3,6 +3,10 @@ import type { Block } from '../../data/types';
 import Callout from './Callout.astro';
 import ExhibitFigure from './ExhibitFigure.astro';
 import InfoCard from './InfoCard.astro';
+import Flow from './Flow.astro';
+import Tree from './Tree.astro';
+import Palette from './Palette.astro';
+import Stats from './Stats.astro';
 
 interface Props {
   block: Block;
@@ -14,30 +18,34 @@ const { block } = Astro.props;
 {
   block.type === 'meta' && (
     <div class="two-col meta">
-      <dl class="meta__list">
-        <div>
+      <dl class="meta__list" data-stagger="110">
+        <div data-reveal="left">
           <dt>My Role</dt>
           <dd>{block.role}</dd>
         </div>
-        <div>
-          <dt>Team</dt>
-          <dd>
-            <ul>
-              {block.team.map((m) => (
-                <li>{m}</li>
-              ))}
-            </ul>
-          </dd>
-        </div>
-        <div>
+        {block.team?.length ? (
+          <div data-reveal="left">
+            <dt>Team</dt>
+            <dd>
+              <ul>
+                {block.team.map((m) => (
+                  <li>{m}</li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        ) : null}
+        <div data-reveal="left">
           <dt>Timeline &amp; Status</dt>
           <dd>{block.timeline}</dd>
         </div>
       </dl>
-      <div class="meta__overview">
-        <h2 class="meta__heading">Overview</h2>
+      <div class="meta__overview" data-stagger="110">
+        <h2 class="meta__heading" data-reveal>
+          Overview
+        </h2>
         {block.overview.map((p) => (
-          <p>{p}</p>
+          <p data-reveal>{p}</p>
         ))}
       </div>
     </div>
@@ -47,20 +55,22 @@ const { block } = Astro.props;
 {
   block.type === 'text' && (
     <div class="two-col text-block">
-      <h3 class="text-block__heading">{block.heading}</h3>
-      <div class="text-block__body">
+      <h3 class="text-block__heading" data-reveal="left">
+        {block.heading}
+      </h3>
+      <div class="text-block__body" data-stagger="90">
         {block.body?.map((p) => (
-          <p>{p}</p>
+          <p data-reveal>{p}</p>
         ))}
         {block.list?.length ? (
-          <ul class="card-stack">
+          <ul class="card-stack" data-stagger="90" data-reveal="fade">
             {block.list.map((c) => (
               <InfoCard card={c} variant="inline" />
             ))}
           </ul>
         ) : null}
         {block.cards?.length ? (
-          <ul class="card-stack">
+          <ul class="card-stack" data-stagger="90" data-reveal="fade">
             {block.cards.map((c) => (
               <InfoCard card={c} />
             ))}
@@ -80,7 +90,7 @@ const { block } = Astro.props;
         <div class="pair__item">
           <ExhibitFigure exhibit={item} ratio="3 / 4" />
           {item.cards?.length ? (
-            <ul class="card-stack">
+            <ul class="card-stack" data-stagger="90">
               {item.cards.map((c) => (
                 <InfoCard card={c} />
               ))}
@@ -94,7 +104,7 @@ const { block } = Astro.props;
 
 {
   block.type === 'cardGrid' && (
-    <ul class="card-grid">
+    <ul class="card-grid" data-stagger="80">
       {block.cards.map((c) => (
         <InfoCard card={c} />
       ))}
@@ -103,3 +113,7 @@ const { block } = Astro.props;
 }
 
 {block.type === 'callout' && <Callout block={block} />}
+{block.type === 'flow' && <Flow steps={block.steps} caption={block.caption} />}
+{block.type === 'tree' && <Tree root={block.root} groups={block.groups} caption={block.caption} />}
+{block.type === 'palette' && <Palette swatches={block.swatches} caption={block.caption} />}
+{block.type === 'stats' && <Stats items={block.items} />}

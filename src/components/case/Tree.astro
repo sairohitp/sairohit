@@ -1,0 +1,33 @@
+---
+import type { Caption as CaptionT, TreeGroup } from '../../data/types';
+import Caption from './Caption.astro';
+
+interface Props {
+  root: string;
+  groups: TreeGroup[];
+  caption?: CaptionT;
+}
+
+const { root, groups, caption } = Astro.props;
+---
+
+<figure class="diagram tree" data-reveal="fade">
+  <div class="tree__canvas">
+    <div class="tree__root"><span>{root}</span></div>
+    <ul class="tree__groups" style={`--n: ${groups.length}`}>
+      {
+        groups.map((g, i) => (
+          <li class="tree__group" style={`--i: ${i}`}>
+            <span class="tree__label">{g.label}</span>
+            <ul class="tree__items">
+              {g.items.map((it, j) => (
+                <li style={`--j: ${j}`}>{it}</li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  {caption && <Caption caption={caption} />}
+</figure>

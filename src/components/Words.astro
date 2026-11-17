@@ -1,0 +1,22 @@
+---
+/** Splits text into word spans so each word can animate in with a stagger. */
+interface Props {
+  text: string;
+  /** Index offset for the stagger, so consecutive calls continue the sequence. */
+  start?: number;
+}
+
+const { text, start = 0 } = Astro.props;
+const words = text.split(' ');
+---
+
+{
+  words.map((w, i) => (
+    <>
+      <span class="w" style={`--i: ${start + i}`}>
+        {w}
+      </span>
+      {i < words.length - 1 ? ' ' : ''}
+    </>
+  ))
+}

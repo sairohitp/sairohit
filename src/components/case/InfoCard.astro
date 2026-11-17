@@ -11,7 +11,7 @@ interface Props {
 const { card, variant = 'stack' } = Astro.props;
 ---
 
-<li class:list={['info-card', `info-card--${variant}`]}>
+<li class:list={['info-card', `info-card--${variant}`]} data-reveal={variant === 'inline' ? 'right' : 'pop'}>
   {card.icon && <Icon name={card.icon} size={20} class="info-card__icon" />}
   <div class="info-card__body">
     {card.title && <p class="info-card__title">{card.title}</p>}

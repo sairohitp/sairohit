@@ -3,17 +3,14 @@ import { site } from '../config/site';
 import { url, isExternal } from '../lib/url';
 ---
 
-<header class="site-header container">
+<header class="site-header container" data-reveal="down">
   <a class="site-header__brand" href={url('/')}>{site.name}</a>
   <nav aria-label="Primary">
     <ul class="site-header__nav">
       {
         site.nav.map((item) => (
           <li>
-            <a
-              href={url(item.href)}
-              {...(isExternal(item.href) ? { target: '_blank', rel: 'noopener' } : {})}
-            >
+            <a href={url(item.href)} {...(isExternal(item.href) ? { target: '_blank', rel: 'noopener' } : {})}>
               {item.label}
             </a>
           </li>

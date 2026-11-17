@@ -1,10 +1,17 @@
-import { placeholderCaseStudy } from './placeholder';
+import { img } from './build';
 import type { Project } from './types';
+import { libraryManagementSystem } from './case-studies/library-management-system';
+import { learningManagementSystem } from './case-studies/learning-management-system';
+import { evCarRentalApp } from './case-studies/ev-car-rental-app';
+import { onlineStreamingPlatform } from './case-studies/online-streaming-platform';
+import { recycleAndDonateApp } from './case-studies/recycle-and-donate-app';
+import { placementManagementSystem } from './case-studies/placement-management-system';
+import { customerRelationshipManagement } from './case-studies/customer-relationship-management';
+import { eventsBookingPortal } from './case-studies/events-booking-portal';
 
 /*
  * Projects, in the order they appear on the home page.
- * To add real content: set `thumbnail.src` and replace `caseStudy` (or edit parts of it).
- * Put images in /public/images/projects/<slug>/ and reference them as "/images/projects/<slug>/<file>".
+ * Images live in /public/images/projects; case study copy lives in ./case-studies.
  */
 export const projects: Project[] = [
   {
@@ -12,8 +19,10 @@ export const projects: Project[] = [
     title: 'Library Management System',
     role: 'Internship',
     org: 'Infosys',
+    period: '2024',
     platform: 'mobile',
-    caseStudy: placeholderCaseStudy(),
+    thumbnail: img('library-cover', 'Myshelf library app screens'),
+    caseStudy: libraryManagementSystem,
   },
   {
     slug: 'learning-management-system',
@@ -22,7 +31,9 @@ export const projects: Project[] = [
     org: 'TrainingMug',
     period: "June '23",
     platform: 'web',
-    caseStudy: placeholderCaseStudy(),
+    thumbnail: img('learning-cover', 'TrainingMug admin console'),
+    figma: 'https://www.figma.com/design/3yI7zx0AHbJtMmlhiU9M5E/Learning-Platform?node-id=0-1',
+    caseStudy: learningManagementSystem,
   },
   {
     slug: 'ev-car-rental-app',
@@ -30,14 +41,18 @@ export const projects: Project[] = [
     role: 'Internship',
     org: 'Pluto',
     platform: 'mobile',
-    caseStudy: placeholderCaseStudy(),
+    thumbnail: img('pluto-cover', 'Pluto EV rental app screens'),
+    figma: 'https://www.figma.com/design/SEhaYhmGrKilSDJvZcCafZ/Pluto?node-id=36-320',
+    caseStudy: evCarRentalApp,
   },
   {
     slug: 'online-streaming-platform',
     title: 'Online Streaming Platform',
     role: 'Passion Project',
     platform: 'web',
-    caseStudy: placeholderCaseStudy(),
+    thumbnail: img('streaming-cover', 'heavenns streaming title page'),
+    figma: 'https://www.figma.com/design/eah794fIM34dXUxnwUH9Lf/Online-Streaming-Platform?node-id=0-1',
+    caseStudy: onlineStreamingPlatform,
   },
   {
     slug: 'recycle-and-donate-app',
@@ -45,21 +60,27 @@ export const projects: Project[] = [
     role: 'Internship',
     org: 'Apple',
     platform: 'mobile',
-    caseStudy: placeholderCaseStudy(),
+    thumbnail: img('recycle-cover', 'Greenwealth recycling app screens'),
+    figma: 'https://www.figma.com/design/oeMbz94kS64xEfsPfJay3p/Recycle-Management-System?node-id=773-460',
+    caseStudy: recycleAndDonateApp,
   },
   {
     slug: 'placement-management-system',
     title: 'Placement Management System',
     role: 'Passion Project',
     platform: 'web',
-    caseStudy: placeholderCaseStudy(),
+    thumbnail: img('placement-cover', 'Placerr placement dashboard'),
+    figma: 'https://www.figma.com/design/QCccBLZf567WYvVjXAMXpl/Placement-Management-System?node-id=0-1',
+    caseStudy: placementManagementSystem,
   },
   {
     slug: 'customer-relationship-management',
     title: 'Customer Relationship Management',
     role: 'Passion Project',
     platform: 'mobile',
-    caseStudy: placeholderCaseStudy(),
+    thumbnail: img('crm-cover', 'connectwise CRM app screens'),
+    figma: 'https://www.figma.com/design/gK67n9PFZEKLUmOlqj22EZ/Customer-Relationship-Management?node-id=0-1',
+    caseStudy: customerRelationshipManagement,
   },
   {
     slug: 'events-booking-portal',
@@ -67,7 +88,9 @@ export const projects: Project[] = [
     role: 'Creatives & Photography Lead',
     org: 'GDSC SRM',
     platform: 'web',
-    caseStudy: placeholderCaseStudy(),
+    thumbnail: img('events-cover', 'BookMyEvent portal'),
+    figma: 'https://www.figma.com/design/XUPnWTdd9FBZw5o9qZndLg/High-Fidelity-Design?node-id=0-1',
+    caseStudy: eventsBookingPortal,
   },
 ];
 

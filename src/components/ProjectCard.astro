@@ -12,12 +12,15 @@ interface Props {
 
 const { project, level = 'h2' } = Astro.props;
 const Heading = level;
-const thumb = project.thumbnail ?? {
-  label: project.platform === 'mobile' ? 'App screens, 1600 x 1032' : 'Browser mockup, 1600 x 1032',
+const thumb = {
+  ...(project.thumbnail ?? {
+    label: project.platform === 'mobile' ? 'App screens, 1600 x 1032' : 'Browser mockup, 1600 x 1032',
+  }),
+  ratio: undefined,
 };
 ---
 
-<a class="pcard" href={url(projectHref(project))}>
+<a class="pcard" href={url(projectHref(project))} data-reveal="rise" data-spotlight>
   <div class="pcard__head">
     <div>
       <Heading class="pcard__title">{project.title}</Heading>
@@ -25,5 +28,5 @@ const thumb = project.thumbnail ?? {
     </div>
     <Icon name="arrow-right" size={30} class="pcard__arrow" />
   </div>
-  <Media media={thumb} ratio="737 / 476" class="pcard__media" />
+  <Media media={thumb} ratio="737 / 476" class="pcard__media" parallax={0.06} />
 </a>

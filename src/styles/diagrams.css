@@ -1,0 +1,529 @@
+/* ---------------------------------------------------------------
+   Diagrams: flow, tree (information architecture), palette, stats
+   --------------------------------------------------------------- */
+.diagram {
+  margin: 0;
+}
+
+/* Shared canvas: dotted grid on a dark panel */
+.flow__steps,
+.tree__canvas,
+.palette__list {
+  padding: clamp(18px, 4vw, 28px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background-color: #151515;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* ---------------- Flow ---------------- */
+.flow__steps {
+  display: grid;
+  gap: 28px;
+}
+
+.flow__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 88px;
+  padding: 14px 14px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, #202020, #191919);
+  transition: border-color 0.3s var(--ease-out), transform 0.4s var(--ease-bounce);
+}
+
+.flow__step:hover {
+  border-color: rgba(255, 255, 255, 0.32);
+  transform: translateY(-3px);
+}
+
+.flow__num {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.flow__label {
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.flow__note {
+  color: var(--text-3);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.flow__link {
+  position: absolute;
+  left: 24px;
+  top: 100%;
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.22);
+  transform-origin: top center;
+}
+
+.flow__pulse {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.55);
+  opacity: 0;
+}
+
+@media (max-width: 719px) {
+  .flow__step {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    column-gap: 8px;
+    align-items: baseline;
+    min-height: 0;
+  }
+
+  .flow__note {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 720px) {
+  .flow__steps {
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .flow__link {
+    left: 100%;
+    top: 50%;
+    width: 24px;
+    height: 1px;
+    transform-origin: left center;
+  }
+}
+
+.js .flow .flow__step {
+  opacity: 0;
+}
+
+.js .flow .flow__link {
+  transform: scaleY(0);
+}
+
+.flow.is-in .flow__step {
+  animation: step-in 0.7s var(--ease-bounce) both;
+  animation-delay: calc(var(--i) * 160ms + 100ms);
+}
+
+.flow.is-in .flow__link {
+  animation: draw-y 0.45s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 160ms + 380ms);
+}
+
+.flow.is-in .flow__pulse {
+  animation: travel-y 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 260ms + 1.4s);
+}
+
+@media (min-width: 720px) {
+  .js .flow .flow__link {
+    transform: scaleX(0);
+  }
+
+  .flow.is-in .flow__link {
+    animation-name: draw-x;
+  }
+
+  .flow.is-in .flow__pulse {
+    animation-name: travel-x;
+  }
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes draw-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes draw-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes travel-x {
+  0% { left: -2px; opacity: 0; }
+  15% { opacity: 1; }
+  60% { left: calc(100% - 3px); opacity: 1; }
+  75%, 100% { left: calc(100% - 3px); opacity: 0; }
+}
+
+@keyframes travel-y {
+  0% { top: -2px; opacity: 0; }
+  15% { opacity: 1; }
+  60% { top: calc(100% - 3px); opacity: 1; }
+  75%, 100% { top: calc(100% - 3px); opacity: 0; }
+}
+
+/* ---------------- Tree ---------------- */
+.tree__canvas {
+  display: grid;
+  justify-items: start;
+}
+
+.tree__root {
+  position: relative;
+  padding-bottom: 22px;
+}
+
+.tree__root span {
+  display: inline-block;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tree__root::after,
+.tree__groups::before,
+.tree__group::before {
+  content: '';
+  position: absolute;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.tree__root::after {
+  left: 18px;
+  bottom: 0;
+  width: 1px;
+  height: 22px;
+  transform-origin: top center;
+}
+
+.tree__groups {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  width: 100%;
+  margin-left: 18px;
+  padding-left: 20px;
+}
+
+.tree__groups::before {
+  left: 0;
+  top: 0;
+  bottom: 16px;
+  width: 1px;
+  transform-origin: top center;
+}
+
+.tree__group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.tree__group::before {
+  left: -20px;
+  top: 16px;
+  width: 20px;
+  height: 1px;
+  transform-origin: left center;
+}
+
+.tree__label {
+  padding: 7px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 0.3s var(--ease-out), transform 0.4s var(--ease-bounce);
+}
+
+.tree__group:hover .tree__label {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+.tree__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tree__items li {
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+@media (min-width: 720px) {
+  .tree__canvas {
+    justify-items: center;
+  }
+
+  .tree__root::after {
+    left: 50%;
+  }
+
+  .tree__groups {
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    gap: 16px;
+    margin-left: 0;
+    padding-left: 0;
+    padding-top: 22px;
+  }
+
+  .tree__groups::before {
+    left: calc((100% - (var(--n) - 1) * 16px) / (2 * var(--n)));
+    right: calc((100% - (var(--n) - 1) * 16px) / (2 * var(--n)));
+    top: 0;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    transform-origin: center;
+  }
+
+  .tree__group {
+    align-items: center;
+    text-align: center;
+  }
+
+  .tree__group::before {
+    left: 50%;
+    top: -22px;
+    width: 1px;
+    height: 22px;
+    transform-origin: top center;
+  }
+
+  .tree__items {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.js .tree .tree__root span,
+.js .tree .tree__label,
+.js .tree .tree__items li {
+  opacity: 0;
+}
+
+.js .tree .tree__root::after,
+.js .tree .tree__groups::before {
+  transform: scaleY(0);
+}
+
+.js .tree .tree__group::before {
+  transform: scaleX(0);
+}
+
+.tree.is-in .tree__root span {
+  animation: step-in 0.6s var(--ease-bounce) 0.1s both;
+}
+
+.tree.is-in .tree__root::after {
+  animation: draw-y 0.35s var(--ease-out) 0.45s both;
+}
+
+.tree.is-in .tree__groups::before {
+  animation: draw-y 0.6s var(--ease-out) 0.7s both;
+}
+
+.tree.is-in .tree__group::before {
+  animation: draw-x 0.35s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 90ms + 0.9s);
+}
+
+.tree.is-in .tree__label {
+  animation: step-in 0.6s var(--ease-bounce) both;
+  animation-delay: calc(var(--i) * 120ms + 1s);
+}
+
+.tree.is-in .tree__items li {
+  animation: step-in 0.5s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 120ms + var(--j) * 60ms + 1.2s);
+}
+
+@media (min-width: 720px) {
+  .js .tree .tree__groups::before {
+    transform: scaleX(0);
+  }
+
+  .js .tree .tree__group::before {
+    transform: scaleY(0);
+  }
+
+  .tree.is-in .tree__groups::before {
+    animation-name: draw-x;
+  }
+
+  .tree.is-in .tree__group::before {
+    animation-name: draw-y;
+  }
+}
+
+/* ---------------- Palette ---------------- */
+.palette__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 12px;
+}
+
+@media (min-width: 720px) {
+  .palette__list {
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.swatch__chip {
+  aspect-ratio: 1 / 1.05;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  background: var(--c);
+  transition: transform 0.45s var(--ease-bounce);
+}
+
+.swatch:hover .swatch__chip {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.swatch__name {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.swatch__hex {
+  color: var(--text-3);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.js .palette .swatch__chip {
+  clip-path: inset(100% 0 0 0 round var(--radius-md));
+}
+
+.js .palette .swatch__name,
+.js .palette .swatch__hex {
+  opacity: 0;
+}
+
+.palette.is-in .swatch__chip {
+  animation: fill-up 0.9s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 130ms + 100ms);
+}
+
+.palette.is-in .swatch__name,
+.palette.is-in .swatch__hex {
+  animation: step-in 0.6s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 130ms + 450ms);
+}
+
+@keyframes fill-up {
+  from { clip-path: inset(100% 0 0 0 round var(--radius-md)); }
+  to { clip-path: inset(0 0 0 0 round var(--radius-md)); }
+}
+
+/* ---------------- Stats ---------------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 28%), 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 559px) {
+  .stats__item {
+    padding: 14px 12px 16px;
+  }
+
+  .stats__label {
+    font-size: 12px;
+  }
+}
+
+.stats__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+  text-align: left;
+}
+
+.stats__value {
+  font-size: clamp(28px, 3vw + 14px, 38px);
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stats__label {
+  color: var(--text-2);
+  font-size: 13px;
+}
+
+/* ---------------- Reduced motion ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  .js .flow .flow__step,
+  .js .tree .tree__root span,
+  .js .tree .tree__label,
+  .js .tree .tree__items li,
+  .js .palette .swatch__name,
+  .js .palette .swatch__hex {
+    opacity: 1;
+    animation: none !important;
+  }
+
+  .js .flow .flow__link,
+  .js .tree .tree__root::after,
+  .js .tree .tree__groups::before,
+  .js .tree .tree__group::before {
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .js .palette .swatch__chip {
+    clip-path: none;
+    animation: none !important;
+  }
+
+  .flow__pulse {
+    display: none;
+  }
+}

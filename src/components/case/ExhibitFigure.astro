@@ -11,7 +11,7 @@ interface Props {
 const { exhibit, ratio = '750 / 468' } = Astro.props;
 ---
 
-<figure class="exhibit">
+<figure class:list={['exhibit', exhibit.size === 'half' && 'exhibit--half']} data-reveal="rise">
   <Media media={exhibit.media} ratio={ratio} class="exhibit__media" />
   {exhibit.caption && <Caption caption={exhibit.caption} />}
 </figure>

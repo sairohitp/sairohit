@@ -18,6 +18,10 @@ import users from './svg/users-regular.svg?raw';
 import sparkle from './svg/sparkle-regular.svg?raw';
 import checkCircle from './svg/check-circle-regular.svg?raw';
 import cursorClick from './svg/cursor-click-regular.svg?raw';
+import arrowDown from './svg/arrow-down-regular.svg?raw';
+import figma from './svg/figma-logo-regular.svg?raw';
+import caretLeft from './svg/caret-left-regular.svg?raw';
+import caretRight from './svg/caret-right-regular.svg?raw';
 
 export const icons = {
   'arrow-right': arrowRight,
@@ -38,6 +42,10 @@ export const icons = {
   sparkle,
   'check-circle': checkCircle,
   'cursor-click': cursorClick,
+  'arrow-down': arrowDown,
+  figma,
+  'caret-left': caretLeft,
+  'caret-right': caretRight,
 } as const;
 
 export type IconName = keyof typeof icons;

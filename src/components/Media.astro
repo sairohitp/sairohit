@@ -8,25 +8,52 @@ interface Props {
   ratio?: string;
   class?: string;
   eager?: boolean;
+  /** Parallax strength for the inner image (e.g. 0.06). */
+  parallax?: number;
 }
 
-const { media = {}, ratio = '16 / 10', class: className, eager = false } = Astro.props;
-const aspect = media.ratio ?? ratio;
+const { media = {}, ratio = '16 / 10', class: className, eager = false, parallax } = Astro.props;
 const src = media.src ? url(media.src) : undefined;
 const kind = media.kind ?? (src && /\.(mp4|webm|mov)$/i.test(src) ? 'video' : 'image');
 const poster = media.poster ? url(media.poster) : undefined;
+
+// Pan ("animated view"): zoom into a large image and drift across it inside a 16:9 frame.
+const FRAME = 16 / 9;
+const ZOOM = 1.6;
+let panStyle = '';
+if (media.pan && src) {
+  const [w, h] = (media.ratio ?? '16 / 10').split('/').map((n) => Number(n.trim()));
+  const r = w / h;
+  const x = ((ZOOM - 1) / ZOOM) * 100;
+  const y = Math.max(0, 1 - r / (FRAME * ZOOM)) * 100;
+  panStyle = `aspect-ratio: 16 / 9; --pan-x: -${x.toFixed(2)}%; --pan-y: -${y.toFixed(2)}%; --pan-w: ${ZOOM * 100}%`;
+}
+const aspect = media.ratio ?? ratio;
 ---
 
-<div class:list={['media', className, !src && 'media--placeholder']} style={`aspect-ratio: ${aspect}`}>
-  {
-    !src ? (
-      <span class="media__hint" role="img" aria-label="Image placeholder">
-        {media.label}
-      </span>
-    ) : kind === 'video' ? (
-      <video src={src} poster={poster} autoplay muted loop playsinline preload="metadata" aria-label={media.alt} />
-    ) : (
-      <img src={src} alt={media.alt ?? ''} loading={eager ? 'eager' : 'lazy'} decoding="async" />
-    )
-  }
-</div>
+{
+  media.pan && src ? (
+    <div class:list={['media', 'media--pan', className]} style={panStyle}>
+      <img src={src} alt={media.alt ?? ''} loading="lazy" decoding="async" />
+    </div>
+  ) : (
+    <div class:list={['media', className, !src && 'media--placeholder']} style={`aspect-ratio: ${aspect}`}>
+      {!src ? (
+        <span class="media__hint" role="img" aria-label="Image placeholder">
+          {media.label}
+        </span>
+      ) : kind === 'video' ? (
+        <video src={src} poster={poster} autoplay muted loop playsinline preload="metadata" aria-label={media.alt} />
+      ) : (
+        <img
+          src={src}
+          alt={media.alt ?? ''}
+          loading={eager ? 'eager' : 'lazy'}
+          fetchpriority={eager ? 'high' : undefined}
+          decoding="async"
+          data-parallax={parallax}
+        />
+      )}
+    </div>
+  )
+}

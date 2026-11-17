@@ -1,0 +1,26 @@
+---
+import type { Caption as CaptionT, Swatch } from '../../data/types';
+import Caption from './Caption.astro';
+
+interface Props {
+  swatches: Swatch[];
+  caption?: CaptionT;
+}
+
+const { swatches, caption } = Astro.props;
+---
+
+<figure class="diagram palette" data-reveal="fade">
+  <ul class="palette__list" style={`--n: ${swatches.length}`}>
+    {
+      swatches.map((s, i) => (
+        <li class="swatch" style={`--i: ${i}; --c: ${s.hex}`}>
+          <span class="swatch__chip" />
+          <span class="swatch__name">{s.name}</span>
+          <span class="swatch__hex">{s.hex.toUpperCase()}</span>
+        </li>
+      ))
+    }
+  </ul>
+  {caption && <Caption caption={caption} />}
+</figure>

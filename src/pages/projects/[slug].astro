@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import Media from '../../components/Media.astro';
+import Words from '../../components/Words.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import BlockRenderer from '../../components/case/BlockRenderer.astro';
 import Toc from '../../components/case/Toc.astro';
@@ -22,12 +23,16 @@ const { project } = Astro.props;
 const { cover, sections } = project.caseStudy;
 const next = nextProject(project);
 const subtitle = pageSubtitle(project);
+const firstOverview = sections.find((s) => s.blocks[0]?.type === 'meta')?.blocks[0];
+const description =
+  firstOverview && firstOverview.type === 'meta' ? firstOverview.overview[0] : `${project.title}: ${subtitle}.`;
 ---
 
-<Base title={`${project.title} | ${site.name}`} description={`${project.title}: ${subtitle}. Case study by ${site.name}.`}>
+<Base title={`${project.title} | ${site.name}`} description={description}>
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
   <div class="cs">
     <aside class="cs__left">
-      <a class="back-pill" href={url('/')}>
+      <a class="back-pill" href={url('/')} data-reveal="left">
         <Icon name="arrow-left" size={14} />
         Back
       </a>
@@ -39,18 +44,29 @@ const subtitle = pageSubtitle(project);
           <Icon name="arrow-left" size={14} />
           Back
         </a>
-        <h1 class="cs-hero__title">{project.title}</h1>
-        <p class="cs-hero__sub">{subtitle}</p>
+        <h1 class="cs-hero__title split"><Words text={project.title} /></h1>
+        <p class="cs-hero__sub" data-reveal>{subtitle}</p>
+        {
+          project.figma && (
+            <a class="figma-pill" href={project.figma} target="_blank" rel="noopener" data-reveal="pop">
+              <Icon name="figma" size={14} />
+              View in Figma
+              <Icon name="arrow-up-right" size={12} />
+            </a>
+          )
+        }
       </header>
 
-      <Media media={cover} ratio="750 / 430" class="cs-cover" eager />
+      <div class="cs-cover-wrap" data-reveal="clip">
+        <Media media={cover} ratio="750 / 430" class="cs-cover" eager />
+      </div>
 
       {
         sections.map((s) => (
           <section id={s.id} class="cs-section" aria-label={s.title ? undefined : s.label}>
-            {s.divider !== false && <hr class="cs-divider" />}
+            {s.divider !== false && <hr class="cs-divider" data-reveal="line" />}
             {s.title && (
-              <header class="section-head">
+              <header class="section-head" data-reveal="blur">
                 <p class="section-head__eyebrow">
                   <span class="section-head__dot" aria-hidden="true" />
                   {s.label}
@@ -68,8 +84,8 @@ const subtitle = pageSubtitle(project);
       }
 
       <section class="cs-next" aria-labelledby="next-title">
-        <hr class="cs-divider" />
-        <h2 id="next-title" class="cs-next__title">Next Project:</h2>
+        <hr class="cs-divider" data-reveal="line" />
+        <h2 id="next-title" class="cs-next__title" data-reveal="left">Next Project:</h2>
         <ProjectCard project={next} level="h3" />
       </section>
     </article>

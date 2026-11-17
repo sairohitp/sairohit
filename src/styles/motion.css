@@ -1,0 +1,277 @@
+/* ---------------------------------------------------------------
+   Motion system
+   Reveals only hide content when JS is running (html.js), and
+   everything is disabled for prefers-reduced-motion.
+   --------------------------------------------------------------- */
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --reveal-dur: 900ms;
+}
+
+/* Page transitions (cross-document View Transitions, progressive enhancement) */
+@view-transition {
+  navigation: auto;
+}
+
+.site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-old(root) {
+  animation: vt-out 260ms var(--ease-out) both;
+}
+
+::view-transition-new(root) {
+  animation: vt-in 520ms var(--ease-out) both;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Scroll reveals
+   --------------------------------------------------------------- */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity var(--reveal-dur) var(--ease-out) var(--d, 0ms),
+    transform var(--reveal-dur) var(--ease-out) var(--d, 0ms),
+    filter var(--reveal-dur) var(--ease-out) var(--d, 0ms);
+}
+
+.js [data-reveal='fade'] {
+  transform: none;
+}
+
+.js [data-reveal='down'] {
+  transform: translate3d(0, -14px, 0);
+}
+
+.js [data-reveal='left'] {
+  transform: translate3d(-24px, 0, 0);
+}
+
+.js [data-reveal='right'] {
+  transform: translate3d(24px, 0, 0);
+}
+
+.js [data-reveal='scale'] {
+  transform: scale(0.96);
+}
+
+.js [data-reveal='rise'] {
+  transform: translate3d(0, 40px, 0) scale(0.985);
+}
+
+.js [data-reveal='blur'] {
+  filter: blur(8px);
+  transform: translate3d(0, 14px, 0);
+}
+
+.js [data-reveal='pop'] {
+  transform: translate3d(0, 14px, 0) scale(0.9);
+  transition-timing-function: var(--ease-bounce), var(--ease-bounce), var(--ease-out), var(--ease-out);
+}
+
+.js [data-reveal='clip'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Clip the children, not the observed element: a clipped target never intersects. */
+.js [data-reveal='clip'] > * {
+  clip-path: inset(0 0 100% 0 round var(--radius-md));
+  transition: clip-path 1.2s var(--ease-out) var(--d, 0ms);
+}
+
+.js [data-reveal='clip'].is-in > * {
+  clip-path: inset(0 0 0 0 round var(--radius-md));
+}
+
+.js [data-reveal='line'] {
+  opacity: 1;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition-duration: 1.2s;
+}
+
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Images settle (slight zoom out) as their frame reveals */
+.js [data-reveal] .media:not(.media--pan) img:not([data-parallax]) {
+  transform: scale(1.06);
+  transition: transform 1.6s var(--ease-out) var(--d, 0ms);
+}
+
+.js [data-reveal].is-in .media:not(.media--pan) img:not([data-parallax]) {
+  transform: scale(1);
+}
+
+/* ---------------------------------------------------------------
+   Word-by-word entrance (hero, case study title)
+   --------------------------------------------------------------- */
+.js .split .w {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 0.45em, 0);
+  filter: blur(6px);
+  animation: word-in 0.8s var(--ease-out) forwards;
+  animation-delay: calc(var(--i) * 28ms + 120ms);
+}
+
+@keyframes word-in {
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Ambient loops
+   --------------------------------------------------------------- */
+.wave {
+  display: inline-block;
+  transform-origin: 70% 70%;
+  animation: wave 2.6s ease-in-out 1.2s 2;
+}
+
+.hero h1:hover .wave {
+  animation: wave 1.6s ease-in-out 1;
+}
+
+@keyframes wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+}
+
+.hero__down svg {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-left: 6px;
+  color: var(--text-2);
+  animation: bob 2.2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+.section-head__dot {
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12), 0 0 8px 1px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.06), 0 0 16px 4px rgba(255, 255, 255, 0.45); }
+}
+
+.callout__icon svg {
+  animation: spin 24s linear infinite;
+}
+
+.callout.is-in .callout__icon {
+  animation: pop-in 0.7s var(--ease-bounce) 0.2s both;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.4); opacity: 0; }
+}
+
+.accent {
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(90deg, #8a8a8a 0%, #ffffff 40%, #8a8a8a 80%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+  padding-right: 0.06em;
+}
+
+@keyframes shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+/* Reading progress */
+.progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 2px;
+  pointer-events: none;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), #ffffff);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* ---------------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-reveal='clip'] > *,
+  .js .split .w {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .js [data-reveal] .media:not(.media--pan) img:not([data-parallax]) {
+    transform: none;
+  }
+
+  .wave,
+  .hero__down svg,
+  .section-head__dot,
+  .callout__icon svg,
+  .accent {
+    animation: none !important;
+  }
+
+  .accent {
+    color: var(--text);
+    background: none;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
