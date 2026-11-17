@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import { getPosts } from '../../lib/blog';
+import { site } from '../../config/site';
+import { url } from '../../lib/url';
+
+const posts = await getPosts();
+const featured = posts.find((p) => p.data.featured) ?? posts[0];
+const rest = posts.filter((p) => p !== featured);
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+---
+
+<Base title={`Blog | ${site.name}`} description="Notes on designing data-heavy products, design engineering, accessibility and teaching design." wide>
+  <section class="blog-hero container" aria-labelledby="blog-title">
+    <p class="eyebrow" data-reveal>Blog</p>
+    <h1 id="blog-title" class="blog-hero__title" data-reveal="blur">Notes on designing data-heavy products</h1>
+    <p class="blog-hero__text" data-reveal>
+      What I learn designing enterprise tools, building them in React, and teaching design to others.
+    </p>
+    <div class="blog-tools" data-reveal="fade">
+      <label class="search">
+        <Icon name="target" size={16} />
+        <span class="visually-hidden">Search posts</span>
+        <input type="search" placeholder="Search posts" data-blog-search autocomplete="off" />
+      </label>
+      <div class="filters" role="group" aria-label="Filter by topic" data-blog-tags>
+        <button type="button" class="filter" data-tag="all" aria-pressed="true">All <span class="filter__count">{posts.length}</span></button>
+        {tags.map((t) => <button type="button" class="filter" data-tag={t} aria-pressed="false">{t}</button>)}
+      </div>
+      <a class="link-arrow rss-link" href={url('/rss.xml')}>RSS <Icon name="arrow-up-right" size={14} /></a>
+    </div>
+  </section>
+
+  <section class="blog-list container" aria-label="Posts">
+    <ul class="blog-grid" data-blog-list>
+      {featured && <li class="blog-grid__featured"><PostCard post={featured} featured /></li>}
+      {rest.map((p) => <li><PostCard post={p} /></li>)}
+    </ul>
+    <p class="blog-empty" data-blog-empty hidden>No posts match that search yet.</p>
+  </section>
+</Base>

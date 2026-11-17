@@ -1,0 +1,37 @@
+---
+import Icon from '../Icon.astro';
+import BlogArt from './BlogArt.astro';
+import { type Post, readingTime, formatDate, postHref } from '../../lib/blog';
+import { url } from '../../lib/url';
+
+interface Props {
+  post: Post;
+  featured?: boolean;
+}
+const { post, featured = false } = Astro.props;
+const d = post.data;
+---
+
+<a
+  class:list={['post-card', featured && 'post-card--featured']}
+  href={url(postHref(post))}
+  data-reveal="rise"
+  data-spotlight
+  data-search={`${d.title} ${d.description} ${d.tags.join(' ')}`.toLowerCase()}
+  data-tags={d.tags.join('|')}
+>
+  <BlogArt art={d.art} size={featured ? 'lg' : 'sm'} />
+  <div class="post-card__body">
+    <p class="post-card__meta">
+      <time datetime={d.date.toISOString()}>{formatDate(d.date)}</time>
+      <span aria-hidden="true">·</span>
+      {readingTime(post)} min read
+    </p>
+    <h3 class="post-card__title">{d.title}</h3>
+    <p class="post-card__desc">{d.description}</p>
+    <ul class="post-card__tags" aria-label="Topics">
+      {d.tags.map((t) => <li>{t}</li>)}
+    </ul>
+    <span class="post-card__more">Read <Icon name="arrow-right" size={14} /></span>
+  </div>
+</a>

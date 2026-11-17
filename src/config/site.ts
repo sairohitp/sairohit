@@ -13,6 +13,7 @@ export const site = {
   nav: [
     { label: 'Work', href: '/#work' },
     { label: 'About', href: '/about/' },
+    { label: 'Blog', href: '/blog/' },
     { label: 'Resume', href: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing' },
   ],
 
@@ -26,8 +27,9 @@ export const site = {
     {
       title: 'Sitemap',
       links: [
-        { label: 'Blog', href: null, external: false },
+        { label: 'Blog', href: '/blog/', external: false },
         { label: 'About', href: '/about/', external: false },
+        { label: 'Work', href: '/#work', external: false },
       ],
     },
     {

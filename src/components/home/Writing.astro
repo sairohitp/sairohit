@@ -1,0 +1,24 @@
+---
+import Icon from '../Icon.astro';
+import PostCard from '../blog/PostCard.astro';
+import { getPosts } from '../../lib/blog';
+import { url } from '../../lib/url';
+const posts = (await getPosts()).slice(0, 2);
+---
+
+{
+  posts.length > 0 && (
+    <section class="writing container" aria-labelledby="writing-title">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow" data-reveal>Writing</p>
+          <h2 id="writing-title" class="section-intro__title" data-reveal="blur">From the blog</h2>
+        </div>
+        <a class="link-arrow" href={url('/blog/')} data-reveal>All posts <Icon name="arrow-right" size={16} /></a>
+      </div>
+      <ul class="blog-grid blog-grid--two">
+        {posts.map((p) => <li><PostCard post={p} /></li>)}
+      </ul>
+    </section>
+  )
+}

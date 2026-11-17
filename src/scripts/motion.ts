@@ -280,7 +280,7 @@ function initCopy() {
       } catch {
         if (label) label.textContent = btn.dataset.copy ?? '';
       }
-      window.setTimeout(() => label && (label.textContent = 'Copy email'), 2000);
+      window.setTimeout(() => label && (label.textContent = btn.dataset.copyText ?? 'Copy email'), 2000);
     });
   });
 }
@@ -319,6 +319,38 @@ function initTabs() {
   });
 }
 
+function initBlogFilter() {
+  const list = document.querySelector<HTMLElement>('[data-blog-list]');
+  if (!list) return;
+  const input = document.querySelector<HTMLInputElement>('[data-blog-search]');
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-blog-tags] [data-tag]'));
+  const empty = document.querySelector<HTMLElement>('[data-blog-empty]');
+  let tag = 'all';
+  const apply = () => {
+    const q = (input?.value ?? '').trim().toLowerCase();
+    let shown = 0;
+    Array.from(list.children).forEach((li) => {
+      const card = li.querySelector<HTMLElement>('[data-search]');
+      const tags = (card?.dataset.tags ?? '').split('|');
+      const ok = (tag === 'all' || tags.includes(tag)) && (!q || (card?.dataset.search ?? '').includes(q));
+      (li as HTMLElement).hidden = !ok;
+      if (ok) {
+        shown++;
+        card?.classList.add('is-in');
+      }
+    });
+    if (empty) empty.hidden = shown > 0;
+  };
+  input?.addEventListener('input', apply);
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      tag = b.dataset.tag ?? 'all';
+      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      apply();
+    }),
+  );
+}
+
 export function initMotion() {
   initReveal();
   initParallax();
@@ -330,4 +362,5 @@ export function initMotion() {
   initFilters();
   initCopy();
   initTabs();
+  initBlogFilter();
 }

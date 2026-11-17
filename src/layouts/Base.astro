@@ -8,6 +8,7 @@ import '../styles/diagrams.css';
 import '../styles/about.css';
 import '../styles/home.css';
 import '../styles/about-v2.css';
+import '../styles/blog.css';
 import '../styles/motion.css';
 import { site } from '../config/site';
 import { url } from '../lib/url';
@@ -41,6 +42,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="theme-color" content="#111111" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+    <link rel="alternate" type="application/rss+xml" title="Sai Rohit | Blog" href={url('/rss.xml')} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

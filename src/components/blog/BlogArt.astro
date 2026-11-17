@@ -1,0 +1,67 @@
+---
+/** Small animated cover illustration for a blog post, drawn in CSS. */
+interface Props {
+  art: 'table' | 'code' | 'stage' | 'a11y';
+  size?: 'sm' | 'lg';
+}
+const { art, size = 'sm' } = Astro.props;
+---
+
+<div class:list={['art', `art--${art}`, `art--${size}`]} aria-hidden="true">
+  {
+    art === 'table' && (
+      <div class="art-table">
+        {[0, 1, 2, 3, 4].map((i) => (
+          <span class="art-table__row" style={`--i: ${i}`}>
+            <span class="art-table__check" />
+            <span class="art-table__cell" />
+            <span class="art-table__cell art-table__cell--short" />
+            <span class={`art-table__status s${i % 3}`} />
+          </span>
+        ))}
+      </div>
+    )
+  }
+  {
+    art === 'code' && (
+      <div class="art-code">
+        <div class="art-code__frame">
+          <span class="art-code__box" />
+          <span class="art-code__line" />
+          <span class="art-code__line art-code__line--short" />
+        </div>
+        <span class="art-code__arrow">→</span>
+        <div class="art-code__editor">
+          {[60, 80, 45, 70, 35].map((w, i) => (
+            <span class="art-code__code" style={`--w: ${w}%; --i: ${i}`} />
+          ))}
+        </div>
+      </div>
+    )
+  }
+  {
+    art === 'stage' && (
+      <div class="art-stage">
+        <span class="art-stage__screen" />
+        <div class="art-stage__seats">
+          {Array.from({ length: 24 }, (_, i) => (
+            <span class="art-stage__seat" style={`--i: ${i}`} />
+          ))}
+        </div>
+      </div>
+    )
+  }
+  {
+    art === 'a11y' && (
+      <div class="art-a11y">
+        <span class="art-a11y__aa">Aa</span>
+        <span class="art-a11y__ratio">4.5:1</span>
+        <span class="art-a11y__wave">
+          {[0, 1, 2, 3, 4, 5, 6].map((i) => (
+            <span style={`--i: ${i}`} />
+          ))}
+        </span>
+      </div>
+    )
+  }
+</div>

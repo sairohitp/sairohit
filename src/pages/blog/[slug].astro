@@ -1,0 +1,138 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Words from '../../components/Words.astro';
+import BlogArt from '../../components/blog/BlogArt.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getPosts, readingTime, formatDate, postHref, type Post } from '../../lib/blog';
+import { projects } from '../../data/projects';
+import { site } from '../../config/site';
+import { url } from '../../lib/url';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, newer: posts[i - 1], older: posts[i + 1] },
+  }));
+}
+
+interface Props {
+  post: Post;
+  newer?: Post;
+  older?: Post;
+}
+
+const { post, newer, older } = Astro.props;
+const { Content, headings } = await render(post);
+const d = post.data;
+const toc = headings.filter((h) => h.depth === 2);
+const related = d.related ? projects.find((p) => p.slug === d.related) : undefined;
+const pageUrl = new URL(url(postHref(post)), Astro.site).toString();
+const share = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
+---
+
+<Base title={`${d.title} | ${site.name}`} description={d.description}>
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+  <div class="cs">
+    <aside class="cs__left">
+      <a class="back-pill" href={url('/blog/')} data-reveal="left"><Icon name="arrow-left" size={14} /> Blog</a>
+    </aside>
+
+    <article class="cs__main post">
+      <header class="post__hero">
+        <a class="back-pill back-pill--inline" href={url('/blog/')}><Icon name="arrow-left" size={14} /> Blog</a>
+        <p class="post__meta" data-reveal>
+          <time datetime={d.date.toISOString()}>{formatDate(d.date)}</time>
+          <span aria-hidden="true">·</span>
+          {readingTime(post)} min read
+        </p>
+        <h1 class="post__title split"><Words text={d.title} /></h1>
+        <p class="post__lead" data-reveal>{d.description}</p>
+        <ul class="post-card__tags" aria-label="Topics" data-reveal>{d.tags.map((t) => <li>{t}</li>)}</ul>
+      </header>
+
+      <div class="post__art" data-reveal="clip"><BlogArt art={d.art} size="lg" /></div>
+
+      <div class="prose" data-reveal="fade">
+        <Content />
+      </div>
+
+      <footer class="post__footer">
+        <div class="post__share" data-reveal>
+          <p>Share this post</p>
+          <div class="post__share-actions">
+            <button class="btn" type="button" data-copy={pageUrl} data-copy-text="Copy link"><Icon name="copy" size={14} /><span data-copy-label>Copy link</span></button>
+            <a class="btn" href={share} target="_blank" rel="noopener"><Icon name="linkedin" size={14} /> Share on LinkedIn</a>
+          </div>
+        </div>
+
+        {
+          related && (
+            <div class="post__related">
+              <p class="eyebrow" data-reveal>Related case study</p>
+              <ProjectCard project={related} level="h2" />
+            </div>
+          )
+        }
+
+        <nav class="post__nav" aria-label="More posts">
+          {
+            older && (
+              <a class="post__nav-link" href={url(postHref(older))} data-reveal="left">
+                <span>Previous</span>
+                {older.data.title}
+              </a>
+            )
+          }
+          {
+            newer && (
+              <a class="post__nav-link post__nav-link--next" href={url(postHref(newer))} data-reveal="right">
+                <span>Next</span>
+                {newer.data.title}
+              </a>
+            )
+          }
+        </nav>
+      </footer>
+    </article>
+
+    <aside class="cs__right">
+      {
+        toc.length > 1 && (
+          <nav class="toc" aria-label="Contents">
+            <p class="toc__title">Contents</p>
+            <ul>
+              {toc.map((h) => (
+                <li>
+                  <a href={`#${h.slug}`} data-toc-link={h.slug}>
+                    {h.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )
+      }
+    </aside>
+  </div>
+</Base>
+
+<script>
+  // Highlight the current heading in the contents list.
+  const links = new Map<string, HTMLAnchorElement>();
+  document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]').forEach((a) => links.set(a.dataset.tocLink!, a));
+  const io = new IntersectionObserver(
+    (entries) =>
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        links.forEach((a, id) => (id === e.target.id ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
+      }),
+    { rootMargin: '-30% 0px -65% 0px' },
+  );
+  links.forEach((_, id) => {
+    const el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+</script>

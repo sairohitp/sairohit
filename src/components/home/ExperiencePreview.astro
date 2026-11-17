@@ -15,11 +15,14 @@ import { url } from '../../lib/url';
   <ol class="xp-list" data-stagger="80">
     {
       experience.map((x) => (
-        <li class="xp-list__row" data-reveal="left">
-          <span class="xp-list__icon"><Icon name={x.icon} size={18} /></span>
-          <span class="xp-list__org">{x.org}</span>
-          <span class="xp-list__role">{x.roles[0].title}</span>
-          <span class="xp-list__dates">{span(x)}</span>
+        <li data-reveal="left">
+          <a class="xp-list__row" href={url('/about/#experience')}>
+            <span class="xp-list__icon"><Icon name={x.icon} size={18} /></span>
+            <span class="xp-list__org">{x.org}</span>
+            <span class="xp-list__role">{x.roles[0].title}</span>
+            <span class="xp-list__dates">{span(x)}</span>
+            <span class="xp-list__go" aria-hidden="true"><Icon name="arrow-up-right" size={14} /></span>
+          </a>
         </li>
       ))
     }
