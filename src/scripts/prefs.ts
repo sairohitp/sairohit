@@ -177,17 +177,10 @@ function initNav() {
   const nav = document.querySelector<HTMLElement>('[data-nav]');
   if (!nav) return;
 
-  // Stuck and auto-hide: the bar condenses once you scroll, hides while reading down, returns on the way up.
-  let lastY = window.scrollY;
+  // Always visible: once you scroll, the bar condenses into a frosted card and stays at the top.
   let queued = false;
   const update = () => {
-    const y = window.scrollY;
-    nav.classList.toggle('is-stuck', y > 24);
-    const menuOpen = nav.classList.contains('is-open');
-    const hide = y > 200 && y > lastY + 2 && !menuOpen && !nav.contains(document.activeElement);
-    if (hide) nav.classList.add('is-hidden');
-    else if (y < lastY - 2 || y <= 200) nav.classList.remove('is-hidden');
-    lastY = y;
+    nav.classList.toggle('is-stuck', window.scrollY > 24);
     queued = false;
   };
   window.addEventListener('scroll', () => {
