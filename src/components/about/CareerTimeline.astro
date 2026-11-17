@@ -1,0 +1,62 @@
+---
+import { timeline } from '../../data/profile';
+
+// Axis: Jan 2021 to Jan 2027, in months.
+const axisStart = 2021 * 12;
+const axisEnd = 2027 * 12;
+const total = axisEnd - axisStart;
+const now = new Date();
+const nowM = now.getFullYear() * 12 + now.getMonth();
+const pct = (m: number) => ((m - axisStart) / total) * 100;
+const years = [2021, 2022, 2023, 2024, 2025, 2026];
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const fmt = (y: number, m: number) => `${months[m - 1]} ${y}`;
+const kinds = ['Design', 'Leadership', 'Business', 'Education'] as const;
+const rows = timeline.map((t) => {
+  const s = t.start[0] * 12 + (t.start[1] - 1);
+  const e = t.end ? t.end[0] * 12 + (t.end[1] - 1) + 1 : nowM + 1;
+  return {
+    ...t,
+    left: pct(s),
+    width: Math.max(1.6, pct(e) - pct(s)),
+    range: `${fmt(t.start[0], t.start[1])} to ${t.end ? fmt(t.end[0], t.end[1]) : 'Present'}`,
+  };
+});
+---
+
+<figure class="gantt" data-reveal="fade" aria-labelledby="gantt-cap">
+  <ul class="gantt__legend" aria-hidden="true">
+    {kinds.map((k) => <li class={`gantt__key gantt__key--${k.toLowerCase()}`}>{k}</li>)}
+  </ul>
+  <div class="gantt__chart">
+    <div class="gantt__axis" aria-hidden="true">
+      {years.map((y) => <span style={`left: ${pct(y * 12)}%`}>{y}</span>)}
+    </div>
+    <ol class="gantt__rows">
+      {
+        rows.map((r, i) => (
+          <li class="gantt__row" style={`--i: ${i}`}>
+            <span class="gantt__label">{r.label}</span>
+            <span class="gantt__track">
+              {years.map((y) => <span class="gantt__grid" style={`left: ${pct(y * 12)}%`} aria-hidden="true" />)}
+              <span
+                class={`gantt__bar gantt__bar--${r.kind.toLowerCase()} ${r.end ? '' : 'is-ongoing'}`}
+                style={`left: ${r.left}%; width: ${r.width}%`}
+                title={r.range}
+              >
+                <span class="visually-hidden">{r.range}</span>
+              </span>
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+    <span class="gantt__overlay" aria-hidden="true">
+      <span class="gantt__now" style={`left: ${pct(nowM)}%`}><span>Now</span></span>
+    </span>
+  </div>
+  <figcaption id="gantt-cap" class="caption">
+    <span class="caption__type">Timeline</span>
+    <span class="caption__text">Design, leadership, business and education, 2021 to today</span>
+  </figcaption>
+</figure>

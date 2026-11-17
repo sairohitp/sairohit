@@ -1,0 +1,19 @@
+---
+import { glance } from '../../data/profile';
+---
+
+<section class="glance container" aria-label="At a glance">
+  <ul class="glance__grid" data-stagger="100">
+    {
+      glance.map((s) => (
+        <li class="glance__item" data-reveal="pop">
+          <span class="glance__value" data-count={s.value} data-suffix={s.suffix ?? ''}>
+            {s.value.toLocaleString('en-IN')}
+            {s.suffix}
+          </span>
+          <span class="glance__label">{s.label}</span>
+        </li>
+      ))
+    }
+  </ul>
+</section>

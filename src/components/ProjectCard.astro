@@ -25,6 +25,11 @@ const thumb = {
     <div>
       <Heading class="pcard__title">{project.title}</Heading>
       <p class="pcard__sub">{cardSubtitle(project)}</p>
+      <ul class="pcard__tags" aria-label="Tags">
+        <li>{project.platform === 'mobile' ? 'Mobile' : 'Web'}</li>
+        {project.tags?.map((t) => <li>{t}</li>)}
+        {project.period && <li>{project.period}</li>}
+      </ul>
     </div>
     <Icon name="arrow-right" size={30} class="pcard__arrow" />
   </div>

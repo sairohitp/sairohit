@@ -1,0 +1,36 @@
+---
+import { skills } from '../../data/profile';
+const id = (g: string) => `skills-${g.toLowerCase().replace(/[^a-z]+/g, '-')}`;
+---
+
+<div class="tabs" data-tabs data-reveal="rise">
+  <div class="tabs__list" role="tablist" aria-label="Skills">
+    {
+      skills.map((s, i) => (
+        <button
+          class="tabs__tab"
+          type="button"
+          role="tab"
+          id={`${id(s.group)}-tab`}
+          aria-controls={id(s.group)}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          {s.group}
+        </button>
+      ))
+    }
+    <span class="tabs__indicator" aria-hidden="true"></span>
+  </div>
+  {
+    skills.map((s, i) => (
+      <ul class="tabs__panel chips chips--lg" role="tabpanel" id={id(s.group)} aria-labelledby={`${id(s.group)}-tab`} data-active={i === 0 ? 'true' : undefined}>
+        {s.items.map((it, j) => (
+          <li class="chip" style={`--j: ${j}`}>
+            {it}
+          </li>
+        ))}
+      </ul>
+    ))
+  }
+</div>

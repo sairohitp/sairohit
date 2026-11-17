@@ -1,0 +1,33 @@
+---
+import Icon from '../Icon.astro';
+import Words from '../Words.astro';
+import { profile } from '../../data/profile';
+import { site } from '../../config/site';
+
+const hello = 'Hello, I’m Sai Rohit';
+const n = hello.split(' ').length;
+---
+
+<section class="hero container" aria-labelledby="hero-title">
+  <p class="status-pill" data-reveal="pop">
+    <span class="status-pill__dot" aria-hidden="true"></span>
+    {profile.now.join(' · ')}
+  </p>
+  <h1 id="hero-title" class="hero__title split">
+    <Words text={hello} />{' '}
+    <span class="w" style={`--i: ${n}`}><span class="wave" role="img" aria-label="waving hand">👋</span></span>
+  </h1>
+  <p class="hero__lead split"><Words text={profile.headline} start={n + 1} /></p>
+  <p class="hero__sub" data-reveal>{profile.summary[1]}</p>
+
+  <div class="hero__actions" data-stagger="90">
+    <a class="btn btn--primary" href="#work" data-reveal="pop">View work <Icon name="arrow-down" size={14} /></a>
+    <a class="btn" href={site.resume} target="_blank" rel="noopener" data-reveal="pop">Resume <Icon name="arrow-up-right" size={14} /></a>
+    <a class="btn" href={`mailto:${profile.email}`} data-reveal="pop"><Icon name="envelope-simple" size={14} /> Email</a>
+  </div>
+
+  <ul class="hero__meta" data-stagger="90">
+    <li data-reveal><Icon name="map-pin" size={14} /> {profile.location}</li>
+    <li data-reveal><Icon name="clock" size={14} /> <span data-clock data-tz={profile.timezone}>IST</span> local time</li>
+  </ul>
+</section>

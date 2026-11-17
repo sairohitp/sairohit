@@ -1,0 +1,23 @@
+---
+import Icon from '../Icon.astro';
+import { education } from '../../data/profile';
+const r = 52;
+const c = 2 * Math.PI * r;
+const p = education.cgpa / education.scale;
+---
+
+<div class="edu" data-reveal="rise">
+  <div class="edu__ring" style={`--c: ${c.toFixed(2)}; --target: ${(c * (1 - p)).toFixed(2)}`}>
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <circle class="edu__track" cx="60" cy="60" r={r}></circle>
+      <circle class="edu__progress" cx="60" cy="60" r={r}></circle>
+    </svg>
+    <span class="edu__value">{education.cgpa.toFixed(1)}<small>/{education.scale}</small></span>
+    <span class="edu__label">CGPA</span>
+  </div>
+  <div class="edu__body">
+    <p class="edu__degree"><Icon name="graduation-cap" size={18} /> {education.degree}</p>
+    <p class="edu__school">{education.school}</p>
+    <p class="edu__meta">{education.place} · {education.dates}</p>
+  </div>
+</div>

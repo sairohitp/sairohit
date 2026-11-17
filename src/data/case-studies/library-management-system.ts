@@ -1,93 +1,90 @@
 import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
+// Source: resume (Infosys, Library Management System, Enterprise Web).
+// Visuals are from the live site and will be replaced with exports from the Figma file.
 export const libraryManagementSystem: CaseStudy = {
-  cover: img('library-hero', 'Hero mockup: Myshelf iOS app screens on a light canvas'),
+  cover: img('library-hero', 'Hero mockup: Library Management System screens'),
   sections: [
     overview({
-      role: 'iOS App Developer Intern: interface design, user flows, iOS prototyping',
-      team: ['Cross-functional Scrum team at Infosys'],
-      timeline: '2 months, April to May 2024, on site at Infosys headquarters',
+      role: 'Design Intern: workflow research, data-dense interfaces, component library, handoff',
+      team: ['Librarians and front-desk staff (research)', 'Product and engineering leads'],
+      timeline: 'Internship at Infosys',
       overview: [
-        'Myshelf is an iOS app that puts the library in the reader’s pocket: discover books, borrow and return them, reserve titles and sign up for library events.',
-        'As an iOS App Developer Intern at Infosys, I worked inside a Scrum team, translating the requirements in the SRS document into flows and high-fidelity screens, and helped plan milestones so the build stayed on schedule.',
-        'The result is a dark, focused interface with four destinations (Home, Explore, Library and Events) and dedicated screens for transactions, requests, FAQs and overdue items.',
+        'A Library Management System for the people who run a library every day: cataloguing, issues, returns, renewals and fines.',
+        'I spoke with librarians and front-desk staff to map their daily workflows and find where the existing process slowed them down, then designed data-dense tables and dashboards for inventory, overdue items and member activity.',
+        'I built a reusable Figma component library with variants and auto layout, presented the design rationale to product and engineering leads, and delivered detailed handoff documentation.',
       ],
     }),
     highlightsSection(
-      highlights('A pocket-sized library: borrow, reserve, return and attend events from a single iOS app.', {
-        exhibits: [prototype('library'), { media: img('library-row', 'Onboarding, home, event and book detail screens'), caption: cap('0.1', 'Screens', 'Onboarding, home, events and book details') }],
+      highlights('Library operations made fast: data-dense tables and dashboards, built on a reusable component library.', {
+        exhibits: [prototype('library'), { media: img('library-row', 'Library Management System screens'), caption: cap('0.1', 'Screens', 'Library Management System') }],
       }),
     ),
-    section('context', 'Context', 'Libraries run on paperwork. Readers run on phones.', [
-      text('Bringing the library to the reader.', [
-        'Borrowing still depends on visits to the desk, paper registers and reminders that arrive too late. Myshelf moves those touchpoints into one app, so a member always knows what they have, what is due and what is happening next.',
+    section('context', 'Context', 'The front desk runs on workflows.', [
+      text('Research with the people who do the work.', [
+        'I spoke with librarians and front-desk staff to map their daily workflows across cataloguing, issues, returns, renewals and fines.',
       ]),
-      tree(
-        'Myshelf',
-        [
-          { label: 'Home', items: ['Currently reading', 'Due dates', 'Popular books'] },
-          { label: 'Explore', items: ['Search', 'Book details', 'Reserve'] },
-          { label: 'Library', items: ['Transactions', 'Requests', 'Overdues'] },
-          { label: 'Events', items: ['Upcoming events', 'Registration', 'Event overview'] },
-        ],
-        cap('1.0', 'Diagram', 'Information architecture'),
-      ),
+      flow(['Cataloguing', 'Issue', 'Return', 'Renewal', 'Fines'], cap('1.0', 'Diagram', 'Daily library workflows')),
       research('library'),
     ]),
-    section('the-problem', 'The Problem', 'Every visit to the desk was a point of friction.', [
+    section('the-problem', 'The Problem', 'Where the process slowed people down.', [
       text(
-        'Where members lose track.',
-        ['Three questions came up again and again: what have I borrowed, when is it due, and is the book I want available? Answering any of them meant a trip to the library.'],
+        'What the workflow mapping revealed.',
+        ['Staff handle many members and items at once, so every extra click and every unclear status adds up across a day.'],
         {
           list: [
-            item('clock', 'Due dates were easy to miss, and missed dates turned into fines.'),
-            item('database', 'Availability was only visible at the desk, not before the visit.'),
-            item('thumbs-down', 'Fines and overdue items were discovered late, at the counter.'),
-            item('users', 'Events lived on notice boards, with no simple way to register.'),
+            item('database', 'Inventory, overdue items and member activity were hard to scan quickly.'),
+            item('clock', 'Repetitive tasks such as issues and returns took too many steps.'),
+            item('target', 'The status of an item or a member was not always clear at a glance.'),
+            item('key', 'Design decisions needed to translate cleanly into engineering.'),
           ],
         },
       ),
-      challenge('Make every library task, from finding a book to paying a fine, possible in a few taps, without a visit to the desk.'),
+      challenge('Give library staff interfaces that show everything they need at a glance and let them act on many records at once.'),
       text('North Star design principles:', [], {
         cards: [
-          card('Glanceable status', 'Due dates and reservations are visible on the home screen.', 'target'),
-          card('One action per screen', 'Each screen leads to a single, clear primary button.', 'cursor-click'),
-          card('Familiar iOS patterns', 'Tab bar navigation and native controls keep learning time low.', 'check-circle'),
+          card('Dense, not cluttered', 'Data-heavy tables that stay readable.', 'target'),
+          card('Act in bulk', 'Sorting, filtering and bulk actions for everyday work.', 'cursor-click'),
+          card('Status at a glance', 'Clear status indicators on every record.', 'check-circle'),
         ],
       }),
     ]),
-    section('user-flow', 'User Flow', 'From discovery to return, in one loop.', [
-      text('Mapping the borrowing loop.', [
-        'I mapped the loop a member repeats: find a title, reserve it, collect it, read, then return or renew before the due date. Every screen supports one step of this loop.',
+    section('user-flow', 'User Flow', 'Designed around the desk.', [
+      text('Tables and dashboards for each job.', [
+        'I designed data-dense tables and dashboards for the three things staff check most: inventory, overdue items and member activity.',
       ]),
-      flow(['Discover', 'Reserve', 'Collect', 'Read', 'Return or renew'], cap('3.0', 'Diagram', 'Core borrowing loop')),
-      text('Events as a second loop.', ['Library events follow a shorter path: browse, register, attend. Registration shows who else is going, which makes events feel social.']),
-      flow(['Browse events', 'Event details', 'Register', 'Attend'], cap('3.1', 'Diagram', 'Event registration')),
+      tree(
+        'Library Management System',
+        [
+          { label: 'Inventory', items: ['Catalogue', 'Availability', 'Bulk actions'] },
+          { label: 'Circulation', items: ['Issues', 'Returns', 'Renewals'] },
+          { label: 'Overdue', items: ['Overdue items', 'Fines', 'Reminders'] },
+          { label: 'Members', items: ['Member activity', 'Status'] },
+        ],
+        cap('3.0', 'Diagram', 'Information architecture'),
+      ),
       wireframes('library'),
     ]),
-    section('layout', 'Layout', 'A home screen that answers the first question.', [
-      text('Currently reading comes first.', [
-        'Home opens with the book in hand, its due date and the time left on any reservation. Popular books sit below as the natural next step for discovery.',
+    section('layout', 'Layout', 'Dense, scannable, actionable.', [
+      text('Built for scanning.', [
+        'Sorting, filtering, bulk actions and clear status indicators let staff find and act on records quickly.',
       ]),
-      structure('library', 'Onboarding and home screens', 'Onboarding and home: structure and final. Drag to compare.'),
+      structure('library', 'Library Management System screens', 'Library Management System: structure and final. Drag to compare.'),
     ]),
-    section('interactions', 'Interactions', 'Small details that prevent fines.', [
-      text('Reserve, register, pay.', [
-        'Primary actions such as Reserve Book, Register and Proceed to Pay share the same full-width blue button, so members learn the pattern once.',
-        'Dues surface before they become fines, and fines can be settled inside the app.',
-      ]),
-      exhibit(img('library-b', 'Event and book detail screens'), cap('5.0', 'Screens', 'Event registration and book details')),
+    section('interactions', 'Interactions', 'Fewer steps for repeated work.', [
+      text('Everyday actions, faster.', ['Issues, returns, renewals and fines happen many times a day, so each action is designed to take as few steps as possible.']),
+      exhibit(img('library-b', 'Library Management System screens'), cap('5.0', 'Screens', 'Library Management System')),
       grid([
-        card('Due-date badge', 'The current book shows how many days are left.', 'clock'),
-        card('Reservation timer', 'Reserved books count down the time left to collect them.', 'key'),
-        card('Social proof', 'Event cards show who else is going.', 'users'),
-        card('Single primary action', 'One blue button per screen avoids hesitation.', 'cursor-click'),
+        card('Sorting and filtering', 'Find the right records fast.', 'target'),
+        card('Bulk actions', 'Act on many items or members at once.', 'cursor-click'),
+        card('Status indicators', 'Overdue, available or reserved, at a glance.', 'check-circle'),
+        card('Dashboards', 'Inventory, overdue items and member activity in one view.', 'lightbulb'),
       ]),
     ]),
-    section('visual-design', 'Visual Design', 'Dark, calm and book-first.', [
-      text('Letting the covers carry the colour.', [
-        'A near-black interface keeps attention on the book covers, which provide most of the colour. A single blue accent marks every action, and rounded cards group related information.',
+    section('visual-design', 'Visual Design', 'A component library, not a set of screens.', [
+      text('Built to be reused.', [
+        'I built a reusable Figma component library using variants and auto layout, so tables, filters and status indicators stay consistent across every view.',
       ]),
       palette(
         [
@@ -99,23 +96,22 @@ export const libraryManagementSystem: CaseStudy = {
         cap('6.0', 'Palette', 'Colours sampled from the final screens'),
       ),
     ]),
-    section('final-designs', 'Final Designs', 'The complete screen set.', [
-      text('Every flow, end to end.', [
-        'The final set covers onboarding, home, discovery, book details, events, transactions, requests, FAQs and overdue items.',
+    section('final-designs', 'Final Designs', 'Ready for engineering.', [
+      text('Rationale and handoff.', [
+        'I presented the design rationale to product and engineering leads and delivered detailed handoff documentation.',
       ]),
-      exhibit(board('library', 'Full Myshelf screen set'), cap('7.0', 'Animated view', 'Full screen set')),
+      exhibit(board('library', 'Library Management System screens'), cap('7.0', 'Animated view', 'Screen set')),
     ]),
-    section('retrospective', 'Retrospective', 'What working on site taught me.', [
+    section('retrospective', 'Retrospective', 'Designing for operators.', [
       text('Looking back.', [
-        'Designing alongside developers in a Scrum rhythm meant every decision had to be explained, estimated and delivered in short cycles.',
-        'Working from an SRS document also taught me to trace each screen back to a written requirement.',
+        'Talking to librarians and front-desk staff first meant the design solved the problems they actually had, not the ones we assumed.',
       ]),
       text('Project Takeaways:', [], {
         cards: [
-          card('Requirements first', 'Mapping screens to SRS requirements kept the scope clear.', 'check-circle'),
-          card('Design for the sprint', 'Breaking flows into small pieces made them easier to build and review.', 'lightbulb'),
-          card('Consistency is speed', 'Reusing one button and card style made the build faster.', 'sparkle'),
-          card('Explain the why', 'Sharing the reasoning behind a layout made feedback more useful.', 'users'),
+          card('Map the workflow first', 'Real tasks shaped every table and dashboard.', 'users'),
+          card('Density needs structure', 'Data-heavy screens stay readable with clear hierarchy.', 'target'),
+          card('Components scale', 'Variants and auto layout kept every view consistent.', 'sparkle'),
+          card('Handoff is design', 'Rationale and documentation made the build smoother.', 'check-circle'),
         ],
       }),
     ]),

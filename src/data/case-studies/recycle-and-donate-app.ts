@@ -1,63 +1,68 @@
 import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
+// Sources: resume (Apple Developer Program) and the screens on the live site.
 export const recycleAndDonateApp: CaseStudy = {
-  cover: img('recycle-hero', 'Hero mockup: Greenwealth recycling app screens on a light canvas'),
+  cover: img('recycle-hero', 'Hero mockup: Greenwealth recycling app screens'),
   sections: [
     overview({
-      role: 'Design Intern: user flows, interaction design, visual design',
-      timeline: 'Internship project, delivered as a high-fidelity iOS prototype',
+      role: 'Designer and iOS developer: user research, information architecture, prototyping, accessibility',
+      team: ['Agile team across design, development, testing and product'],
+      timeline: 'Apple Developer Program, May 2023 to March 2024 (Chennai and Mysuru), followed by an iOS internship in April 2024',
       overview: [
-        'Greenwealth turns household waste into rewards. Users sell their old goods in four steps, earn eco-points and compete on a community leaderboard.',
-        'I designed the end-to-end experience, from onboarding to placing a pickup order, tracking it and reviewing past orders.',
-        'The design makes impact visible: kilograms recycled, money earned and eco-points sit at the top of the dashboard.',
+        'Greenwealth is a Recycle and Donate app: people list an item, choose whether to recycle or donate it, and schedule a pickup, earning eco-points along the way.',
+        'I designed it during the 11-month Apple Developer Program, which combined Apple’s design principles with iOS development, from user interviews to an interactive prototype built to Apple’s Human Interface Guidelines.',
+        'I also built features from detailed software requirements specifications in an agile team, contributing to sprint planning, peer reviews and technical presentations.',
       ],
     }),
     highlightsSection(
-      highlights('Recycling made rewarding: sell in four steps, earn eco-points, climb the leaderboard.', {
+      highlights('Recycle or donate in as few steps as possible, designed and prototyped to Apple’s Human Interface Guidelines.', {
         exhibits: [prototype('recycle'), { media: img('recycle-row', 'Onboarding, dashboard, new order and leaderboard screens'), caption: cap('0.1', 'Screens', 'Onboarding, dashboard, new order and leaderboard') }],
       }),
     ),
     section('context', 'Context', 'Good intentions, missing incentives.', [
-      text('Why recycling stalls.', [
-        'Most people want to recycle, but sorting, finding a buyer and arranging transport takes effort with little visible reward. Greenwealth removes the effort and makes the reward obvious.',
+      text('Starting with research.', [
+        'I ran user interviews and a competitive review of donation and recycling apps, then turned the findings into personas, journey maps and a prioritised problem list.',
       ]),
+      flow(['User interviews', 'Competitive review', 'Personas', 'Journey maps', 'Prioritised problems'], cap('1.0', 'Diagram', 'Research process')),
+      research('recycle'),
       tree(
         'Greenwealth',
         [
           { label: 'Dashboard', items: ['Impact summary', 'Leaderboard position', 'Ongoing order'] },
-          { label: 'Orders', items: ['Place a new order', 'Order history', 'Past orders'] },
+          { label: 'Orders', items: ['List an item', 'Recycle or donate', 'Schedule pickup', 'Past orders'] },
           { label: 'Leaderboard', items: ['Top recycler of the month', 'Rankings'] },
           { label: 'Profile', items: ['Feedback', 'Help and support'] },
         ],
-        cap('1.0', 'Diagram', 'Information architecture'),
+        cap('1.1', 'Diagram', 'Information architecture'),
       ),
-      research('recycle'),
     ]),
     section('the-problem', 'The Problem', 'Recycling asked for effort and gave little back.', [
       text(
-        'Four barriers to a habit.',
+        'What the research prioritised.',
         ['Each barrier was small on its own. Together, they were enough to keep old goods in the cupboard.'],
         {
           list: [
-            item('database', 'No easy way to know what waste is worth.'),
+            item('database', 'No easy way to know what an item is worth, or where it should go.'),
             item('clock', 'Pickups needed calls and back-and-forth coordination.'),
             item('thumbs-down', 'Impact was invisible, so the habit did not stick.'),
-            item('users', 'No sense of community around recycling.'),
+            item('users', 'Accessibility had to be designed in from the start, not added later.'),
           ],
         },
       ),
-      challenge('Make recycling as easy as ordering food, and as motivating as a game.'),
+      challenge('Keep every task, from listing an item to scheduling a pickup, to as few steps as possible, for everyone.'),
       text('North Star design principles:', [], {
         cards: [
-          card('Four steps, no more', 'Picture, categories, location and slot.', 'cursor-click'),
+          card('As few steps as possible', 'List, choose, schedule. Nothing more.', 'cursor-click'),
           card('Show the impact', 'Kilograms, rupees and eco-points up front.', 'target'),
-          card('Reward consistency', 'Eco-points and a monthly leaderboard.', 'sparkle'),
+          card('Accessible by default', 'Dynamic Type, VoiceOver and contrast from day one.', 'check-circle'),
         ],
       }),
     ]),
-    section('user-flow', 'User Flow', 'Sell in four steps.', [
-      text('From cupboard to pickup.', ['A new order collects only what is needed for a fair estimate and a pickup, then shows the price before the user commits.']),
+    section('user-flow', 'User Flow', 'List, choose, schedule.', [
+      text('The core flow.', ['I defined the information architecture and core flows for listing an item, choosing to recycle or donate it, and scheduling a pickup.']),
+      flow(['List an item', 'Recycle or donate', 'Schedule a pickup', 'Track the order'], cap('3.0', 'Diagram', 'Core flow')),
+      text('Selling for recycling.', ['A new recycling order collects only what is needed for a fair estimate and a pickup, then shows the price before the user commits.']),
       flow(
         [
           { label: 'Picture', note: 'Approximate weight' },
@@ -66,7 +71,7 @@ export const recycleAndDonateApp: CaseStudy = {
           { label: 'Pickup slot' },
           { label: 'Estimate and proceed' },
         ],
-        cap('3.0', 'Diagram', 'New order flow'),
+        cap('3.1', 'Diagram', 'New order flow'),
       ),
       wireframes('recycle'),
     ]),
@@ -76,16 +81,17 @@ export const recycleAndDonateApp: CaseStudy = {
       ]),
       structure('recycle', 'Onboarding and dashboard screens', 'Onboarding and dashboard: structure and final. Drag to compare.'),
     ]),
-    section('interactions', 'Interactions', 'Gamification without the noise.', [
-      text('Progress that is always visible.', [
-        'The leaderboard celebrates the top recycler of the month with a trophy and pins the user’s own rank in green, so progress is visible without searching.',
+    section('interactions', 'Interactions', 'Built to Apple’s guidelines.', [
+      text('Accessible and familiar.', [
+        'I built an interactive Figma prototype to Apple’s Human Interface Guidelines, with Dynamic Type, VoiceOver labels and colour contrast checked against accessibility standards.',
+        'The leaderboard celebrates the top recycler of the month and pins the user’s own rank, so progress is visible without searching.',
       ]),
       exhibit(img('recycle-b', 'New order and leaderboard screens'), cap('5.0', 'Screens', 'New order and leaderboard')),
       grid([
+        card('Dynamic Type', 'Text scales with the user’s preferred size.', 'sparkle'),
+        card('VoiceOver labels', 'Every control is described for screen readers.', 'users'),
+        card('Colour contrast', 'Checked against accessibility standards.', 'check-circle'),
         card('Instant estimate', 'See the expected price before proceeding.', 'lightbulb'),
-        card('Pinned rank', 'Your position is highlighted in the list.', 'target'),
-        card('Order tracking', 'Ongoing order status on the dashboard.', 'check-circle'),
-        card('Slot picker', 'Choose a pickup window that suits you.', 'clock'),
       ]),
     ]),
     section('visual-design', 'Visual Design', 'Fresh, friendly and green.', [
@@ -106,16 +112,16 @@ export const recycleAndDonateApp: CaseStudy = {
       text('Every step of the journey.', ['The final set covers onboarding, dashboard, new orders, ongoing orders, leaderboard, feedback, help and past orders.']),
       exhibit(board('recycle', 'Full Greenwealth screen set'), cap('7.0', 'Animated view', 'Full screen set')),
     ]),
-    section('retrospective', 'Retrospective', 'Motivation is a design material.', [
+    section('retrospective', 'Retrospective', 'Design and build, side by side.', [
       text('Looking back.', [
-        'Greenwealth showed me how much behaviour depends on feedback. Showing the impact of each order made the next one more likely.',
+        'Designing and building in the same programme meant every flow had to survive a software requirements specification, a sprint and a peer review.',
       ]),
       text('Project Takeaways:', [], {
         cards: [
-          card('Make impact visible', 'Numbers on the dashboard turned effort into progress.', 'target'),
-          card('Reduce, then reward', 'Fewer steps first, incentives second.', 'cursor-click'),
-          card('Community motivates', 'A leaderboard adds a social reason to return.', 'users'),
-          card('Price builds trust', 'An upfront estimate removes hesitation.', 'check-circle'),
+          card('Research earns the roadmap', 'Personas and journey maps set the priorities.', 'users'),
+          card('Fewer steps win', 'Each task kept as short as possible.', 'cursor-click'),
+          card('Accessibility is design', 'Dynamic Type and VoiceOver shaped the layouts.', 'check-circle'),
+          card('Build what you design', 'Working from SRS documents kept design honest.', 'lightbulb'),
         ],
       }),
     ]),

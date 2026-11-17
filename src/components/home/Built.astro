@@ -1,0 +1,74 @@
+---
+import { built } from '../../data/profile';
+---
+
+<section class="built container" aria-labelledby="built-title">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow" data-reveal>Designed and built</p>
+      <h2 id="built-title" class="section-intro__title" data-reveal="blur">From Figma to React</h2>
+    </div>
+    <p class="section-intro__text" data-reveal>Products I designed and shipped in code, so the design and the build never drift apart.</p>
+  </div>
+  <ul class="built__grid" data-stagger="120">
+    {
+      built.map((b) => (
+        <li class="built-card" data-reveal="rise">
+          <div class={`built-card__visual vis vis--${b.visual}`} aria-hidden="true">
+            {b.visual === 'pipeline' && (
+              <div class="vis-pipeline">
+                {['Connect', 'Lead', 'Deal', 'Success'].map((col, i) => (
+                  <div class="vis-pipeline__col" style={`--i: ${i}`}>
+                    <span class="vis-pipeline__head">{col}</span>
+                    {Array.from({ length: 3 - (i % 2) }, (_, j) => (
+                      <span class="vis-pipeline__card" style={`--j: ${j}`} />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            )}
+            {b.visual === 'search' && (
+              <div class="vis-search">
+                <span class="vis-search__bar">
+                  <span class="vis-search__query">grants for women-led deep tech startups</span>
+                </span>
+                {[0, 1, 2, 3].map((i) => (
+                  <span class="vis-search__row" style={`--i: ${i}`}>
+                    <span class="vis-search__dot" />
+                    <span class="vis-search__line" />
+                    <span class="vis-search__tag" />
+                  </span>
+                ))}
+              </div>
+            )}
+            {b.visual === 'handles' && (
+              <div class="vis-handles">
+                <span class="vis-handles__input">@yourstartup</span>
+                {['GitHub', 'X', 'Instagram', 'LinkedIn', 'npm'].map((p, i) => (
+                  <span class={`vis-handles__row ${i === 2 ? 'is-taken' : ''}`} style={`--i: ${i}`}>
+                    {p}
+                    <span class="vis-handles__state">{i === 2 ? 'Taken' : 'Available'}</span>
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          <div class="built-card__body">
+            <h3 class="built-card__name">{b.name}</h3>
+            <p class="built-card__tagline">{b.tagline}</p>
+            <ul class="built-card__points">
+              {b.points.map((pt) => (
+                <li>{pt}</li>
+              ))}
+            </ul>
+            <ul class="chips" aria-label="Tech stack">
+              {b.stack.map((s) => (
+                <li class="chip">{s}</li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

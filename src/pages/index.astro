@@ -1,40 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import Words from '../components/Words.astro';
-import Icon from '../components/Icon.astro';
-import { projects } from '../data/projects';
-
-const l1 = 'Hello, I’m Sai Rohit';
-const l2 =
-  'I’m a passionate visual interface designer and product experience researcher who loves exploring how different people react to various designs, colors, and layouts.';
-const l3 = 'Here’s a visual overview of some of my notable design work:';
-const n1 = l1.split(' ').length;
-const n2 = l2.split(' ').length;
+import Hero from '../components/home/Hero.astro';
+import Glance from '../components/home/Glance.astro';
+import Marquee from '../components/home/Marquee.astro';
+import WorkList from '../components/home/WorkList.astro';
+import Built from '../components/home/Built.astro';
+import ExperiencePreview from '../components/home/ExperiencePreview.astro';
 ---
 
 <Base>
-  <section class="hero container split" aria-labelledby="hero-title">
-    <h1 id="hero-title">
-      <Words text={l1} />
-      <span class="w" style={`--i: ${n1}`}><span class="wave" role="img" aria-label="waving hand">👋</span></span>
-    </h1>
-    <p><Words text={l2} start={n1 + 1} /></p>
-    <p>
-      <Words text={l3} start={n1 + n2 + 1} />
-      <span class="w hero__down" style={`--i: ${n1 + n2 + l3.split(' ').length + 1}`}><Icon name="arrow-down" size={18} /></span>
-    </p>
-  </section>
-
-  <section class="work container" aria-label="Selected work">
-    <ul class="work__list">
-      {
-        projects.map((p) => (
-          <li>
-            <ProjectCard project={p} />
-          </li>
-        ))
-      }
-    </ul>
-  </section>
+  <Hero />
+  <Glance />
+  <Marquee />
+  <WorkList />
+  <Built />
+  <ExperiencePreview />
 </Base>

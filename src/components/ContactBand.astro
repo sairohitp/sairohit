@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/profile';
+---
+
+<section class="contact container" aria-labelledby="contact-title">
+  <div class="contact__card" data-reveal="scale">
+    <div class="contact__glow" aria-hidden="true"></div>
+    <p class="eyebrow">Contact</p>
+    <h2 id="contact-title" class="contact__title">Have a data-heavy product that needs to feel simple? Let’s talk.</h2>
+    <div class="contact__actions">
+      <a class="btn btn--primary" href={`mailto:${profile.email}`}><Icon name="envelope-simple" size={14} /> {profile.email}</a>
+      <button class="btn" type="button" data-copy={profile.email} aria-live="polite">
+        <Icon name="copy" size={14} /><span data-copy-label>Copy email</span>
+      </button>
+      <a class="btn" href="https://www.linkedin.com/in/sairohitp" target="_blank" rel="noopener"><Icon name="linkedin" size={14} /> LinkedIn</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+import Icon from '../Icon.astro';
+import { experience, span } from '../../data/profile';
+import { url } from '../../lib/url';
+---
+
+<section class="xp-preview container" aria-labelledby="xp-title">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow" data-reveal>Experience</p>
+      <h2 id="xp-title" class="section-intro__title" data-reveal="blur">Where I’ve worked</h2>
+    </div>
+    <a class="link-arrow" href={url('/about/#experience')} data-reveal>Full experience <Icon name="arrow-right" size={16} /></a>
+  </div>
+  <ol class="xp-list" data-stagger="80">
+    {
+      experience.map((x) => (
+        <li class="xp-list__row" data-reveal="left">
+          <span class="xp-list__icon"><Icon name={x.icon} size={18} /></span>
+          <span class="xp-list__org">{x.org}</span>
+          <span class="xp-list__role">{x.roles[0].title}</span>
+          <span class="xp-list__dates">{span(x)}</span>
+        </li>
+      ))
+    }
+  </ol>
+</section>

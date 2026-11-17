@@ -1,0 +1,38 @@
+---
+import ProjectCard from '../ProjectCard.astro';
+import { projects } from '../../data/projects';
+
+const filters = [
+  { id: 'all', label: 'All', count: projects.length },
+  { id: 'mobile', label: 'Mobile', count: projects.filter((p) => p.platform === 'mobile').length },
+  { id: 'web', label: 'Web', count: projects.filter((p) => p.platform === 'web').length },
+];
+---
+
+<section id="work" class="work container" aria-labelledby="work-title">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow" data-reveal>Selected work</p>
+      <h2 id="work-title" class="section-intro__title" data-reveal="blur">Case studies</h2>
+    </div>
+    <div class="filters" role="group" aria-label="Filter case studies" data-filter-group data-reveal="fade">
+      {
+        filters.map((f, i) => (
+          <button type="button" class="filter" data-filter={f.id} aria-pressed={i === 0 ? 'true' : 'false'}>
+            {f.label}
+            <span class="filter__count">{f.count}</span>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+  <ul class="work__list" data-filter-list>
+    {
+      projects.map((p) => (
+        <li data-platform={p.platform}>
+          <ProjectCard project={p} />
+        </li>
+      ))
+    }
+  </ul>
+</section>

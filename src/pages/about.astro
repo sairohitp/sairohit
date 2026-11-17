@@ -2,113 +2,112 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Stats from '../components/case/Stats.astro';
+import CareerTimeline from '../components/about/CareerTimeline.astro';
+import ExperienceList from '../components/about/ExperienceList.astro';
+import SkillsTabs from '../components/about/SkillsTabs.astro';
+import Education from '../components/about/Education.astro';
+import { profile, leadership, certifications, achievements } from '../data/profile';
 import { site } from '../config/site';
 import { url } from '../lib/url';
 
 const photo = (id: string) => url(`/images/about/${id}.webp`);
-
 const slides = [
-  { src: photo('79B7qdfLfrper1I1AfeViPPk'), alt: 'The GDSC SRM team on stage at the UI/UX workshop' },
+  { src: photo('79B7qdfLfrper1I1AfeViPPk'), alt: 'The GDG SRM team on stage after the UI/UX session' },
   { src: photo('YX4uyZeLMjwymviQBh84iBE1wZA'), alt: 'Participants holding their certificates' },
-  { src: photo('L70FHMjnOg87X42WCjVMz57wN8'), alt: 'The auditorium audience during the workshop' },
+  { src: photo('L70FHMjnOg87X42WCjVMz57wN8'), alt: 'The auditorium audience during the session' },
 ];
-
-const experience = [
-  {
-    company: 'Infosys',
-    role: 'iOS App Developer Intern',
-    dates: '04/24 – 05/24',
-    points: [
-      'Utilized Scrum methodologies to enhance project efficiency and ensure timely milestone delivery.',
-      'Collaborated with cross-functional teams to foster communication and achieve project goals.',
-      'Assisted in project planning to align with business intelligence objectives from the SRS document.',
-      'Gained on-site experience at Infosys headquarters, contributing to real-world iOS projects.',
-    ],
-  },
-  {
-    company: 'TrainingMug',
-    role: 'Principal UI/UX Designer',
-    dates: '04/23 – Present',
-    points: [
-      'Pioneered AI-driven features for personalized learning & content recommendations to enhance UX.',
-      'Reduced user drop-off rates by 25% through extensive research and iterative design improvements.',
-      'Collaborated with product managers & developers to ensure cohesive product vision.',
-      'Enhanced the UX with improvements in flow control, state management, and interface design.',
-      'Redesigned the admin console, main website, and user app, implementing core design principles.',
-      'Integrated modern design features like iconography, accessibility toggles, depth, and translucency.',
-      'Used prototyping for interactive flows, aiding iterative design and validating decisions with user feedback.',
-    ],
-  },
-  {
-    company: 'GDSC SRM',
-    role: 'Creatives and Photography Lead',
-    dates: '06/23 – 06/24',
-    points: [
-      'Responsible for all creative activities carried out club–wide.',
-      'Work in collaboration with fellow members within the domain on projects and tasks.',
-      'Regulate the creative outflow of 20 people, impacting the face of the club on campus.',
-      'Took active participation in the Solution Challenge ’24',
-      'Designed a full fledged, responsive “events portal” web application, open for all organisations.',
-      'Designed merchandise for team members at the club.',
-      'Designed social media content, posts and stories rolled out onto various platforms.',
-      'Took active participation in the Google Cloud Career Practitioner Program.',
-    ],
-  },
-];
+const [gdg, tedx] = leadership;
 ---
 
-<Base title={`About | ${site.name}`} description="About Sai Rohit: responsive app design from wireframes to high-fidelity prototypes, workshops and experience.">
+<Base title={`About | ${site.name}`} description={profile.headline}>
   <div class="about container">
+    <!-- Intro -->
     <section class="about__intro" aria-labelledby="about-title">
       <p class="eyebrow" data-reveal>About me</p>
       <h1 id="about-title" class="about__lead" data-reveal="blur">
-        My focus is on designing <em class="accent">responsive apps</em>, taking them from wireframes to final
-        high-fidelity prototypes.
+        I’m {profile.name}, a <em class="accent">product designer</em> with a computer science foundation, turning complex
+        enterprise problems into clear, usable tools.
       </h1>
-      <p class="about__lead" data-reveal="blur">
-        Each stage of the process tells a unique and fascinating story, often surprising me with new perspectives. I
-        consider feedback the cornerstone of my work, as it helps shape the perfect application for{' '}
-        <em class="accent">everyone</em>.
-      </p>
+      <div class="about__summary" data-stagger="100">
+        {profile.summary.map((p) => <p data-reveal>{p}</p>)}
+      </div>
+      <ul class="facts" data-stagger="80">
+        <li data-reveal="pop"><Icon name="map-pin" size={14} /> {profile.location}</li>
+        <li data-reveal="pop"><Icon name="briefcase" size={14} /> {profile.now.join(' · ')}</li>
+        <li data-reveal="pop"><Icon name="graduation-cap" size={14} /> B.Tech, SRM IST, CGPA 9.0</li>
+      </ul>
     </section>
 
     <hr class="about__divider" data-reveal="line" />
 
-    <section class="about__block" aria-labelledby="workshop-title">
-      <h2 id="workshop-title" class="about__heading" data-reveal="left">
-        Hosting the flagship UI/UX workshop, to over an audience of 600+
-      </h2>
+    <!-- Timeline -->
+    <section class="about__block" aria-labelledby="timeline-title">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow" data-reveal>Career at a glance</p>
+          <h2 id="timeline-title" class="section-intro__title" data-reveal="blur">Overlapping chapters since 2021</h2>
+        </div>
+      </div>
+      <CareerTimeline />
+    </section>
 
-      <div class="carousel" data-carousel data-reveal="clip" aria-roledescription="carousel" aria-label="Workshop photos">
+    <hr class="about__divider" data-reveal="line" />
+
+    <!-- Experience -->
+    <section id="experience" class="about__block" aria-labelledby="experience-title">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow" data-reveal>Experience</p>
+          <h2 id="experience-title" class="section-intro__title" data-reveal="blur">Business, design and building</h2>
+        </div>
+        <a class="link-arrow" href={site.resume} target="_blank" rel="noopener" data-reveal>Resume <Icon name="arrow-up-right" size={14} /></a>
+      </div>
+      <ExperienceList />
+    </section>
+
+    <hr class="about__divider" data-reveal="line" />
+
+    <!-- Leadership -->
+    <section class="about__block" aria-labelledby="leadership-title">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow" data-reveal>Leadership</p>
+          <h2 id="leadership-title" class="section-intro__title" data-reveal="blur">Teaching, leading and running events</h2>
+        </div>
+      </div>
+
+      <article class="lead-card" data-reveal="rise">
+        <header class="lead-card__head">
+          <p class="lead-card__org"><Icon name="microphone-stage" size={18} /> {gdg.org}</p>
+          <ul class="lead-card__roles">
+            {gdg.roles.map((r) => <li>{r.title} <span>{r.dates}</span></li>)}
+          </ul>
+        </header>
+        <h3 class="about__heading">Keynote on UI/UX design fundamentals, to 1,200+ students and faculty</h3>
+      </article>
+
+      <div class="carousel" data-carousel data-reveal="clip" aria-roledescription="carousel" aria-label="Keynote photos">
         <div class="carousel__viewport">
           <ul class="carousel__track" data-track>
             {
               slides.map((s, i) => (
                 <li class="carousel__slide" aria-roledescription="slide" aria-label={`${i + 1} of ${slides.length}`}>
-                  <img src={s.src} alt={s.alt} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+                  <img src={s.src} alt={s.alt} loading="lazy" decoding="async" />
                 </li>
               ))
             }
           </ul>
         </div>
-        <button class="carousel__btn carousel__btn--prev" type="button" data-prev aria-label="Previous photo">
-          <Icon name="caret-left" size={16} />
-        </button>
-        <button class="carousel__btn carousel__btn--next" type="button" data-next aria-label="Next photo">
-          <Icon name="caret-right" size={16} />
-        </button>
+        <button class="carousel__btn carousel__btn--prev" type="button" data-prev aria-label="Previous photo"><Icon name="caret-left" size={16} /></button>
+        <button class="carousel__btn carousel__btn--next" type="button" data-next aria-label="Next photo"><Icon name="caret-right" size={16} /></button>
         <div class="carousel__dots" role="group" aria-label="Choose photo">
-          {
-            slides.map((_, i) => (
-              <button type="button" class="carousel__dot" data-dot={i} aria-label={`Show photo ${i + 1}`} aria-current={i === 0 ? 'true' : undefined} />
-            ))
-          }
+          {slides.map((_, i) => <button type="button" class="carousel__dot" data-dot={i} aria-label={`Show photo ${i + 1}`} aria-current={i === 0 ? 'true' : undefined} />)}
         </div>
       </div>
 
       <div class="about__split">
         <figure class="about__photo" data-reveal="rise">
-          <img src={photo('ME3amptaMRt1aOc3YmPXqJxzvk')} alt="At the podium during the UI/UX workshop" loading="lazy" decoding="async" />
+          <img src={photo('ME3amptaMRt1aOc3YmPXqJxzvk')} alt="At the podium during the UI/UX session" loading="lazy" decoding="async" />
         </figure>
         <div class="about__copy" data-stagger="110">
           <p data-reveal>
@@ -119,76 +118,104 @@ const experience = [
           <p data-reveal>
             I was particularly astonished when the ground force team reported that more than 90% of the audience actively
             followed my instructions. This created a positive and engaging momentum throughout the auditorium, even reaching
-            the last row. The immense joy I felt stemmed from successfully captivating attendees during my session and
-            getting them ‘hooked’ on the content.
+            the last row.
           </p>
-          <a
-            class="button"
-            href="https://www.figma.com/design/jI3Rz8XUET6a23fWklJboC/DND-Playground?m=auto"
-            target="_blank"
-            rel="noopener"
-            data-reveal="pop"
-          >
-            View Figma Link
-            <Icon name="arrow-up-right" size={14} />
+          <a class="button" href="https://www.figma.com/design/jI3Rz8XUET6a23fWklJboC/DND-Playground?m=auto" target="_blank" rel="noopener" data-reveal="pop">
+            View the session’s Figma file <Icon name="arrow-up-right" size={14} />
           </a>
         </div>
       </div>
 
       <Stats
         items={[
-          { value: 600, suffix: '+', label: 'Workshop attendees' },
-          { value: 90, suffix: '%+', label: 'Followed along actively' },
-          { value: 20, label: 'Creatives led at GDSC SRM' },
+          { value: 1200, suffix: '+', label: 'Keynote audience' },
+          { value: 25, suffix: '+', label: 'Creatives team members led' },
+          { value: 60, suffix: '%', label: 'Growth in social and brand reach' },
         ]}
       />
+
+      <div class="about__split">
+        <figure class="about__photo" data-reveal="rise">
+          <img src={photo('OTPxTudX76HLA4aECqRAszesUc')} alt="Members of the GDG SRM Creatives Team" loading="lazy" decoding="async" />
+        </figure>
+        <div class="about__copy" data-stagger="110">
+          <h3 class="about__heading" data-reveal>Leading the Creatives Team</h3>
+          {gdg.points.slice(0, 2).map((p) => <p data-reveal>{p}</p>)}
+          <p data-reveal>
+            From themes, logos and mascots to posts, reels and certificates, the team covered everything that carried the
+            club’s name, and I couldn’t be more proud of their contribution.
+          </p>
+          <a class="link-arrow" href={url('/projects/events-booking-portal/')} data-reveal>Event Booking Portal case study <Icon name="arrow-right" size={16} /></a>
+        </div>
+      </div>
+
+      <article class="lead-card lead-card--compact" data-reveal="rise">
+        <header class="lead-card__head">
+          <p class="lead-card__org"><Icon name="users" size={18} /> {tedx.org}, {tedx.location}</p>
+          <ul class="lead-card__roles">
+            {tedx.roles.map((r) => <li>{r.title} <span>{r.dates}</span></li>)}
+          </ul>
+        </header>
+        <ul class="metrics">
+          <li class="metric"><span class="metric__value">300+</span><span class="metric__label">attendees</span></li>
+          <li class="metric"><span class="metric__value">10+</span><span class="metric__label">vendors managed</span></li>
+        </ul>
+        <ul class="xp-role__points">
+          {tedx.points.map((p) => <li>{p}</li>)}
+        </ul>
+      </article>
     </section>
 
     <hr class="about__divider" data-reveal="line" />
 
-    <section class="about__block about__split" aria-labelledby="creatives-title">
-      <figure class="about__photo" data-reveal="rise">
-        <img src={photo('OTPxTudX76HLA4aECqRAszesUc')} alt="Members of the GDSC SRM Creatives Team" loading="lazy" decoding="async" />
-      </figure>
-      <div class="about__copy" data-stagger="110">
-        <h2 id="creatives-title" class="about__heading" data-reveal>We announce the new associates for the Creatives Team at GDSC</h2>
-        <p data-reveal>
-          We’re a small design team, and over the past few months, considerable effort was invested in designing various
-          themes, logos, mascots, posts and reels etc. into promoting events, resolving queries’ stories or be it
-          certificates for attendees, we’ve covered everything that has the club’s name printed on it, and I couldn’t be
-          more proud of my dear members for their contribution!
-        </p>
+    <!-- Skills and education -->
+    <section class="about__block" aria-labelledby="skills-title">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow" data-reveal>Skills and education</p>
+          <h2 id="skills-title" class="section-intro__title" data-reveal="blur">Research, design and build</h2>
+        </div>
+      </div>
+      <div class="skills-edu">
+        <SkillsTabs />
+        <Education />
       </div>
     </section>
 
     <hr class="about__divider" data-reveal="line" />
 
-    <section class="about__block" aria-labelledby="experience-title">
-      <p id="experience-title" class="eyebrow" data-reveal>Experience</p>
-      <ol class="xp">
+    <!-- Recognition -->
+    <section class="about__block" aria-labelledby="recognition-title">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow" data-reveal>Recognition</p>
+          <h2 id="recognition-title" class="section-intro__title" data-reveal="blur">Achievements and certifications</h2>
+        </div>
+      </div>
+      <ul class="awards" data-stagger="90">
         {
-          experience.map((x) => (
-            <li class="xp__row">
-              <h3 class="xp__company" data-reveal="left">
-                {x.company}
-              </h3>
-              <div class="xp__detail">
-                <p class="xp__role" data-reveal>
-                  {x.role}
-                </p>
-                <p class="xp__dates" data-reveal>
-                  {x.dates}
-                </p>
-                <ul class="xp__points" data-stagger="60">
-                  {x.points.map((p) => (
-                    <li data-reveal>{p}</li>
-                  ))}
-                </ul>
-              </div>
+          achievements.map((a) => (
+            <li class="award" data-reveal="pop">
+              <span class="award__icon"><Icon name={a.place === 'Scholarship' ? 'medal' : 'trophy'} size={20} /></span>
+              <span class="award__place">{a.place}</span>
+              <span class="award__title">{a.title}</span>
+              <span class="award__by">{a.by}</span>
             </li>
           ))
         }
-      </ol>
+      </ul>
+      <ul class="certs" data-stagger="70">
+        {
+          certifications.map((c) => (
+            <li class="cert" data-reveal="left">
+              <Icon name="certificate" size={18} class="cert__icon" />
+              <span class="cert__name">{c.name}</span>
+              <span class="cert__issuer">{c.issuer}</span>
+              <span class="cert__date">{c.date}</span>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
     <hr class="about__divider" data-reveal="line" />

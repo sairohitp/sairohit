@@ -4,15 +4,16 @@
  */
 export const site = {
   name: 'Sai Rohit',
-  title: 'Sai Rohit | Visual Interface Designer',
+  title: 'Sai Rohit | Product Designer',
   description:
-    'Portfolio of Sai Rohit, a visual interface designer and product experience researcher designing responsive apps from wireframes to high-fidelity prototypes.',
+    'Sai Rohit is a product designer in Bengaluru who designs data-heavy products in Figma and builds them in React.',
 
   resume: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing',
 
   nav: [
-    { label: 'Resume', href: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing' },
+    { label: 'Work', href: '/#work' },
     { label: 'About', href: '/about/' },
+    { label: 'Resume', href: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing' },
   ],
 
   social: [

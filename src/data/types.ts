@@ -135,8 +135,10 @@ export interface Project {
   org?: string;
   /** e.g. "June '23". Shown on the case study page only. */
   period?: string;
-  /** Hint for the placeholder cover. */
+  /** Used for the work filter and the card tags. */
   platform: 'web' | 'mobile';
+  /** Extra tags shown on the card, e.g. "Enterprise". */
+  tags?: string[];
   /** Image on the home page card. */
   thumbnail?: Media;
   /** Link to the Figma file, shown as a button on the case study. */

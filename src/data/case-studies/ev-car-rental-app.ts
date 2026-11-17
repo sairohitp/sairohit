@@ -5,12 +5,12 @@ export const evCarRentalApp: CaseStudy = {
   cover: img('pluto-hero', 'Hero mockup: Pluto EV rental app screens on a light canvas'),
   sections: [
     overview({
-      role: 'Design Intern: user flows, interaction design, visual design',
-      timeline: 'Internship project, delivered as a high-fidelity iOS prototype',
+      role: 'UI/UX Design Intern: information architecture, core navigation flows, visual identity',
+      timeline: 'April to May 2022, remote',
       overview: [
-        'Pluto is an electric vehicle rental app with two sides: owners list their Plutos and earn from every rental, and riders find, reserve and unlock a vehicle nearby.',
-        'I designed both journeys, from pairing a new vehicle to locking it at the end of a ride, along with an earnings dashboard for owners.',
-        'The interface is built around maps, live vehicle status and a single red accent for every key action.',
+        'Pluto is an electric vehicle rental app with two sides: vehicle owners list their Plutos and earn from every rental, and riders find, compare and book a vehicle nearby.',
+        'I led the foundational UX design, defining the information architecture, core navigation flows and visual identity for both sides of the platform.',
+        'Vehicle search and comparison are built around what renters care about most, showing range, charge level and total trip cost up front, with booking and in-trip flows that include a charging-station map.',
       ],
     }),
     highlightsSection(
@@ -49,7 +49,7 @@ export const evCarRentalApp: CaseStudy = {
       challenge('Make handing a vehicle to a stranger feel as safe and simple as a single tap.'),
       text('North Star design principles:', [], {
         cards: [
-          card('Status at a glance', 'Battery, range and parking status on every vehicle.', 'target'),
+          card('What renters care about', 'Range, charge level and total trip cost, up front.', 'target'),
           card('Map first', 'Riders start from where they are, not from a list.', 'cursor-click'),
           card('Safe by the end', 'Every ride ends with an unmistakable lock action.', 'key'),
         ],
@@ -77,7 +77,7 @@ export const evCarRentalApp: CaseStudy = {
       grid([
         card('Radar pairing', 'Nearby vehicles appear around the phone.', 'target'),
         card('QR fallback', 'Scan to pair when proximity is not enough.', 'cursor-click'),
-        card('Live range', 'Charge and range stay visible during a ride.', 'lightbulb'),
+        card('Charging-station map', 'In-trip flows show where to charge.', 'lightbulb'),
         card('One-tap lock', 'A full-width red button secures the vehicle.', 'key'),
       ]),
     ]),

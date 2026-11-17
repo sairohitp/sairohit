@@ -5,16 +5,16 @@ export const eventsBookingPortal: CaseStudy = {
   cover: img('events-hero', 'Hero mockup: BookMyEvent portal for GDSC SRM'),
   sections: [
     overview({
-      role: 'Creatives & Photography Lead: product design, visual design',
-      timeline: 'Designed during my 2023 to 2024 tenure at GDSC SRM',
+      role: 'Creatives & Photography Team Lead: designed the club’s Event Booking Portal as high-fidelity Figma screens',
+      timeline: 'Google Developer Group, SRM IST: Team Lead from September 2023 to September 2024',
       overview: [
-        'BookMyEvent is a full-fledged, responsive events portal designed for GDSC SRM and open to every organisation that runs events.',
+        'BookMyEvent is a full-fledged, responsive events portal designed for Google Developer Group at SRM, and open to every organisation that runs events.',
         'I designed the web application, from the chapter page with upcoming and previous events to filtering, registration and a dashboard.',
         'It brings event discovery and sign-ups, which usually happen across forms and social posts, into one branded place.',
       ],
     }),
     highlightsSection(
-      highlights('A responsive events portal for GDSC SRM, open to every organisation.', {
+      highlights('A responsive events portal for GDG SRM, open to every organisation.', {
         exhibits: [prototype('events'), { media: img('events-a', 'Chapter header with GDSC SRM team photo'), caption: cap('0.1', 'Screen', 'Chapter page header') }],
       }),
     ),
@@ -103,7 +103,7 @@ export const eventsBookingPortal: CaseStudy = {
     ]),
     section('retrospective', 'Retrospective', 'Designing for a community.', [
       text('Looking back.', [
-        'Leading the creative outflow of a 20-person team taught me that a portal like this is as much about consistency as it is about features. Every event looks and works the same way, which makes the next one easier to run.',
+        'Leading visual design for a 25+ member team taught me that a portal like this is as much about consistency as it is about features. Every event looks and works the same way, which makes the next one easier to run.',
       ]),
       text('Project Takeaways:', [], {
         cards: [
