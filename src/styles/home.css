@@ -697,8 +697,15 @@
 
 @media (min-width: 1024px) {
   .page--wide .work__list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
+    gap: 28px;
+  }
+
+  .page--wide .work__list .pcard {
+    padding: 30px 34px 0;
+  }
+
+  .page--wide .work__list .pcard__title {
+    font-size: 19px;
   }
 }
 
@@ -731,23 +738,14 @@
   margin-bottom: 24px;
 }
 
-/* Designed and built: three columns on large screens */
+/* Designed and built: wider visual beside the text on large screens */
 @media (min-width: 1024px) {
-  .page--wide .built__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-  }
-
   .page--wide .built-card {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 400px 1fr;
   }
 
-  .page--wide .built-card__visual {
-    height: 210px;
-    min-height: 0;
-    border-right: 0;
-    border-bottom: 1px solid var(--border);
+  .page--wide .built-card__body {
+    padding: 28px 32px 30px;
   }
 }
 
