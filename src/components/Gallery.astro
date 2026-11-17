@@ -4,7 +4,7 @@ import type { Media } from '../data/types';
 import { url } from '../lib/url';
 
 interface Props {
-  items: (Media & { title?: string; meta?: string; tag?: string; group?: string })[];
+  items: (Media & { title?: string; meta?: string; tag?: string; group?: string; anatomy?: string })[];
   layout?: 'grid' | 'masonry';
   name?: string;
 }
@@ -22,7 +22,8 @@ const { items, layout = 'grid', name = 'gallery' } = Astro.props;
           data-lightbox-alt={m.alt ?? ''}
           data-lightbox-caption={[m.title, m.meta].filter(Boolean).join(' · ')}
           data-index={i}
-          aria-label={`Open ${m.title ?? m.alt ?? 'image'}`}
+          data-anatomy={m.anatomy}
+          aria-label={`Open ${m.title ?? m.alt ?? 'image'}${m.anatomy ? ' and what is inside its Figma file' : ''}`}
         >
           <img src={url(m.src!)} alt={m.alt ?? ''} loading="lazy" decoding="async" style={m.ratio ? `aspect-ratio: ${m.ratio}` : undefined} />
           {m.tag && <span class="gallery__tag">{m.tag}</span>}

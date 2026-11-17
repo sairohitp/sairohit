@@ -380,8 +380,13 @@ function initLightbox() {
   if (!dialog) return;
   const img = dialog.querySelector<HTMLImageElement>('[data-lightbox-img]')!;
   const cap = dialog.querySelector<HTMLElement>('[data-lightbox-cap]')!;
+  const panel = dialog.querySelector<HTMLElement>('[data-lightbox-panel]')!;
   let set: HTMLElement[] = [];
   let index = 0;
+  // Size the image from its own proportions, so small previews scale up to fill the viewer.
+  img.addEventListener('load', () => {
+    if (img.naturalWidth && img.naturalHeight) img.style.setProperty('--r', String(img.naturalWidth / img.naturalHeight));
+  });
   const show = (i: number) => {
     index = (i + set.length) % set.length;
     const b = set[index];
@@ -391,6 +396,19 @@ function initLightbox() {
     img.src = b.dataset.lightboxSrc ?? '';
     img.alt = b.dataset.lightboxAlt ?? '';
     cap.textContent = [b.dataset.lightboxCaption, set.length > 1 ? `${index + 1} / ${set.length}` : ''].filter(Boolean).join('  ·  ');
+    // Tiles on the Visual page carry their own file details; show them beside the image.
+    const tpl = b.dataset.anatomy ? document.getElementById(b.dataset.anatomy) : null;
+    panel.replaceChildren();
+    if (tpl instanceof HTMLTemplateElement) {
+      panel.append(tpl.content.cloneNode(true));
+      panel.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-in'));
+      panel.scrollTop = 0;
+      panel.hidden = false;
+      dialog.classList.add('has-panel');
+    } else {
+      panel.hidden = true;
+      dialog.classList.remove('has-panel');
+    }
   };
   document.addEventListener('click', (e) => {
     const btn = (e.target as HTMLElement).closest<HTMLElement>('[data-lightbox-src]');
@@ -399,19 +417,23 @@ function initLightbox() {
     set = Array.from(scope.querySelectorAll<HTMLElement>('[data-lightbox-src]')).filter((b) => b.offsetParent !== null);
     show(Math.max(0, set.indexOf(btn)));
     dialog.showModal();
+    dialog.scrollTop = 0;
   });
   dialog.querySelector('[data-lightbox-close]')?.addEventListener('click', () => dialog.close());
   dialog.querySelector('[data-lightbox-prev]')?.addEventListener('click', () => show(index - 1));
   dialog.querySelector('[data-lightbox-next]')?.addEventListener('click', () => show(index + 1));
   dialog.addEventListener('click', (e) => {
-    if (e.target === dialog) dialog.close();
+    const t = e.target as HTMLElement;
+    if (t === dialog || t.classList.contains('lightbox__layout') || t.classList.contains('lightbox__figure')) dialog.close();
   });
   dialog.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') show(index + 1);
     if (e.key === 'ArrowLeft') show(index - 1);
   });
   let startX: number | null = null;
-  dialog.addEventListener('pointerdown', (e) => (startX = e.clientX));
+  dialog.addEventListener('pointerdown', (e) => {
+    startX = (e.target as HTMLElement).closest('.lightbox__panel') ? null : e.clientX;
+  });
   dialog.addEventListener('pointerup', (e) => {
     if (startX !== null && Math.abs(e.clientX - startX) > 50) show(index + (e.clientX < startX ? 1 : -1));
     startX = null;

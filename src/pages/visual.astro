@@ -75,16 +75,14 @@ const meta = (i: (typeof allItems)[number]) =>
           layout="masonry"
           items={c.items.map((i) => {
             const img = visualImages(i.slug)[0];
-            return { src: img.src, alt: `${i.title} design`, title: i.title, meta: meta(i), tag: i.team ? 'With the team' : undefined };
+            return { src: img.src, alt: `${i.title} design`, title: i.title, meta: meta(i), tag: i.team ? 'With the team' : undefined, anatomy: `anat-${i.slug}` };
           })}
         />
-        <details class="campaign__files" data-reveal>
-          <summary>
-            <Icon name="figma" size={16} /> Inside the {c.items.length} Figma {c.items.length === 1 ? 'file' : 'files'}
-            <span>Pages, frames, typefaces, colours and components</span>
-          </summary>
-          <FileAnatomy files={c.items.flatMap((i) => filesFor('visual', i.slug))} compact />
-        </details>
+        {c.items.map((i) => (
+          <template id={`anat-${i.slug}`}>
+            <FileAnatomy files={filesFor('visual', i.slug)} />
+          </template>
+        ))}
       </section>
     ))
   }

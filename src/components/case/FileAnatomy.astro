@@ -96,8 +96,11 @@ const plural = (n: number, one: string, many = `${one}s`) => `${n.toLocaleString
                     {f.fonts.map((ft) => (
                       <li>
                         <span class="fig-fonts__sample" style={`font-family: '${ft.family}', var(--font)`}>Aa</span>
-                        <span class="fig-fonts__name">{ft.family}</span>
-                        <span class="fig-fonts__styles">{ft.styles.join(', ')} · {fmt(ft.count)} layers</span>
+                        <span class="fig-fonts__name">{/[a-z]/i.test(ft.family) ? ft.family : 'Unnamed typeface'}</span>
+                        <span class="fig-fonts__styles">
+                          {/[a-z]/i.test(ft.family) ? `${ft.styles.join(', ')} · ` : 'name not saved in the file · '}
+                          {fmt(ft.count)} {ft.count === 1 ? 'layer' : 'layers'}
+                        </span>
                       </li>
                     ))}
                   </ul>
