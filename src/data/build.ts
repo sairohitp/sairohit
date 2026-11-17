@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Block, Card, Caption, Exhibit, FlowStep, Media, Section, Stat, Swatch, TreeGroup } from './types';
 
@@ -173,4 +173,42 @@ export function structure(key: string, alt: string, captionText: string, crop = 
     img(`${key}-${crop}`, alt),
     cap('4.0', 'Structure', captionText),
   );
+}
+
+/* ---------------------------------------------------------------
+   FAQs, goals and auto-discovered screen galleries
+   --------------------------------------------------------------- */
+
+export const faq = (items: { q: string; a: string }[]): Block => ({ type: 'faq', items });
+
+const SDG: Record<number, [string, string]> = {
+  3: ['Good Health and Well-being', '#4C9F38'],
+  9: ['Industry, Innovation and Infrastructure', '#FD6925'],
+  11: ['Sustainable Cities and Communities', '#FD9D24'],
+  12: ['Responsible Consumption and Production', '#BF8B2E'],
+  13: ['Climate Action', '#3F7E44'],
+  15: ['Life on Land', '#56C02B'],
+};
+
+export const sdgs = (numbers: number[], caption?: Caption): Block => ({
+  type: 'goals',
+  items: numbers.map((n) => ({ number: n, name: SDG[n][0], color: SDG[n][1] })),
+  caption,
+});
+
+/**
+ * Every file named public/images/projects/<key>-screen-*.{png,jpg,webp} becomes part of a gallery.
+ * Export screens with that naming (see docs/EXPORTS.md) and they appear automatically.
+ */
+export function moreScreens(key: string, number: string): Block | null {
+  const dir = join(PUBLIC, 'images/projects');
+  const names = readdirSync(dir)
+    .filter((f) => f.startsWith(`${key}-screen-`) && /\.(png|jpe?g|webp)$/i.test(f))
+    .map((f) => f.replace(/\.(png|jpe?g|webp)$/i, ''));
+  const unique = [...new Set(names)].sort();
+  if (!unique.length) return null;
+  const items = unique
+    .map((n) => maybeImg(n, n.replace(`${key}-screen-`, '').replace(/-/g, ' ')))
+    .filter(Boolean) as Media[];
+  return { type: 'gallery', items, caption: cap(number, 'Screens', `${items.length} screens from the final design`) };
 }

@@ -1,4 +1,4 @@
-import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, faq, moreScreens, pair, sdgs, stats, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const eventsBookingPortal: CaseStudy = {
@@ -61,6 +61,10 @@ export const eventsBookingPortal: CaseStudy = {
         'A visitor signs in with Google, narrows events with filters and registers from the event card or the event page. After the event, attendees receive a certificate they can download and share.',
       ]),
       flow(['Sign in with Google', 'Filter events', 'Event page', 'Register', 'Certificate'], cap('3.0', 'Diagram', 'Booking flow')),
+      text('The flow plan, from the wireframes.', [
+        'My wireframe page mapped the whole product before any pixels: sign-up, then the main app and menu; an events gallery leading to an event info page with the certificate, an authenticity message and share options; a new-event flow through registration, RSVP and confirmation; and a dashboard with upcoming events, past events, settings and contact.',
+      ]),
+      flow(['New event', 'Register', 'RSVP', 'Confirmation'], cap('3.1', 'Diagram', 'Event creation and RSVP, from the flow plan')),
       wireframes('events'),
     ]),
     section('layout', 'Layout', 'Filters on the left, events on the right.', [
@@ -100,6 +104,15 @@ export const eventsBookingPortal: CaseStudy = {
     section('final-designs', 'Final Designs', 'The chapter page, in full.', [
       text('One page for every event.', ['Header, about, filters, upcoming events and previous events come together in one responsive page.']),
       exhibit(board('events', 'BookMyEvent chapter page'), cap('7.0', 'Animated view', 'Chapter page')),
+      text('Every screen size, both themes.', [
+        'The high-fidelity designs cover web in dark and light themes, tablet in portrait and landscape, and mobile, plus alerts, the account flow, the create-event flow, feedback screens and a minimised chatbot.',
+        'Even the type scale was worked out on the wireframes: 22 ÷ 2 × 1.5 = 16.5, rounded to a 16 px body size.',
+      ]),
+      pair([
+        { media: img('events-node', 'Code with Node 2.0 key visual'), caption: cap('7.1', 'Design', 'Event visual: Code with Node 2.0') },
+        { media: img('events-studyjam', 'Google Cloud Study Jam key visual'), caption: cap('7.2', 'Design', 'Event visual: Google Cloud Study Jam') },
+      ]),
+      moreScreens('events', '7.3'),
     ]),
     section('retrospective', 'Retrospective', 'Designing for a community.', [
       text('Looking back.', [
@@ -113,6 +126,11 @@ export const eventsBookingPortal: CaseStudy = {
           card('Responsive from the start', 'Students arrive from phones first.', 'sparkle'),
         ],
       }),
+      faq([
+        { q: 'Who could use the portal?', a: 'It was designed for GDG SRM and open to every organisation that runs events.' },
+        { q: 'What happens after an event?', a: 'Attendees can download a certificate, check its authenticity and share it from the event page.' },
+        { q: 'Where are the event visuals?', a: 'The Visual design page collects every campaign, from Code with Node 2.0 to the Google Cloud Study Jam.' },
+      ]),
     ]),
   ],
 };

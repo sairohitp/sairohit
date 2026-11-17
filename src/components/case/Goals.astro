@@ -1,0 +1,23 @@
+---
+import type { Caption as CaptionT } from '../../data/types';
+import Caption from './Caption.astro';
+interface Props {
+  items: { number: number; name: string; color: string }[];
+  caption?: CaptionT;
+}
+const { items, caption } = Astro.props;
+---
+
+<figure class="diagram goals" data-reveal="fade">
+  <ul class="goals__list">
+    {
+      items.map((g, i) => (
+        <li class="goal" style={`--c: ${g.color}; --i: ${i}`}>
+          <span class="goal__num">{g.number}</span>
+          <span class="goal__name">{g.name}</span>
+        </li>
+      ))
+    }
+  </ul>
+  {caption && <Caption caption={caption} />}
+</figure>

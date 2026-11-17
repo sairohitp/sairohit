@@ -1,4 +1,4 @@
-import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, faq, moreScreens, pair, sdgs, stats, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 // Sources: resume (Apple Developer Program) and the screens on the live site.
@@ -7,7 +7,7 @@ export const recycleAndDonateApp: CaseStudy = {
   sections: [
     overview({
       role: 'Designer and iOS developer: user research, information architecture, prototyping, accessibility',
-      team: ['Agile team across design, development, testing and product'],
+      team: ['Apple Developer Program: Abeer Mathur, Rishi Charray', 'Google Solution Challenge: Aman Agrawal'],
       timeline: 'Apple Developer Program, May 2023 to March 2024 (Chennai and Mysuru), followed by an iOS internship in April 2024',
       overview: [
         'Greenwealth is a Recycle and Donate app: people list an item, choose whether to recycle or donate it, and schedule a pickup, earning eco-points along the way.',
@@ -40,7 +40,7 @@ export const recycleAndDonateApp: CaseStudy = {
     section('the-problem', 'The Problem', 'Recycling asked for effort and gave little back.', [
       text(
         'What the research prioritised.',
-        ['Each barrier was small on its own. Together, they were enough to keep old goods in the cupboard.'],
+        ['The problem statement was simple: household recyclable waste collection is ineffective. Each barrier was small on its own; together, they kept old goods in the cupboard.'],
         {
           list: [
             item('database', 'No easy way to know what an item is worth, or where it should go.'),
@@ -94,6 +94,15 @@ export const recycleAndDonateApp: CaseStudy = {
         card('Instant estimate', 'See the expected price before proceeding.', 'lightbulb'),
       ]),
     ]),
+    section('solution-challenge', 'Solution Challenge', 'Taking Greenwealth to the Google Solution Challenge.', [
+      text('Sell and donate, for the planet.', [
+        'As team Greenwealth with Aman Agrawal, both of us pre-final-year computer science students at SRM, we extended the app for the Google Solution Challenge: sell and donate old goods, and earn money, rewards and eco-points.',
+        'The prototype added Recycling 101 guides, community stories about clean-up drives, more waste categories (paper, plastic, metal, furniture, electronics, clothes or your own), detailed pickup addresses, a slot picker, order history, FAQs and support.',
+      ]),
+      sdgs([11, 12, 13, 15], cap('6.0', 'Goals', 'UN Sustainable Development Goals the solution addresses')),
+      text('Two apps, one loop.', ['A user app for households, and a collector app where collectors see open requests nearby and accept them.']),
+      exhibit(img('recycle-solution', 'Welcome screen and collector app open requests'), cap('6.1', 'Screens', 'Welcome and the collector app')),
+    ]),
     section('visual-design', 'Visual Design', 'Fresh, friendly and green.', [
       text('Colour that rewards.', [
         'Green signals progress and every primary action, yellow is saved for rewards and achievements, and a soft grey background keeps cards easy to scan.',
@@ -105,12 +114,21 @@ export const recycleAndDonateApp: CaseStudy = {
           { name: 'Background', hex: '#F2F3F8' },
           { name: 'Ink', hex: '#000000' },
         ],
-        cap('6.0', 'Palette', 'Colours sampled from the final screens'),
+        cap('7.0', 'Palette', 'Colours sampled from the final screens'),
       ),
     ]),
     section('final-designs', 'Final Designs', 'The complete screen set.', [
       text('Every step of the journey.', ['The final set covers onboarding, dashboard, new orders, ongoing orders, leaderboard, feedback, help and past orders.']),
-      exhibit(board('recycle', 'Full Greenwealth screen set'), cap('7.0', 'Animated view', 'Full screen set')),
+      exhibit(board('recycle', 'Full Greenwealth screen set'), cap('8.0', 'Animated view', 'Full screen set')),
+      moreScreens('recycle', '8.1'),
+      text('Tech stack:', [], {
+        cards: [
+          card('SwiftUI', 'The iOS app.', 'sparkle'),
+          card('MapKit', 'Tracking pickups.', 'target'),
+          card('Firebase', 'Data storage.', 'database'),
+          card('Supabase', 'Backend logic.', 'check-circle'),
+        ],
+      }),
     ]),
     section('retrospective', 'Retrospective', 'Design and build, side by side.', [
       text('Looking back.', [
@@ -124,6 +142,11 @@ export const recycleAndDonateApp: CaseStudy = {
           card('Build what you design', 'Working from SRS documents kept design honest.', 'lightbulb'),
         ],
       }),
+      faq([
+        { q: 'Why are there two versions?', a: 'Greenwealth started in the Apple Developer Program with Abeer Mathur and Rishi Charray, as a user app and a collector app. With Aman Agrawal, I then extended it for the Google Solution Challenge, mapped to UN Sustainable Development Goals 11, 12, 13 and 15.' },
+        { q: 'What was it built with?', a: 'SwiftUI for the app, MapKit for tracking pickups, Firebase for data storage and Supabase for backend logic.' },
+        { q: 'How was accessibility handled?', a: 'The prototype followed Apple’s Human Interface Guidelines, with Dynamic Type, VoiceOver labels and colour contrast checked against accessibility standards.' },
+      ]),
     ]),
   ],
 };

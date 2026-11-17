@@ -107,7 +107,13 @@ export type Block =
   /** Animated counters. */
   | { type: 'stats'; items: Stat[] }
   /** Drag-to-compare: base image on the left, top image on the right. */
-  | { type: 'compare'; base: Media; top: Media; caption?: Caption };
+  | { type: 'compare'; base: Media; top: Media; caption?: Caption }
+  /** Frequently asked questions, rendered as an accordion. */
+  | { type: 'faq'; items: { q: string; a: string }[] }
+  /** Coloured goal tiles, e.g. UN Sustainable Development Goals. */
+  | { type: 'goals'; items: { number: number; name: string; color: string }[]; caption?: Caption }
+  /** Image grid with a lightbox. */
+  | { type: 'gallery'; items: Media[]; caption?: Caption };
 
 export interface Section {
   /** Anchor id used by the contents list. */

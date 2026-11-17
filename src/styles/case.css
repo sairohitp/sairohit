@@ -58,7 +58,7 @@
   transform: translateY(-2px);
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1400px) {
   .cs {
     display: grid;
     grid-template-columns: 1fr min(var(--container), 100% - 2 * var(--gutter)) 1fr;
@@ -83,12 +83,12 @@
 
   .cs__left {
     justify-self: end;
-    padding-right: 48px;
+    padding-right: 32px;
   }
 
   .cs__right {
     justify-self: start;
-    padding-left: 48px;
+    padding-left: 32px;
   }
 
   .back-pill--inline {

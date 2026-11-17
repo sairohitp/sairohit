@@ -1,4 +1,4 @@
-import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, faq, moreScreens, pair, sdgs, stats, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 // Sources: resume (TrainingMug) and the project's Figma file.
@@ -21,7 +21,7 @@ export const learningManagementSystem: CaseStudy = {
         stats: [
           { value: 4, label: 'Core learner journeys' },
           { value: 3, label: 'Breakpoints: desktop, tablet, mobile' },
-          { value: 2, suffix: '', label: 'Years designing the product' },
+          { value: 220, suffix: '+', label: 'Admin and learner frames in Figma' },
         ],
       }),
     ),
@@ -83,7 +83,17 @@ export const learningManagementSystem: CaseStudy = {
       text('State management and interface transparency.', [
         'I designed complex features around clear states, so every action shows what happened and what comes next: confirmations before publishing, alerts when a request is sent for approval, and readable errors at sign-in.',
       ]),
-      exhibit(img('learning-b', 'Table detail with chapters, owners and timestamps'), cap('5.0', 'Screen', 'Ownership and timestamps')),
+      exhibit(img('learning-courses', 'Admin console: courses with tech stack, owner and dates'), cap('5.0', 'Screen', 'Admin console: courses')),
+      text('Everything a course team creates.', [
+        'Courses, chapters, topics, quizzes, coding exercises, capstones, instructors and teams each have create, edit and delete flows. Drafts move through approval, with emails for approval requests, rejections and account confirmation.',
+      ]),
+      text('The learner side.', [
+        'Learners move between courses, quizzes, coding exercises and capstone projects. Coding exercises include custom input, hints, test cases, a run screen, solutions and a submission history; capstones run from problem statement to submission and a report.',
+        'Completed courses lead to a certificate with a public verification page.',
+      ]),
+      exhibit(img('learning-dashboard', 'Learner dashboard with exercise progress'), cap('5.1', 'Screen', 'Learner dashboard')),
+      exhibit(img('learning-submissions', 'Coding exercise submissions with scores beside the code'), cap('5.2', 'Screen', 'Coding exercise submissions')),
+      exhibit(img('learning-leaderboard', 'Exercise leaderboard with score, rank and time taken'), cap('5.3', 'Screen', 'Exercise leaderboard')),
       grid([
         card('Create menu', 'Start a course, chapter or topic from one Create button.', 'cursor-click'),
         card('Publish confirmation', 'A clear prompt before a course goes live.', 'sparkle'),
@@ -112,6 +122,7 @@ export const learningManagementSystem: CaseStudy = {
         'I reviewed built screens with engineers against the designs, so what shipped matched what was designed.',
       ]),
       exhibit(board('learning', 'TrainingMug admin console'), cap('7.0', 'Animated view', 'Admin console')),
+      moreScreens('learning', '7.1'),
     ]),
     section('retrospective', 'Retrospective', 'Clarity is a system, not a screen.', [
       text('Looking back.', [
@@ -125,6 +136,11 @@ export const learningManagementSystem: CaseStudy = {
           card('Review the build', 'Design QA with engineers closes gaps before release.', 'target'),
         ],
       }),
+      faq([
+        { q: 'What could learners do on the platform?', a: 'Discover and enrol in courses, take quizzes, solve coding exercises with test cases and hints, submit capstone projects, track progress in reports and earn certificates with a public verification page.' },
+        { q: 'What did the admin side cover?', a: 'Creating and managing courses, chapters, topics, quizzes, coding exercises, capstones, instructors and teams, with an approval workflow and email notifications.' },
+        { q: 'How did you work with engineering?', a: 'I reviewed built screens with engineers against the designs to close gaps before release.' },
+      ]),
     ]),
   ],
 };

@@ -1,0 +1,28 @@
+---
+import { explorations } from '../../data/projects';
+import { url } from '../../lib/url';
+---
+
+<section class="explorations container" aria-labelledby="explorations-title">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow" data-reveal>Explorations</p>
+      <h2 id="explorations-title" class="section-intro__title" data-reveal="blur">Concepts in the making</h2>
+    </div>
+    <p class="section-intro__text" data-reveal>Ideas that live in Figma and are on their way to becoming full case studies.</p>
+  </div>
+  <ul class="explorations__grid" data-stagger="100">
+    {
+      explorations.map((e) => (
+        <li class="exploration" data-reveal="rise">
+          <img src={url(e.image)} alt={`${e.title} preview`} loading="lazy" decoding="async" />
+          <div>
+            <h3>{e.title}</h3>
+            <p>{e.description}</p>
+            <ul class="chips">{e.tags.map((t) => <li class="chip">{t}</li>)}</ul>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

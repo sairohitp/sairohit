@@ -1,4 +1,4 @@
-import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, faq, moreScreens, pair, sdgs, stats, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 // Sources: the project's Figma file (Readme, High Fidelity, Presentation pages).
@@ -99,6 +99,7 @@ export const customerRelationshipManagement: CaseStudy = {
     section('final-designs', 'Final Designs', 'The complete screen set.', [
       text('Built for the whole queue.', ['The final set covers onboarding, dashboard, customers, profiles, conversations, attachments and ticket history.']),
       exhibit(board('crm', 'Full connectwise screen set'), cap('7.0', 'Animated view', 'Full screen set')),
+      moreScreens('crm', '7.1'),
       text('Proposed tech stack:', [], {
         cards: [
           card('ETL', 'Data integration across customer channels.', 'database'),
@@ -121,6 +122,11 @@ export const customerRelationshipManagement: CaseStudy = {
           card('Trust needs security', 'Secure file handling is part of the experience.', 'key'),
         ],
       }),
+      faq([
+        { q: 'Was this a team project?', a: 'Yes, with Team Wireshark: Aman Agrawal, Shahid Ahamed, Kanishk Kumar and me.' },
+        { q: 'What was the brief?', a: 'A Digital Box that stores every customer communication, supports two-way conversations about complaints and queries, and handles documents securely for each customer.' },
+        { q: 'What was the proposed stack?', a: 'ETL for data integration, Firebase for storage, open-source encryption, QlikView ML for analytics and Flutter for the app.' },
+      ]),
     ]),
   ],
 };

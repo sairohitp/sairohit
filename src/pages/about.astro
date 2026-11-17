@@ -6,6 +6,7 @@ import CareerTimeline from '../components/about/CareerTimeline.astro';
 import ExperienceList from '../components/about/ExperienceList.astro';
 import SkillsTabs from '../components/about/SkillsTabs.astro';
 import Education from '../components/about/Education.astro';
+import Faq from '../components/case/Faq.astro';
 import { profile, leadership, certifications, achievements } from '../data/profile';
 import { site } from '../config/site';
 import { url } from '../lib/url';
@@ -146,6 +147,7 @@ const [gdg, tedx] = leadership;
             club’s name, and I couldn’t be more proud of their contribution.
           </p>
           <a class="link-arrow" href={url('/projects/events-booking-portal/')} data-reveal>Event Booking Portal case study <Icon name="arrow-right" size={16} /></a>
+          <a class="link-arrow" href={url('/visual/')} data-reveal>See the team’s campaigns <Icon name="arrow-right" size={16} /></a>
         </div>
       </div>
 
@@ -216,6 +218,21 @@ const [gdg, tedx] = leadership;
           ))
         }
       </ul>
+    </section>
+
+    <hr class="about__divider" data-reveal="line" />
+
+    <section class="about__block" aria-label="Questions">
+      <Faq
+        title="Frequently asked"
+        items={[
+          { q: 'What kind of work are you looking for?', a: 'Product design for data platforms that operations teams rely on daily, where research, design and building in code all matter.' },
+          { q: 'Do you code?', a: 'Yes. I build my own projects in React, TypeScript and Tailwind CSS, such as OrgGrid, FundLookup and Handl, and I am comfortable with HTML, CSS, JavaScript, SQL, Python and Node.js.' },
+          { q: 'How do you approach research?', a: 'Through stakeholder and user interviews, workflow mapping, competitive analysis and usability studies, then turning findings into personas, journey maps and prioritised problems.' },
+          { q: 'Which tools do you use?', a: 'Figma at an advanced level for prototyping, wireframing, interaction and visual design and design systems, plus Framer and Photoshop.' },
+          { q: 'Where are you based?', a: 'Bengaluru, India.' },
+        ]}
+      />
     </section>
 
     <hr class="about__divider" data-reveal="line" />

@@ -651,14 +651,19 @@
 }
 
 /* Header: four links on small screens */
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .site-header__nav {
     gap: 0;
   }
 
   .site-header__nav a {
-    padding: 0 7px;
+    padding: 0 6px;
     font-size: 14px;
+  }
+
+  /* Resume stays one tap away in the hero, contact band and footer */
+  .site-header__nav li:last-child {
+    display: none;
   }
 }
 

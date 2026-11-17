@@ -12,6 +12,7 @@ export const site = {
 
   nav: [
     { label: 'Work', href: '/#work' },
+    { label: 'Visual', href: '/visual/' },
     { label: 'About', href: '/about/' },
     { label: 'Blog', href: '/blog/' },
     { label: 'Resume', href: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing' },
@@ -30,6 +31,7 @@ export const site = {
         { label: 'Blog', href: '/blog/', external: false },
         { label: 'About', href: '/about/', external: false },
         { label: 'Work', href: '/#work', external: false },
+        { label: 'Visual design', href: '/visual/', external: false },
       ],
     },
     {

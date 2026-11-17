@@ -10,6 +10,10 @@ import { projects, pageSubtitle, nextProject } from '../../data/projects';
 import type { Project } from '../../data/types';
 import { site } from '../../config/site';
 import { url } from '../../lib/url';
+import PostCard from '../../components/blog/PostCard.astro';
+import { getPosts } from '../../lib/blog';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 
 export function getStaticPaths() {
   return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
@@ -23,12 +27,15 @@ const { project } = Astro.props;
 const { cover, sections } = project.caseStudy;
 const next = nextProject(project);
 const subtitle = pageSubtitle(project);
+const related = (await getPosts()).filter((p) => p.data.related === project.slug);
+const og = existsSync(join(process.cwd(), 'public/og', `${project.slug}.jpg`)) ? `/og/${project.slug}.jpg` : undefined;
+const visualLink = ['events-booking-portal', 'event-registration', 'gdsc-srm-web-and-brand'].includes(project.slug);
 const firstOverview = sections.find((s) => s.blocks[0]?.type === 'meta')?.blocks[0];
 const description =
   firstOverview && firstOverview.type === 'meta' ? firstOverview.overview[0] : `${project.title}: ${subtitle}.`;
 ---
 
-<Base title={`${project.title} | ${site.name}`} description={description} image={`/og/${project.slug}.jpg`}>
+<Base title={`${project.title} | ${site.name}`} description={description} image={og} wide>
   <div class="progress" aria-hidden="true"><span data-progress></span></div>
   <div class="cs">
     <aside class="cs__left">
@@ -81,6 +88,27 @@ const description =
             </div>
           </section>
         ))
+      }
+
+      {
+        (related.length > 0 || visualLink) && (
+          <section class="cs-related" aria-labelledby="related-title">
+            <hr class="cs-divider" data-reveal="line" />
+            <h2 id="related-title" class="cs-next__title" data-reveal="left">Related</h2>
+            <ul class="blog-grid blog-grid--two">
+              {related.map((p) => <li><PostCard post={p} /></li>)}
+              {visualLink && (
+                <li>
+                  <a class="related-visual" href={url('/visual/')} data-reveal="rise">
+                    <span class="eyebrow">Visual design</span>
+                    <span class="related-visual__title">GDG SRM campaigns, posts and certificates</span>
+                    <span class="post-card__more">See the work <Icon name="arrow-right" size={14} /></span>
+                  </a>
+                </li>
+              )}
+            </ul>
+          </section>
+        )
       }
 
       <section class="cs-next" aria-labelledby="next-title">

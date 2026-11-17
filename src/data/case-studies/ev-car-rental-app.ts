@@ -1,4 +1,4 @@
-import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, faq, moreScreens, pair, sdgs, stats, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const evCarRentalApp: CaseStudy = {
@@ -60,6 +60,8 @@ export const evCarRentalApp: CaseStudy = {
       flow(['Explore nearby', 'Reserve', 'Unlock', 'Ride', 'End and lock'], cap('3.0', 'Diagram', 'Rider journey')),
       text('The owner loop.', ['An owner pairs a vehicle once, then follows who is riding and what it earns.']),
       flow(['Pair a Pluto', 'Listed', 'Being ridden', 'Earnings'], cap('3.1', 'Diagram', 'Owner journey')),
+      text('Getting verified.', ['Before anyone pairs a vehicle or books one, sign-up walks through identity verification (KYC) and authentication.']),
+      flow(['Sign up', 'KYC', 'Authenticate', 'Pair or book', 'Confirmed'], cap('3.2', 'Diagram', 'Sign-up and verification')),
       wireframes('pluto'),
     ]),
     section('layout', 'Layout', 'Owner home, built around earnings.', [
@@ -98,6 +100,21 @@ export const evCarRentalApp: CaseStudy = {
     section('final-designs', 'Final Designs', 'The complete screen set.', [
       text('Both sides, end to end.', ['The final set covers sign up and login, owner home, pairing, explore, reservation, riding, unlocking and requests.']),
       exhibit(board('pluto', 'Full Pluto screen set'), cap('7.0', 'Animated view', 'Full screen set')),
+      moreScreens('pluto', '7.1'),
+    ]),
+    section('website', 'Website', 'A website to match the vehicle.', [
+      text('Marketing site.', [
+        'Pluto’s website introduces the vehicle with home, pricing, blog, contact and about pages, a get-started flow, and essential specifications split into dimensions, electricals and mechanicals.',
+      ]),
+      pair([
+        { media: img('pluto-vehicle', 'Pluto vehicle render'), caption: cap('8.0', 'Render', 'The Pluto vehicle') },
+        { media: img('pluto-specs', 'Essential specifications table'), caption: cap('8.1', 'Screen', 'Essential specifications') },
+      ]),
+      stats([
+        { value: 1630, suffix: ' mm', label: 'Length' },
+        { value: 1200, suffix: ' mm', label: 'Wheel base' },
+        { value: 100, suffix: ' kg', label: 'Max payload' },
+      ]),
     ]),
     section('retrospective', 'Retrospective', 'Designing for the physical world.', [
       text('Looking back.', [
@@ -111,6 +128,11 @@ export const evCarRentalApp: CaseStudy = {
           card('Safety is UX', 'A clear end-of-ride action builds trust.', 'key'),
         ],
       }),
+      faq([
+        { q: 'Who is the app for?', a: 'Both sides of the platform: vehicle owners, who list their Plutos and earn from rentals, and riders, who find, book and unlock a vehicle nearby.' },
+        { q: 'What did you define?', a: 'The information architecture, core navigation flows and visual identity for riders and owners, from sign-up with KYC to pairing, booking, riding and locking.' },
+        { q: 'Was there more than the app?', a: 'Yes. The project includes a marketing website with pricing, a blog and the vehicle’s essential specifications.' },
+      ]),
     ]),
   ],
 };

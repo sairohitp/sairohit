@@ -1,0 +1,23 @@
+---
+import Icon from '../Icon.astro';
+import Gallery from '../Gallery.astro';
+import { campaigns, visualImages } from '../../data/visual';
+import { url } from '../../lib/url';
+const picks = ['diwali-2023', 'holi-2024', 'ganesh-chaturthi-2023', 'christmas-2023', 'janmashtami-2024', 'lohri-24'];
+const items = campaigns
+  .flatMap((c) => c.items)
+  .filter((i) => picks.includes(i.slug))
+  .map((i) => ({ src: visualImages(i.slug)[0].src, alt: `${i.title} design`, title: i.title }));
+const total = campaigns.reduce((n, c) => n + c.items.length, 0);
+---
+
+<section class="visual-teaser container" aria-labelledby="visual-teaser-title">
+  <div class="section-intro">
+    <div>
+      <p class="eyebrow" data-reveal>Visual design</p>
+      <h2 id="visual-teaser-title" class="section-intro__title" data-reveal="blur">Campaigns for GDG SRM</h2>
+    </div>
+    <a class="link-arrow" href={url('/visual/')} data-reveal>All {total} design files <Icon name="arrow-right" size={16} /></a>
+  </div>
+  <Gallery items={items} name="teaser" />
+</section>

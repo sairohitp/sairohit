@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Gallery from '../components/Gallery.astro';
+import Stats from '../components/case/Stats.astro';
+import { campaigns, visualImages } from '../data/visual';
+import { site } from '../config/site';
+import { url } from '../lib/url';
+
+const allItems = campaigns.flatMap((c) => c.items);
+const finals = allItems.reduce((n, i) => n + i.finals, 0);
+const explorations = allItems.reduce((n, i) => n + i.explorations, 0);
+const keyVisuals = [
+  { src: '/images/visual/key-code-with-node.webp', alt: 'Code with Node 2.0 poster', title: 'Code with Node 2.0', meta: 'Event poster', ratio: '1 / 1' },
+  { src: '/images/visual/key-cloud-study-jam.webp', alt: 'Google Cloud Study Jam poster', title: 'Google Cloud Study Jam', meta: 'Event poster', ratio: '1 / 1' },
+  { src: '/images/visual/key-code-with-node-certificate.webp', alt: 'Code with Node 2.0 certificate', title: 'Certificate of appreciation', meta: 'Code with Node 2.0', ratio: '16 / 9' },
+  { src: '/images/visual/key-code-with-node-cover.webp', alt: 'Code with Node 2.0 event cover', title: 'Event cover', meta: 'Code with Node 2.0', ratio: '16 / 9' },
+];
+const meta = (i: (typeof allItems)[number]) =>
+  [i.formats.join(', '), i.year, `${i.finals} final${i.finals === 1 ? '' : 's'}`, i.explorations ? `${i.explorations} explorations` : ''].filter(Boolean).join(' · ');
+---
+
+<Base title={`Visual design | ${site.name}`} description="Campaigns, posts, stories, posters and certificates designed for Google Developer Student Clubs, SRM IST." wide>
+  <section class="visual-hero container" aria-labelledby="visual-title">
+    <p class="eyebrow" data-reveal>Visual design</p>
+    <h1 id="visual-title" class="blog-hero__title" data-reveal="blur">Two years of creative work for GDG SRM</h1>
+    <p class="blog-hero__text" data-reveal>
+      As Creatives and Photography Team Lead at Google Developer Group, SRM IST, I led visual design for a 25+ member team. These are
+      the campaigns we shipped: event launches, recruitment, milestones and festive greetings. Social and brand reach grew 60%.
+    </p>
+    <Stats
+      items={[
+        { value: allItems.length, label: 'Design files' },
+        { value: campaigns.length, label: 'Campaigns' },
+        { value: finals, label: 'Final designs' },
+        { value: explorations, suffix: '+', label: 'Drafts and explorations' },
+      ]}
+    />
+    <nav class="campaign-nav" aria-label="Campaigns" data-reveal="fade">
+      {campaigns.map((c) => <a class="filter" href={`#${c.id}`}>{c.title} <span class="filter__count">{c.items.length}</span></a>)}
+    </nav>
+  </section>
+
+  <section class="container visual-key" aria-labelledby="key-title">
+    <div class="section-intro">
+      <div>
+        <p class="eyebrow" data-reveal>Key visuals</p>
+        <h2 id="key-title" class="section-intro__title" data-reveal="blur">Event identities</h2>
+      </div>
+      <a class="link-arrow" href={url('/projects/events-booking-portal/')} data-reveal>Events portal case study <Icon name="arrow-right" size={16} /></a>
+    </div>
+    <Gallery items={keyVisuals} name="key" />
+  </section>
+
+  {
+    campaigns.map((c) => (
+      <section id={c.id} class="container campaign" aria-labelledby={`${c.id}-title`}>
+        <hr class="cs-divider" data-reveal="line" />
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow" data-reveal>{c.items.length} files</p>
+            <h2 id={`${c.id}-title`} class="section-intro__title" data-reveal="blur">
+              {c.title}
+            </h2>
+          </div>
+          <p class="section-intro__text campaign__text" data-reveal>
+            {c.description}
+          </p>
+        </div>
+        <Gallery
+          name={c.id}
+          layout="masonry"
+          items={c.items.map((i) => {
+            const img = visualImages(i.slug)[0];
+            return { src: img.src, alt: `${i.title} design`, title: i.title, meta: meta(i), tag: i.team ? 'With the team' : undefined };
+          })}
+        />
+      </section>
+    ))
+  }
+
+  <section class="container visual-note" data-reveal="fade">
+    <p>
+      Pieces tagged “With the team” include work by members of the Creatives team I led. Previews come from the Figma files;
+      full-resolution exports are on their way.
+    </p>
+  </section>
+</Base>

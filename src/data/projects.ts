@@ -9,6 +9,9 @@ import { placementManagementSystem } from './case-studies/placement-management-s
 import { customerRelationshipManagement } from './case-studies/customer-relationship-management';
 import { eventsBookingPortal } from './case-studies/events-booking-portal';
 import { bloodDonationApp } from './case-studies/blood-donation-app';
+import { musicStreamingApp } from './case-studies/music-streaming-app';
+import { eventRegistration } from './case-studies/event-registration';
+import { gdscWeb } from './case-studies/gdsc-web';
 
 /*
  * Projects, in the order they appear on the home page.
@@ -42,8 +45,8 @@ export const projects: Project[] = [
     title: 'Library Management System',
     role: 'Internship',
     org: 'Infosys',
-    tags: ['Enterprise'],
-    platform: 'web',
+    tags: ['Team project'],
+    platform: 'mobile',
     thumbnail: img('library-cover', 'Myshelf library app screens'),
     caseStudy: libraryManagementSystem,
   },
@@ -107,6 +110,53 @@ export const projects: Project[] = [
     platform: 'mobile',
     thumbnail: img('pulse-cover', 'PULSE blood donation app screens'),
     caseStudy: bloodDonationApp,
+  },
+  {
+    slug: 'event-registration',
+    title: 'Event Registration and Check-in',
+    role: 'Creatives Team',
+    org: 'GDSC SRM',
+    period: '2022 to 2023',
+    tags: ['Website', 'Admin app'],
+    platform: 'web',
+    thumbnail: img('registration-cover', 'GDSC SRM registration website'),
+    caseStudy: eventRegistration,
+  },
+  {
+    slug: 'gdsc-srm-web-and-brand',
+    title: 'GDSC SRM Web and Brand',
+    role: 'Creatives Team',
+    org: 'GDSC SRM',
+    period: '2022 to 2024',
+    tags: ['Website', 'Design guide'],
+    platform: 'web',
+    thumbnail: img('gdsc-cover', 'GDSC SRM design guide and event visuals'),
+    caseStudy: gdscWeb,
+  },
+  {
+    slug: 'music-streaming-app',
+    title: 'Music Streaming App',
+    role: 'Passion Project',
+    tags: ['Concept'],
+    platform: 'mobile',
+    thumbnail: img('music-cover', 'Music streaming app screens'),
+    caseStudy: musicStreamingApp,
+  },
+];
+
+/** Concepts that live in Figma but are not full case studies yet. */
+export const explorations = [
+  {
+    title: 'E-commerce Platform',
+    description: 'A marketplace redesign concept: sign-up, login and OTP, a category-rich home, an explore page with filters, and a product page with exchange and EMI options.',
+    tags: ['Web', 'Wireframes'],
+    image: '/images/visual/thumb-e-commerce-platform.webp',
+  },
+  {
+    title: 'Franchise News Co.',
+    description: 'A news website concept with a story-led home page and long-form article pages showing update times and reading time.',
+    tags: ['Web', 'Editorial'],
+    image: '/images/visual/thumb-franchise-news-co.webp',
   },
 ];
 

@@ -1,0 +1,362 @@
+Priority,Figma file,Page,Frame,Size (px),Format,Scale,Save as (public/images/...),Note
+P1,6k story.fig,Final,Instagram story 8.1,1080x1920,JPG 90%,1x,visual/6k-story.jpg,
+P1,About Node.fig,Main,1,1080x1080,JPG 90%,1x,visual/about-node.jpg,
+P1,App.fig,cover,cover,1920x1080,JPG 90%,1x,projects/pluto-cover.jpg,Replaces the generated cover
+P2,App.fig,wireframe,Login,393x852,PNG,2x,projects/pluto-screen-login.png,Joins the screen gallery
+P2,App.fig,wireframe,Signup,393x852,PNG,2x,projects/pluto-screen-signup.png,Joins the screen gallery
+P2,App.fig,wireframe,Signup (KYC),393x852,PNG,2x,projects/pluto-screen-signup-kyc.png,Joins the screen gallery
+P2,App.fig,wireframe,Signup (Auth),393x852,PNG,2x,projects/pluto-screen-signup-auth.png,Joins the screen gallery
+P2,App.fig,wireframe,Homepage,393x852,PNG,2x,projects/pluto-screen-homepage.png,Joins the screen gallery
+P2,App.fig,wireframe,Pluto Page,393x852,PNG,2x,projects/pluto-screen-pluto-page.png,Joins the screen gallery
+P2,App.fig,wireframe,Requests,393x852,PNG,2x,projects/pluto-screen-requests.png,Joins the screen gallery
+P2,App.fig,wireframe,Pair a New Pluto,393x852,PNG,2x,projects/pluto-screen-pair-a-new-pluto.png,Joins the screen gallery
+P2,App.fig,wireframe,See requests,393x852,PNG,2x,projects/pluto-screen-see-requests.png,Joins the screen gallery
+P1,App.fig,high-fidelity,Login (Auth),393x852,PNG,2x,projects/pluto-screen-login-auth.png,Joins the screen gallery
+P1,App.fig,high-fidelity,Complete Pairing,393x852,PNG,2x,projects/pluto-screen-complete-pairing.png,Joins the screen gallery
+P1,App.fig,high-fidelity,Pluto,393x852,PNG,2x,projects/pluto-screen-pluto.png,Joins the screen gallery
+P1,App.fig,high-fidelity,Orders,393x852,PNG,2x,projects/pluto-screen-orders.png,Joins the screen gallery
+P1,App.fig,high-fidelity,Confirmed Booking,393x852,PNG,2x,projects/pluto-screen-confirmed-booking.png,Joins the screen gallery
+P1,App.fig,high-fidelity,Unlock your Pluto,393x852,PNG,2x,projects/pluto-screen-unlock-your-pluto.png,Joins the screen gallery
+P1,Banners.fig,Final,Email Header,1866x630,JPG 90%,1x,visual/banners.jpg,
+P1,Banners.fig,Final,Event Banner,2560x650,JPG 90%,1x,visual/banners-2.jpg,
+P1,Banners.fig,Final,Logo,1080x1080,JPG 90%,1x,visual/banners-3.jpg,
+P1,Blood Donation.fig,Cover,Cover,1920x1152,JPG 90%,1x,projects/pulse-cover.jpg,Replaces the generated cover
+P1,Blood Donation.fig,High Fidelity,Screening Question 2,598x1344,PNG,2x,projects/pulse-screen-screening-question-2.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Screening Question 1,598x1344,PNG,2x,projects/pulse-screen-screening-question-1.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Splashscreen,598x1344,PNG,2x,projects/pulse-screen-splashscreen.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Screening Question 3,598x1344,PNG,2x,projects/pulse-screen-screening-question-3.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Request,598x1344,PNG,2x,projects/pulse-screen-request.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Onboarding,598x1344,PNG,2x,projects/pulse-screen-onboarding.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Home,598x1344,PNG,2x,projects/pulse-screen-home.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Info,598x1344,PNG,2x,projects/pulse-screen-info.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Request Successful,598x1344,PNG,2x,projects/pulse-screen-request-successful.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Signup,598x1344,PNG,2x,projects/pulse-screen-signup.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Login,598x1344,PNG,2x,projects/pulse-screen-login.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Open Requests,598x1344,PNG,2x,projects/pulse-screen-open-requests.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Donors / Donation Centers List,598x1344,PNG,2x,projects/pulse-screen-donors-donation-centers-list.png,Joins the screen gallery
+P1,Blood Donation.fig,High Fidelity,Schedule Request,598x1344,PNG,2x,projects/pulse-screen-schedule-request.png,Joins the screen gallery
+P1,Blood donation app.fig,Page 1,Hospitals,598x1344,PNG,2x,projects/pulse-screen-hospitals.png,Joins the screen gallery
+P1,Blood donation app.fig,Page 1,Home / Donate,598x1344,PNG,2x,projects/pulse-screen-home-donate.png,Joins the screen gallery
+P1,Certificates.fig,Final,Final,1920x1080,JPG 90%,1x,visual/certificates.jpg,
+P1,Certificates2.fig,Main,Final,1920x1080,JPG 90%,1x,visual/certificates2.jpg,
+P1,Chandrayaan 3.fig,Main,Final,1080x1920,JPG 90%,1x,visual/chandrayaan-3.jpg,
+P1,Christmas 2023.fig,Main,1,1080x1920,JPG 90%,1x,visual/christmas-2023.jpg,
+P1,Cloud Study Jam.fig,Main,Frame 9,3340x1080,JPG 90%,1x,visual/cloud-study-jam.jpg,
+P1,Cloud Study Jam.fig,Main,Frame 8,3340x1080,JPG 90%,1x,visual/cloud-study-jam-2.jpg,
+P1,Cloud Study Jam.fig,Main,1,1080x1920,JPG 90%,1x,visual/cloud-study-jam-3.jpg,
+P1,Cloud Study Jam.fig,Main,2,1080x1920,JPG 90%,1x,visual/cloud-study-jam-4.jpg,
+P2,Cloud Study Jam.fig,Certificates,Frame 20,1920x1080,JPG 90%,1x,visual/cloud-study-jam-5.jpg,
+P2,Cloud Study Jam.fig,Certificates,Frame 26,1920x1080,JPG 90%,1x,visual/cloud-study-jam-6.jpg,
+P2,Cloud Study Jam.fig,Certificates,Frame 21,1920x1080,JPG 90%,1x,visual/cloud-study-jam-7.jpg,
+P2,Cloud Study Jam.fig,Certificates,Certificate,1920x1080,JPG 90%,1x,visual/cloud-study-jam-8.jpg,
+P2,Cloud Study Jam.fig,Certificates,Certificate,1920x1080,JPG 90%,1x,visual/cloud-study-jam-9.jpg,
+P2,Cloud Study Jam.fig,Certificates,Certificate,1920x1080,JPG 90%,1x,visual/cloud-study-jam-10.jpg,
+P2,Cloud Study Jam.fig,Certificates,Certificate,1920x1080,JPG 90%,1x,visual/cloud-study-jam-11.jpg,
+P2,Cloud Study Jam.fig,Certificates,Certificate,1920x1080,JPG 90%,1x,visual/cloud-study-jam-12.jpg,
+P1,Customer Relationship Management.fig,Cover,Cover,1920x1080,JPG 90%,1x,projects/crm-cover.jpg,Replaces the generated cover
+P2,Customer Relationship Management.fig,Wireframe,Home,1680x1200,JPG 90%,1x,projects/crm-screen-home.jpg,Joins the screen gallery
+P2,Customer Relationship Management.fig,Wireframe,Authentication,1680x1200,JPG 90%,1x,projects/crm-screen-authentication.jpg,Joins the screen gallery
+P1,Customer Relationship Management.fig,High Fidelity,Splash,412x915,PNG,2x,projects/crm-screen-splash.png,Joins the screen gallery
+P1,Customer Relationship Management.fig,High Fidelity,Chat,412x915,PNG,2x,projects/crm-screen-chat.png,Joins the screen gallery
+P1,Customer Relationship Management.fig,High Fidelity,Dashboard,412x915,PNG,2x,projects/crm-screen-dashboard.png,Joins the screen gallery
+P1,Customer Relationship Management.fig,High Fidelity,Customer,412x915,PNG,2x,projects/crm-screen-customer.png,Joins the screen gallery
+P1,Customer Relationship Management.fig,High Fidelity,Messages,412x915,PNG,2x,projects/crm-screen-messages.png,Joins the screen gallery
+P1,Dhanteras 2023.fig,Main,1,1080x1920,JPG 90%,1x,visual/dhanteras-2023.jpg,
+P1,Diwali 2022.fig,Page 1,Frame 1,1080x1920,JPG 90%,1x,visual/diwali-2022.jpg,
+P1,Diwali 2023.fig,Main,1,1080x1920,JPG 90%,1x,visual/diwali-2023.jpg,
+P1,Dussehra 2023.fig,Main,Final,1080x1920,JPG 90%,1x,visual/dussehra-2023.jpg,
+P1,E Commerce Platform.fig,Cover,Cover,1920x1080,JPG 90%,1x,projects/ecommerce-cover.jpg,Replaces the generated cover
+P2,E Commerce Platform.fig,Wireframe,Product,1920x3288,JPG 85%,1x,projects/ecommerce-screen-product.jpg,Joins the screen gallery
+P2,E Commerce Platform.fig,Wireframe,Authentication – Signup,1920x1080,JPG 90%,1x,projects/ecommerce-screen-authentication-signup.jpg,Joins the screen gallery
+P2,E Commerce Platform.fig,Wireframe,Explore,1920x2950,JPG 85%,1x,projects/ecommerce-screen-explore.jpg,Joins the screen gallery
+P2,E Commerce Platform.fig,Wireframe,Home,1920x3597,JPG 85%,1x,projects/ecommerce-screen-home.jpg,Joins the screen gallery
+P2,E Commerce Platform.fig,Wireframe,Authentication – OTP,1920x1080,JPG 90%,1x,projects/ecommerce-screen-authentication-otp.jpg,Joins the screen gallery
+P2,E Commerce Platform.fig,Wireframe,Authentication – Login,1920x1080,JPG 90%,1x,projects/ecommerce-screen-authentication-login.jpg,Joins the screen gallery
+P1,Eid.fig,Main,Eid,1080x1920,JPG 90%,1x,visual/eid.jpg,
+P1,Email Headers (2023).fig,Page 1,GDSC23-Email-Header-Blue,1244x388,PNG,2x,visual/email-headers-2023.png,
+P1,Email Headers (2023).fig,Page 1,GDSC23-Email-Header-Green,1244x388,PNG,2x,visual/email-headers-2023-2.png,
+P1,Email Headers (2023).fig,Page 1,GDSC23-Email-Header-Yellow,1244x388,PNG,2x,visual/email-headers-2023-3.png,
+P1,Email Headers (2023).fig,Page 1,GDSC23-Email-Header-Red,1244x388,PNG,2x,visual/email-headers-2023-4.png,
+P1,Email Headers (2023).fig,Page 1,A4 - 1,595x842,JPG 90%,2x,visual/email-headers-2023-5.jpg,
+P1,Email Headers (2023).fig,Page 1,Group 16,1244x388,PNG,2x,visual/email-headers-2023-6.png,
+P1,Events' Booking Portal.fig,Cover,Thumbnail,1200x627,JPG 90%,1x,projects/events-cover.jpg,Replaces the generated cover
+P2,Events' Booking Portal.fig,Wireframe,Landing Page,1680x1000,JPG 90%,1x,projects/events-screen-landing-page.jpg,Joins the screen gallery
+P2,Events' Booking Portal.fig,Wireframe,Flow Plan,1863x1388,JPG 90%,1x,projects/events-screen-flow-plan.jpg,Joins the screen gallery
+P2,Events' Booking Portal.fig,Wireframe,Contact,1680x1154,JPG 90%,1x,projects/events-screen-contact.jpg,Joins the screen gallery
+P1,Events' Booking Portal.fig,High Fidelity,Web (Dark),14794x5895,JPG 85%,1x,projects/events-screen-web-dark.jpg,Joins the screen gallery
+P1,Events' Booking Portal.fig,High Fidelity,Tab (Portrait),9121x4330,JPG 85%,1x,projects/events-screen-tab-portrait.jpg,Joins the screen gallery
+P1,Events' Booking Portal.fig,High Fidelity,Tab (Landscape),3496x2157,JPG 90%,1x,projects/events-screen-tab-landscape.jpg,Joins the screen gallery
+P1,Events' Booking Portal.fig,High Fidelity,Web (Light),11265x4876,JPG 85%,1x,projects/events-screen-web-light.jpg,Joins the screen gallery
+P1,Events' Booking Portal.fig,High Fidelity,Mobile,3733x4050,JPG 85%,1x,projects/events-screen-mobile.jpg,Joins the screen gallery
+P1,Events' Booking Portal.fig,High Fidelity,Alerts,4116x1184,JPG 90%,1x,projects/events-screen-alerts.jpg,Joins the screen gallery
+P1,Events' Booking Portal.fig,High Fidelity,Create Event Flow,4116x1253,JPG 90%,1x,projects/events-screen-create-event-flow.jpg,Joins the screen gallery
+P1,Events' Booking Portal.fig,High Fidelity,Account Flow,1720x1253,JPG 90%,1x,projects/events-screen-account-flow.jpg,Joins the screen gallery
+P1,Events' Booking Portal.fig,High Fidelity,App,4740x5866,JPG 85%,1x,projects/events-screen-app.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Events Page,1680x2571,JPG 90%,1x,projects/events-screen-events-page.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Dashboard,1680x1723,JPG 90%,1x,projects/events-screen-dashboard.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Event Page,1680x4055,JPG 85%,1x,projects/events-screen-event-page.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Final Certificate,1680x1126,JPG 90%,1x,projects/events-screen-final-certificate.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Feedback,1680x2094,JPG 90%,1x,projects/events-screen-feedback.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Minimized Chatbot,1680x1120,JPG 90%,1x,projects/events-screen-minimized-chatbot.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Maximised Chatbot,1680x1099,JPG 90%,1x,projects/events-screen-maximised-chatbot.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Events (List) (w/ filter sec) (TAB),834x2135,JPG 90%,1x,projects/events-screen-events-list-w-filter-sec-tab.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Event (TAB),834x3860,JPG 85%,1x,projects/events-screen-event-tab.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Events (Gallery) (w/ filter sec) (TAB),834x2135,JPG 90%,1x,projects/events-screen-events-gallery-w-filter-sec-tab.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Certificate (TAB),834x1290,PNG,2x,projects/events-screen-certificate-tab.png,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Feedabck (TAB),834x1517,JPG 90%,1x,projects/events-screen-feedabck-tab.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Chat (TAB),834x1290,PNG,2x,projects/events-screen-chat-tab.png,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Events (Gallery) (TAB),834x2265,JPG 90%,1x,projects/events-screen-events-gallery-tab.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Events (List) (TAB),834x2028,JPG 90%,1x,projects/events-screen-events-list-tab.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Dashboard (TAB),834x2135,JPG 90%,1x,projects/events-screen-dashboard-tab.jpg,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Events (List) (Mobile),390x1491,PNG,2x,projects/events-screen-events-list-mobile.png,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Certificate (Mobile),390x1009,PNG,2x,projects/events-screen-certificate-mobile.png,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Event (Mobile),390x3578,PNG,2x,projects/events-screen-event-mobile.png,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Chat (Mobile),390x938,PNG,2x,projects/events-screen-chat-mobile.png,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Events (Card) (Mobile),390x2239,PNG,2x,projects/events-screen-events-card-mobile.png,Joins the screen gallery
+P1,Events Portal.fig,Page 1,Dashboard (Mobile),390x2153,PNG,2x,projects/events-screen-dashboard-mobile.png,Joins the screen gallery
+P1,Franchise News Co..fig,Page 1,Home,1920x4159,JPG 85%,1x,projects/franchise-screen-home.jpg,Joins the screen gallery
+P1,Franchise News Co..fig,Page 1,Article,1920x5171,JPG 85%,1x,projects/franchise-screen-article.jpg,Joins the screen gallery
+P1,Freshers Highlights.fig,Main,1,1080x1920,JPG 90%,1x,visual/freshers-highlights.jpg,
+P1,GDSCSRM.fig,Page 1,Main Page,1680x10154,JPG 85%,1x,projects/gdsc-screen-main-page.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Policy in principles,1680x600,JPG 90%,1x,projects/gdsc-screen-policy-in-principles.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Header-style-1,1680x1375,JPG 90%,1x,projects/gdsc-screen-header-style-1.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Design Guide,1756x963,JPG 90%,1x,projects/gdsc-screen-design-guide.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Footer (Proposed),1680x500,JPG 90%,1x,projects/gdsc-screen-footer-proposed.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Landing Navbar,1680x300,JPG 90%,1x,projects/gdsc-screen-landing-navbar.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Navbar (Post landing scroll),1680x300,JPG 90%,1x,projects/gdsc-screen-navbar-post-landing-scroll.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Navbar Link (in-use),1680x300,JPG 90%,1x,projects/gdsc-screen-navbar-link-in-use.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Navbar Link (on-hover),1680x300,JPG 90%,1x,projects/gdsc-screen-navbar-link-on-hover.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Events Page (Detailed),1680x4881,JPG 85%,1x,projects/gdsc-screen-events-page-detailed.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Events Page (Compressed),1680x1872,JPG 90%,1x,projects/gdsc-screen-events-page-compressed.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Legacy events' page,1680x543,JPG 90%,1x,projects/gdsc-screen-legacy-events-page.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Teams Page,1680x2727,JPG 85%,1x,projects/gdsc-screen-teams-page.jpg,Joins the screen gallery
+P1,GDSCSRM.fig,Page 1,Teams Page (Detailed),1680x1366,JPG 90%,1x,projects/gdsc-screen-teams-page-detailed.jpg,Joins the screen gallery
+P1,Gandhi Jayanti 2023.fig,Main,1,1080x1920,JPG 90%,1x,visual/gandhi-jayanti-2023.jpg,
+P1,Ganesh Chaturthi 2023.fig,Main,1,1080x1920,JPG 90%,1x,visual/ganesh-chaturthi-2023.jpg,
+P1,Grid.fig,Main,Frame 1,2450x5750,JPG 85%,1x,visual/grid.jpg,
+P1,Hacktoberfest.fig,Main,1,1080x1080,JPG 90%,1x,visual/hacktoberfest.jpg,
+P2,Hacktoberfest.fig,Banner,event-banner,2560x650,JPG 90%,1x,visual/hacktoberfest-2.jpg,
+P1,Holi 2024.fig,Final,Final,1080x1920,JPG 90%,1x,visual/holi-2024.jpg,
+P1,Independence Day 2023.fig,Main,Final,1080x1920,JPG 90%,1x,visual/independence-day-2023.jpg,
+P1,Intro Post.fig,Final,Instagram post - 1,1080x1080,JPG 90%,1x,visual/intro-post.jpg,
+P1,Intro Post.fig,Final,Instagram post - 7,1080x1080,JPG 90%,1x,visual/intro-post-2.jpg,
+P1,Intro Post.fig,Final,Instagram post - 8,1080x1080,JPG 90%,1x,visual/intro-post-3.jpg,
+P1,Introduction.fig,Main,Frame 1,4620x1080,JPG 90%,1x,visual/introduction.jpg,
+P3,Invoice.fig,Page 1,1,595x842,JPG 90%,2x,visual/invoice.jpg,Review for private details first
+P3,Invoice.fig,Page 1,Codegiant,595x842,JPG 90%,2x,visual/invoice-2.jpg,Review for private details first
+P3,Invoice.fig,Page 1,Kickdrum,595x842,JPG 90%,2x,visual/invoice-3.jpg,Review for private details first
+P3,Invoice.fig,Page 1,Uvisoft,595x842,JPG 90%,2x,visual/invoice-4.jpg,Review for private details first
+P1,Janmashtami 2024.fig,Main,Main,1080x1920,JPG 90%,1x,visual/janmashtami-2024.jpg,
+P1,Learning Management System.fig,Cover,Cover,1920x1080,JPG 90%,1x,projects/learning-cover.jpg,Replaces the generated cover
+P1,Learning Management System.fig,High Fidelity,Authentication,1194x834,PNG,2x,projects/learning-screen-authentication.png,Joins the screen gallery
+P1,Learning Management System.fig,High Fidelity,Home,1194x834,PNG,2x,projects/learning-screen-home.png,Joins the screen gallery
+P1,Learning Management System.fig,High Fidelity,Login,1920x1100,JPG 90%,1x,projects/learning-screen-login.jpg,Joins the screen gallery
+P1,Learning Management System.fig,High Fidelity,Login (Error),1920x1100,JPG 90%,1x,projects/learning-screen-login-error.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Quizzes (Pending),1920x1100,JPG 90%,1x,projects/learning-screen-quizzes-pending.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Quizzes (Drafts),1920x1100,JPG 90%,1x,projects/learning-screen-quizzes-drafts.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Courses (Drafts),1920x1100,JPG 90%,1x,projects/learning-screen-courses-drafts.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Courses (Pending),1920x1100,JPG 90%,1x,projects/learning-screen-courses-pending.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Capstone,1920x1100,JPG 90%,1x,projects/learning-screen-capstone.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Coding Exercises,1920x1100,JPG 90%,1x,projects/learning-screen-coding-exercises.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Sidenav (Quizes) (onHover),1920x1100,JPG 90%,1x,projects/learning-screen-sidenav-quizes-onhover.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Topics (Active),1920x1100,JPG 90%,1x,projects/learning-screen-topics-active.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Chapters (Active),1920x1100,JPG 90%,1x,projects/learning-screen-chapters-active.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Forgot Password,1920x1100,JPG 90%,1x,projects/learning-screen-forgot-password.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Reset–PWD–Confirmation,1920x1100,JPG 90%,1x,projects/learning-screen-reset-pwd-confirmation.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Reset–pwd,1920x1100,JPG 90%,1x,projects/learning-screen-reset-pwd.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,pwd–reset–confirmation,1920x1100,JPG 90%,1x,projects/learning-screen-pwd-reset-confirmation.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Sign–up,1920x1100,JPG 90%,1x,projects/learning-screen-sign-up.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Mail Two Step Verification,1920x1100,JPG 90%,1x,projects/learning-screen-mail-two-step-verification.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Account Confirmation,1920x1100,JPG 90%,1x,projects/learning-screen-account-confirmation.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Mail/Phone Two Step Verification (Error),1920x1100,JPG 90%,1x,projects/learning-screen-mail-phone-two-step-verification-error.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Mail Two Step Verification (Code Resent Message),1920x1100,JPG 90%,1x,projects/learning-screen-mail-two-step-verification-code-resent-message.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,PWD–reset–emailer,1920x975,JPG 90%,1x,projects/learning-screen-pwd-reset-emailer.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Confirm Mail Emailer,1920x1062,JPG 90%,1x,projects/learning-screen-confirm-mail-emailer.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Approval Request Mailer,1920x1070,JPG 90%,1x,projects/learning-screen-approval-request-mailer.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Approval Rejected,1920x1006,JPG 90%,1x,projects/learning-screen-approval-rejected.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,Support incoming mail,1920x968,JPG 90%,1x,projects/learning-screen-support-incoming-mail.jpg,Joins the screen gallery
+P1,Learning Platform.fig,Admin,User registered successfully,1920x1167,JPG 90%,1x,projects/learning-screen-user-registered-successfully.jpg,Joins the screen gallery
+P1,Library Management System.fig,Cover,Cover,1920x1080,JPG 90%,1x,projects/library-cover.jpg,Replaces the generated cover
+P1,Library Management System.fig,High Fidelity,Home,1194x834,PNG,2x,projects/library-screen-home.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Register,393x852,PNG,2x,projects/library-screen-register.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Login,393x852,PNG,2x,projects/library-screen-login.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Verify,393x852,PNG,2x,projects/library-screen-verify.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Superuser Login,393x852,PNG,2x,projects/library-screen-superuser-login.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Library (Card View),393x852,PNG,2x,projects/library-screen-library-card-view.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Already a Premium Member,393x852,PNG,2x,projects/library-screen-already-a-premium-member.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,FAQ,393x852,PNG,2x,projects/library-screen-faq.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Location,393x852,PNG,2x,projects/library-screen-location.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,FAQ (Topic),393x852,PNG,2x,projects/library-screen-faq-topic.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Library (List View),393x852,PNG,2x,projects/library-screen-library-list-view.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Help and Support,393x852,PNG,2x,projects/library-screen-help-and-support.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Events,393x852,PNG,2x,projects/library-screen-events.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Profile,393x852,PNG,2x,projects/library-screen-profile.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Event – Detailed,393x852,PNG,2x,projects/library-screen-event-detailed.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Overdues,393x852,PNG,2x,projects/library-screen-overdues.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Author,393x852,PNG,2x,projects/library-screen-author.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Apply for Premium,393x852,PNG,2x,projects/library-screen-apply-for-premium.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Book (Borrowed),393x852,PNG,2x,projects/library-screen-book-borrowed.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Book,393x852,PNG,2x,projects/library-screen-book.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Onboarding,393x852,PNG,2x,projects/library-screen-onboarding.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Explore,393x852,PNG,2x,projects/library-screen-explore.png,Joins the screen gallery
+P1,Library Management System.fig,High Fidelity,Book (Returned),393x852,PNG,2x,projects/library-screen-book-returned.png,Joins the screen gallery
+P1,LinkedIn Post2.fig,Main,6,1080x1080,JPG 90%,1x,visual/linkedin-post2.jpg,
+P1,LinkedIn Post2.fig,Main,2,1080x1080,JPG 90%,1x,visual/linkedin-post2-2.jpg,
+P1,LinkedIn Post2.fig,Main,3,1080x1080,JPG 90%,1x,visual/linkedin-post2-3.jpg,
+P1,LinkedIn Post2.fig,Main,4,1080x1080,JPG 90%,1x,visual/linkedin-post2-4.jpg,
+P1,LinkedIn Post2.fig,Main,5,1080x1080,JPG 90%,1x,visual/linkedin-post2-5.jpg,
+P1,LinkedIn Post2.fig,Main,1,1080x1080,JPG 90%,1x,visual/linkedin-post2-6.jpg,
+P1,LinkedIn Post2.fig,Main,7,1080x1080,JPG 90%,1x,visual/linkedin-post2-7.jpg,
+P1,Linkedin.fig,Page 1,1,1080x1080,JPG 90%,1x,visual/linkedin.jpg,
+P1,Linkedin.fig,Page 1,9,1080x1080,JPG 90%,1x,visual/linkedin-2.jpg,
+P1,Linkedin.fig,Page 1,5,1080x1080,JPG 90%,1x,visual/linkedin-3.jpg,
+P1,Linkedin.fig,Page 1,6,1080x1080,JPG 90%,1x,visual/linkedin-4.jpg,
+P1,Linkedin.fig,Page 1,7,1080x1080,JPG 90%,1x,visual/linkedin-5.jpg,
+P2,Linkedin.fig,Page 2,8,1080x1080,JPG 90%,1x,visual/linkedin-6.jpg,
+P2,Linkedin.fig,Page 2,4,1080x1080,JPG 90%,1x,visual/linkedin-7.jpg,
+P2,Linkedin.fig,Page 2,2,1080x1080,JPG 90%,1x,visual/linkedin-8.jpg,
+P2,Linkedin.fig,Page 2,3,1080x1080,JPG 90%,1x,visual/linkedin-9.jpg,
+P1,Lohri 24.fig,Main,Lohri,1080x1920,JPG 90%,1x,visual/lohri-24.jpg,
+P1,Main Post.fig,Final,new-1,1080x1080,JPG 90%,1x,visual/main-post.jpg,
+P1,Main Post.fig,Final,new-2,1080x1080,JPG 90%,1x,visual/main-post-2.jpg,
+P1,Music Streaming App.fig,Cover,Cover,1920x1080,JPG 90%,1x,projects/music-cover.jpg,Replaces the generated cover
+P1,Music Streaming App.fig,High Fidelity,Home,393x852,PNG,2x,projects/music-screen-home.png,Joins the screen gallery
+P1,Music Streaming App.fig,High Fidelity,Player,393x852,PNG,2x,projects/music-screen-player.png,Joins the screen gallery
+P1,Music Streaming App.fig,High Fidelity,My Library,393x852,PNG,2x,projects/music-screen-my-library.png,Joins the screen gallery
+P1,New Year's 2024.fig,Main,1,1080x1920,JPG 90%,1x,visual/new-year-s-2024.jpg,
+P1,New year 2025.fig,Final,Instagram story - 18,1080x1920,JPG 90%,1x,visual/new-year-2025.jpg,
+P1,Online Streaming Platform.fig,Cover,Cover,1920x1080,JPG 90%,1x,projects/streaming-cover.jpg,Replaces the generated cover
+P1,Online Streaming Platform.fig,Design,Home,1680x4245,JPG 85%,1x,projects/streaming-screen-home.jpg,Joins the screen gallery
+P1,Online Streaming Platform.fig,Design,AudiobooksGallery,1480x402,JPG 90%,1x,projects/streaming-screen-audiobooksgallery.jpg,Joins the screen gallery
+P1,Online Streaming Platform.fig,Design,GamesGallery,1480x352,JPG 90%,1x,projects/streaming-screen-gamesgallery.jpg,Joins the screen gallery
+P1,Online Streaming Platform.fig,Design,Movie,1680x5214,JPG 85%,1x,projects/streaming-screen-movie.jpg,Joins the screen gallery
+P1,Online Streaming Platform.fig,Design,TV Show,1680x9086,JPG 85%,1x,projects/streaming-screen-tv-show.jpg,Joins the screen gallery
+P1,Online Streaming Platform.fig,Design,Previews,609x1449,PNG,2x,projects/streaming-screen-previews.png,Joins the screen gallery
+P1,Placement Management System.fig,Cover,Cover,1920x1080,JPG 90%,1x,projects/placement-cover.jpg,Replaces the generated cover
+P1,Placement Management System.fig,High Fidelity,Dashboard,1920x1080,JPG 90%,1x,projects/placement-screen-dashboard.jpg,Joins the screen gallery
+P1,Placement Management System.fig,High Fidelity,Companies,1920x1080,JPG 90%,1x,projects/placement-screen-companies.jpg,Joins the screen gallery
+P1,Placement Management System.fig,High Fidelity,Full Time Jobs,1920x1080,JPG 90%,1x,projects/placement-screen-full-time-jobs.jpg,Joins the screen gallery
+P1,Placement Management System.fig,High Fidelity,Tracker,1920x1080,JPG 90%,1x,projects/placement-screen-tracker.jpg,Joins the screen gallery
+P1,Placement Management System.fig,High Fidelity,Sidenav,342x1080,PNG,2x,projects/placement-screen-sidenav.png,Joins the screen gallery
+P1,Placement Management System.fig,High Fidelity,Company,332x924,PNG,2x,projects/placement-screen-company.png,Joins the screen gallery
+P1,Placement Management System.fig,Socials,Instagram post - 1,1080x1080,JPG 90%,1x,projects/placement-screen-instagram-post-1.jpg,Joins the screen gallery
+P1,Pongal'24.fig,Main,Pongal,1080x1920,JPG 90%,1x,visual/pongal-24.jpg,
+P1,Pongal'24.fig,Page 1,Instagram story - 1,1080x1920,JPG 90%,1x,visual/pongal-24-2.jpg,
+P1,Pongal'24.fig,Page 1,Instagram story - 8,1080x1920,JPG 90%,1x,visual/pongal-24-3.jpg,
+P1,Pongal'24.fig,Page 1,Instagram story - 2,1080x1920,JPG 90%,1x,visual/pongal-24-4.jpg,
+P1,Pongal'24.fig,Page 1,Instagram story - 7,1080x1920,JPG 90%,1x,visual/pongal-24-5.jpg,
+P1,Pongal'24.fig,Page 1,Instagram story - 3,1080x1920,JPG 90%,1x,visual/pongal-24-6.jpg,
+P1,Pongal'24.fig,Page 1,Instagram story - 5,1080x1920,JPG 90%,1x,visual/pongal-24-7.jpg,
+P1,Pongal'24.fig,Page 1,Instagram story - 4,1080x1920,JPG 90%,1x,visual/pongal-24-8.jpg,
+P1,Pongal'24.fig,Page 1,Instagram story - 6,1080x1920,JPG 90%,1x,visual/pongal-24-9.jpg,
+P1,Post.fig,Final,FINAL,1080x1920,JPG 90%,1x,visual/post.jpg,
+P1,Post.fig,Final,Instagram story - 7,1080x1920,JPG 90%,1x,visual/post-2.jpg,
+P1,Post.fig,Final,front,1080x1320,JPG 90%,1x,visual/post-3.jpg,
+P1,Post2.fig,Main,Core P6,1080x1080,JPG 90%,1x,visual/post2.jpg,
+P1,Post2.fig,Main,Core P5,1080x1080,JPG 90%,1x,visual/post2-2.jpg,
+P1,Post2.fig,Main,Core P4,1080x1080,JPG 90%,1x,visual/post2-3.jpg,
+P1,Post2.fig,Main,Core P3,1080x1080,JPG 90%,1x,visual/post2-4.jpg,
+P1,Post2.fig,Main,Core P2,1080x1080,JPG 90%,1x,visual/post2-5.jpg,
+P1,Post2.fig,Main,Core P1,1080x1080,JPG 90%,1x,visual/post2-6.jpg,
+P1,Poster design.fig,Page 1,A3 - 3,1190x842,JPG 90%,2x,visual/poster-design.jpg,
+P1,Poster design.fig,Page 1,A3 - 5,1190x842,JPG 90%,2x,visual/poster-design-2.jpg,
+P1,Poster design.fig,Page 1,A3 - 6,1190x842,JPG 90%,2x,visual/poster-design-3.jpg,
+P1,Poster design.fig,Page 1,Frame 1,1080x1080,JPG 90%,1x,visual/poster-design-4.jpg,
+P1,Poster design.fig,Page 1,Frame 3,1080x1080,JPG 90%,1x,visual/poster-design-5.jpg,
+P1,Poster design.fig,Page 1,Frame 2,1080x1080,JPG 90%,1x,visual/poster-design-6.jpg,
+P1,Posters.fig,Final,Final,1190x842,JPG 90%,2x,visual/posters.jpg,
+P1,RSVP.fig,Main,1,792x1408,JPG 90%,2x,visual/rsvp.jpg,
+P1,RSVP.fig,Main,2,792x1224,JPG 90%,2x,visual/rsvp-2.jpg,
+P1,Raksha Bandhan 2023.fig,Main,Final,1080x1920,JPG 90%,1x,visual/raksha-bandhan-2023.jpg,
+P1,Recycle Management System.fig,Solution Challenge,Slide,1920x1155,JPG 90%,1x,projects/recycle-screen-slide.jpg,Joins the screen gallery
+P1,Recycle Management System.fig,Solution Challenge,Profile,1920x1155,JPG 90%,1x,projects/recycle-screen-profile.jpg,Joins the screen gallery
+P1,Recycle Management System.fig,Solution Challenge,Dashboard,1920x1155,JPG 90%,1x,projects/recycle-screen-dashboard.jpg,Joins the screen gallery
+P1,Recycle Management System.fig,Solution Challenge,Order history,1920x1155,JPG 90%,1x,projects/recycle-screen-order-history.jpg,Joins the screen gallery
+P1,Recycle Management System.fig,Solution Challenge,Feedback,1920x1155,JPG 90%,1x,projects/recycle-screen-feedback.jpg,Joins the screen gallery
+P1,Recycle Management System.fig,Solution Challenge,Support,1920x1155,JPG 90%,1x,projects/recycle-screen-support.jpg,Joins the screen gallery
+P1,Recycle Management System.fig,Cover,Cover,1920x1080,JPG 90%,1x,projects/recycle-cover.jpg,Replaces the generated cover
+P2,Recycle Management System.fig,Wireframe,Community,390x844,PNG,2x,projects/recycle-screen-community.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,Explore,390x844,PNG,2x,projects/recycle-screen-explore.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,Library,390x844,PNG,2x,projects/recycle-screen-library.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,Article (Expanded),390x1487,PNG,2x,projects/recycle-screen-article-expanded.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,iPhone 14 - 1,390x844,PNG,2x,projects/recycle-screen-iphone-14-1.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,iPhone 14 - 3,390x844,PNG,2x,projects/recycle-screen-iphone-14-3.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,iPhone 14 - 2,390x844,PNG,2x,projects/recycle-screen-iphone-14-2.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,Recycle / Donate flow,390x844,PNG,2x,projects/recycle-screen-recycle-donate-flow.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,iPhone 14 - 5,390x844,PNG,2x,projects/recycle-screen-iphone-14-5.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,iPhone 14 - 6,390x844,PNG,2x,projects/recycle-screen-iphone-14-6.png,Joins the screen gallery
+P2,Recycle Management System.fig,Wireframe,iPhone 14 - 7,390x844,PNG,2x,projects/recycle-screen-iphone-14-7.png,Joins the screen gallery
+P1,Recycle Management System.fig,High Fidelity,Dispose,450x958,PNG,2x,projects/recycle-screen-dispose.png,Joins the screen gallery
+P1,Recycle Management System.fig,High Fidelity,Splash Screen,450x958,PNG,2x,projects/recycle-screen-splash-screen.png,Joins the screen gallery
+P1,Recycle Management System.fig,High Fidelity,Processed Image,450x958,PNG,2x,projects/recycle-screen-processed-image.png,Joins the screen gallery
+P1,Recycle Management System.fig,High Fidelity,Sign in,450x958,PNG,2x,projects/recycle-screen-sign-in.png,Joins the screen gallery
+P1,Recycle Management System.fig,High Fidelity,Camera,450x958,PNG,2x,projects/recycle-screen-camera.png,Joins the screen gallery
+P1,Recycle Management System.fig,High Fidelity,Sign up,450x958,PNG,2x,projects/recycle-screen-sign-up.png,Joins the screen gallery
+P1,Reel Cover.fig,Page 1,1,1080x1920,JPG 90%,1x,visual/reel-cover.jpg,
+P1,Regional Bootcamp Selection Story.fig,Page 1,2,1080x1920,JPG 90%,1x,visual/regional-bootcamp-selection-story.jpg,
+P1,Regional Bootcamp Selection Story.fig,Page 1,3,1080x1920,JPG 90%,1x,visual/regional-bootcamp-selection-story-2.jpg,
+P1,Registration Portal.fig,Final,Desktop view-1,1920x1080,JPG 90%,1x,projects/registration-screen-desktop-view-1.jpg,Joins the screen gallery
+P1,Registration Portal.fig,Final,mobile view -2,430x1141,PNG,2x,projects/registration-screen-mobile-view-2.png,Joins the screen gallery
+P1,Registration Portal.fig,Final,mobile view-1,430x1711,PNG,2x,projects/registration-screen-mobile-view-1.png,Joins the screen gallery
+P1,Registration Portal.fig,Final,Desktop view - 2,1920x1080,JPG 90%,1x,projects/registration-screen-desktop-view-2.jpg,Joins the screen gallery
+P1,Registration Portal2.fig,Website,"MacBook Pro 14"" - 6",1512x1182,JPG 90%,1x,projects/registration-screen-macbook-pro-14-6.jpg,Joins the screen gallery
+P1,Registration Portal2.fig,Website,iPhone 11 Pro / X - 6,375x675,PNG,2x,projects/registration-screen-iphone-11-pro-x-6.png,Joins the screen gallery
+P1,Registration Portal2.fig,Website,"MacBook Pro 14"" - 7",1512x1182,JPG 90%,1x,projects/registration-screen-macbook-pro-14-7.jpg,Joins the screen gallery
+P1,Registration Portal2.fig,Website,iPhone 11 Pro / X - 4,375x962,PNG,2x,projects/registration-screen-iphone-11-pro-x-4.png,Joins the screen gallery
+P1,Registration Portal2.fig,Website,"MacBook Pro 14"" - 10",1512x1182,JPG 90%,1x,projects/registration-screen-macbook-pro-14-10.jpg,Joins the screen gallery
+P1,Registration Portal2.fig,Website,iPhone 11 Pro / X - 1,375x775,PNG,2x,projects/registration-screen-iphone-11-pro-x-1.png,Joins the screen gallery
+P1,Registration Portal2.fig,Website,iPhone 11 Pro / X - 2,375x962,PNG,2x,projects/registration-screen-iphone-11-pro-x-2.png,Joins the screen gallery
+P1,Registration Portal2.fig,Website,"MacBook Pro 14"" - 9",1512x1182,JPG 90%,1x,projects/registration-screen-macbook-pro-14-9.jpg,Joins the screen gallery
+P1,Registration Portal2.fig,Admin App,Landing Screen,428x926,PNG,2x,projects/registration-screen-landing-screen.png,Joins the screen gallery
+P1,Registration Portal2.fig,Admin App,Checkin - 1,428x926,PNG,2x,projects/registration-screen-checkin-1.png,Joins the screen gallery
+P1,Registration Portal2.fig,Admin App,Checkout - 1,428x926,PNG,2x,projects/registration-screen-checkout-1.png,Joins the screen gallery
+P1,Registration Portal2.fig,Admin App,Checkin - 2,428x926,PNG,2x,projects/registration-screen-checkin-2.png,Joins the screen gallery
+P1,Registration Portal2.fig,Admin App,Walk in - 1,428x926,PNG,2x,projects/registration-screen-walk-in-1.png,Joins the screen gallery
+P1,Registration Portal2.fig,Admin App,Walk in - 2,428x926,PNG,2x,projects/registration-screen-walk-in-2.png,Joins the screen gallery
+P1,Registration Portal2.fig,Email,iPad mini 8.3 - 1,630x696,PNG,2x,projects/registration-screen-ipad-mini-8-3-1.png,Joins the screen gallery
+P1,Republic Day 2024.fig,Main,Frame 3,1080x1920,JPG 90%,1x,visual/republic-day-2024.jpg,
+P1,Results.fig,Page 1,1,1080x1080,JPG 90%,1x,visual/results.jpg,
+P1,Results.fig,Page 1,4,1080x1080,JPG 90%,1x,visual/results-2.jpg,
+P1,Results.fig,Page 1,3,1080x1080,JPG 90%,1x,visual/results-3.jpg,
+P1,Results.fig,Page 1,2,1080x1080,JPG 90%,1x,visual/results-4.jpg,
+P1,Results2.fig,Main,4,1080x1080,JPG 90%,1x,visual/results2.jpg,
+P1,Results2.fig,Main,3,1080x1080,JPG 90%,1x,visual/results2-2.jpg,
+P1,Results2.fig,Main,2,1080x1080,JPG 90%,1x,visual/results2-3.jpg,
+P1,Results2.fig,Main,1,1080x1080,JPG 90%,1x,visual/results2-4.jpg,
+P1,Reveal Post.fig,Main,1,1080x1080,JPG 90%,1x,visual/reveal-post.jpg,
+P2,Reveal Post.fig,C2C Poster,Tabloid - 1,792x1224,JPG 90%,2x,visual/reveal-post-2.jpg,
+P2,Reveal Post.fig,C2C Poster,Tabloid - 2,792x1224,JPG 90%,2x,visual/reveal-post-3.jpg,
+P2,Reveal Post.fig,C2C Poster,Tabloid - 3,792x1224,JPG 90%,2x,visual/reveal-post-4.jpg,
+P1,Rewards and Benefits.fig,Main,3,1080x1080,JPG 90%,1x,visual/rewards-and-benefits.jpg,
+P1,Rewards and Benefits.fig,Main,1,1080x1080,JPG 90%,1x,visual/rewards-and-benefits-2.jpg,
+P1,Rewards and Benefits.fig,Main,2,1080x1080,JPG 90%,1x,visual/rewards-and-benefits-3.jpg,
+P1,Social Media.fig,Page 1,8,1080x1080,JPG 90%,1x,visual/social-media.jpg,
+P1,Social Media.fig,Page 1,2,1080x1080,JPG 90%,1x,visual/social-media-2.jpg,
+P1,Social Media.fig,Page 1,6,1080x1080,JPG 90%,1x,visual/social-media-3.jpg,
+P1,Social Media.fig,Page 1,5,1080x1080,JPG 90%,1x,visual/social-media-4.jpg,
+P1,Social Media.fig,Page 1,3,1080x1080,JPG 90%,1x,visual/social-media-5.jpg,
+P1,Social Media.fig,Page 1,24,1080x1080,JPG 90%,1x,visual/social-media-6.jpg,
+P1,Social Media.fig,Page 1,23,1080x1080,JPG 90%,1x,visual/social-media-7.jpg,
+P1,Social Media.fig,Page 1,30,1080x1080,JPG 90%,1x,visual/social-media-8.jpg,
+P1,Social Media.fig,Page 1,40,1080x1080,JPG 90%,1x,visual/social-media-9.jpg,
+P1,Social Media.fig,Page 1,7,1080x1080,JPG 90%,1x,visual/social-media-10.jpg,
+P1,Social Media.fig,Page 1,4,1080x1080,JPG 90%,1x,visual/social-media-11.jpg,
+P1,Social Media.fig,Page 1,29,1080x1080,JPG 90%,1x,visual/social-media-12.jpg,
+P1,Speaker Post.fig,Main,1,1080x1080,JPG 90%,1x,visual/speaker-post.jpg,
+P1,Sponsor.fig,Main,1,1080x1080,JPG 90%,1x,visual/sponsor.jpg,
+P1,Sponsor Post.fig,Final,1,1080x1080,JPG 90%,1x,visual/sponsor-post.jpg,
+P1,Sponsor Post.fig,Final,2,1080x1080,JPG 90%,1x,visual/sponsor-post-2.jpg,
+P1,Sponsor Post.fig,Final,6,1080x1080,JPG 90%,1x,visual/sponsor-post-3.jpg,
+P1,Sponsor Post.fig,Final,3,1080x1080,JPG 90%,1x,visual/sponsor-post-4.jpg,
+P1,Sponsor Post.fig,Final,5,1080x1080,JPG 90%,1x,visual/sponsor-post-5.jpg,
+P1,Sponsor Post.fig,Final,4,1080x1080,JPG 90%,1x,visual/sponsor-post-6.jpg,
+P2,Stories.fig,Template,FAQ,1080x1920,JPG 90%,1x,visual/stories.jpg,
+P2,Stories.fig,Template,Notice,1080x1920,JPG 90%,1x,visual/stories-2.jpg,
+P1,Stories.fig,Final Draft,Notice,1080x1920,JPG 90%,1x,visual/stories-3.jpg,
+P1,Stories.fig,Final Draft,Notice,1080x1920,JPG 90%,1x,visual/stories-4.jpg,
+P1,Timeline.fig,Main,1,1080x1080,JPG 90%,1x,visual/timeline.jpg,
+P1,Timeline.fig,Main,2,1080x1080,JPG 90%,1x,visual/timeline-2.jpg,
+P1,Timeline.fig,Main,3,1080x1080,JPG 90%,1x,visual/timeline-3.jpg,
+P1,Timeline.fig,Main,4,1080x1080,JPG 90%,1x,visual/timeline-4.jpg,
+P1,Website2.fig,Page 1,Home,1920x7325,JPG 85%,1x,projects/pluto-screen-home.jpg,Joins the screen gallery
+P1,events.fig,Main,Sign-in,1680x1000,JPG 90%,1x,projects/events-screen-sign-in.jpg,Joins the screen gallery

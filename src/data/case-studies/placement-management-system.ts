@@ -1,15 +1,15 @@
-import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, faq, moreScreens, pair, sdgs, stats, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const placementManagementSystem: CaseStudy = {
   cover: img('placement-hero', 'Hero mockup: Placerr placement dashboard'),
   sections: [
     overview({
-      role: 'Independent project: information architecture, dashboard design, visual design',
-      timeline: 'Passion project, high-fidelity web design',
+      role: 'Independent project: product concept, information architecture, dashboard design, marketing website',
+      timeline: 'Passion project, high-fidelity web design and website',
       overview: [
-        'Placerr is a placement portal for students. It brings job listings, internships, applications and preparation into one dashboard.',
-        'I designed the dashboard and its information architecture, from job discovery and application tracking to student records such as attendance and calendar.',
+        'Placerr is a concept for AI-enabled, end-to-end campus placement automation: one place for students to discover roles and track applications, and for placement admins to post jobs, review candidates and manage shortlists.',
+        'I designed the student dashboard and its information architecture, the tracker, company pages, AI-assisted interview and proctoring summaries, and a marketing website built around a fair, unbiased process.',
         'The aim was to replace scattered updates with one place that tells every student exactly where they stand.',
       ],
     }),
@@ -96,6 +96,19 @@ export const placementManagementSystem: CaseStudy = {
     section('final-designs', 'Final Designs', 'The full dashboard.', [
       text('Everything in one view.', ['Overview, spotlight, applications, recommendations and tips come together on a single screen.']),
       exhibit(board('placement', 'Placerr dashboard'), cap('7.0', 'Animated view', 'Dashboard')),
+      moreScreens('placement', '7.1'),
+    ]),
+    section('ai', 'AI Assist', 'Fair, fast and explainable screening.', [
+      text('Summaries, not just scores.', [
+        'For each candidate, Placerr pairs an interview summary with a proctoring summary (webcam, full-screen exits and tab switches), a personality type, vetted skills and AI tools, and a skills chart.',
+        'The marketing site frames it simply: a fair and unbiased process. No bias, just brains.',
+      ]),
+      exhibit(img('placement-ai', 'Interview summary, proctoring summary, vetted skills and skills chart'), cap('8.0', 'Screen', 'AI-assisted candidate summary')),
+      text('For placement admins.', ['Admins can post jobs, view candidate profiles, control shortlisted candidates and send emails, all from the same system.']),
+      pair([
+        { media: img('placement-tracker', 'Application tracker with stages and statuses'), caption: cap('8.1', 'Screen', 'Application tracker') },
+        { media: img('placement-companies', 'Companies with positions, CTC range and locations'), caption: cap('8.2', 'Screen', 'Companies') },
+      ]),
     ]),
     section('retrospective', 'Retrospective', 'Clarity is the feature.', [
       text('Looking back.', [
@@ -109,6 +122,11 @@ export const placementManagementSystem: CaseStudy = {
           card('Help where it is needed', 'Tips next to roles get read.', 'lightbulb'),
         ],
       }),
+      faq([
+        { q: 'What is Placerr?', a: 'A concept for AI-enabled, end-to-end campus placement automation, with a student dashboard, admin tools and a marketing website.' },
+        { q: 'What does the AI assist do?', a: 'It summarises each interview, flags proctoring signals such as tab switches and full-screen exits, and shows vetted skills and a skills chart, so decisions are explainable.' },
+        { q: 'Who is it for?', a: 'Students tracking their placement journey, and placement admins who post jobs, review candidates and manage shortlists.' },
+      ]),
     ]),
   ],
 };

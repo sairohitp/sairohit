@@ -1,4 +1,4 @@
-import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, faq, moreScreens, pair, sdgs, stats, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const onlineStreamingPlatform: CaseStudy = {
@@ -97,6 +97,11 @@ export const onlineStreamingPlatform: CaseStudy = {
     section('final-designs', 'Final Designs', 'The title page, in full.', [
       text('A cinematic first impression.', ['The final design brings navigation, hero, details and actions together on one screen.']),
       exhibit(board('streaming', 'heavenns title page'), cap('7.0', 'Animated view', 'Title page')),
+      text('Every kind of page.', [
+        'Beyond the home and title pages, the design covers galleries for TV and movies, audiobooks, music and podcasts, and games, along with movie, TV show, episode, person, cast and crew, media and previews pages.',
+      ]),
+      exhibit(img('streaming-title', 'TV show page with cast and crew'), cap('7.1', 'Screen', 'TV show page with cast and crew'), 'half'),
+      moreScreens('streaming', '7.2'),
     ]),
     section('retrospective', 'Retrospective', 'What I would explore next.', [
       text('Looking back.', [
@@ -110,6 +115,10 @@ export const onlineStreamingPlatform: CaseStudy = {
           card('Feedback is a feature', 'Explicit signals make personalisation visible.', 'check-circle'),
         ],
       }),
+      faq([
+        { q: 'Is heavenns a real service?', a: 'No. It is a design concept for one streaming home that brings shows, movies, music, podcasts, audiobooks, anime, games and children’s content together.' },
+        { q: 'Which pages are designed?', a: 'Home, the galleries for each content type, and detail pages for movies, TV shows, episodes and people, including cast and crew and previews.' },
+      ]),
     ]),
   ],
 };

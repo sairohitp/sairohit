@@ -1,4 +1,4 @@
-import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, faq, moreScreens, pair, sdgs, stats, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 // Sources: the project's Figma files (High Fidelity and Presentation pages).
@@ -104,6 +104,7 @@ export const bloodDonationApp: CaseStudy = {
     section('final-designs', 'Final Designs', 'The complete screen set.', [
       text('From splash to request.', ['The final set covers the splash screen, onboarding, screening, home, requests, confirmation, blood banks and donors.']),
       exhibit(board('pulse', 'Full PULSE screen set'), cap('7.0', 'Animated view', 'Full screen set')),
+      moreScreens('pulse', '7.1'),
       text('Proposed tech stack:', [], {
         cards: [
           card('ETL', 'Data integration.', 'database'),
@@ -124,6 +125,11 @@ export const bloodDonationApp: CaseStudy = {
           card('Privacy builds trust', 'Secure connections encourage people to take part.', 'key'),
         ],
       }),
+      faq([
+        { q: 'Was this a team project?', a: 'Yes, an academic project at SRM with Aman Agrawal, guided by Prof. G. Manoj Kumar.' },
+        { q: 'How does a request work?', a: 'Pick the blood group and units, confirm the location, then schedule a request with patient and venue details or request immediately. Donors nearby are notified.' },
+        { q: 'What was the proposed stack?', a: 'ETL for data integration, Firebase for storage and Flutter for the app.' },
+      ]),
     ]),
   ],
 };
