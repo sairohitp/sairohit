@@ -248,7 +248,8 @@
   text-align: center;
 }
 
-.work__list > li.is-hidden {
+.work__list > li.is-hidden,
+.page--wide .work__list > li.is-hidden {
   display: none;
 }
 
