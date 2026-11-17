@@ -502,7 +502,36 @@ function initAnchors() {
   if (location.hash) settle(location.hash);
 }
 
+/* Row-by-row masonry: size each tile's row span from its real height. */
+function initMasonry() {
+  const ROW = 4;
+  const GAP = 12;
+  document.querySelectorAll<HTMLElement>('.gallery--masonry').forEach((grid) => {
+    const layout = () => {
+      grid.querySelectorAll<HTMLElement>(':scope > .gallery__item').forEach((item) => {
+        if (item.hidden) return;
+        // Layout heights (offsetHeight), so entrance animations that scale tiles are not counted.
+        const h = Array.from(item.children).reduce((sum, c) => sum + (c as HTMLElement).offsetHeight, 0);
+        item.style.setProperty('--span', String(Math.ceil((h + GAP) / ROW)));
+      });
+    };
+    let queued = false;
+    const queue = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        layout();
+      });
+    };
+    layout();
+    new ResizeObserver(queue).observe(grid);
+    grid.querySelectorAll('img').forEach((img) => img.addEventListener('load', queue));
+  });
+}
+
 export function initMotion() {
+  initMasonry();
   initAnchors();
   initReveal();
   initParallax();

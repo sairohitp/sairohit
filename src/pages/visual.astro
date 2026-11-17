@@ -7,6 +7,7 @@ import { campaigns, visualImages } from '../data/visual';
 import FileAnatomy from '../components/case/FileAnatomy.astro';
 import { abs, personId, breadcrumbs } from '../lib/seo';
 import { filesFor } from '../data/figma';
+import { ratioOf } from '../data/build';
 import { site } from '../config/site';
 import { url } from '../lib/url';
 
@@ -75,7 +76,7 @@ const meta = (i: (typeof allItems)[number]) =>
           layout="masonry"
           items={c.items.map((i) => {
             const img = visualImages(i.slug)[0];
-            return { src: img.src, alt: `${i.title} design`, title: i.title, meta: meta(i), tag: i.team ? 'With the team' : undefined, anatomy: `anat-${i.slug}` };
+            return { src: img.src, ratio: ratioOf(img.src), alt: `${i.title} design`, title: i.title, meta: meta(i), tag: i.team ? 'With the team' : undefined, anatomy: `anat-${i.slug}` };
           })}
         />
         {c.items.map((i) => (

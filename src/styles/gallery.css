@@ -24,6 +24,30 @@
   margin-bottom: 12px;
 }
 
+/* With JS: a row-by-row masonry. Each tile spans as many 4px rows as its own height needs,
+   so tiles of different shapes pack together without holes. */
+.js .gallery--masonry {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 4px;
+  grid-auto-flow: row dense;
+  column-gap: 12px;
+  row-gap: 0;
+  columns: auto;
+}
+
+@media (min-width: 720px) {
+  .js .gallery--masonry {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.js .gallery--masonry .gallery__item {
+  margin-bottom: 0;
+  grid-row: span var(--span, 60);
+  align-self: start;
+}
+
 .gallery__item[hidden] {
   display: none;
 }

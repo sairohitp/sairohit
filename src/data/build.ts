@@ -43,6 +43,14 @@ function dimensions(buf: Buffer): [number, number] | undefined {
   return undefined;
 }
 
+/** CSS aspect ratio ("w / h") of an image in /public, read from its header; undefined if unreadable. */
+export function ratioOf(publicPath: string): string | undefined {
+  const file = join(PUBLIC, publicPath);
+  if (!existsSync(file)) return undefined;
+  const size = dimensions(readFileSync(file));
+  return size ? `${size[0]} / ${size[1]}` : undefined;
+}
+
 /** Image in /public/images/projects (any of png, jpg, webp), or undefined when the file is not there. */
 export function maybeImg(name: string, alt: string, extra: Partial<Media> = {}): Media | undefined {
   const src = find(name, IMAGE_EXT);
