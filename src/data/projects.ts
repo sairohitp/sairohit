@@ -151,12 +151,14 @@ export const explorations = [
     description: 'A marketplace redesign concept: sign-up, login and OTP, a category-rich home, an explore page with filters, and a product page with exchange and EMI options.',
     tags: ['Web', 'Wireframes'],
     image: '/images/visual/thumb-e-commerce-platform.webp',
+    slug: 'ecommerce',
   },
   {
     title: 'Franchise News Co.',
     description: 'A news website concept with a story-led home page and long-form article pages showing update times and reading time.',
     tags: ['Web', 'Editorial'],
     image: '/images/visual/thumb-franchise-news-co.webp',
+    slug: 'franchise',
   },
 ];
 

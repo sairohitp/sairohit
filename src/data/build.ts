@@ -207,8 +207,16 @@ export function moreScreens(key: string, number: string): Block | null {
     .map((f) => f.replace(/\.(png|jpe?g|webp)$/i, ''));
   const unique = [...new Set(names)].sort();
   if (!unique.length) return null;
-  const items = unique
-    .map((n) => maybeImg(n, n.replace(`${key}-screen-`, '').replace(/-/g, ' ')))
-    .filter(Boolean) as Media[];
-  return { type: 'gallery', items, caption: cap(number, 'Screens', `${items.length} screens from the final design`) };
+  const label = (n: string) => {
+    const s = n.replace(`${key}-screen-`, '');
+    if (s.startsWith('behance')) return 'Behance presentation board';
+    const t = s.replace(/-/g, ' ');
+    return t.charAt(0).toUpperCase() + t.slice(1);
+  };
+  const items = unique.map((n) => maybeImg(n, label(n))).filter(Boolean) as Media[];
+  return {
+    type: 'gallery',
+    items,
+    caption: cap(number, 'Screens', `${items.length} ${items.length === 1 ? 'screen' : 'screens and boards'} rendered inside the Figma files`),
+  };
 }

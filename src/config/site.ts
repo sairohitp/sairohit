@@ -32,6 +32,8 @@ export const site = {
         { label: 'About', href: '/about/', external: false },
         { label: 'Work', href: '/#work', external: false },
         { label: 'Visual design', href: '/visual/', external: false },
+        { label: 'Explorations', href: '/explorations/', external: false },
+        { label: 'Sitemap', href: '/sitemap/', external: false },
       ],
     },
     {
@@ -42,7 +44,7 @@ export const site = {
           href: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing',
           external: true,
         },
-        { label: 'Colleagues', href: null, external: true },
+        { label: 'Colleagues', href: '/colleagues/', external: false },
       ],
     },
   ],

@@ -311,3 +311,133 @@
   color: var(--text-3);
   font-size: 13px;
 }
+
+/* ---------------------------------------------------------------
+   Colleagues
+   --------------------------------------------------------------- */
+.colleagues__filters {
+  flex-wrap: wrap;
+  margin-top: 28px;
+  border-radius: 20px;
+}
+
+.colleagues[hidden] {
+  display: none;
+}
+
+.colleagues__grid {
+  display: grid;
+  gap: 14px;
+}
+
+@media (min-width: 640px) {
+  .colleagues__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .colleagues__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.colleague {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--tile);
+}
+
+.colleague__head {
+  display: flex;
+  gap: 14px;
+}
+
+.colleague__avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, hsl(var(--h) 60% 52%), hsl(calc(var(--h) + 40) 60% 34%));
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18);
+}
+
+.colleague__name {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.colleague__role {
+  margin-top: 2px;
+  color: var(--text-soft);
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+.colleague__org {
+  color: var(--text-3);
+  font-size: 12.5px;
+}
+
+.colleague__label {
+  margin-top: 4px;
+  color: var(--text-3);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.colleague__work {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.colleague__work a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-2);
+  font-size: 12.5px;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+
+.colleague__work a:hover {
+  color: var(--text);
+  border-color: rgb(var(--ink) / 0.3);
+}
+
+.colleague__src {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  color: var(--text-3);
+  font-size: 11.5px;
+}
+
+.colleague__src svg {
+  flex: none;
+}
+
+.colleague__note {
+  color: var(--text-3);
+  font-size: 11.5px;
+  font-style: italic;
+}

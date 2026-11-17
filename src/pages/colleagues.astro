@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { colleagueGroups, allColleagues } from '../data/colleagues';
+import { site } from '../config/site';
+import { url } from '../lib/url';
+
+const initials = (n: string) =>
+  n
+    .replace(/^(Dr|Prof)\.\s*/i, '')
+    .split(/\s+/)
+    .filter((w) => /^[A-Z]/.test(w) && w.length > 1)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('');
+const hue = (n: string) => [...n].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7);
+const files = new Set(allColleagues.flatMap((c) => c.sources)).size;
+---
+
+<Base
+  title={`Colleagues | ${site.name}`}
+  description={`The ${allColleagues.length} people named across Sai Rohit's Figma files: GDSC SRM leadership, the Creatives team, project teammates and TrainingMug.`}
+  wide
+>
+  <div class="container page-hero">
+    <p class="eyebrow" data-reveal>Colleagues</p>
+    <h1 class="page-hero__title" data-reveal="blur">The people behind the work</h1>
+    <p class="page-hero__lead" data-reveal>
+      Everyone named in my Figma files, with their roles as the files state them, and the work we shared. Design is a team sport;
+      these are my teammates.
+    </p>
+    <ul class="page-hero__stats" data-stagger="80">
+      <li data-reveal="pop"><strong>{allColleagues.length}</strong> people</li>
+      <li data-reveal="pop"><strong>{colleagueGroups.length}</strong> teams</li>
+      <li data-reveal="pop"><strong>{files}</strong> Figma files</li>
+    </ul>
+    <div class="filters colleagues__filters" role="group" aria-label="Filter by team" data-reveal>
+      <button class="filter" type="button" aria-pressed="true" data-col-filter="all">All <span class="filter__count">{allColleagues.length}</span></button>
+      {
+        colleagueGroups.map((g) => (
+          <button class="filter" type="button" aria-pressed="false" data-col-filter={g.id}>
+            {g.title} <span class="filter__count">{g.people.length}</span>
+          </button>
+        ))
+      }
+    </div>
+  </div>
+
+  {
+    colleagueGroups.map((g) => (
+      <section id={g.id} class="container colleagues" aria-labelledby={`${g.id}-title`} data-col-group={g.id}>
+        <hr class="cs-divider" data-reveal="line" />
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow" data-reveal>{g.people.length} people</p>
+            <h2 id={`${g.id}-title`} class="section-intro__title" data-reveal="blur">{g.title}</h2>
+          </div>
+          <p class="section-intro__text" data-reveal>{g.description}</p>
+        </div>
+        <ul class="colleagues__grid" data-stagger="50">
+          {g.people.map((p) => (
+            <li class="colleague" data-reveal="rise">
+              <div class="colleague__head">
+                <span class="colleague__avatar" style={`--h: ${hue(p.name)}`} aria-hidden="true">{initials(p.name)}</span>
+                <div>
+                  <h3 class="colleague__name">{p.name}</h3>
+                  <p class="colleague__role">{p.role}</p>
+                  <p class="colleague__org">{p.org}</p>
+                </div>
+              </div>
+              <p class="colleague__label">Worked together on</p>
+              <ul class="colleague__work">
+                {p.work.map((w) => (
+                  <li>
+                    <a href={url(w.href)}>{w.label} <Icon name="arrow-right" size={12} /></a>
+                  </li>
+                ))}
+              </ul>
+              <p class="colleague__src">
+                <Icon name="figma" size={12} /> {p.sources.join(', ')}
+              </p>
+              {p.note && <p class="colleague__note">{p.note}</p>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <section class="container visual-note" data-reveal="fade">
+    <p>
+      Names and roles are taken exactly as they appear in the Figma files. Creatives team members appear by the first names on their
+      pages in those files. If you are listed and would like a change, please get in touch.
+    </p>
+  </section>
+</Base>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-col-filter]');
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      const id = b.dataset.colFilter;
+      buttons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      document.querySelectorAll<HTMLElement>('[data-col-group]').forEach((g) => {
+        g.hidden = id !== 'all' && g.dataset.colGroup !== id;
+      });
+    }),
+  );
+</script>

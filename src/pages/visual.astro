@@ -4,6 +4,8 @@ import Icon from '../components/Icon.astro';
 import Gallery from '../components/Gallery.astro';
 import Stats from '../components/case/Stats.astro';
 import { campaigns, visualImages } from '../data/visual';
+import FileAnatomy from '../components/case/FileAnatomy.astro';
+import { filesFor } from '../data/figma';
 import { site } from '../config/site';
 import { url } from '../lib/url';
 
@@ -75,14 +77,21 @@ const meta = (i: (typeof allItems)[number]) =>
             return { src: img.src, alt: `${i.title} design`, title: i.title, meta: meta(i), tag: i.team ? 'With the team' : undefined };
           })}
         />
+        <details class="campaign__files" data-reveal>
+          <summary>
+            <Icon name="figma" size={16} /> Inside the {c.items.length} Figma {c.items.length === 1 ? 'file' : 'files'}
+            <span>Pages, frames, typefaces, colours, notes and every label</span>
+          </summary>
+          <FileAnatomy files={c.items.flatMap((i) => filesFor('visual', i.slug))} compact />
+        </details>
       </section>
     ))
   }
 
   <section class="container visual-note" data-reveal="fade">
     <p>
-      Pieces tagged “With the team” include work by members of the Creatives team I led. Previews come from the Figma files;
-      full-resolution exports are on their way.
+      Pieces tagged “With the team” include work by members of the Creatives team I led; see the Colleagues page for who they are.
+      Previews come from the thumbnails saved inside each Figma file.
     </p>
   </section>
 </Base>
