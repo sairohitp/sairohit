@@ -11,6 +11,11 @@ How the 74 Figma files map onto the site, the framework that keeps it organised,
 | Visual design | `/visual/` | `src/data/visual.ts` | 52 files grouped into 7 campaigns, with lightbox galleries |
 | About | `/about/` | `src/data/profile.ts` (resume is the source of truth) | Timeline, experience, leadership, skills, education, recognition, FAQ |
 | Blog | `/blog/`, `/blog/<slug>/`, `/rss.xml` | `src/content/blog/*.md` | Posts, each optionally tied to a case study with `related: <slug>` |
+| Explorations | `/explorations/` | `src/data/projects.ts` (`explorations`) | E-commerce Platform and Franchise News Co., with full file anatomy |
+| Colleagues | `/colleagues/` | `src/data/colleagues.ts` | 34 people named in the files, roles exactly as written there, linked to shared work |
+| Sitemap | `/sitemap/` | `src/data/routes.ts` | Every page, case study section, blog heading and external link, with a filter |
+| Status | `/status/`, `/status/<code>/`, `404.html` | `src/data/statuses.ts` | 200 status page plus designed 301, 403, 404, 410, 500 and 503 pages |
+| Machine-readable | `/sitemap.xml`, `/robots.txt`, `/llms.txt`, `/llms-full.txt`, `/rss.xml` | `src/pages/*.ts` | Feeds for search engines and AI assistants |
 
 Cross-references: every case study ends with related posts and the next project; event projects link to their visual campaigns; About links to the Events case study and the Visual page; posts link back to the case studies they discuss.
 
@@ -43,6 +48,14 @@ Project-specific sections sit between Design and Deliver: `solution-challenge` (
 | `public/og/<slug>.jpg` (1200 x 630) | Social sharing card for that case study |
 
 Project keys: `learning`, `library`, `recycle`, `pluto`, `placement`, `crm`, `streaming`, `events`, `pulse`, `music`, `registration`, `gdsc`, plus `ecommerce` and `franchise` for the explorations.
+
+### Every file, represented
+
+All 74 files were decoded layer by layer (712,572 layers, 30,737 text layers, 2,852 frames, 1,700 prototype links, 205 canvas notes). The result lives in `src/data/figma-files.json` and appears on the site as:
+
+- **Inside the files** on every case study (numbered section, also in the contents pane): pages and frames with sizes and prototype links, typefaces and size scale, colours by use, components and instances, notes left on the canvas, and a searchable index of every label.
+- **Inside the files** under each campaign on the Visual page, and on the Explorations page.
+- **Rendered screens**: frames whose full render is embedded in the file were extracted into each project's gallery (including the Placerr and PULSE profile screens). References, moodboards, drafts and other members' versions were left out on purpose.
 
 ## 3. Inventory of all 74 files
 
@@ -132,19 +145,40 @@ Project keys: `learning`, `library`, `recycle`, `pluto`, `placement`, `crm`, `st
 - Visual page with 7 campaigns (Design and Develop, Code with Node, Solution Challenge, Cloud Study Jam, Hacktoberfest, Community, Festivals), with team pieces labelled.
 - FAQs on every case study and on About, tech stacks, flows, structure views, related posts and visual links.
 
-## 5. Phases
+## 5. SEO and AI crawlability
+
+| Layer | What is in place |
+|---|---|
+| Every page | Unique title (under 65 characters) and description (70 to 160), canonical URL, robots directives, Open Graph and Twitter cards, author link |
+| Structured data | One JSON-LD graph per page: WebSite and Person always; ProfilePage (Home, About), CreativeWork (case studies), BlogPosting and Blog, CollectionPage (Visual, Colleagues), ItemList, BreadcrumbList and FAQPage wherever there are FAQs |
+| Discovery | `sitemap.xml` (all indexable pages), RSS feed, HTML sitemap, internal links from every page |
+| AI assistants | `llms.txt` (summary with links) and `llms-full.txt` (full text of every case study and post); robots rules that allow GPTBot, ClaudeBot, PerplexityBot, Google-Extended and others |
+| Content | Every Figma label is rendered as HTML text, so it is readable by crawlers |
+| Audit | All 22 indexable pages pass: one h1, alt text on every image, valid JSON-LD, title and description lengths |
+
+Important: crawlers read `robots.txt` and `llms.txt` only at the host root, `https://sairohitp.github.io/`. A project site at `/sairohit/` cannot serve them there. See `docs/SEO.md` for the two-minute fix.
+
+## 6. Mobile, accessibility and preferences
+
+- Every page is checked at 390, 768 and 1440 px, in dark and light themes: no sideways scroll, no script errors, no failed requests.
+- Sticky navigation condenses into a card on scroll, hides while reading and returns on scroll up; on phones the links move into a sheet.
+- Preferences: theme (system, dark, light), motion, text size, contrast, underlined links, reading spacing, region (date and number formats), currency (rupee figures converted at the Xe mid-market reference of 6 Nov 2026, marked approximate) and language (opens Google Translate; the site itself is written in English).
+
+## 7. Phases
 
 | Phase | Scope | Owner | Status |
 |---|---|---|---|
 | 1 | Framework, content from the resume and files, embedded screens, Visual page, blog | Claude | Done |
-| 2 | P1 exports from `docs/EXPORTS.md` (final screens, posts, covers) | Sai | Waiting |
-| 3 | P2 exports (wireframes, drafts), prototype videos, research boards | Sai | Waiting |
-| 4 | "View in Figma" links set to "Anyone with the link can view", OG cards for the 3 new projects, more posts | Both | Waiting |
+| 2 | Optional: P1 exports from `docs/EXPORTS.md` for sharper screens and posts | Sai | Optional |
+| 3 | Optional: prototype videos and research boards (drop-in slots) | Sai | Optional |
+| 4 | Every file represented, colleagues, sitemap, status pages, SEO, preferences, sticky nav | Claude | Done |
+| 5 | "View in Figma" links set to "Anyone with the link can view", OG cards for the 3 new projects, root robots.txt, Search Console | Sai | Waiting |
 
-## 6. Open questions
+## 8. Open questions
 
 1. Library (Myshelf): the files show an iOS app built in SwiftUI, while the resume calls it "Enterprise Web". Which is right for the card?
 2. Visual design: which pieces are yours alone and which are the Creatives team's? Five files carry other names and are labelled "With the team".
+8. Colleagues: "Aksh Kalyan" appears three times and "Aksh Kalyani" once; which is right? Creatives team members appear by first name only; full names welcome.
 3. Figma links: please share view-only links (Share, Anyone with the link, can view) for each product file.
 4. Placerr: startup, internship or passion project?
 5. Design and Develop workshop: which year?

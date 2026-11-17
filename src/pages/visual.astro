@@ -5,6 +5,7 @@ import Gallery from '../components/Gallery.astro';
 import Stats from '../components/case/Stats.astro';
 import { campaigns, visualImages } from '../data/visual';
 import FileAnatomy from '../components/case/FileAnatomy.astro';
+import { abs, personId, breadcrumbs } from '../lib/seo';
 import { filesFor } from '../data/figma';
 import { site } from '../config/site';
 import { url } from '../lib/url';
@@ -22,7 +23,7 @@ const meta = (i: (typeof allItems)[number]) =>
   [i.formats.join(', '), i.year, `${i.finals} final${i.finals === 1 ? '' : 's'}`, i.explorations ? `${i.explorations} explorations` : ''].filter(Boolean).join(' · ');
 ---
 
-<Base title={`Visual design | ${site.name}`} description="Campaigns, posts, stories, posters and certificates designed for Google Developer Student Clubs, SRM IST." wide>
+<Base schema={[{ '@type': 'CollectionPage', name: 'Visual design', url: abs('/visual/'), author: { '@id': personId }, about: 'Event identities, social posts, stories, posters and certificates for Google Developer Student Clubs, SRM IST' }, breadcrumbs([{ name: 'Visual design', path: '/visual/' }])]} title={`Visual design for GDG SRM | ${site.name}`} description="Campaigns, posts, stories, posters and certificates designed for Google Developer Student Clubs, SRM IST." wide>
   <section class="visual-hero container" aria-labelledby="visual-title">
     <p class="eyebrow" data-reveal>Visual design</p>
     <h1 id="visual-title" class="blog-hero__title" data-reveal="blur">Two years of creative work for GDG SRM</h1>

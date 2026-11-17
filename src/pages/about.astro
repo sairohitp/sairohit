@@ -9,6 +9,7 @@ import Education from '../components/about/Education.astro';
 import Faq from '../components/case/Faq.astro';
 import Toc from '../components/case/Toc.astro';
 import { aboutToc } from '../data/routes';
+import { abs, personId, breadcrumbs, faqPage } from '../lib/seo';
 import { profile, leadership, certifications, achievements } from '../data/profile';
 import { site } from '../config/site';
 import { url } from '../lib/url';
@@ -21,10 +22,28 @@ const slides = [
 ];
 const [gdg, tedx] = leadership;
 const toc = aboutToc;
+const aboutFaq = [
+          { q: 'What kind of work are you looking for?', a: 'Product design for data platforms that operations teams rely on daily, where research, design and building in code all matter.' },
+          { q: 'Do you code?', a: 'Yes. I build my own projects in React, TypeScript and Tailwind CSS, such as OrgGrid, FundLookup and Handl, and I am comfortable with HTML, CSS, JavaScript, SQL, Python and Node.js.' },
+          { q: 'How do you approach research?', a: 'Through stakeholder and user interviews, workflow mapping, competitive analysis and usability studies, then turning findings into personas, journey maps and prioritised problems.' },
+          { q: 'Which tools do you use?', a: 'Figma at an advanced level for prototyping, wireframing, interaction and visual design and design systems, plus Framer and Photoshop.' },
+          { q: 'Where are you based?', a: 'Bengaluru, India.' },
+        ];
+const aboutSchema = [
+  { '@type': 'ProfilePage', url: abs('/about/'), mainEntity: { '@id': personId }, about: { '@id': personId } },
+  breadcrumbs([{ name: 'About', path: '/about/' }]),
+  faqPage(aboutFaq),
+];
 const n = (id: string) => String(toc.findIndex((t) => t.id === id) + 1).padStart(2, '0');
 ---
 
-<Base title={`About | ${site.name}`} description={profile.headline} wide>
+<Base
+  title={`About Sai Rohit | Product Designer, Bengaluru`}
+  description="About Pusarla Sai Rohit: product designer at Nasscom and co-founder of Progull, GDG SRM creatives lead, B.Tech from SRM IST. Experience, skills and recognition."
+  type="profile"
+  schema={aboutSchema}
+  wide
+>
   <div class="cs">
   <aside class="cs__left">
     <a class="back-pill" href={url('/')} data-reveal="left"><Icon name="arrow-left" size={14} /> Back</a>
@@ -234,13 +253,7 @@ const n = (id: string) => String(toc.findIndex((t) => t.id === id) + 1).padStart
     <section id="faq" class="about__block" aria-label="Questions">
       <Faq
         title="Frequently asked"
-        items={[
-          { q: 'What kind of work are you looking for?', a: 'Product design for data platforms that operations teams rely on daily, where research, design and building in code all matter.' },
-          { q: 'Do you code?', a: 'Yes. I build my own projects in React, TypeScript and Tailwind CSS, such as OrgGrid, FundLookup and Handl, and I am comfortable with HTML, CSS, JavaScript, SQL, Python and Node.js.' },
-          { q: 'How do you approach research?', a: 'Through stakeholder and user interviews, workflow mapping, competitive analysis and usability studies, then turning findings into personas, journey maps and prioritised problems.' },
-          { q: 'Which tools do you use?', a: 'Figma at an advanced level for prototyping, wireframing, interaction and visual design and design systems, plus Framer and Photoshop.' },
-          { q: 'Where are you based?', a: 'Bengaluru, India.' },
-        ]}
+        items={aboutFaq}
       />
     </section>
 

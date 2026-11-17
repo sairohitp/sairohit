@@ -1,4 +1,14 @@
 ---
+import { projects, projectHref } from '../data/projects';
+import { abs, personId } from '../lib/seo';
+const homeSchema = [
+  {
+    '@type': 'ItemList',
+    name: 'Case studies',
+    itemListElement: projects.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(projectHref(p)), name: p.title })),
+  },
+  { '@type': 'ProfilePage', url: abs('/'), mainEntity: { '@id': personId } },
+];
 import Base from '../layouts/Base.astro';
 import Hero from '../components/home/Hero.astro';
 import Glance from '../components/home/Glance.astro';
@@ -10,7 +20,12 @@ import Explorations from '../components/home/Explorations.astro';
 import VisualTeaser from '../components/home/VisualTeaser.astro';
 ---
 
-<Base wide>
+<Base
+  wide
+  title="Sai Rohit | Product Designer in Bengaluru, Figma to React"
+  description="Sai Rohit, product designer in Bengaluru: data-heavy enterprise products designed in Figma and built in React. 12 case studies, visual design and writing."
+  schema={homeSchema}
+>
   <Hero />
   <Glance />
   <WorkList />

@@ -4,6 +4,7 @@ import Icon from '../components/Icon.astro';
 import { siteTree } from '../data/routes';
 import { site } from '../config/site';
 import { url } from '../lib/url';
+import { breadcrumbs } from '../lib/seo';
 
 const groups = await siteTree();
 const count = (links: { children?: unknown[] }[]) => links.reduce((n, l) => n + 1 + (l.children?.length ?? 0), 0);
@@ -16,6 +17,7 @@ const href = (h: string, external?: boolean) => (external ? h : url(h));
   title={`Sitemap | ${site.name}`}
   description="Every page, case study section, blog heading and external link on Sai Rohit's portfolio, in one place."
   wide
+  schema={[breadcrumbs([{ name: 'Sitemap', path: '/sitemap/' }])]}
 >
   <div class="container page-hero">
     <p class="eyebrow" data-reveal>Sitemap</p>

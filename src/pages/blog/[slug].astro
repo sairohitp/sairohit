@@ -9,6 +9,7 @@ import { getPosts, readingTime, formatDate, postHref, type Post } from '../../li
 import { projects } from '../../data/projects';
 import { site } from '../../config/site';
 import { url } from '../../lib/url';
+import { abs, personId, breadcrumbs } from '../../lib/seo';
 
 export async function getStaticPaths() {
   const posts = await getPosts();
@@ -30,10 +31,28 @@ const d = post.data;
 const toc = headings.filter((h) => h.depth === 2);
 const related = d.related ? projects.find((p) => p.slug === d.related) : undefined;
 const pageUrl = new URL(url(postHref(post)), Astro.site).toString();
+const postSchema = [
+  {
+    '@type': 'BlogPosting',
+    headline: d.title,
+    description: d.description,
+    datePublished: d.date.toISOString(),
+    dateModified: d.date.toISOString(),
+    url: abs(postHref(post)),
+    mainEntityOfPage: abs(postHref(post)),
+    image: abs('/og/home.jpg'),
+    author: { '@id': personId },
+    publisher: { '@id': personId },
+    keywords: d.tags.join(', '),
+    wordCount: (post.body ?? '').split(/\s+/).filter(Boolean).length,
+    inLanguage: 'en',
+  },
+  breadcrumbs([{ name: 'Blog', path: '/blog/' }, { name: d.title, path: postHref(post) }]),
+];
 const share = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
 ---
 
-<Base title={`${d.title} | ${site.name}`} description={d.description}>
+<Base title={d.title.length > 52 ? d.title : `${d.title} | ${site.name}`} description={d.description} type="article" published={d.date} tags={d.tags} schema={postSchema}>
   <div class="progress" aria-hidden="true"><span data-progress></span></div>
   <div class="cs">
     <aside class="cs__left">

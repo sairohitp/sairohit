@@ -21,6 +21,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactBand from '../components/ContactBand.astro';
 import Lightbox from '../components/Lightbox.astro';
+import { graph, abs } from '../lib/seo';
 
 interface Props {
   title?: string;
@@ -31,11 +32,33 @@ interface Props {
   wide?: boolean;
   /** Keep this page out of search results. */
   noindex?: boolean;
+  /** Open Graph type: articles for case studies and posts, profile for About. */
+  type?: 'website' | 'article' | 'profile';
+  published?: Date;
+  modified?: Date;
+  tags?: string[];
+  /** Extra schema.org nodes for this page (the site and person are always included). */
+  schema?: object[];
+  /** Alt text for the share image. */
+  imageAlt?: string;
 }
 
-const { title = site.title, description = site.description, wide = false, noindex = false } = Astro.props;
+const {
+  title = site.title,
+  description = site.description,
+  wide = false,
+  noindex = false,
+  type = 'website',
+  published,
+  modified,
+  tags = [],
+  schema = [],
+  imageAlt = `${site.name}, product designer`,
+} = Astro.props;
 const image = Astro.props.image ?? '/og/home.jpg';
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = abs(image);
+const jsonLd = JSON.stringify(graph(schema)).replace(/</g, '\\u003c');
 ---
 
 <!doctype html>
@@ -60,19 +83,43 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     </script>
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="author" content="Pusarla Sai Rohit" />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
     <meta name="theme-color" content="#111111" />
-    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
     <link rel="alternate" type="application/rss+xml" title="Sai Rohit | Blog" href={url('/rss.xml')} />
-    <meta property="og:type" content="website" />
+    <link rel="sitemap" type="application/xml" href={url('/sitemap.xml')} />
+    <link rel="author" href={url('/about/')} />
+
+    <!-- Open Graph and social cards -->
+    <meta property="og:site_name" content={site.title} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL(url(image), Astro.site)} />
+    <meta property="og:image" content={imageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={imageAlt} />
+    {type === 'article' && published && <meta property="article:published_time" content={published.toISOString()} />}
+    {type === 'article' && modified && <meta property="article:modified_time" content={modified.toISOString()} />}
+    {type === 'article' && <meta property="article:author" content={url('/about/')} />}
+    {type === 'article' && tags.map((t) => <meta property="article:tag" content={t} />)}
+    {type === 'profile' && <meta property="profile:first_name" content="Sai Rohit" />}
+    {type === 'profile' && <meta property="profile:last_name" content="Pusarla" />}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
+    <!-- Structured data for search engines and AI assistants -->
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body class:list={[wide && 'page--wide']}>
     <a class="skip-link" href="#main">Skip to content</a>

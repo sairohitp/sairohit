@@ -1,4 +1,5 @@
 ---
+import { abs, personId, breadcrumbs } from '../../lib/seo';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import PostCard from '../../components/blog/PostCard.astro';
@@ -10,9 +11,19 @@ const posts = await getPosts();
 const featured = posts.find((p) => p.data.featured) ?? posts[0];
 const rest = posts.filter((p) => p !== featured);
 const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+const blogSchema = [
+  {
+    '@type': 'Blog',
+    name: 'Sai Rohit | Blog',
+    url: abs('/blog/'),
+    author: { '@id': personId },
+    blogPost: (await getPosts()).map((p) => ({ '@type': 'BlogPosting', headline: p.data.title, url: abs(`/blog/${p.id}/`), datePublished: p.data.date.toISOString() })),
+  },
+  breadcrumbs([{ name: 'Blog', path: '/blog/' }]),
+];
 ---
 
-<Base title={`Blog | ${site.name}`} description="Notes on designing data-heavy products, design engineering, accessibility and teaching design." wide>
+<Base schema={blogSchema} title={`Blog | ${site.name}, product design and design engineering`} description="Notes on designing data-heavy products, design engineering, accessibility and teaching design." wide>
   <section class="blog-hero container" aria-labelledby="blog-title">
     <p class="eyebrow" data-reveal>Blog</p>
     <h1 id="blog-title" class="blog-hero__title" data-reveal="blur">Notes on designing data-heavy products</h1>

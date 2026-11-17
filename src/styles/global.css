@@ -185,6 +185,13 @@ a {
   scroll-margin-top: 88px;
 }
 
+/* Reveal animations start slightly off-axis; never let that create sideways scroll. */
+main,
+.contact,
+.site-footer {
+  overflow-x: clip;
+}
+
 .container {
   width: min(var(--container), 100% - 2 * var(--gutter));
   margin-inline: auto;

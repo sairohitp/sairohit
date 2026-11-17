@@ -7,7 +7,7 @@ export const statuses = {
     name: 'OK',
     tone: 'ok',
     title: 'Everything is working',
-    message: 'Every page on this site built and published successfully.',
+    message: 'Every page of Sai Rohit’s portfolio built and published successfully. Here is what is live, when it last changed, and the designed error pages.',
   },
   301: {
     name: 'Moved permanently',

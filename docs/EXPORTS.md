@@ -1,4 +1,6 @@
-# Screens to export
+# Screens to export (optional)
+
+Not required: the site already shows every file through its decoded contents and the renders embedded in the files. Exports only make screens sharper. Drop any of these in and they appear automatically.
 
 Generated from the decoded catalogue of all 74 Figma files. The full list is also in `docs/exports.csv`, and every frame in every file is listed in `docs/figma-inventory.csv` (2,348 rows).
 

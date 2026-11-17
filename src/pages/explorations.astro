@@ -5,12 +5,14 @@ import { explorations } from '../data/projects';
 import { filesFor } from '../data/figma';
 import { site } from '../config/site';
 import { url } from '../lib/url';
+import { breadcrumbs } from '../lib/seo';
 ---
 
 <Base
   title={`Explorations | ${site.name}`}
   description="Design concepts in progress by Sai Rohit: an e-commerce marketplace and a news website, with every page, frame and label from their Figma files."
   wide
+  schema={[breadcrumbs([{ name: 'Explorations', path: '/explorations/' }])]}
 >
   <div class="container page-hero">
     <p class="eyebrow" data-reveal>Explorations</p>

@@ -35,3 +35,13 @@ See [docs/IMAGES.md](docs/IMAGES.md) for the full list. In short: push a file wi
 ## Motion
 
 Elements animate in on scroll via `data-reveal` (`fade`, `left`, `right`, `rise`, `pop`, `scale`, `blur`, `clip`, `line`), with `data-stagger` on a parent to sequence children. Diagrams draw themselves, numbers count up, boards pan slowly ("animated view"), and pages cross-fade between routes. All motion is disabled for visitors who prefer reduced motion.
+
+## Framework at a glance
+
+- Case studies: `src/data/projects.ts` plus `src/data/case-studies/<slug>.ts`, built from typed blocks (`src/data/build.ts`).
+- Figma anatomy: `src/data/figma-files.json`, rendered by `src/components/case/FileAnatomy.astro`.
+- Screens: any `public/images/projects/<key>-screen-*.{png,jpg,webp}` joins that project's gallery automatically.
+- Pages: Home, About, Visual, Explorations, Blog, Colleagues, Sitemap, Status (200 and designed error pages), 404.
+- Preferences and sticky navigation: `src/scripts/prefs.ts`, `src/config/prefs.ts`, `src/styles/nav.css`.
+- SEO: `src/lib/seo.ts`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`. See `docs/SEO.md`.
+- Plan and inventory: `docs/MASTER_PLAN.md`, `docs/figma-inventory.csv`, optional exports in `docs/EXPORTS.md`.
