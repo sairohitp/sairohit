@@ -291,24 +291,6 @@
   gap: 20px;
 }
 
-.text-block__rule {
-  display: block;
-  width: 32px;
-  height: 2px;
-  margin-bottom: 16px;
-  border-radius: 2px;
-  background: var(--accent);
-  transform-origin: left;
-}
-
-.js .text-block:not(:has(.is-in)) .text-block__rule {
-  transform: scaleX(0);
-}
-
-.text-block__rule {
-  transition: transform 0.8s var(--ease-out) 0.1s;
-}
-
 .text-block__heading {
   font-size: clamp(17px, 0.5vw + 13px, 20px);
   font-weight: 600;

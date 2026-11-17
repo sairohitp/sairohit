@@ -72,7 +72,6 @@ const gridCols = block.type === 'text' && block.cards?.length ? (block.cards.len
   block.type === 'text' && textVariant !== 'grid' && (
     <div class:list={['text-block', `text-block--${textVariant}`]}>
       <div class="text-block__aside">
-        <span class="text-block__rule" aria-hidden="true" />
         <h3 class="text-block__heading" data-reveal="left">{heading}</h3>
         {textVariant === 'split' && block.body?.length ? (
           <div class="text-block__intro" data-stagger="90">
@@ -106,7 +105,6 @@ const gridCols = block.type === 'text' && block.cards?.length ? (block.cards.len
     <div class="text-block text-block--grid">
       <div class="text-block__head">
         <div class="text-block__aside">
-          <span class="text-block__rule" aria-hidden="true" />
           <h3 class="text-block__heading" data-reveal="left">{heading}</h3>
         </div>
         {block.body?.length ? (

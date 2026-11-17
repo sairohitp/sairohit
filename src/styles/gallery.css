@@ -398,36 +398,62 @@
 }
 
 .exploration {
+  position: relative;
   display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 16px;
-  padding: 14px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 24px;
+  min-height: 200px;
+  padding: 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
   background: var(--tile);
 }
 
 .exploration img {
   width: 100%;
-  border-radius: var(--radius-sm);
+  height: 100%;
+  min-height: 160px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
   object-fit: cover;
-  aspect-ratio: 16 / 9;
+  object-position: top center;
+}
+
+.exploration > div {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 0 2px;
 }
 
 .exploration h3 {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .exploration p {
-  margin-top: 6px;
+  margin-top: 8px;
   color: var(--text-2);
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .exploration .chips {
-  margin-top: 10px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+@media (max-width: 559px) {
+  .exploration {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .exploration img {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
 }
 
 .visual-teaser {
