@@ -14,9 +14,11 @@
 }
 
 .about__lead {
+  max-width: 760px;
   font-size: clamp(17px, 1.2vw + 12px, 20px);
   font-weight: 600;
   line-height: 1.45;
+  text-wrap: balance;
 }
 
 .about__intro .about__lead + .about__lead {

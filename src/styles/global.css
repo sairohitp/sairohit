@@ -29,7 +29,8 @@
   --tracking: -0.35px;
 
   /* Layout */
-  --container: 840px;
+  /* One content width for every page: wider than the original 840, narrower than a full grid */
+  --container: 960px;
   --gutter: 20px;
   --radius-sm: 8px;
   --radius-md: 12px;
