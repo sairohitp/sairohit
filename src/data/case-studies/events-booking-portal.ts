@@ -1,8 +1,8 @@
-import { board, cap, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const eventsBookingPortal: CaseStudy = {
-  cover: img('events-cover', 'BookMyEvent portal for GDSC SRM'),
+  cover: img('events-hero', 'Hero mockup: BookMyEvent portal for GDSC SRM'),
   sections: [
     overview({
       role: 'Creatives & Photography Lead: product design, visual design',
@@ -15,7 +15,7 @@ export const eventsBookingPortal: CaseStudy = {
     }),
     highlightsSection(
       highlights('A responsive events portal for GDSC SRM, open to every organisation.', {
-        exhibits: [{ media: img('events-a', 'Chapter header with GDSC SRM team photo'), caption: cap('0.1', 'Screen', 'Chapter page header') }],
+        exhibits: [prototype('events'), { media: img('events-a', 'Chapter header with GDSC SRM team photo'), caption: cap('0.1', 'Screen', 'Chapter page header') }],
       }),
     ),
     section('context', 'Context', 'Events deserve a better front door.', [
@@ -32,6 +32,7 @@ export const eventsBookingPortal: CaseStudy = {
         ],
         cap('1.0', 'Diagram', 'Information architecture'),
       ),
+      research('events'),
     ]),
     section('the-problem', 'The Problem', 'Great events, hard to find.', [
       text(
@@ -58,12 +59,13 @@ export const eventsBookingPortal: CaseStudy = {
     section('user-flow', 'User Flow', 'From browsing to booked.', [
       text('Short and predictable.', ['A visitor lands on the chapter page, narrows events with filters and registers directly from the event card.']),
       flow(['Chapter page', 'Filter by date, mode, category', 'Event card', 'Register', 'Dashboard'], cap('3.0', 'Diagram', 'Booking flow')),
+      wireframes('events'),
     ]),
     section('layout', 'Layout', 'Filters on the left, events on the right.', [
       text('A familiar structure.', [
         'A calendar date picker and collapsible filters for events, mode and category sit beside a grid of upcoming event cards. Each card shows the date, mode, description, tech stack tags and a Register button.',
       ]),
-      exhibit(img('events-b', 'Filters and upcoming event cards'), cap('4.0', 'Screen', 'Filters and upcoming events')),
+      structure('events', 'Filters and upcoming event cards', 'Filters and upcoming events: structure and final. Drag to compare.', 'b'),
     ]),
     section('interactions', 'Interactions', 'Details that save a click.', [
       text('Built for quick decisions.', ['Tags and toggles answer the common questions before a visitor opens an event.']),

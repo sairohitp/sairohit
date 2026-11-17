@@ -1,8 +1,8 @@
-import { board, cap, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const placementManagementSystem: CaseStudy = {
-  cover: img('placement-cover', 'Placerr placement dashboard'),
+  cover: img('placement-hero', 'Hero mockup: Placerr placement dashboard'),
   sections: [
     overview({
       role: 'Independent project: information architecture, dashboard design, visual design',
@@ -15,7 +15,7 @@ export const placementManagementSystem: CaseStudy = {
     }),
     highlightsSection(
       highlights('One placement dashboard: discover roles, track every application and prepare with tips.', {
-        exhibits: [{ media: img('placement-a', 'Overview statistics and company spotlight'), caption: cap('0.1', 'Screen', 'Overview and company spotlight') }],
+        exhibits: [prototype('placement'), { media: img('placement-a', 'Overview statistics and company spotlight'), caption: cap('0.1', 'Screen', 'Overview and company spotlight') }],
       }),
     ),
     section('context', 'Context', 'Placement season is a full-time job.', [
@@ -32,6 +32,7 @@ export const placementManagementSystem: CaseStudy = {
         ],
         cap('1.0', 'Diagram', 'Sidebar information architecture'),
       ),
+      research('placement'),
     ]),
     section('the-problem', 'The Problem', 'Students did not know where they stood.', [
       text(
@@ -58,12 +59,13 @@ export const placementManagementSystem: CaseStudy = {
     section('user-flow', 'User Flow', 'From opening to offer.', [
       text('Every stage, visible.', ['Each application follows the same stages, and each stage carries its own date and status.']),
       flow(['Discover role', 'Apply', 'Profile shortlisting', 'Online screening test', 'Selected'], cap('3.0', 'Diagram', 'Application stages')),
+      wireframes('placement'),
     ]),
     section('layout', 'Layout', 'Applications as timelines.', [
       text('Reading progress top to bottom.', [
         'Each ongoing application is a vertical timeline with dates and colour-coded statuses: green for selected and cleared, amber for upcoming.',
       ]),
-      exhibit(img('placement-b', 'Ongoing applications with stage timelines'), cap('4.0', 'Screen', 'Ongoing applications')),
+      structure('placement', 'Ongoing applications with stage timelines', 'Ongoing applications: structure and final. Drag to compare.', 'b'),
     ]),
     section('interactions', 'Interactions', 'Recommendations beside the work.', [
       text('A helpful right rail.', [

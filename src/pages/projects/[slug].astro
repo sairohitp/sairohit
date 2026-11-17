@@ -28,7 +28,7 @@ const description =
   firstOverview && firstOverview.type === 'meta' ? firstOverview.overview[0] : `${project.title}: ${subtitle}.`;
 ---
 
-<Base title={`${project.title} | ${site.name}`} description={description}>
+<Base title={`${project.title} | ${site.name}`} description={description} image={`/og/${project.slug}.jpg`}>
   <div class="progress" aria-hidden="true"><span data-progress></span></div>
   <div class="cs">
     <aside class="cs__left">

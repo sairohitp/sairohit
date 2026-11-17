@@ -1,8 +1,8 @@
-import { board, cap, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const onlineStreamingPlatform: CaseStudy = {
-  cover: img('streaming-cover', 'heavenns streaming platform title page'),
+  cover: img('streaming-hero', 'Hero mockup: heavenns streaming platform title page'),
   sections: [
     overview({
       role: 'Independent project: concept, information architecture, visual design',
@@ -15,7 +15,7 @@ export const onlineStreamingPlatform: CaseStudy = {
     }),
     highlightsSection(
       highlights('One home for every kind of entertainment, with a title page built for fast decisions.', {
-        exhibits: [{ media: img('streaming-a', 'Home hero with navigation'), caption: cap('0.1', 'Screen', 'Navigation and hero') }],
+        exhibits: [prototype('streaming'), { media: img('streaming-a', 'Home hero with navigation'), caption: cap('0.1', 'Screen', 'Navigation and hero') }],
       }),
     ),
     section('context', 'Context', 'Entertainment is scattered across too many apps.', [
@@ -32,6 +32,7 @@ export const onlineStreamingPlatform: CaseStudy = {
         ],
         cap('1.0', 'Diagram', 'Content categories'),
       ),
+      research('streaming'),
     ]),
     section('the-problem', 'The Problem', 'Choice overload is the real competitor.', [
       text(
@@ -60,12 +61,13 @@ export const onlineStreamingPlatform: CaseStudy = {
       flow(['Browse home', 'Open title', 'Check match and details', 'Play or add to My List'], cap('3.0', 'Diagram', 'Decision path')),
       text('Teaching the feed.', ['Two explicit signals, I Like This and Don’t Suggest, feed straight back into recommendations.']),
       flow(['Watch or browse', 'I Like This or Don’t Suggest', 'Better recommendations'], cap('3.1', 'Diagram', 'Feedback loop')),
+      wireframes('streaming'),
     ]),
     section('layout', 'Layout', 'A title page that answers every question.', [
       text('Everything above the fold.', [
         'The title page stacks a full-bleed hero, then the poster, match score, years, seasons, episodes, network and genres, followed by actions, tagline and synopsis. Badges such as Dolby Vision and 4K sit to the right.',
       ]),
-      exhibit(img('streaming-b', 'Title details with actions and synopsis'), cap('4.0', 'Screen', 'Title details and actions')),
+      structure('streaming', 'Title details with actions and synopsis', 'Title details and actions: structure and final. Drag to compare.', 'b'),
     ]),
     section('interactions', 'Interactions', 'Feedback that shapes the feed.', [
       text('More than play and pause.', [

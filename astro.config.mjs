@@ -1,10 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Set `site` to the production URL once the domain is known (used for canonical/OG URLs).
-// If deploying to a sub-path (e.g. GitHub Pages project site), also set `base`.
+// Hosted on GitHub Pages as a project site: https://sairohitp.github.io/sairohit/
+// If the repository is renamed to "sairohitp.github.io" or a custom domain is added,
+// change `site` accordingly and set `base` to '/'.
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://sairohitp.github.io',
+  base: '/sairohit',
   trailingSlash: 'ignore',
   build: { format: 'directory' },
 });

@@ -1,8 +1,8 @@
-import { board, cap, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const learningManagementSystem: CaseStudy = {
-  cover: img('learning-cover', 'TrainingMug admin console showing the quizzes table'),
+  cover: img('learning-hero', 'Hero mockup: TrainingMug admin console showing the quizzes table'),
   sections: [
     overview({
       role: 'Principal UI/UX Designer: research, interaction design, visual design, prototyping',
@@ -16,6 +16,7 @@ export const learningManagementSystem: CaseStudy = {
     }),
     highlightsSection(
       highlights('A redesigned admin console, website and user app, with AI-driven recommendations and a 25% drop in user drop-off.', {
+        exhibits: [prototype('learning')],
         stats: [
           { value: 25, suffix: '%', label: 'Lower user drop-off' },
           { value: 3, label: 'Products redesigned' },
@@ -36,6 +37,7 @@ export const learningManagementSystem: CaseStudy = {
         ],
         cap('1.0', 'Diagram', 'Console information architecture'),
       ),
+      research('learning'),
     ]),
     section('the-problem', 'The Problem', 'Learners were dropping off before finishing.', [
       text(
@@ -66,12 +68,13 @@ export const learningManagementSystem: CaseStudy = {
       flow(['Create', 'Draft', 'Submit for approval', 'Approve', 'Active'], cap('3.0', 'Diagram', 'Content lifecycle')),
       text('A guided path for learners.', ['On the learner side, recommendations point to the next course, and practice through quizzes and exercises leads into projects.']),
       flow(['Recommended course', 'Learn', 'Quiz and exercise', 'Project', 'Progress'], cap('3.1', 'Diagram', 'Learner journey')),
+      wireframes('learning'),
     ]),
     section('layout', 'Layout', 'A table that reads at a glance.', [
       text('Structure for scanning.', [
         'Each row shows the item, its course, chapter, who modified it and when. Avatars make ownership visible, and the selected row is marked with a lime accent bar.',
       ]),
-      exhibit(img('learning-a', 'Quizzes view with sidebar navigation and table'), cap('4.0', 'Screen', 'Quizzes view in the admin console')),
+      structure('learning', 'Quizzes view with sidebar navigation and table', 'Quizzes view in the admin console: structure and final. Drag to compare.'),
     ]),
     section('interactions', 'Interactions', 'Fewer clicks for everyday work.', [
       text('Built for keyboard and bulk actions.', [

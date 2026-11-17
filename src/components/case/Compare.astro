@@ -1,0 +1,35 @@
+---
+import type { Caption as CaptionT, Media } from '../../data/types';
+import { url } from '../../lib/url';
+import Icon from '../Icon.astro';
+import Caption from './Caption.astro';
+
+interface Props {
+  base: Media;
+  top: Media;
+  caption?: CaptionT;
+}
+
+const { base, top, caption } = Astro.props;
+---
+
+<figure class="compare-fig" data-reveal="rise">
+  <div class="compare" data-compare style={`aspect-ratio: ${top.ratio ?? '16 / 10'}; --pos: 50%`}>
+    <img class="compare__img" src={url(base.src!)} alt={base.alt} loading="lazy" decoding="async" />
+    <img class="compare__img compare__top" src={url(top.src!)} alt={top.alt} loading="lazy" decoding="async" />
+    <span class="compare__line" aria-hidden="true">
+      <span class="compare__knob"><Icon name="caret-left" size={12} /><Icon name="caret-right" size={12} /></span>
+    </span>
+    <span class="compare__tag compare__tag--l" aria-hidden="true">Structure</span>
+    <span class="compare__tag compare__tag--r" aria-hidden="true">Final</span>
+    <input
+      class="compare__range"
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+      aria-label="Slide to compare the layout structure with the final design"
+    />
+  </div>
+  {caption && <Caption caption={caption} />}
+</figure>

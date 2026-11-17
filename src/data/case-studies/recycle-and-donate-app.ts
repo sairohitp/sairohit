@@ -1,8 +1,8 @@
-import { board, cap, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const recycleAndDonateApp: CaseStudy = {
-  cover: img('recycle-cover', 'Greenwealth recycling app screens on a light canvas'),
+  cover: img('recycle-hero', 'Hero mockup: Greenwealth recycling app screens on a light canvas'),
   sections: [
     overview({
       role: 'Design Intern: user flows, interaction design, visual design',
@@ -15,7 +15,7 @@ export const recycleAndDonateApp: CaseStudy = {
     }),
     highlightsSection(
       highlights('Recycling made rewarding: sell in four steps, earn eco-points, climb the leaderboard.', {
-        exhibits: [{ media: img('recycle-row', 'Onboarding, dashboard, new order and leaderboard screens'), caption: cap('0.1', 'Screens', 'Onboarding, dashboard, new order and leaderboard') }],
+        exhibits: [prototype('recycle'), { media: img('recycle-row', 'Onboarding, dashboard, new order and leaderboard screens'), caption: cap('0.1', 'Screens', 'Onboarding, dashboard, new order and leaderboard') }],
       }),
     ),
     section('context', 'Context', 'Good intentions, missing incentives.', [
@@ -32,6 +32,7 @@ export const recycleAndDonateApp: CaseStudy = {
         ],
         cap('1.0', 'Diagram', 'Information architecture'),
       ),
+      research('recycle'),
     ]),
     section('the-problem', 'The Problem', 'Recycling asked for effort and gave little back.', [
       text(
@@ -67,12 +68,13 @@ export const recycleAndDonateApp: CaseStudy = {
         ],
         cap('3.0', 'Diagram', 'New order flow'),
       ),
+      wireframes('recycle'),
     ]),
     section('layout', 'Layout', 'A dashboard that celebrates progress.', [
       text('Impact, then action.', [
         'The dashboard greets the user, then shows total recycled, total earned and eco-points, followed by their leaderboard position and two clear actions: Order History and Place a New Order.',
       ]),
-      exhibit(img('recycle-a', 'Onboarding and dashboard screens'), cap('4.0', 'Screens', 'Onboarding and dashboard')),
+      structure('recycle', 'Onboarding and dashboard screens', 'Onboarding and dashboard: structure and final. Drag to compare.'),
     ]),
     section('interactions', 'Interactions', 'Gamification without the noise.', [
       text('Progress that is always visible.', [

@@ -1,8 +1,8 @@
-import { board, cap, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const libraryManagementSystem: CaseStudy = {
-  cover: img('library-cover', 'Myshelf iOS app screens on a light canvas'),
+  cover: img('library-hero', 'Hero mockup: Myshelf iOS app screens on a light canvas'),
   sections: [
     overview({
       role: 'iOS App Developer Intern: interface design, user flows, iOS prototyping',
@@ -16,7 +16,7 @@ export const libraryManagementSystem: CaseStudy = {
     }),
     highlightsSection(
       highlights('A pocket-sized library: borrow, reserve, return and attend events from a single iOS app.', {
-        exhibits: [{ media: img('library-row', 'Onboarding, home, event and book detail screens'), caption: cap('0.1', 'Screens', 'Onboarding, home, events and book details') }],
+        exhibits: [prototype('library'), { media: img('library-row', 'Onboarding, home, event and book detail screens'), caption: cap('0.1', 'Screens', 'Onboarding, home, events and book details') }],
       }),
     ),
     section('context', 'Context', 'Libraries run on paperwork. Readers run on phones.', [
@@ -33,6 +33,7 @@ export const libraryManagementSystem: CaseStudy = {
         ],
         cap('1.0', 'Diagram', 'Information architecture'),
       ),
+      research('library'),
     ]),
     section('the-problem', 'The Problem', 'Every visit to the desk was a point of friction.', [
       text(
@@ -63,12 +64,13 @@ export const libraryManagementSystem: CaseStudy = {
       flow(['Discover', 'Reserve', 'Collect', 'Read', 'Return or renew'], cap('3.0', 'Diagram', 'Core borrowing loop')),
       text('Events as a second loop.', ['Library events follow a shorter path: browse, register, attend. Registration shows who else is going, which makes events feel social.']),
       flow(['Browse events', 'Event details', 'Register', 'Attend'], cap('3.1', 'Diagram', 'Event registration')),
+      wireframes('library'),
     ]),
     section('layout', 'Layout', 'A home screen that answers the first question.', [
       text('Currently reading comes first.', [
         'Home opens with the book in hand, its due date and the time left on any reservation. Popular books sit below as the natural next step for discovery.',
       ]),
-      exhibit(img('library-a', 'Onboarding and home screens'), cap('4.0', 'Screens', 'Onboarding and home')),
+      structure('library', 'Onboarding and home screens', 'Onboarding and home: structure and final. Drag to compare.'),
     ]),
     section('interactions', 'Interactions', 'Small details that prevent fines.', [
       text('Reserve, register, pay.', [

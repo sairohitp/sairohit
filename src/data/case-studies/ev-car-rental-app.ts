@@ -1,8 +1,8 @@
-import { board, cap, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const evCarRentalApp: CaseStudy = {
-  cover: img('pluto-cover', 'Pluto EV rental app screens on a light canvas'),
+  cover: img('pluto-hero', 'Hero mockup: Pluto EV rental app screens on a light canvas'),
   sections: [
     overview({
       role: 'Design Intern: user flows, interaction design, visual design',
@@ -15,7 +15,7 @@ export const evCarRentalApp: CaseStudy = {
     }),
     highlightsSection(
       highlights('One app for both sides of EV rental: owners track earnings, riders find, unlock and ride.', {
-        exhibits: [{ media: img('pluto-row', 'Owner home, explore map, pairing and ride screens'), caption: cap('0.1', 'Screens', 'Owner home, explore, pairing and riding') }],
+        exhibits: [prototype('pluto'), { media: img('pluto-row', 'Owner home, explore map, pairing and ride screens'), caption: cap('0.1', 'Screens', 'Owner home, explore, pairing and riding') }],
       }),
     ),
     section('context', 'Context', 'Two users, one vehicle.', [
@@ -31,6 +31,7 @@ export const evCarRentalApp: CaseStudy = {
         ],
         cap('1.0', 'Diagram', 'Two-sided information architecture'),
       ),
+      research('pluto'),
     ]),
     section('the-problem', 'The Problem', 'Trust is the hardest part of sharing a vehicle.', [
       text(
@@ -59,12 +60,13 @@ export const evCarRentalApp: CaseStudy = {
       flow(['Explore nearby', 'Reserve', 'Unlock', 'Ride', 'End and lock'], cap('3.0', 'Diagram', 'Rider journey')),
       text('The owner loop.', ['An owner pairs a vehicle once, then follows who is riding and what it earns.']),
       flow(['Pair a Pluto', 'Listed', 'Being ridden', 'Earnings'], cap('3.1', 'Diagram', 'Owner journey')),
+      wireframes('pluto'),
     ]),
     section('layout', 'Layout', 'Owner home, built around earnings.', [
       text('Money first, then vehicles.', [
         'The owner home leads with weekly earnings as a bar chart, followed by each vehicle with its plate number, battery and status, and the current rider with dates and rating.',
       ]),
-      exhibit(img('pluto-a', 'Owner home and explore nearby map'), cap('4.0', 'Screens', 'Owner home and explore nearby')),
+      structure('pluto', 'Owner home and explore nearby map', 'Owner home and explore nearby: structure and final. Drag to compare.'),
     ]),
     section('interactions', 'Interactions', 'Hardware moments, made simple.', [
       text('Pairing and riding.', [

@@ -552,3 +552,105 @@
   font-size: clamp(17px, 0.6vw + 13px, 19px);
   font-weight: 600;
 }
+
+/* ---------------------------------------------------------------
+   Compare (structure vs final)
+   --------------------------------------------------------------- */
+.compare {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: #0d1117;
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.compare__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.compare__top {
+  clip-path: inset(0 0 0 var(--pos));
+}
+
+.compare__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  margin-left: -1px;
+  background: #ffffff;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.45);
+  pointer-events: none;
+}
+
+.compare__knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  transform: translate(-50%, -50%);
+  transition: transform 0.35s var(--ease-bounce);
+}
+
+.compare:hover .compare__knob,
+.compare:focus-within .compare__knob {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.compare__tag {
+  position: absolute;
+  top: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.72);
+  color: var(--text);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+.compare__tag--l {
+  left: 12px;
+}
+
+.compare__tag--r {
+  right: 12px;
+}
+
+.compare__range {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+
+.compare:focus-within {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+.media video {
+  object-fit: contain;
+  background: #0d0d0d;
+}

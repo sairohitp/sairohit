@@ -105,7 +105,9 @@ export type Block =
   /** Animated colour palette. */
   | { type: 'palette'; swatches: Swatch[]; caption?: Caption }
   /** Animated counters. */
-  | { type: 'stats'; items: Stat[] };
+  | { type: 'stats'; items: Stat[] }
+  /** Drag-to-compare: base image on the left, top image on the right. */
+  | { type: 'compare'; base: Media; top: Media; caption?: Caption };
 
 export interface Section {
   /** Anchor id used by the contents list. */

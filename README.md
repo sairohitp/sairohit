@@ -21,18 +21,16 @@ npm run build    # static output in dist/
 | About page | `src/pages/about.astro` |
 | Design tokens (colours, font, tracking, radii) | `src/styles/global.css` |
 | Motion (reveals, loops, page transitions) | `src/styles/motion.css`, `src/scripts/motion.ts` |
-| Images | `public/images/projects/`, `public/images/about/` |
+| Images | `public/images/projects/`, `public/images/about/`, list in `docs/IMAGES.md` |
+| Structure views generator (runs before every build) | `scripts/structure.mjs` |
 
-## Adding or replacing images
+## Images
 
-1. Export the image as WebP into `public/images/projects/` (e.g. `pluto-onboarding.webp`).
-2. Refresh the size manifest so aspect ratios stay correct:
+See [docs/IMAGES.md](docs/IMAGES.md) for the full list. In short: push a file with the same name as an existing image into `public/images/projects/` (`.png`, `.jpg` or `.webp`) and it replaces the old one automatically. Optional prototype videos, wireframes and research boards appear on their own once their files exist.
 
-```bash
-python3 -c "import json,glob;from PIL import Image;json.dump({f[6:]:list(Image.open(f).size) for f in sorted(glob.glob('public/images/**/*.webp',recursive=True))},open('src/data/image-sizes.json','w'),indent=1)"
-```
+## Hosting (GitHub Pages)
 
-3. Reference it in a case study with `img('pluto-onboarding', 'Alt text')`.
+`.github/workflows/deploy.yml` builds and deploys the site on every push to the repository's default branch. One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site is served at https://sairohitp.github.io/sairohit/ (base path configured in `astro.config.mjs`).
 
 ## Motion
 

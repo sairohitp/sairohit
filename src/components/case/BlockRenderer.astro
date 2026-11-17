@@ -7,6 +7,7 @@ import Flow from './Flow.astro';
 import Tree from './Tree.astro';
 import Palette from './Palette.astro';
 import Stats from './Stats.astro';
+import Compare from './Compare.astro';
 
 interface Props {
   block: Block;
@@ -117,3 +118,4 @@ const { block } = Astro.props;
 {block.type === 'tree' && <Tree root={block.root} groups={block.groups} caption={block.caption} />}
 {block.type === 'palette' && <Palette swatches={block.swatches} caption={block.caption} />}
 {block.type === 'stats' && <Stats items={block.items} />}
+{block.type === 'compare' && <Compare base={block.base} top={block.top} caption={block.caption} />}

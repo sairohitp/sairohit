@@ -183,10 +183,63 @@ function initCarousels() {
   });
 }
 
+function initCompare() {
+  document.querySelectorAll<HTMLElement>('[data-compare]').forEach((root) => {
+    const range = root.querySelector<HTMLInputElement>('input[type="range"]');
+    let touched = false;
+    const set = (pct: number) => {
+      const v = Math.max(0, Math.min(100, pct));
+      root.style.setProperty('--pos', `${v}%`);
+      if (range) range.value = String(Math.round(v));
+    };
+    const fromPointer = (e: PointerEvent) => {
+      const r = root.getBoundingClientRect();
+      set(((e.clientX - r.left) / r.width) * 100);
+    };
+    root.addEventListener('pointerdown', (e) => {
+      touched = true;
+      root.setPointerCapture(e.pointerId);
+      fromPointer(e);
+    });
+    root.addEventListener('pointermove', (e) => {
+      if (root.hasPointerCapture(e.pointerId)) fromPointer(e);
+    });
+    range?.addEventListener('input', () => {
+      touched = true;
+      set(Number(range.value));
+    });
+
+    // A gentle sweep the first time it comes into view, to show it is interactive.
+    if (reduceMotion() || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        const keys = [50, 78, 22, 50];
+        const seg = 900;
+        const start = performance.now() + 500;
+        const tick = (now: number) => {
+          if (touched) return;
+          const t = Math.max(0, now - start);
+          const i = Math.min(keys.length - 2, Math.floor(t / seg));
+          const local = Math.min(1, (t - i * seg) / seg);
+          const eased = local < 0.5 ? 2 * local * local : 1 - Math.pow(-2 * local + 2, 2) / 2;
+          set(keys[i] + (keys[i + 1] - keys[i]) * eased);
+          if (t < seg * (keys.length - 1)) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      },
+      { threshold: 0.5 },
+    );
+    io.observe(root);
+  });
+}
+
 export function initMotion() {
   initReveal();
   initParallax();
   initSpotlight();
   initProgress();
   initCarousels();
+  initCompare();
 }

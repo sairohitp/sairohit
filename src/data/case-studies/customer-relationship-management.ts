@@ -1,8 +1,8 @@
-import { board, cap, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
+import { board, cap, prototype, research, structure, wireframes, card, challenge, exhibit, flow, grid, highlights, highlightsSection, img, item, overview, palette, section, text, tree } from '../build';
 import type { CaseStudy } from '../types';
 
 export const customerRelationshipManagement: CaseStudy = {
-  cover: img('crm-cover', 'connectwise CRM app screens on a light canvas'),
+  cover: img('crm-hero', 'Hero mockup: connectwise CRM app screens on a light canvas'),
   sections: [
     overview({
       role: 'Independent project: user flows, interaction design, visual design',
@@ -15,7 +15,7 @@ export const customerRelationshipManagement: CaseStudy = {
     }),
     highlightsSection(
       highlights('Customer relationships on the go: track, communicate and resolve from one app.', {
-        exhibits: [{ media: img('crm-row', 'Onboarding, dashboard, customer and messages screens'), caption: cap('0.1', 'Screens', 'Onboarding, dashboard, customer and messages') }],
+        exhibits: [prototype('crm'), { media: img('crm-row', 'Onboarding, dashboard, customer and messages screens'), caption: cap('0.1', 'Screens', 'Onboarding, dashboard, customer and messages') }],
       }),
     ),
     section('context', 'Context', 'Support teams live in many inboxes.', [
@@ -32,6 +32,7 @@ export const customerRelationshipManagement: CaseStudy = {
         ],
         cap('1.0', 'Diagram', 'Information architecture'),
       ),
+      research('crm'),
     ]),
     section('the-problem', 'The Problem', 'Critical issues looked like routine ones.', [
       text(
@@ -58,12 +59,13 @@ export const customerRelationshipManagement: CaseStudy = {
     section('user-flow', 'User Flow', 'From complaint to closure.', [
       text('The resolution loop.', ['Every ticket follows the same path, so agents always know the next step.']),
       flow(['Complaint arrives', 'Triage by severity', 'Open customer profile', 'Message and share files', 'Resolve and close'], cap('3.0', 'Diagram', 'Resolution loop')),
+      wireframes('crm'),
     ]),
     section('layout', 'Layout', 'A dashboard that shows the queue, not just totals.', [
       text('Complaints and queries, side by side.', [
         'The dashboard pairs complaints and queries: total, critical, closed or addressed today, and outstanding, each with change versus last month, followed by weekly audience reach.',
       ]),
-      exhibit(img('crm-a', 'Onboarding and dashboard screens'), cap('4.0', 'Screens', 'Onboarding and dashboard')),
+      structure('crm', 'Onboarding and dashboard screens', 'Onboarding and dashboard: structure and final. Drag to compare.'),
     ]),
     section('interactions', 'Interactions', 'Triage with a tap.', [
       text('Filters and tags.', [
