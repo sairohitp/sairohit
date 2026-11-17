@@ -11,6 +11,9 @@ import '../styles/about-v2.css';
 import '../styles/blog.css';
 import '../styles/gallery.css';
 import '../styles/motion.css';
+import '../styles/tiles.css';
+import '../styles/nav.css';
+import '../styles/pages.css';
 import { site } from '../config/site';
 import { url } from '../lib/url';
 import Header from '../components/Header.astro';
@@ -25,9 +28,11 @@ interface Props {
   image?: string;
   /** Wider page container, used by the home page grid. */
   wide?: boolean;
+  /** Keep this page out of search results. */
+  noindex?: boolean;
 }
 
-const { title = site.title, description = site.description, wide = false } = Astro.props;
+const { title = site.title, description = site.description, wide = false, noindex = false } = Astro.props;
 const image = Astro.props.image ?? '/og/home.jpg';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -38,10 +43,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <script is:inline>
-      document.documentElement.classList.add('js');
+      // Apply saved preferences before paint (theme, accessibility, region). See src/scripts/prefs.ts.
+      (function () {
+        var d = document.documentElement, p = {};
+        d.classList.add('js');
+        try { p = JSON.parse(localStorage.getItem('prefs') || '{}') || {}; } catch (e) {}
+        var t = p.theme || 'dark';
+        var dark = t === 'dark' || (t === 'system' && !matchMedia('(prefers-color-scheme: light)').matches);
+        d.dataset.theme = dark ? 'dark' : 'light';
+        ['motion', 'text', 'contrast', 'links', 'spacing'].forEach(function (k) {
+          if (p[k] && p[k] !== 'default' && p[k] !== 'system') d.dataset[k] = p[k];
+        });
+        if (p.region) d.dataset.region = p.region;
+      })();
     </script>
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="theme-color" content="#111111" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
@@ -66,6 +84,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <Lightbox />
     <script>
       import { initMotion } from '../scripts/motion';
+      import { initPrefs } from '../scripts/prefs';
+      initPrefs();
       initMotion();
     </script>
   </body>

@@ -1,0 +1,98 @@
+---
+import Icon from './Icon.astro';
+import { prefsConfig } from '../config/prefs';
+
+const seg = (name: string, options: { value: string; label: string; icon?: any }[]) => ({ name, options });
+const groups = [
+  {
+    title: 'Appearance',
+    icon: 'sun',
+    rows: [
+      {
+        label: 'Theme',
+        ...seg('theme', [
+          { value: 'system', label: 'System', icon: 'monitor' },
+          { value: 'dark', label: 'Dark', icon: 'moon' },
+          { value: 'light', label: 'Light', icon: 'sun' },
+        ]),
+      },
+    ],
+  },
+  {
+    title: 'Accessibility',
+    icon: 'eye',
+    rows: [
+      { label: 'Motion', ...seg('motion', [{ value: 'system', label: 'System' }, { value: 'reduce', label: 'Reduced' }, { value: 'full', label: 'Full' }]) },
+      { label: 'Text size', ...seg('text', [{ value: 'default', label: 'Default' }, { value: 'large', label: 'Large' }, { value: 'larger', label: 'Larger' }]) },
+      { label: 'Contrast', ...seg('contrast', [{ value: 'default', label: 'Standard' }, { value: 'high', label: 'High' }]) },
+      { label: 'Links', ...seg('links', [{ value: 'default', label: 'Plain' }, { value: 'underline', label: 'Underlined' }]) },
+      { label: 'Reading', ...seg('spacing', [{ value: 'default', label: 'Standard' }, { value: 'wide', label: 'Spacious' }]) },
+    ],
+  },
+] as const;
+---
+
+<dialog class="prefs" data-prefs aria-labelledby="prefs-title">
+  <div class="prefs__panel">
+    <header class="prefs__head">
+      <div>
+        <p class="prefs__eyebrow">Preferences</p>
+        <h2 id="prefs-title" class="prefs__title">Make this site yours</h2>
+      </div>
+      <button class="prefs__close" type="button" data-prefs-close aria-label="Close preferences"><Icon name="x" size={18} /></button>
+    </header>
+
+    <div class="prefs__body">
+      {
+        groups.map((g) => (
+          <section class="settings__group" aria-label={g.title}>
+            <h3 class="prefs__group-title"><Icon name={g.icon} size={16} /> {g.title}</h3>
+            {g.rows.map((r) => (
+              <div class="prefs__row">
+                <span class="prefs__label" id={`pref-${r.name}`}>{r.label}</span>
+                <div class="seg" role="radiogroup" aria-labelledby={`pref-${r.name}`} data-pref={r.name}>
+                  {r.options.map((o) => (
+                    <button type="button" role="radio" aria-checked="false" data-value={o.value}>
+                      {'icon' in o && o.icon && <Icon name={o.icon} size={14} />}
+                      {o.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </section>
+        ))
+      }
+
+      <section class="settings__group" aria-label="Region, language and currency">
+        <h3 class="prefs__group-title"><Icon name="globe-simple" size={16} /> Region, language and currency</h3>
+        <label class="prefs__row prefs__row--select">
+          <span class="prefs__label">Region</span>
+          <select class="prefs__select" data-pref-select="region">
+            {prefsConfig.regions.map((r) => <option value={r.value}>{r.label}</option>)}
+          </select>
+        </label>
+        <label class="prefs__row prefs__row--select">
+          <span class="prefs__label">Currency</span>
+          <select class="prefs__select" data-pref-select="currency">
+            {prefsConfig.currencies.map((c) => <option value={c.code}>{c.label}</option>)}
+          </select>
+        </label>
+        <label class="prefs__row prefs__row--select">
+          <span class="prefs__label">Language</span>
+          <select class="prefs__select" data-translate>
+            {prefsConfig.languages.map((l) => <option value={l.code}>{l.label}</option>)}
+          </select>
+        </label>
+        <p class="prefs__note">
+          Region sets date and number formats. Currency converts the rupee figures at the reference rates of {prefsConfig.ratesDate} ({prefsConfig.ratesSource}), shown as approximate. The site is written in English; other languages open a machine translation by Google Translate.
+        </p>
+      </section>
+    </div>
+
+    <footer class="prefs__foot">
+      <button class="prefs__reset" type="button" data-prefs-reset><Icon name="arrow-clockwise" size={14} /> Reset to defaults</button>
+      <span class="prefs__saved" aria-live="polite" data-prefs-status></span>
+    </footer>
+  </div>
+</dialog>

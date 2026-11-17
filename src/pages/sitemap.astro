@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { siteTree } from '../data/routes';
+import { site } from '../config/site';
+import { url } from '../lib/url';
+
+const groups = await siteTree();
+const count = (links: { children?: unknown[] }[]) => links.reduce((n, l) => n + 1 + (l.children?.length ?? 0), 0);
+const total = groups.reduce((n, g) => n + count(g.links) + (g.href ? 1 : 0), 0);
+const pages = groups.reduce((n, g) => n + g.links.filter((l) => !l.href.includes('#') && !l.external).length, 0) + 4;
+const href = (h: string, external?: boolean) => (external ? h : url(h));
+---
+
+<Base
+  title={`Sitemap | ${site.name}`}
+  description="Every page, case study section, blog heading and external link on Sai Rohit's portfolio, in one place."
+  wide
+>
+  <div class="container page-hero">
+    <p class="eyebrow" data-reveal>Sitemap</p>
+    <h1 class="page-hero__title" data-reveal="blur">Every page, section and link</h1>
+    <p class="page-hero__lead" data-reveal>
+      The whole site under one roof: pages, the sections inside each case study, blog headings and where to find me elsewhere.
+    </p>
+    <ul class="page-hero__stats" data-stagger="80">
+      <li data-reveal="pop"><strong>{groups.length}</strong> areas</li>
+      <li data-reveal="pop"><strong>{pages}</strong> pages</li>
+      <li data-reveal="pop"><strong>{total}</strong> links</li>
+    </ul>
+    <label class="search sitemap__search" data-reveal>
+      <Icon name="magnifying-glass" size={16} />
+      <span class="visually-hidden">Filter links</span>
+      <input type="search" placeholder="Filter links, for example “wireframes” or “Placerr”" data-sitemap-filter />
+    </label>
+    <p class="sitemap__empty" data-sitemap-empty hidden>No links match that filter.</p>
+  </div>
+
+  <div class="container sitemap" data-sitemap>
+    {
+      groups.map((g, gi) => (
+        <section class="sitemap__group" aria-labelledby={`sm-${gi}`} data-reveal="rise">
+          <header class="sitemap__head">
+            <span class="sitemap__num">{String(gi + 1).padStart(2, '0')}</span>
+            <div>
+              <h2 id={`sm-${gi}`} class="sitemap__title">
+                {g.href ? <a href={url(g.href)}>{g.title}</a> : g.title}
+              </h2>
+              <p class="sitemap__desc">{g.description}</p>
+            </div>
+          </header>
+          <ol class="sitemap__list">
+            {g.links.map((l) => (
+              <li class="sitemap__item" data-text={`${l.label} ${(l.children ?? []).map((c) => c.label).join(' ')}`.toLowerCase()}>
+                <a class="sitemap__link" href={href(l.href, l.external)} {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>
+                  {l.label}
+                  <Icon name={l.external ? 'arrow-up-right' : 'arrow-right'} size={13} />
+                </a>
+                {l.children && l.children.length > 0 && (
+                  <ul class="sitemap__children">
+                    {l.children.map((c) => (
+                      <li data-text={c.label.toLowerCase()}>
+                        <a href={url(c.href)}>{c.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ol>
+        </section>
+      ))
+    }
+  </div>
+</Base>
+
+<script>
+  const input = document.querySelector<HTMLInputElement>('[data-sitemap-filter]');
+  const empty = document.querySelector<HTMLElement>('[data-sitemap-empty]');
+  input?.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    let shown = 0;
+    document.querySelectorAll<HTMLElement>('.sitemap__group').forEach((g) => {
+      let any = false;
+      g.querySelectorAll<HTMLElement>('.sitemap__item').forEach((item) => {
+        const match = !q || (item.dataset.text ?? '').includes(q);
+        item.hidden = !match;
+        item.querySelectorAll<HTMLElement>('.sitemap__children li').forEach((c) => {
+          c.classList.toggle('is-match', Boolean(q) && (c.dataset.text ?? '').includes(q));
+        });
+        if (match) any = true;
+      });
+      g.hidden = !any;
+      if (any) shown++;
+    });
+    if (empty) empty.hidden = shown > 0;
+  });
+</script>

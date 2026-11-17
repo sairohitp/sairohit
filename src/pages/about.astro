@@ -7,6 +7,8 @@ import ExperienceList from '../components/about/ExperienceList.astro';
 import SkillsTabs from '../components/about/SkillsTabs.astro';
 import Education from '../components/about/Education.astro';
 import Faq from '../components/case/Faq.astro';
+import Toc from '../components/case/Toc.astro';
+import { aboutToc } from '../data/routes';
 import { profile, leadership, certifications, achievements } from '../data/profile';
 import { site } from '../config/site';
 import { url } from '../lib/url';
@@ -18,13 +20,20 @@ const slides = [
   { src: photo('L70FHMjnOg87X42WCjVMz57wN8'), alt: 'The auditorium audience during the session' },
 ];
 const [gdg, tedx] = leadership;
+const toc = aboutToc;
+const n = (id: string) => String(toc.findIndex((t) => t.id === id) + 1).padStart(2, '0');
 ---
 
-<Base title={`About | ${site.name}`} description={profile.headline}>
-  <div class="about container">
+<Base title={`About | ${site.name}`} description={profile.headline} wide>
+  <div class="cs">
+  <aside class="cs__left">
+    <a class="back-pill" href={url('/')} data-reveal="left"><Icon name="arrow-left" size={14} /> Back</a>
+  </aside>
+  <div class="about cs__main">
+    <a class="back-pill back-pill--inline" href={url('/')}><Icon name="arrow-left" size={14} /> Back</a>
     <!-- Intro -->
-    <section class="about__intro" aria-labelledby="about-title">
-      <p class="eyebrow" data-reveal>About me</p>
+    <section id="intro" class="about__intro" aria-labelledby="about-title">
+      <p class="eyebrow" data-reveal><span class="eyebrow__num">{n('intro')}</span> About me</p>
       <h1 id="about-title" class="about__lead" data-reveal="blur">
         I’m {profile.name}, a <em class="accent">product designer</em> with a computer science foundation, turning complex
         enterprise problems into clear, usable tools.
@@ -42,10 +51,10 @@ const [gdg, tedx] = leadership;
     <hr class="about__divider" data-reveal="line" />
 
     <!-- Timeline -->
-    <section class="about__block" aria-labelledby="timeline-title">
+    <section id="timeline" class="about__block" aria-labelledby="timeline-title">
       <div class="section-intro">
         <div>
-          <p class="eyebrow" data-reveal>Career at a glance</p>
+          <p class="eyebrow" data-reveal><span class="eyebrow__num">{n('timeline')}</span> Career at a glance</p>
           <h2 id="timeline-title" class="section-intro__title" data-reveal="blur">Overlapping chapters since 2021</h2>
         </div>
       </div>
@@ -58,7 +67,7 @@ const [gdg, tedx] = leadership;
     <section id="experience" class="about__block" aria-labelledby="experience-title">
       <div class="section-intro">
         <div>
-          <p class="eyebrow" data-reveal>Experience</p>
+          <p class="eyebrow" data-reveal><span class="eyebrow__num">{n('experience')}</span> Experience</p>
           <h2 id="experience-title" class="section-intro__title" data-reveal="blur">Business, design and building</h2>
         </div>
         <a class="link-arrow" href={site.resume} target="_blank" rel="noopener" data-reveal>Resume <Icon name="arrow-up-right" size={14} /></a>
@@ -69,10 +78,10 @@ const [gdg, tedx] = leadership;
     <hr class="about__divider" data-reveal="line" />
 
     <!-- Leadership -->
-    <section class="about__block" aria-labelledby="leadership-title">
+    <section id="leadership" class="about__block" aria-labelledby="leadership-title">
       <div class="section-intro">
         <div>
-          <p class="eyebrow" data-reveal>Leadership</p>
+          <p class="eyebrow" data-reveal><span class="eyebrow__num">{n('leadership')}</span> Leadership</p>
           <h2 id="leadership-title" class="section-intro__title" data-reveal="blur">Teaching, leading and running events</h2>
         </div>
       </div>
@@ -171,10 +180,10 @@ const [gdg, tedx] = leadership;
     <hr class="about__divider" data-reveal="line" />
 
     <!-- Skills and education -->
-    <section class="about__block" aria-labelledby="skills-title">
+    <section id="skills" class="about__block" aria-labelledby="skills-title">
       <div class="section-intro">
         <div>
-          <p class="eyebrow" data-reveal>Skills and education</p>
+          <p class="eyebrow" data-reveal><span class="eyebrow__num">{n('skills')}</span> Skills and education</p>
           <h2 id="skills-title" class="section-intro__title" data-reveal="blur">Research, design and build</h2>
         </div>
       </div>
@@ -187,10 +196,10 @@ const [gdg, tedx] = leadership;
     <hr class="about__divider" data-reveal="line" />
 
     <!-- Recognition -->
-    <section class="about__block" aria-labelledby="recognition-title">
+    <section id="recognition" class="about__block" aria-labelledby="recognition-title">
       <div class="section-intro">
         <div>
-          <p class="eyebrow" data-reveal>Recognition</p>
+          <p class="eyebrow" data-reveal><span class="eyebrow__num">{n('recognition')}</span> Recognition</p>
           <h2 id="recognition-title" class="section-intro__title" data-reveal="blur">Achievements and certifications</h2>
         </div>
       </div>
@@ -222,7 +231,7 @@ const [gdg, tedx] = leadership;
 
     <hr class="about__divider" data-reveal="line" />
 
-    <section class="about__block" aria-label="Questions">
+    <section id="faq" class="about__block" aria-label="Questions">
       <Faq
         title="Frequently asked"
         items={[
@@ -241,5 +250,9 @@ const [gdg, tedx] = leadership;
       Crafting intuitive interfaces that blend form and function, I strive to shape memorable interactions that{' '}
       <em class="accent">resonate</em>.
     </p>
+  </div>
+  <aside class="cs__right">
+    <Toc sections={toc} />
+  </aside>
   </div>
 </Base>

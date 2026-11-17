@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+import { url } from '../lib/url';
+import { statuses } from '../data/statuses';
+
+interface Props {
+  code: keyof typeof statuses;
+  /** Status pages other than the live one are kept out of search results. */
+  index?: boolean;
+}
+
+const { code, index = false } = Astro.props;
+const s = statuses[code];
+const links = [
+  { label: 'Home', href: '/', icon: 'house' },
+  { label: 'Case studies', href: '/#work', icon: 'briefcase' },
+  { label: 'Blog', href: '/blog/', icon: 'lightbulb' },
+  { label: 'Sitemap', href: '/sitemap/', icon: 'tree-structure' },
+] as const;
+---
+
+<Base title={`${code} ${s.name} | ${site.name}`} description={s.message} noindex={!index} wide>
+  <section class="container status" aria-labelledby="status-title">
+    <div class={`status__code status__code--${s.tone}`} aria-hidden="true">
+      {String(code).split('').map((d, i) => <span style={`--i: ${i}`}>{d}</span>)}
+    </div>
+    <p class="eyebrow" data-reveal>{code} · {s.name}</p>
+    <h1 id="status-title" class="status__title" data-reveal="blur">{s.title}</h1>
+    <p class="status__message" data-reveal>{s.message}</p>
+    <ul class="status__links" data-stagger="70">
+      {
+        links.map((l) => (
+          <li data-reveal="pop">
+            <a class="status__card" href={url(l.href)}>
+              <Icon name={l.icon} size={18} />
+              {l.label}
+              <Icon name="arrow-right" size={14} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <slot />
+  </section>
+</Base>

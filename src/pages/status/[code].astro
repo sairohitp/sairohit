@@ -1,0 +1,14 @@
+---
+import StatusPage from '../../components/StatusPage.astro';
+import { statuses } from '../../data/statuses';
+
+export function getStaticPaths() {
+  return Object.keys(statuses)
+    .filter((c) => c !== '200')
+    .map((code) => ({ params: { code }, props: { code: Number(code) as keyof typeof statuses } }));
+}
+
+const { code } = Astro.props;
+---
+
+<StatusPage code={code} />

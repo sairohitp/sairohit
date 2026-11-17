@@ -1,26 +1,29 @@
 ---
-import type { Section } from '../../data/types';
+import Icon from '../Icon.astro';
 
 interface Props {
-  sections: Section[];
+  sections: { id: string; label: string }[];
+  title?: string;
 }
 
-const { sections } = Astro.props;
+const { sections, title = 'Contents' } = Astro.props;
 ---
 
-<nav class="toc" aria-label="Contents">
-  <p class="toc__title">Contents</p>
-  <ul>
+<nav class="toc" aria-label={title}>
+  <p class="toc__title">{title}</p>
+  <ol>
     {
-      sections.map((s) => (
+      sections.map((s, i) => (
         <li>
           <a href={`#${s.id}`} data-toc-link={s.id}>
-            {s.label}
+            <span class="toc__arrow" aria-hidden="true"><Icon name="arrow-right" size={12} /></span>
+            <span class="toc__num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="toc__label">{s.label}</span>
           </a>
         </li>
       ))
     }
-  </ul>
+  </ol>
 </nav>
 
 <script>

@@ -14,8 +14,8 @@
   navigation: auto;
 }
 
-.site-header {
-  view-transition-name: site-header;
+.nav {
+  view-transition-name: site-nav;
 }
 
 ::view-transition-old(root) {
@@ -183,8 +183,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12), 0 0 8px 1px rgba(255, 255, 255, 0.3); }
-  50% { box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.06), 0 0 16px 4px rgba(255, 255, 255, 0.45); }
+  0%, 100% { box-shadow: 0 0 0 2px rgb(var(--ink) / 0.12), 0 0 8px 1px rgb(var(--ink) / 0.3); }
+  50% { box-shadow: 0 0 0 5px rgb(var(--ink) / 0.06), 0 0 16px 4px rgb(var(--ink) / 0.45); }
 }
 
 .callout__icon svg {
@@ -206,7 +206,7 @@
 .accent {
   font-style: italic;
   font-weight: 500;
-  background: linear-gradient(90deg, #8a8a8a 0%, #ffffff 40%, #8a8a8a 80%);
+  background: linear-gradient(90deg, var(--text-3) 0%, var(--text) 40%, var(--text-3) 80%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -232,7 +232,7 @@
 .progress span {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4), #ffffff);
+  background: linear-gradient(90deg, rgb(var(--ink) / 0.4), var(--text));
   transform: scaleX(0);
   transform-origin: left center;
 }

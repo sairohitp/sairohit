@@ -44,7 +44,7 @@ const share = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURICo
       <header class="post__hero">
         <a class="back-pill back-pill--inline" href={url('/blog/')}><Icon name="arrow-left" size={14} /> Blog</a>
         <p class="post__meta" data-reveal>
-          <time datetime={d.date.toISOString()}>{formatDate(d.date)}</time>
+          <time data-date datetime={d.date.toISOString()}>{formatDate(d.date)}</time>
           <span aria-hidden="true">·</span>
           {readingTime(post)} min read
         </p>
@@ -81,16 +81,18 @@ const share = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURICo
           {
             older && (
               <a class="post__nav-link" href={url(postHref(older))} data-reveal="left">
-                <span>Previous</span>
-                {older.data.title}
+                <span class="post__nav-dir"><span class="post__nav-arrow"><Icon name="arrow-left" size={16} /></span> Previous post</span>
+                <span class="post__nav-title">{older.data.title}</span>
+                <span class="post__nav-meta">{older.data.tags.slice(0, 2).join(' · ')} · {readingTime(older)} min read</span>
               </a>
             )
           }
           {
             newer && (
               <a class="post__nav-link post__nav-link--next" href={url(postHref(newer))} data-reveal="right">
-                <span>Next</span>
-                {newer.data.title}
+                <span class="post__nav-dir">Next post <span class="post__nav-arrow"><Icon name="arrow-right" size={16} /></span></span>
+                <span class="post__nav-title">{newer.data.title}</span>
+                <span class="post__nav-meta">{newer.data.tags.slice(0, 2).join(' · ')} · {readingTime(newer)} min read</span>
               </a>
             )
           }

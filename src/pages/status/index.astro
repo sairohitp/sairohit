@@ -1,0 +1,34 @@
+---
+import StatusPage from '../../components/StatusPage.astro';
+import { statuses } from '../../data/statuses';
+import { sitePages } from '../../data/routes';
+import { url } from '../../lib/url';
+
+const pages = await sitePages();
+const built = new Date();
+const builtLabel = built.toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Kolkata' });
+const others = Object.entries(statuses).filter(([c]) => c !== '200');
+---
+
+<StatusPage code={200} index>
+  <dl class="status__facts" data-stagger="80">
+    <div data-reveal="pop"><dt>Pages published</dt><dd>{pages.length}</dd></div>
+    <div data-reveal="pop"><dt>Last build</dt><dd><time datetime={built.toISOString()}>{builtLabel} IST</time></dd></div>
+    <div data-reveal="pop"><dt>Hosting</dt><dd>GitHub Pages</dd></div>
+  </dl>
+  <h2 class="status__sub" data-reveal>Designed status pages</h2>
+  <p class="status__note" data-reveal>
+    GitHub Pages serves the 404 page automatically. The rest are designed and ready for hosting that can use them.
+  </p>
+  <ul class="status__codes" data-stagger="60">
+    {
+      others.map(([c, s]) => (
+        <li data-reveal="pop">
+          <a class="status__card" href={url(`/status/${c}/`)}>
+            <strong>{c}</strong> {s.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</StatusPage>

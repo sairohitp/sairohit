@@ -4,7 +4,13 @@
  * Everything respects prefers-reduced-motion.
  */
 
-const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduceMotion = () => {
+  const pref = document.documentElement.dataset.motion;
+  if (pref === 'reduce') return true;
+  if (pref === 'full') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
+const locale = () => document.documentElement.dataset.region || 'en-IN';
 
 function animateCount(el: HTMLElement) {
   const target = Number(el.dataset.count);
@@ -16,7 +22,7 @@ function animateCount(el: HTMLElement) {
   const step = (now: number) => {
     const t = Math.min(1, (now - start) / duration);
     const eased = 1 - Math.pow(1 - t, 4);
-    el.textContent = `${prefix}${Math.round(target * eased).toLocaleString('en-IN')}${suffix}`;
+    el.textContent = `${prefix}${Math.round(target * eased).toLocaleString(locale())}${suffix}`;
     if (t < 1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
@@ -90,8 +96,26 @@ function initParallax() {
   update();
 }
 
+/** Every tile on the site, so the hover language stays the same everywhere. */
+const TILES = [
+  '.pcard', '.post-card', '.glance__item', '.built-card', '.xp-list__row', '.stats__item', '.award', '.cert',
+  '.lead-card', '.xp-item', '.edu', '.info-card', '.flow__step', '.faq__item', '.related-visual', '.exploration',
+  '.contact__card', '.post__nav-link', '.goal', '.facts li', '.metric', '.tabs', '.vis-teaser', '.colleague',
+  '.sitemap__group', '.status__card', '.settings__group',
+].join(', ');
+
 function initSpotlight() {
+  document.querySelectorAll<HTMLElement>('.gallery__btn').forEach((el) => el.setAttribute('data-spotlight', 'over'));
+  document.querySelectorAll<HTMLElement>(TILES).forEach((el) => {
+    if (!el.hasAttribute('data-spotlight')) el.setAttribute('data-spotlight', '');
+  });
   document.querySelectorAll<HTMLElement>('[data-spotlight]').forEach((el) => {
+    if (!el.querySelector(':scope > .spot')) {
+      const spot = document.createElement('span');
+      spot.className = 'spot';
+      spot.setAttribute('aria-hidden', 'true');
+      el.prepend(spot);
+    }
     el.addEventListener('pointermove', (e) => {
       const r = el.getBoundingClientRect();
       el.style.setProperty('--mx', `${e.clientX - r.left}px`);

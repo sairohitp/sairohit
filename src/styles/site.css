@@ -1,72 +1,4 @@
 /* ---------------------------------------------------------------
-   Header
-   --------------------------------------------------------------- */
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: var(--header-h);
-  padding-top: 8px;
-}
-
-.site-header__brand,
-.site-header__nav a {
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1;
-}
-
-.site-header__brand {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
-
-.site-header__nav {
-  display: flex;
-  gap: 8px;
-  margin-right: -10px;
-}
-
-.site-header__nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 10px;
-  color: var(--text);
-  transition: opacity 0.2s var(--ease);
-}
-
-.site-header__nav a {
-  position: relative;
-}
-
-.site-header__nav a::after {
-  content: '';
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transition: transform 0.35s var(--ease-out);
-}
-
-.site-header__nav a:hover::after,
-.site-header__nav a:focus-visible::after {
-  transform: scaleX(1);
-}
-
-.site-header__brand {
-  transition: opacity 0.2s var(--ease-out);
-}
-
-.site-header__brand:hover {
-  opacity: 0.7;
-}
-
-/* ---------------------------------------------------------------
    Media (images, videos, placeholders)
    --------------------------------------------------------------- */
 .media {
@@ -86,8 +18,8 @@
 .media--placeholder {
   display: grid;
   place-items: center;
-  background-color: #232323;
-  background-image: repeating-linear-gradient(135deg, #232323 0 9px, #292929 9px 18px);
+  background-color: var(--surface-2);
+  background-image: repeating-linear-gradient(135deg, var(--surface-2) 0 9px, var(--surface-3) 9px 18px);
 }
 
 .media__hint {
@@ -140,40 +72,19 @@
   overflow: hidden;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, #464646 0%, #2e2e2e 45%, #222222 100%);
+  background: linear-gradient(180deg, var(--tile-top) 0%, var(--rule) 45%, var(--surface-2) 100%);
   padding: clamp(22px, 4vw, 38px) clamp(20px, 6.2vw, 52px) 0;
   isolation: isolate;
   position: relative;
-  transition: border-color 0.4s var(--ease-out), box-shadow 0.5s var(--ease-out), translate 0.5s var(--ease-out);
-}
-
-.pcard::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, 0.09), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-out);
-}
-
-.pcard:hover::before {
-  opacity: 1;
+  transition: border-color 0.4s var(--ease-out);
 }
 
 .pcard:hover {
-  border-color: rgba(255, 255, 255, 0.24);
-  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.8);
-  translate: 0 -4px;
+  border-color: rgb(var(--ink) / 0.26);
 }
 
 .pcard__media img[data-parallax] {
   transform: translate3d(0, var(--py, 0px), 0) scale(1.08);
-  transition: scale 0.8s var(--ease-out);
-}
-
-.pcard:hover .pcard__media img[data-parallax] {
-  scale: 1.03;
 }
 
 .pcard__head {
@@ -187,7 +98,7 @@
   font-size: clamp(17px, 1.3vw + 11px, 20px);
   font-weight: 600;
   line-height: 1.3;
-  color: #b0b0b0;
+  color: var(--text-soft);
   transition: color 0.3s var(--ease);
 }
 
@@ -200,15 +111,23 @@
 
 .pcard__arrow {
   flex: none;
-  color: #b0b0b0;
+  color: var(--text-soft);
   margin-top: -2px;
   transition: transform 0.35s var(--ease), color 0.3s var(--ease);
 }
 
+/* Hover: the screen slides a little out of the card, like a phone out of a pocket.
+   The extra height below the card edge keeps the bottom covered while it rises. */
 .pcard__media {
   margin-top: clamp(28px, 6vw, 56px);
+  margin-bottom: -14px;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  transition: transform 0.5s var(--ease);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pcard:hover .pcard__media,
+.pcard:focus-visible .pcard__media {
+  transform: translateY(-10px);
 }
 
 .pcard__media img {
@@ -224,14 +143,7 @@
 
 .pcard:hover .pcard__arrow,
 .pcard:focus-visible .pcard__arrow {
-  animation: nudge 1.1s var(--ease-out) infinite;
-}
-
-@keyframes nudge {
-  0%, 100% { transform: translateX(0); }
-  40% { transform: translateX(7px); }
-  60% { transform: translateX(3px); }
-  80% { transform: translateX(5px); }
+  transform: translateX(6px);
 }
 
 .pcard:focus-visible {
@@ -279,7 +191,7 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  color: #d4d4d4;
+  color: var(--text-soft);
   transition: color 0.2s var(--ease);
 }
 

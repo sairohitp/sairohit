@@ -29,7 +29,7 @@
   border: 1px solid var(--border-strong);
   border-radius: 999px;
   background: var(--surface-1);
-  color: #cfcfcf;
+  color: var(--text-soft);
   font-size: 13px;
 }
 
@@ -71,7 +71,7 @@
   padding: 36px 16px 18px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
-  background: #151515;
+  background: var(--tile);
   --label: 0px;
 }
 
@@ -116,7 +116,7 @@
 }
 
 .gantt__label {
-  color: #d4d4d4;
+  color: var(--text-soft);
   font-size: 13px;
 }
 
@@ -130,7 +130,7 @@
   top: -6px;
   bottom: -6px;
   width: 1px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgb(var(--ink) / 0.05);
 }
 
 .gantt__bar {
@@ -170,7 +170,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgb(var(--ink) / 0.5);
 }
 
 .gantt__now span {
@@ -199,13 +199,13 @@
 .xp-item {
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
-  background: #161616;
+  background: var(--tile);
   transition: border-color 0.3s var(--ease-out), background-color 0.3s var(--ease-out);
 }
 
 .xp-item[open] {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: #181818;
+  border-color: rgb(var(--ink) / 0.22);
+  background: var(--surface-1);
 }
 
 .xp-item__head {
@@ -416,7 +416,7 @@
   padding: 18px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
-  background: #161616;
+  background: var(--tile);
 }
 
 .lead-card__head {
@@ -439,7 +439,7 @@
 .lead-card__roles {
   display: grid;
   gap: 2px;
-  color: #cfcfcf;
+  color: var(--text-soft);
   font-size: 13px;
 }
 
@@ -465,7 +465,7 @@
   padding: 16px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
-  background: #161616;
+  background: var(--tile);
 }
 
 .tabs__list {
@@ -527,7 +527,7 @@
 
 .chips--lg .chip {
   padding: 7px 12px;
-  color: #d6d6d6;
+  color: var(--text-soft);
   font-size: 13px;
 }
 
@@ -543,7 +543,7 @@
   padding: 20px 16px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-md);
-  background: #161616;
+  background: var(--tile);
   text-align: center;
 }
 
@@ -568,7 +568,7 @@
 }
 
 .edu__track {
-  stroke: rgba(255, 255, 255, 0.08);
+  stroke: rgb(var(--ink) / 0.08);
 }
 
 .edu__progress {
@@ -616,7 +616,7 @@
 }
 
 .edu__school {
-  color: #cfcfcf;
+  color: var(--text-soft);
   font-size: 13.5px;
 }
 
@@ -640,13 +640,12 @@
   padding: 16px;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  background: linear-gradient(180deg, #1c1c1c, #161616);
+  background: linear-gradient(180deg, var(--surface-1), var(--tile));
   transition: border-color 0.3s var(--ease-out), translate 0.4s var(--ease-bounce);
 }
 
 .award:hover {
   border-color: var(--border-strong);
-  translate: 0 -3px;
 }
 
 .award__icon {
@@ -654,9 +653,6 @@
   margin-bottom: 6px;
 }
 
-.award:hover .award__icon svg {
-  animation: hop 0.6s var(--ease-bounce);
-}
 
 .award__place {
   font-size: 15px;
@@ -664,7 +660,7 @@
 }
 
 .award__title {
-  color: #d0d0d0;
+  color: var(--text-soft);
   font-size: 13px;
   line-height: 1.45;
 }

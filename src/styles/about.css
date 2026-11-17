@@ -27,7 +27,7 @@
   height: 1px;
   margin: clamp(56px, 9vw, 88px) 0;
   border: 0;
-  background: #2e2e2e;
+  background: var(--rule);
 }
 
 .about__block {
@@ -168,7 +168,7 @@
   width: 36px;
   height: 36px;
   margin-top: -18px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgb(var(--ink) / 0.25);
   border-radius: 50%;
   background: rgba(17, 17, 17, 0.55);
   color: var(--text);
@@ -216,7 +216,7 @@
   height: 6px;
   margin: auto;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.45);
+  background: rgb(var(--ink) / 0.45);
   transition: width 0.4s var(--ease-out), background-color 0.3s var(--ease-out);
 }
 

@@ -69,13 +69,13 @@ const description =
       </div>
 
       {
-        sections.map((s) => (
+        sections.map((s, i) => (
           <section id={s.id} class="cs-section" aria-label={s.title ? undefined : s.label}>
             {s.divider !== false && <hr class="cs-divider" data-reveal="line" />}
             {s.title && (
               <header class="section-head" data-reveal="blur">
                 <p class="section-head__eyebrow">
-                  <span class="section-head__dot" aria-hidden="true" />
+                  <span class="section-head__num">{String(i + 1).padStart(2, '0')}</span>
                   {s.label}
                 </p>
                 <h2 class="section-head__title">{s.title}</h2>

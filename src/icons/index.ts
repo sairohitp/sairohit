@@ -41,6 +41,26 @@ import microphoneStageIcon from './svg/microphone-stage-regular.svg?raw';
 import buildingsIcon from './svg/buildings-regular.svg?raw';
 import plusIcon from './svg/plus-regular.svg?raw';
 
+import slidersHorizontalIcon2 from './svg/sliders-horizontal-regular.svg?raw';
+import moonIcon2 from './svg/moon-regular.svg?raw';
+import monitorIcon2 from './svg/monitor-regular.svg?raw';
+import globeSimpleIcon2 from './svg/globe-simple-regular.svg?raw';
+import translateIcon2 from './svg/translate-regular.svg?raw';
+import currencyInrIcon2 from './svg/currency-inr-regular.svg?raw';
+import textAaIcon2 from './svg/text-aa-regular.svg?raw';
+import eyeIcon2 from './svg/eye-regular.svg?raw';
+import xIcon2 from './svg/x-regular.svg?raw';
+import listIcon2 from './svg/list-regular.svg?raw';
+import houseIcon2 from './svg/house-regular.svg?raw';
+import compassIcon2 from './svg/compass-regular.svg?raw';
+import treeStructureIcon2 from './svg/tree-structure-regular.svg?raw';
+import arrowClockwiseIcon2 from './svg/arrow-clockwise-regular.svg?raw';
+import warningCircleIcon2 from './svg/warning-circle-regular.svg?raw';
+import lockSimpleIcon2 from './svg/lock-simple-regular.svg?raw';
+import wrenchIcon2 from './svg/wrench-regular.svg?raw';
+import magnifyingGlassIcon2 from './svg/magnifying-glass-regular.svg?raw';
+import userCircleIcon2 from './svg/user-circle-regular.svg?raw';
+
 export const icons = {
   'arrow-right': arrowRight,
   'arrow-left': arrowLeft,
@@ -81,6 +101,25 @@ export const icons = {
   'microphone-stage': microphoneStageIcon,
   'buildings': buildingsIcon,
   'plus': plusIcon,
+  'sliders-horizontal': slidersHorizontalIcon2,
+  'moon': moonIcon2,
+  'monitor': monitorIcon2,
+  'globe-simple': globeSimpleIcon2,
+  'translate': translateIcon2,
+  'currency-inr': currencyInrIcon2,
+  'text-aa': textAaIcon2,
+  'eye': eyeIcon2,
+  'x': xIcon2,
+  'list': listIcon2,
+  'house': houseIcon2,
+  'compass': compassIcon2,
+  'tree-structure': treeStructureIcon2,
+  'arrow-clockwise': arrowClockwiseIcon2,
+  'warning-circle': warningCircleIcon2,
+  'lock-simple': lockSimpleIcon2,
+  'wrench': wrenchIcon2,
+  'magnifying-glass': magnifyingGlassIcon2,
+  'user-circle': userCircleIcon2,
 } as const;
 
 export type IconName = keyof typeof icons;

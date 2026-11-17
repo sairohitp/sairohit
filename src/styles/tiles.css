@@ -1,0 +1,152 @@
+/* ---------------------------------------------------------------
+   Tiles: one hover language across the site.
+   Tiles never move. On hover a soft light follows the cursor,
+   the border brightens and a thin highlight traces the edge near
+   the pointer. The light is a <span class="spot"> injected by
+   initSpotlight() in scripts/motion.ts.
+   --------------------------------------------------------------- */
+[data-spotlight] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight] > .spot {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    var(--spot-size, 360px) circle at var(--mx, 50%) var(--my, 0%),
+    rgba(255, 255, 255, var(--spot-alpha, 0.08)),
+    transparent 62%
+  );
+  transition: opacity 0.45s var(--ease-out);
+}
+
+/* Edge highlight near the cursor */
+[data-spotlight] > .spot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 0%), rgb(var(--ink) / 0.5), transparent 70%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+/* Tiles filled edge to edge with an image: the light sits above it. */
+[data-spotlight='over'] > .spot {
+  z-index: 2;
+  mix-blend-mode: screen;
+  --spot-alpha: 0.12;
+}
+
+[data-spotlight]:hover > .spot,
+[data-spotlight]:focus-visible > .spot,
+[data-spotlight]:focus-within > .spot {
+  opacity: 1;
+}
+
+[data-spotlight]:hover {
+  border-color: rgb(var(--ink) / 0.26);
+}
+
+@media (hover: none) {
+  [data-spotlight] > .spot {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Experience preview: continuous rules, hovered row becomes a tile
+   --------------------------------------------------------------- */
+.xp-list__row {
+  margin: 6px -10px;
+  padding: 12px 10px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: border-color 0.35s var(--ease-out), background-color 0.35s var(--ease-out);
+}
+
+.xp-list__row:hover,
+.xp-list__row:focus-visible {
+  border-color: rgb(var(--ink) / 0.2);
+  background: rgb(var(--ink) / 0.02);
+}
+
+.xp-list__go {
+  right: 12px;
+  top: 14px;
+}
+
+@media (min-width: 1024px) {
+  /* Two columns that share each horizontal rule, split by a vertical rule. */
+  .page--wide .xp-list {
+    column-gap: 0;
+  }
+
+  .page--wide .xp-list > li:nth-child(odd) {
+    padding-right: 24px;
+  }
+
+  .page--wide .xp-list > li:nth-child(even) {
+    padding-left: 24px;
+    border-left: 1px solid var(--border);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Blog cards: equal art height and shared baselines across a row
+   --------------------------------------------------------------- */
+@media (min-width: 720px) {
+  .blog-grid > li:not(.blog-grid__featured) {
+    display: grid;
+    grid-row: span 6;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  .blog-grid > li:not(.blog-grid__featured) > .post-card {
+    display: grid;
+    grid-row: 1 / -1;
+    grid-template-rows: subgrid;
+    row-gap: 0;
+  }
+
+  .blog-grid > li:not(.blog-grid__featured) .post-card__body {
+    display: contents;
+  }
+
+  .blog-grid > li:not(.blog-grid__featured) .post-card__body > * {
+    padding-inline: 22px;
+  }
+
+  .blog-grid > li:not(.blog-grid__featured) .post-card__meta {
+    padding-top: 20px;
+  }
+
+  .blog-grid > li:not(.blog-grid__featured) .post-card__title,
+  .blog-grid > li:not(.blog-grid__featured) .post-card__desc {
+    padding-top: 10px;
+  }
+
+  .blog-grid > li:not(.blog-grid__featured) .post-card__tags {
+    padding-top: 14px;
+    align-content: start;
+  }
+
+  .blog-grid > li:not(.blog-grid__featured) .post-card__more {
+    align-self: end;
+    margin-top: 0;
+    padding-top: 16px;
+    padding-bottom: 22px;
+  }
+
+  .blog-grid > li[hidden] {
+    display: none !important;
+  }
+}
