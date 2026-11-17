@@ -2,7 +2,7 @@
 title: What 74 of my own Figma files taught me
 description: I decoded every page, frame and label in four years of Figma files for this portfolio. Here is what the numbers say about how I work, and what I would change.
 date: 2026-11-17
-tags: [Process, Figma]
+tags: [Design systems]
 art: grid
 ---
 

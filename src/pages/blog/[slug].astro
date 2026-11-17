@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
+import Toc from '../../components/case/Toc.astro';
 import Words from '../../components/Words.astro';
 import BlogArt from '../../components/blog/BlogArt.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
@@ -122,38 +123,10 @@ const share = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURICo
     <aside class="cs__right">
       {
         toc.length > 1 && (
-          <nav class="toc" aria-label="Contents">
-            <p class="toc__title">Contents</p>
-            <ul>
-              {toc.map((h) => (
-                <li>
-                  <a href={`#${h.slug}`} data-toc-link={h.slug}>
-                    {h.text}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div class="post-toc"><Toc sections={toc.map((h) => ({ id: h.slug, label: h.text }))} /></div>
         )
       }
     </aside>
   </div>
 </Base>
 
-<script>
-  // Highlight the current heading in the contents list.
-  const links = new Map<string, HTMLAnchorElement>();
-  document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]').forEach((a) => links.set(a.dataset.tocLink!, a));
-  const io = new IntersectionObserver(
-    (entries) =>
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        links.forEach((a, id) => (id === e.target.id ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
-      }),
-    { rootMargin: '-30% 0px -65% 0px' },
-  );
-  links.forEach((_, id) => {
-    const el = document.getElementById(id);
-    if (el) io.observe(el);
-  });
-</script>

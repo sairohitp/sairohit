@@ -2,7 +2,7 @@
 title: A theme studio that hands users the design system
 description: All is All lets people edit every colour and animated background live. What that taught me about tokens, contrast and safe defaults.
 date: 2026-11-17
-tags: [Design systems, Theming]
+tags: [Design systems, Design engineering]
 art: palette
 ---
 

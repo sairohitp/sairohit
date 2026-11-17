@@ -2,7 +2,7 @@
 title: Mapping a product to the UN SDGs without the buzzwords
 description: For the Google Solution Challenge, Team Greenwealth built a recycle and donate app. How we tied every screen to a goal, not just the pitch deck.
 date: 2026-11-17
-tags: [Social impact, Mobile]
+tags: [Product design]
 art: flow
 related: recycle-and-donate-app
 ---

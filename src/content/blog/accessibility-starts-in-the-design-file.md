@@ -2,7 +2,7 @@
 title: Accessibility on iOS starts in the design file
 description: Dynamic Type, VoiceOver labels and colour contrast, from the Recycle and Donate app I designed in the Apple Developer Program.
 date: 2026-11-17
-tags: [Accessibility, iOS]
+tags: [Design systems]
 art: a11y
 related: recycle-and-donate-app
 ---

@@ -2,7 +2,7 @@
 title: Why I design in Figma and build in React
 description: Designing and building the same product keeps the design honest. Notes from OrgGrid, FundLookup and Handl.
 date: 2026-11-17
-tags: [Process, Design engineering]
+tags: [Design engineering]
 art: code
 ---
 

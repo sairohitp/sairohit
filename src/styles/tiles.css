@@ -19,7 +19,7 @@
   opacity: 0;
   background: radial-gradient(
     var(--spot-size, 360px) circle at var(--mx, 50%) var(--my, 0%),
-    rgba(255, 255, 255, var(--spot-alpha, 0.08)),
+    rgb(var(--spot-rgb) / var(--spot-alpha)),
     transparent 62%
   );
   transition: opacity 0.45s var(--ease-out);
@@ -32,7 +32,7 @@
   inset: 0;
   padding: 1px;
   border-radius: inherit;
-  background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 0%), rgb(var(--ink) / 0.5), transparent 70%);
+  background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 0%), rgb(var(--spot-rgb) / var(--ring-alpha)), transparent 70%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
@@ -45,6 +45,12 @@
   --spot-alpha: 0.12;
 }
 
+:root[data-theme='light'] [data-spotlight='over'] > .spot {
+  mix-blend-mode: normal;
+  --spot-rgb: 255 255 255;
+  --spot-alpha: 0.18;
+}
+
 [data-spotlight]:hover > .spot,
 [data-spotlight]:focus-visible > .spot,
 [data-spotlight]:focus-within > .spot {
@@ -52,7 +58,7 @@
 }
 
 [data-spotlight]:hover {
-  border-color: rgb(var(--ink) / 0.26);
+  border-color: var(--hover-border);
 }
 
 @media (hover: none) {

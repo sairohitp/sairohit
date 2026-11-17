@@ -522,3 +522,7 @@
     display: none;
   }
 }
+
+:root[data-theme='light'] .flow__pulse {
+  background: var(--text);
+}

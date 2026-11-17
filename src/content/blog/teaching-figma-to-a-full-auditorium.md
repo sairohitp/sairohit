@@ -2,7 +2,7 @@
 title: Teaching Figma to a full auditorium
 description: What I learned giving a keynote on UI/UX design fundamentals to 1,200+ students and faculty at SRM.
 date: 2026-11-17
-tags: [Teaching, Community]
+tags: [Community]
 art: stage
 ---
 

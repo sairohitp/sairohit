@@ -2,7 +2,7 @@
 title: Designing data-dense tables that people can actually scan
 description: What library front desks and course admin consoles taught me about tables, filters, bulk actions and status.
 date: 2026-11-17
-tags: [Enterprise UX, Data tables]
+tags: [Product design]
 art: table
 related: library-management-system
 featured: true

@@ -2,7 +2,7 @@
 title: Designing trust into automation for mainframe operators
 description: At Progull we are building agentic AI for mainframe batch abends. The product question is not what the AI can fix, but when an operator lets it.
 date: 2026-11-17
-tags: [Enterprise UX, AI]
+tags: [AI, Product design]
 art: terminal
 ---
 

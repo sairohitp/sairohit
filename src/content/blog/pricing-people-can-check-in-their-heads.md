@@ -2,7 +2,7 @@
 title: Pricing people can check in their heads
 description: Notes on designing price pages for a laundry service, a subscription app and a pre-revenue startup, and why the honest version is usually the simplest.
 date: 2026-11-17
-tags: [UX writing, Pricing]
+tags: [Product design]
 art: table
 ---
 

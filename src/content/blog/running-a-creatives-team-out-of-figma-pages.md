@@ -2,7 +2,7 @@
 title: Running a creatives team out of Figma pages
 description: How the GDG SRM Creatives team I led organised posts, stories and reviews inside shared Figma files, with a page for every member.
 date: 2026-11-17
-tags: [Leadership, Community]
+tags: [Community]
 art: stage
 ---
 

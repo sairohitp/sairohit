@@ -2,7 +2,7 @@
 title: Generating binaural beats in the browser
 description: How All is All builds calming soundscapes live with the Web Audio API, from two sine waves to rain and city ambience, with no audio files at all.
 date: 2026-11-17
-tags: [Design engineering, Audio]
+tags: [Design engineering]
 art: waves
 ---
 

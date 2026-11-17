@@ -2,7 +2,7 @@
 title: A booking flow that ends in a WhatsApp chat
 description: Dhobermans collects everything a laundry pickup needs on the web, then hands the order to WhatsApp. Why that works in Bengaluru, and how the flow is designed.
 date: 2026-11-17
-tags: [Service design, Mobile]
+tags: [Product design]
 art: flow
 ---
 

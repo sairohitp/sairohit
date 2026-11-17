@@ -33,7 +33,7 @@ export const prefsConfig = {
     { code: 'ja', label: '日本語, Japanese' },
   ],
   defaults: {
-    theme: 'dark',
+    theme: 'system',
     motion: 'system',
     text: 'default',
     contrast: 'default',

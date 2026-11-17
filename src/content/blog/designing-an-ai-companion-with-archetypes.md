@@ -2,7 +2,7 @@
 title: Designing an AI companion with archetypes, not prompts
 description: In All is All, people choose who their AI companion becomes. Notes on archetypes, written personas and the guardrails a calm product needs.
 date: 2026-11-17
-tags: [AI, UX design]
+tags: [AI, Product design]
 art: chat
 ---
 

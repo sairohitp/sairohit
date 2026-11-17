@@ -72,7 +72,7 @@ const jsonLd = JSON.stringify(graph(schema)).replace(/</g, '\\u003c');
         var d = document.documentElement, p = {};
         d.classList.add('js');
         try { p = JSON.parse(localStorage.getItem('prefs') || '{}') || {}; } catch (e) {}
-        var t = p.theme || 'dark';
+        var t = p.theme || 'system';
         var dark = t === 'dark' || (t === 'system' && !matchMedia('(prefers-color-scheme: light)').matches);
         d.dataset.theme = dark ? 'dark' : 'light';
         ['motion', 'text', 'contrast', 'links', 'spacing'].forEach(function (k) {

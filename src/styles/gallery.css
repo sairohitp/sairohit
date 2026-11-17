@@ -63,7 +63,7 @@
   top: 8px;
   left: 8px;
   padding: 2px 8px;
-  border-radius: 999px;
+  border-radius: 12px;
   background: rgba(17, 17, 17, 0.75);
   color: var(--text-soft);
   font-size: 10.5px;
@@ -102,7 +102,7 @@
   margin: 0;
   padding: 56px 16px 24px;
   border: 0;
-  background: rgba(10, 10, 10, 0.92);
+  background: rgb(var(--bg-rgb) / 0.94);
   color: var(--text);
   backdrop-filter: blur(10px);
 }
@@ -150,7 +150,7 @@
   object-fit: contain;
   border-radius: var(--radius-md);
   background: var(--surface-2);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 30px 80px rgb(var(--shadow-color) / var(--shadow-alpha));
 }
 
 .lightbox__panel {
@@ -225,7 +225,7 @@
   height: 44px;
   border: 1px solid var(--border-strong);
   border-radius: 50%;
-  background: rgba(30, 30, 30, 0.8);
+  background: var(--surface-2);
   color: var(--text);
   cursor: pointer;
   transition: transform 0.35s var(--ease-bounce), background-color 0.2s var(--ease-out);

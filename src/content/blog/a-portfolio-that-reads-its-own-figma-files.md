@@ -2,7 +2,7 @@
 title: A portfolio that reads its own Figma files
 description: How this site decodes 74 Figma files at build time, and the design decisions behind its hover language, preferences and machine-readable pages.
 date: 2026-11-17
-tags: [Design engineering, Process]
+tags: [Design engineering]
 art: code
 ---
 

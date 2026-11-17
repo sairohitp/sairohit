@@ -35,7 +35,7 @@
   padding: 0 16px;
   overflow: hidden;
   border: 1px solid var(--border-strong);
-  border-radius: 999px;
+  border-radius: 22px;
   background: var(--surface-1);
   color: var(--text);
   font-size: 14px;
@@ -95,7 +95,7 @@
 .chip {
   padding: 4px 10px;
   border: 1px solid var(--border-strong);
-  border-radius: 999px;
+  border-radius: 14px;
   color: var(--text-2);
   font-size: 12px;
   line-height: 1.4;
@@ -274,7 +274,7 @@
 .pcard__tags li {
   padding: 2px 9px;
   border: 1px solid rgb(var(--ink) / 0.16);
-  border-radius: 999px;
+  border-radius: 14px;
   color: var(--text-soft);
   font-size: 11.5px;
   line-height: 1.5;
@@ -510,7 +510,7 @@
 .vis-handles__input {
   padding: 6px 10px;
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgb(var(--ink) / 0.07);
   color: var(--text);
   font-size: 12px;
 }

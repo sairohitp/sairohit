@@ -2,7 +2,7 @@
 title: Designing event certificates that scale
 description: Certificates are the last touchpoint of an event and the one people share most. How we designed them for GDSC SRM workshops and the events portal.
 date: 2026-11-17
-tags: [Visual design, Events]
+tags: [Design systems, Community]
 art: grid
 related: events-booking-portal
 ---

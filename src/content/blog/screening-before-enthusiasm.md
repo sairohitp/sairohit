@@ -2,7 +2,7 @@
 title: Screening before enthusiasm in a blood donation app
 description: PULSE asks three simple questions before anyone books a donation. Why eligibility comes first, and how to ask sensitive questions gently.
 date: 2026-11-17
-tags: [Healthcare UX, Mobile]
+tags: [Product design]
 art: a11y
 related: blood-donation-app
 ---

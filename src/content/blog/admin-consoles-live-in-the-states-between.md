@@ -2,7 +2,7 @@
 title: Admin consoles live in the states between
 description: "The learning platform's admin side has 139 frames. Most are not pages but states, such as drafts, pending approval, errors and emails."
 date: 2026-11-17
-tags: [Enterprise UX, Design systems]
+tags: [Product design, Design systems]
 art: table
 related: learning-management-system
 ---

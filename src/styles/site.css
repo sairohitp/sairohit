@@ -220,7 +220,7 @@
   min-height: 34px;
   padding: 0 13px;
   border: 1px solid var(--border-strong);
-  border-radius: 999px;
+  border-radius: 17px;
   color: var(--text-soft);
   font-size: 13.5px;
   transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), background-color 0.2s var(--ease-out);
