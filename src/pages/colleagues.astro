@@ -6,15 +6,6 @@ import { site } from '../config/site';
 import { url } from '../lib/url';
 import { abs, personId, breadcrumbs } from '../lib/seo';
 
-const initials = (n: string) =>
-  n
-    .replace(/^(Dr|Prof)\.\s*/i, '')
-    .split(/\s+/)
-    .filter((w) => /^[A-Z]/.test(w) && w.length > 1)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join('');
-const hue = (n: string) => [...n].reduce((h, c) => (h * 31 + c.charCodeAt(0)) % 360, 7);
 const files = new Set(allColleagues.flatMap((c) => c.sources)).size;
 ---
 
@@ -75,12 +66,9 @@ const files = new Set(allColleagues.flatMap((c) => c.sources)).size;
           {g.people.map((p) => (
             <li class="colleague" data-reveal="rise">
               <div class="colleague__head">
-                <span class="colleague__avatar" style={`--h: ${hue(p.name)}`} aria-hidden="true">{initials(p.name)}</span>
-                <div>
-                  <h3 class="colleague__name">{p.name}</h3>
-                  <p class="colleague__role">{p.role}</p>
-                  <p class="colleague__org">{p.org}</p>
-                </div>
+                <h3 class="colleague__name">{p.name}</h3>
+                <p class="colleague__role">{p.role}</p>
+                <p class="colleague__org">{p.org}</p>
               </div>
               <p class="colleague__label">Worked together on</p>
               <ul class="colleague__work">
