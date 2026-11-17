@@ -8,10 +8,10 @@ export const site = {
   description:
     'Portfolio of Sai Rohit, a visual interface designer and product experience researcher designing responsive apps from wireframes to high-fidelity prototypes.',
 
-  resume: 'https://drive.google.com/file/d/1oHf8wTDSl-2O70A13vdkHWwvZo4jPX80/view?usp=drive_link',
+  resume: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing',
 
   nav: [
-    { label: 'Resume', href: 'https://drive.google.com/file/d/1oHf8wTDSl-2O70A13vdkHWwvZo4jPX80/view?usp=drive_link' },
+    { label: 'Resume', href: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing' },
     { label: 'About', href: '/about/' },
   ],
 
@@ -34,7 +34,7 @@ export const site = {
       links: [
         {
           label: 'Resume',
-          href: 'https://drive.google.com/file/d/1oHf8wTDSl-2O70A13vdkHWwvZo4jPX80/view?usp=drive_link',
+          href: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing',
           external: true,
         },
         { label: 'Colleagues', href: null, external: true },
