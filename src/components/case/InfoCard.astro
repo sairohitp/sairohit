@@ -6,12 +6,15 @@ interface Props {
   card: Card;
   /** "stack": icon above title and text. "inline": icon beside text. */
   variant?: 'stack' | 'inline';
+  /** Position in a numbered set, shown as 01, 02 and so on. */
+  index?: number;
 }
 
-const { card, variant = 'stack' } = Astro.props;
+const { card, variant = 'stack', index } = Astro.props;
 ---
 
 <li class:list={['info-card', `info-card--${variant}`]} data-reveal={variant === 'inline' ? 'right' : 'pop'}>
+  {index !== undefined && <span class="info-card__num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>}
   {card.icon && <Icon name={card.icon} size={20} class="info-card__icon" />}
   <div class="info-card__body">
     {card.title && <p class="info-card__title">{card.title}</p>}

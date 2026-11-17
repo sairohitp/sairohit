@@ -18,6 +18,17 @@ interface Props {
 }
 
 const { block } = Astro.props;
+
+/*
+ * Text blocks pick a layout from their content, so wide pages never leave a half-empty column:
+ * "lede"  heading and paragraphs: a display heading beside a lead paragraph.
+ * "split" heading, paragraphs and an icon list: the intro sits beside the list.
+ * "grid"  heading and cards: an intro row, then the cards in a numbered row across the full width.
+ */
+const textVariant =
+  block.type === 'text' ? (block.cards?.length ? 'grid' : block.list?.length ? 'split' : 'lede') : null;
+const heading = block.type === 'text' ? block.heading.replace(/:\s*$/, '') : '';
+const gridCols = block.type === 'text' && block.cards?.length ? (block.cards.length <= 4 ? block.cards.length : 3) : 0;
 ---
 
 {
@@ -58,30 +69,72 @@ const { block } = Astro.props;
 }
 
 {
-  block.type === 'text' && (
-    <div class="two-col text-block">
-      <h3 class="text-block__heading" data-reveal="left">
-        {block.heading}
-      </h3>
-      <div class="text-block__body" data-stagger="90">
-        {block.body?.map((p) => (
-          <p data-reveal>{p}</p>
-        ))}
-        {block.list?.length ? (
-          <ul class="card-stack" data-stagger="90" data-reveal="fade">
-            {block.list.map((c) => (
-              <InfoCard card={c} variant="inline" />
+  block.type === 'text' && textVariant !== 'grid' && (
+    <div class:list={['text-block', `text-block--${textVariant}`]}>
+      <div class="text-block__aside">
+        <span class="text-block__rule" aria-hidden="true" />
+        <h3 class="text-block__heading" data-reveal="left">{heading}</h3>
+        {textVariant === 'split' && block.body?.length ? (
+          <div class="text-block__intro" data-stagger="90">
+            {block.body.map((p) => (
+              <p data-reveal>{p}</p>
             ))}
-          </ul>
-        ) : null}
-        {block.cards?.length ? (
-          <ul class="card-stack" data-stagger="90" data-reveal="fade">
-            {block.cards.map((c) => (
-              <InfoCard card={c} />
-            ))}
-          </ul>
+          </div>
         ) : null}
       </div>
+      <div class="text-block__body" data-stagger="90">
+        {textVariant === 'lede' &&
+          block.body?.map((p, i) => (
+            <p class:list={[i === 0 && 'is-lede']} data-reveal>
+              {p}
+            </p>
+          ))}
+        {textVariant === 'split' && (
+          <ol class="card-stack card-stack--numbered" data-stagger="90">
+            {(block.list ?? []).map((c, i) => (
+              <InfoCard card={c} variant="inline" index={i} />
+            ))}
+          </ol>
+        )}
+      </div>
+    </div>
+  )
+}
+
+{
+  block.type === 'text' && textVariant === 'grid' && (
+    <div class="text-block text-block--grid">
+      <div class="text-block__head">
+        <div class="text-block__aside">
+          <span class="text-block__rule" aria-hidden="true" />
+          <h3 class="text-block__heading" data-reveal="left">{heading}</h3>
+        </div>
+        {block.body?.length ? (
+          <div class="text-block__body" data-stagger="90">
+            {block.body.map((p, i) => (
+              <p class:list={[i === 0 && 'is-lede']} data-reveal>
+                {p}
+              </p>
+            ))}
+          </div>
+        ) : (
+          <p class="text-block__count" data-reveal>
+            {(block.cards ?? []).length} {(block.cards ?? []).length === 1 ? 'point' : 'points'}
+          </p>
+        )}
+      </div>
+      {block.list?.length ? (
+        <ol class="card-stack card-stack--numbered" data-stagger="90">
+          {block.list.map((c, i) => (
+            <InfoCard card={c} variant="inline" index={i} />
+          ))}
+        </ol>
+      ) : null}
+      <ol class="card-row" style={`--cols: ${gridCols}`} data-stagger="90">
+        {(block.cards ?? []).map((c, i) => (
+          <InfoCard card={c} index={i} />
+        ))}
+      </ol>
     </div>
   )
 }
