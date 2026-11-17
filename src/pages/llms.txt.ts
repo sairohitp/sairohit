@@ -38,7 +38,6 @@ export const GET: APIRoute = async () => {
     '## More',
     `- [About](${abs('/about/')}): experience, leadership, skills, education and recognition`,
     `- [Colleagues](${abs('/colleagues/')}): people named across the Figma files`,
-    `- [Explorations](${abs('/explorations/')}): concepts in progress`,
     `- [Sitemap](${abs('/sitemap/')}): every page and section`,
     `- [Resume](${site.resume})`,
     ...site.social.map((s) => `- [${s.label}](${s.href})`),

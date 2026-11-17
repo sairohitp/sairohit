@@ -2,51 +2,49 @@
 import { site } from '../config/site';
 import { url } from '../lib/url';
 import Icon from './Icon.astro';
+
+const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer container">
   <div class="site-footer__card" data-reveal>
-    <div class="site-footer__brand">
-      <a class="site-footer__name" href={url('/')}>{site.name}</a>
+    <div class="site-footer__top">
+      <div>
+        <a class="site-footer__name" href={url('/')}>{site.name}</a>
+        <p class="site-footer__tag">Product designer in Bengaluru. Designing in Figma, building in React.</p>
+      </div>
       <ul class="site-footer__social">
         {
           site.social.map((s) => (
             <li>
               <a href={s.href} aria-label={s.label} target="_blank" rel="noopener">
-                <Icon name={s.icon} size={22} />
+                <Icon name={s.icon} size={20} />
               </a>
             </li>
           ))
         }
       </ul>
     </div>
-    <div class="site-footer__cols">
-      {
-        site.footer.map((col) => (
-          <div class="site-footer__col">
-            <p class="site-footer__title">{col.title}</p>
-            <ul>
-              {col.links.map((l) =>
-                l.href ? (
-                  <li>
-                    <a href={url(l.href)} {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>
-                      {l.label}
-                      {l.external && <Icon name="arrow-up-right" size={14} />}
-                    </a>
-                  </li>
-                ) : (
-                  <li>
-                    <span class="site-footer__soon">
-                      {l.label}
-                      <span class="soon-tag">Soon</span>
-                    </span>
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
-        ))
-      }
+
+    <nav aria-label="Footer">
+      <ul class="site-footer__links">
+        {
+          site.footer.map((l) => (
+            <li>
+              <a href={url(l.href)} {...(l.external ? { target: '_blank', rel: 'noopener' } : {})}>
+                {l.label}
+                {l.external && <Icon name="arrow-up-right" size={12} />}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-footer__bottom">
+      <span>© {year} {site.name}</span>
+      <span class="site-footer__made">Designed in Figma, built with Astro</span>
+      <a class="site-footer__up" href="#main">Back to top <Icon name="arrow-up" size={12} /></a>
     </div>
   </div>
 </footer>

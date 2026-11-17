@@ -1,6 +1,5 @@
 /**
  * Global site settings. Internal paths (starting with "/") are made base-path aware automatically.
- * A link with `href: null` renders as plain text with a "Soon" tag.
  */
 export const site = {
   name: 'Sai Rohit',
@@ -24,28 +23,14 @@ export const site = {
     { label: 'Dribbble', href: 'https://dribbble.com/sairohit', icon: 'dribbble' },
   ],
 
+  /** Footer links, shown as one row of pills. */
   footer: [
-    {
-      title: 'Sitemap',
-      links: [
-        { label: 'Blog', href: '/blog/', external: false },
-        { label: 'About', href: '/about/', external: false },
-        { label: 'Work', href: '/#work', external: false },
-        { label: 'Visual design', href: '/visual/', external: false },
-        { label: 'Explorations', href: '/explorations/', external: false },
-        { label: 'Sitemap', href: '/sitemap/', external: false },
-      ],
-    },
-    {
-      title: 'Resources',
-      links: [
-        {
-          label: 'Resume',
-          href: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing',
-          external: true,
-        },
-        { label: 'Colleagues', href: '/colleagues/', external: false },
-      ],
-    },
+    { label: 'Work', href: '/#work', external: false },
+    { label: 'Visual', href: '/visual/', external: false },
+    { label: 'About', href: '/about/', external: false },
+    { label: 'Blog', href: '/blog/', external: false },
+    { label: 'Colleagues', href: '/colleagues/', external: false },
+    { label: 'Sitemap', href: '/sitemap/', external: false },
+    { label: 'Resume', href: 'https://drive.google.com/file/d/1-uuH8aldJy4GtxoxNNg5KaNgz9Mp26By/view?usp=sharing', external: true },
   ],
 } as const;

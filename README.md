@@ -41,7 +41,7 @@ Elements animate in on scroll via `data-reveal` (`fade`, `left`, `right`, `rise`
 - Case studies: `src/data/projects.ts` plus `src/data/case-studies/<slug>.ts`, built from typed blocks (`src/data/build.ts`).
 - Figma anatomy: `src/data/figma-files.json`, rendered by `src/components/case/FileAnatomy.astro`.
 - Screens: any `public/images/projects/<key>-screen-*.{png,jpg,webp}` joins that project's gallery automatically.
-- Pages: Home, About, Visual, Explorations, Blog, Colleagues, Sitemap, Status (200 and designed error pages), 404.
+- Pages: Home, About, Visual, Blog, Colleagues, Sitemap, Status (200 and designed error pages), 404.
 - Preferences and sticky navigation: `src/scripts/prefs.ts`, `src/config/prefs.ts`, `src/styles/nav.css`.
 - SEO: `src/lib/seo.ts`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`. See `docs/SEO.md`.
 - Plan and inventory: `docs/MASTER_PLAN.md`, `docs/figma-inventory.csv`, optional exports in `docs/EXPORTS.md`.

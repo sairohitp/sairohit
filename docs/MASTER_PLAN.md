@@ -12,7 +12,6 @@ How the 74 Figma files map onto the site, the framework that keeps it organised,
 | About | `/about/` | `src/data/profile.ts` (resume is the source of truth) | Timeline, experience, leadership, skills, education, recognition, FAQ |
 | Blog | `/blog/`, `/blog/<slug>/`, `/rss.xml` | `src/content/blog/*.md` | 17 posts, each optionally tied to a case study with `related: <slug>`; 10 animated cover styles |
 | Designed and built | Home, `#built-title` | `src/data/profile.ts` (`built`) | OrgGrid, FundLookup, Handl, All is All, Dhobermans and Progull |
-| Explorations | `/explorations/` | `src/data/projects.ts` (`explorations`) | E-commerce Platform and Franchise News Co., with full file anatomy |
 | Colleagues | `/colleagues/` | `src/data/colleagues.ts` | 38 people named in the files, roles exactly as written there, linked to shared work |
 | Sitemap | `/sitemap/` | `src/data/routes.ts` | Every page, case study section, blog heading and external link, with a filter |
 | Status | `/status/`, `/status/<code>/`, `404.html` | `src/data/statuses.ts` | 200 status page plus designed 301, 403, 404, 410, 500 and 503 pages |
@@ -55,7 +54,7 @@ Project keys: `learning`, `library`, `recycle`, `pluto`, `placement`, `crm`, `st
 All 74 files were decoded layer by layer (712,572 layers, 30,737 text layers, 2,852 frames, 1,700 prototype links, 205 canvas notes). The result lives in `src/data/figma-files.json` and appears on the site as:
 
 - **Inside the files** on every case study (numbered section, also in the contents pane): pages and frames with sizes and prototype links, typefaces and size scale, colours by use, and components and instances. Each file is also listed under Inside the files in the contents pane.
-- **Inside the files** under each campaign on the Visual page, and on the Explorations page.
+- **Inside the file** in each Visual page tile's popup.
 - **Rendered screens**: frames whose full render is embedded in the file were extracted into each project's gallery (including the Placerr and PULSE profile screens). References, moodboards, drafts and other members' versions were left out on purpose.
 
 ## 3. Inventory of all 74 files

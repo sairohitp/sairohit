@@ -89,7 +89,6 @@ export async function siteTree(): Promise<RouteGroup[]> {
       description: 'Credits, this map and machine-readable feeds.',
       links: [
         { label: 'Colleagues', href: '/colleagues/' },
-        { label: 'Explorations', href: '/explorations/' },
         { label: 'Sitemap', href: '/sitemap/' },
         { label: 'Site status', href: '/status/' },
         { label: 'RSS feed', href: '/rss.xml' },
@@ -120,7 +119,6 @@ export async function sitePages(): Promise<string[]> {
     ...posts.map((p) => `/blog/${p.id}/`),
     ...projects.map((p) => projectHref(p)),
     '/colleagues/',
-    '/explorations/',
     '/sitemap/',
     '/status/',
   ];

@@ -61,6 +61,8 @@ import wrenchIcon2 from './svg/wrench-regular.svg?raw';
 import magnifyingGlassIcon2 from './svg/magnifying-glass-regular.svg?raw';
 import userCircleIcon2 from './svg/user-circle-regular.svg?raw';
 
+import arrowUpIcon2 from './svg/arrow-up-regular.svg?raw';
+
 export const icons = {
   'arrow-right': arrowRight,
   'arrow-left': arrowLeft,
@@ -101,6 +103,7 @@ export const icons = {
   'microphone-stage': microphoneStageIcon,
   'buildings': buildingsIcon,
   'plus': plusIcon,
+  'arrow-up': arrowUpIcon2,
   'sliders-horizontal': slidersHorizontalIcon2,
   'moon': moonIcon2,
   'monitor': monitorIcon2,
