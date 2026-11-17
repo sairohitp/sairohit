@@ -57,8 +57,10 @@ export const eventsBookingPortal: CaseStudy = {
       }),
     ]),
     section('user-flow', 'User Flow', 'From browsing to booked.', [
-      text('Short and predictable.', ['A visitor lands on the chapter page, narrows events with filters and registers directly from the event card.']),
-      flow(['Chapter page', 'Filter by date, mode, category', 'Event card', 'Register', 'Dashboard'], cap('3.0', 'Diagram', 'Booking flow')),
+      text('Short and predictable.', [
+        'A visitor signs in with Google, narrows events with filters and registers from the event card or the event page. After the event, attendees receive a certificate they can download and share.',
+      ]),
+      flow(['Sign in with Google', 'Filter events', 'Event page', 'Register', 'Certificate'], cap('3.0', 'Diagram', 'Booking flow')),
       wireframes('events'),
     ]),
     section('layout', 'Layout', 'Filters on the left, events on the right.', [
@@ -68,12 +70,16 @@ export const eventsBookingPortal: CaseStudy = {
       structure('events', 'Filters and upcoming event cards', 'Filters and upcoming events: structure and final. Drag to compare.', 'b'),
     ]),
     section('interactions', 'Interactions', 'Details that save a click.', [
-      text('Built for quick decisions.', ['Tags and toggles answer the common questions before a visitor opens an event.']),
+      text('Everything about an event, on one page.', [
+        'Each event page carries the description, topic tags, when and where (with a link to Google Maps), whether it is offline or online, the organising team, sponsors and discussions, with Register Now always in reach.',
+        'Once the event is over, attendees can download their certificate or share their accomplishment straight from the portal.',
+      ]),
+      exhibit(img('events-certificate', 'Certificate of appreciation for Code with Node 2.0'), cap('5.0', 'Design', 'Certificate issued through the portal')),
       grid([
         card('Calendar filter', 'Pick a date to see what is on.', 'clock'),
         card('Mode tags', 'Offline or online at a glance.', 'target'),
         card('Tech stack tags', 'Know what you will learn before registering.', 'lightbulb'),
-        card('Grid and list views', 'Switch layouts to suit the screen.', 'cursor-click'),
+        card('Shareable certificates', 'Download or share a certificate after attending.', 'check-circle'),
       ]),
     ]),
     section('visual-design', 'Visual Design', 'A dark canvas with a Google spark.', [
@@ -89,6 +95,7 @@ export const eventsBookingPortal: CaseStudy = {
         ],
         cap('6.0', 'Palette', 'Colours sampled from the final screens'),
       ),
+      exhibit(img('events-banner', 'Code with Node 2.0 event key visual'), cap('6.1', 'Design', 'Event key visual for Code with Node 2.0')),
     ]),
     section('final-designs', 'Final Designs', 'The chapter page, in full.', [
       text('One page for every event.', ['Header, about, filters, upcoming events and previous events come together in one responsive page.']),

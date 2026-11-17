@@ -9,7 +9,7 @@ const DIR = 'public/images/projects';
 const EXT = ['png', 'jpg', 'jpeg', 'webp'];
 // Which image each project's Layout comparison uses.
 const SOURCES = {
-  library: 'a', learning: 'a', pluto: 'a', recycle: 'a', crm: 'a',
+  library: 'a', learning: 'a', pluto: 'a', recycle: 'a', crm: 'a', pulse: 'a',
   streaming: 'b', placement: 'b', events: 'b',
 };
 const BG = { r: 13, g: 17, b: 23 };

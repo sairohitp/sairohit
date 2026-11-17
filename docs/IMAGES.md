@@ -16,6 +16,7 @@ Project keys used in file names:
 | Placement Management System | `placement` |
 | Customer Relationship Management | `crm` |
 | Events' Booking Portal | `events` |
+| Blood Donation App (PULSE) | `pulse` |
 
 ## 1. Optional, only you have these (they appear automatically once pushed)
 
@@ -51,11 +52,16 @@ These work today but are crops of the composite boards. Clean Figma frame export
 | `placement-a` | Highlights | Overview stats + Company spotlight | About 3200 x 1560 |
 | `placement-b` | Layout (compare) | Ongoing applications | About 3200 x 1740 |
 | `placement-c` | Interactions | Recommended roles + Preparation tips | Tall right rail, about 1800 x 4280 |
-| `crm-row` | Highlights | Welcome, Dashboard, Customer, Messages | 4 frames side by side, about 3200 x 1620 |
-| `crm-a` | Layout (compare) | Welcome + Dashboard | 2 frames side by side, about 3200 x 3230 |
-| `crm-b` | Interactions | Customer + Messages | 2 frames side by side, about 3200 x 3230 |
 | `events-a` | Highlights | Chapter header | About 3200 x 960 |
 | `events-b` | Layout (compare) | Filters + Upcoming events | About 3200 x 2150 |
+
+## Already done from your .fig files
+
+| Files | Source |
+| --- | --- |
+| `crm-row`, `crm-a`, `crm-b`, `crm-c`, `crm-d` | Clean screen exports from Customer Relationship Management.fig |
+| `pulse-*` (cover, board, hero, row, a, b, c, d) | Screens from Blood Donation.fig |
+| `events-banner`, `events-certificate` | Designs from events.fig |
 
 ## 3. Optional upgrades (already good, replace only if you want to)
 

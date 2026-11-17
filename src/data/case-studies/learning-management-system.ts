@@ -84,8 +84,10 @@ export const learningManagementSystem: CaseStudy = {
       grid([
         card('Bulk select', 'Checkboxes on every row for batch changes.', 'check-circle'),
         card('Quick search', 'A shortcut-driven search for any item.', 'target'),
-        card('Breadcrumbs', 'Always know where you are in the console.', 'cursor-click'),
-        card('Row actions', 'Edit and manage items without leaving the table.', 'sparkle'),
+        card('Create menu', 'Start a course, chapter or topic from one Create button.', 'cursor-click'),
+        card('Publish confirmation', 'A clear prompt before a course goes live.', 'sparkle'),
+        card('Approval alerts', 'Authors see when a request is sent for approval.', 'lightbulb'),
+        card('Sign-in states', 'Google and LinkedIn sign-in, with clear error messages.', 'key'),
       ]),
     ]),
     section('visual-design', 'Visual Design', 'Depth and translucency on a dark canvas.', [

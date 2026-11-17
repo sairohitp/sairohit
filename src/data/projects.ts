@@ -8,6 +8,7 @@ import { recycleAndDonateApp } from './case-studies/recycle-and-donate-app';
 import { placementManagementSystem } from './case-studies/placement-management-system';
 import { customerRelationshipManagement } from './case-studies/customer-relationship-management';
 import { eventsBookingPortal } from './case-studies/events-booking-portal';
+import { bloodDonationApp } from './case-studies/blood-donation-app';
 
 /*
  * Projects, in the order they appear on the home page.
@@ -91,6 +92,15 @@ export const projects: Project[] = [
     thumbnail: img('events-cover', 'BookMyEvent portal'),
     figma: 'https://www.figma.com/design/XUPnWTdd9FBZw5o9qZndLg/High-Fidelity-Design?node-id=0-1',
     caseStudy: eventsBookingPortal,
+  },
+  {
+    slug: 'blood-donation-app',
+    title: 'Blood Donation App',
+    role: 'Academic Project',
+    org: 'SRM IST',
+    platform: 'mobile',
+    thumbnail: img('pulse-cover', 'PULSE blood donation app screens'),
+    caseStudy: bloodDonationApp,
   },
 ];
 
